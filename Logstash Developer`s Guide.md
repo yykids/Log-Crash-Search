@@ -169,6 +169,13 @@ APACHEERRORLOG \[%{HTTPERRORDATE:timestamp}\] \[%{WORD:severity}\] %{GREEDYDATA:
 
 - [A bit of logstash cooking](https://home.regit.org/2014/01/a-bit-of-logstash-cooking/)
 
+### 환경 변수
+logstash는 다음 환경 변수를 지원합니다. logstash가 사용하는 메모리 양은 LS_HEAP_SIZE 환경 변수를 통해 설정할 수 있습니다.
+
+ - LS_HEAP_SIZE="xxx" size for the -Xmx${LS_HEAP_SIZE} maximum Java heap size option, default is "500m"
+ - LS_JAVA_OPTS="xxx" to append extra options to the defaults JAVA_OPTS provided by logstash
+ - JAVA_OPTS="xxx" to completely override the defauls set of JAVA_OPTS provided by logstash
+
 > 참고  
 > Logstash 홈페이지  
 > Logstash Reference  
