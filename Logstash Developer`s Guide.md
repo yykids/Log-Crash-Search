@@ -75,8 +75,8 @@ filter {
 	add_field => {
 	  ## TODO:: modify below fields. see> nelo2-http-rest-api-manual-kr.md
 	  "projectName" => "nelo2-webapp"
-	  "projectVersion" => "0.0.1",
-	  "logVersion": "v2"
+	  "projectVersion" => "0.0.1"
+	  "logVersion" => "v2"
 	  "logType" => "logstash"
 	  "logSource" => "collector"
 	  "logLevel" => "INFO"
