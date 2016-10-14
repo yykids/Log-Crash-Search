@@ -1,5 +1,12 @@
 ## Analytics > Log&Crash Search > Release Notes
 
+## 2016.10.20
+#### 기능 개선/변경
+* [SDK] 기기의 교유 ID 값인 DeviceID 필드 추가
+* [SDK] 로그 전송이 안되는 경우 파일로 저장 후 이후 정상 통신이 되는 경우 로그 파일 전송
+* [Console] 앱크래시 지표 화면에 UserID / DeviceID 선택 하여 지표 확인 가능
+* [Console] 앱 크래시 지표 화면 > '세션','사용자수' 타이틀 '실행 수' '크래시를 겪은 사용자'로 변경
+
 ### 2016.09.29
 #### 기능 개선/변경
 * 알람 임계치 설정 및 http Callback 기능 추가
