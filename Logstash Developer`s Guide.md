@@ -75,8 +75,8 @@ filter {
 	add_field => {
 	  ## TODO:: modify below fields. see> nelo2-http-rest-api-manual-kr.md
 	  "projectName" => "nelo2-webapp"
-	  "projectVersion" => "0.0.1",
-	  "logVersion": "v2"
+	  "projectVersion" => "0.0.1"
+	  "logVersion" => "v2"
 	  "logType" => "logstash"
 	  "logSource" => "collector"
 	  "logLevel" => "INFO"
@@ -163,6 +163,15 @@ APACHEERRORLOG \[%{HTTPERRORDATE:timestamp}\] \[%{WORD:severity}\] %{GREEDYDATA:
 - A bit of logstash cooking 에서 사용된 grok pattern을 수정했습니다.
 ```
 
+<<<<<<< HEAD
+=======
+### 다른 Log 수집하기
+
+다른 로그를 수집하기 위해서 다음 URL을 참고하세요.
+
+- [A bit of logstash cooking](https://home.regit.org/2014/01/a-bit-of-logstash-cooking/)
+
+>>>>>>> beta
 ### 환경 변수
 logstash는 다음 환경 변수를 지원합니다. logstash가 사용하는 메모리 양은 LS_HEAP_SIZE 환경 변수를 통해 설정할 수 있습니다.
 
@@ -170,6 +179,7 @@ logstash는 다음 환경 변수를 지원합니다. logstash가 사용하는 �
  - LS_JAVA_OPTS="xxx" to append extra options to the defaults JAVA_OPTS provided by logstash
  - JAVA_OPTS="xxx" to completely override the defauls set of JAVA_OPTS provided by logstash
 
+<<<<<<< HEAD
 ### 다른 Log 수집하기
 
 다른 로그를 수집하기 위해서 다음 URL을 참고하세요.
@@ -180,3 +190,9 @@ logstash는 다음 환경 변수를 지원합니다. logstash가 사용하는 �
  -  [Logstash 홈페이지](https://www.elastic.co/products/logstash) <br>
  -  [Logstash Reference](https://www.elastic.co/guide/en/logstash/current/index.html)<br>
  -  [A bit of logstash cooking](https://home.regit.org/2014/01/a-bit-of-logstash-cooking/)<br>
+=======
+> 참고  
+> Logstash 홈페이지  
+> Logstash Reference  
+> A bit of logstash cooking  
+>>>>>>> beta
