@@ -36,7 +36,7 @@
     * 2Kbyte 이상의 로그 전송이 필요한 경우 Field 명에 txt prefix 지정하여 Custom field 생성
     * txt*; string, 옵션 [in] 필드 이름이 txt로 시작하는 필드(txt_description 등)는 분석(analyzed) 필드로 저장</br>
       로그 검색 화면에서 필드 값의 일부 문자열로 검색이 가능
-
+ 
 
 ### 2016.08.18
 #### 기능 개선/변경
