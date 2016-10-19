@@ -305,7 +305,7 @@ public static void setSendMode(SendMode sendMode)
 public static void setDuplicate(bool enable)
 ```
 
-true:(Default값) 중복 제거 로직 활성화
+true:(Default값) 중복 제거 로직 활성화<br>
 false: 중복 제거 로직 비활성화
 
 ## SDK 샘플을 이용한 Proguard 테스트

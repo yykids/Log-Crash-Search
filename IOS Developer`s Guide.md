@@ -175,7 +175,7 @@ TLCLog class에서 제공하는 기능들을 설명합니다.
 public static void setLogDeduplicate(bool enable)
 ```
 
-true : (Default 값) 중복 제거 로직 활성화
+true : (Default 값) 중복 제거 로직 활성화<br>
 false : 중복 제거 로직 비활성화
 
 ### 기본 설정 관리

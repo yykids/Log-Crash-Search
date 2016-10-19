@@ -208,7 +208,7 @@ public static string GetUserID()
 public static void SetDeduplicate(bool flag)
 ```
 
-true :(Default 값) 중복 제거 로직 활성화
+true :(Default 값) 중복 제거 로직 활성화<br>
 false :  중복 제거 로직 비활성화
 
 ## iOS build 하기
