@@ -295,6 +295,19 @@ public static void setSendMode(SendMode sendMode)
 |WIFI|	전송|	전송|	전송|
 |No connection|	미전송, 파일 저장|	미전송, 파일 저장|	미전송, 파일 저장 안함|
 
+### 중복 제거 모드 설정
+
+2.4.0 이상 SDK 부터 일반 로그에 중복 제거 로직이 적용되었습니다.
+
+중복 로그 기능이 켜져있는 경우 body와 logLevel의 내용이 같은 로그가 발생하면 전송하지 않습니다.
+
+```
+public static void setDuplicate(bool enable)
+```
+
+true:(Default값) 중복 제거 로직 활성화
+false: 중복 제거 로직 비활성화
+
 ## SDK 샘플을 이용한 Proguard 테스트
 
 Android에서 제공하는 Proguard를 통해서 코드 난독화를 테스트하는 방법을 설명합니다.  
