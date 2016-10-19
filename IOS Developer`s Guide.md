@@ -165,6 +165,19 @@ TLCLog class에서 제공하는 기능들을 설명합니다.
 	- projectName, projectVersion, host, logType, logSource, sendTime, logTime, logLevel, UserID
 	- Platform, DeviceModel, NetworkType, Carrier, CountryCode, DmpData, errorCode, Location, body, SessionID
 
+### 중복 제거 모드 설정
+
+2.4.0 이상 SDK 부터 일반 로그에 중복 제거 로직이 적용되었습니다.
+
+중복 로그 기능이 켜져있는 경우 body와 logLevel의 내용이 같은 로그가 발생하면 전송하지 않습니다.
+
+```
+public static void setLogDeduplicate(bool enable)
+```
+
+true : (Default 값) 중복 제거 로직 활성화<br>
+false : 중복 제거 로직 비활성화
+
 ### 기본 설정 관리
 
 ```

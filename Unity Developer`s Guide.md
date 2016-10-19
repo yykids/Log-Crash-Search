@@ -194,6 +194,23 @@ public static string GetUserID()
 	- userID: string
 		- [in] 각 사용자를 구분할 user id
 
+### 중복 제거 모드 설정
+
+2.4.0 이상 SDK 부터 일반 로그에 중복 제거 로직이 적용되었습니다. 초기화 시 중복 제거 로직이 활성화됩니다.
+
+일반 로그의 경우 body와 logLevel이 같은 로그가 발생한 경우 전송하지 않습니다.
+
+크래시 로그의 경우 stackTrace와 condition 값이 같은 로그가 발생한 경우 전송하지 않습니다.
+
+원하지 않는 경우 초기화 이후, 아래 함수를 통해 기능을 비활성화시킬 수 있습니다.
+
+```
+public static void SetDeduplicate(bool flag)
+```
+
+true :(Default 값) 중복 제거 로직 활성화<br>
+false :  중복 제거 로직 비활성화
+
 ## iOS build 하기
 
 1.File->Build Settings 클릭.
