@@ -6,6 +6,9 @@
     * 신규 SDK을 통한 Crash Log 전송시 DeviceID가 수집되어 Console > Log&Crash Search > Crashes > 앱 크래시 지표 화면에서
       DeviceID 기준으로 지표 확인이 가능합니다.
 * [SDK] 로그 전송이 안되는 경우 파일로 저장 후 이후 정상 통신이 되는 경우 로그 파일 전송하도록 기능 변경됨.
+* [SDK] 모든 로그에 대해 중복 로그 처리 루틴 적용
+    * 중복 로그 기능이 켜져 있는 경우 Body 와 logLevel 의 내용이 같은 로그가 발생하면 전송하지 않습니다.
+    * 필요한 경우 사용자가 별도의 API로 제어 가능하도록 기능 제공됨.
 * [Console] 앱 크래시 지표 화면 > '세션','사용자수' 타이틀 '실행 수' '크래시를 겪은 사용자'로 변경됨.
 
 
@@ -35,7 +38,7 @@
     * Custom 필드 생성시 analyzed(분석여부) false 로 변경
     * 전송 가능한 로그 길이 128byte -> 2Kbyte 변경
     * 2Kbyte 이상의 로그 전송이 필요한 경우 Field 명에 txt prefix 지정하여 Custom field 생성
-   
+
     ```
     txt*; string, 옵션 [in] 필드 이름이 txt로 시작하는 필드(txt_description 등)는 분석(analyzed) 필드로 저장
     로그 검색 화면에서 필드 값의 일부 문자열로 검색이 가능
