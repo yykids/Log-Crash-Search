@@ -9,7 +9,7 @@ Log & Crash C# Windows SDK 특·장점은 다음과 같습니다.
 - Log & Crash Search 에서 전송된 로그를 조회 및 검색이 가능합니다.
 - 멀티 쓰레딩 환경에서 동작합니다.
 
-#### 지원 환경
+## 지원 환경
 
 - .NET Framework 4 이상
 - 32bit/64bit
