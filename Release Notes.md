@@ -1,5 +1,10 @@
 ## Analytics > Log&Crash Search > Release Notes
 
+### 2016.11.17
+#### 버그 수정
+* [SDK] Android 2.4.1 버전에서 AsyncTask가 Cancel 되지 못하는 버그가 있어, 해당 로직을 Thread로 변경
+  * 수정버전 : Android 2.4.2
+
 ### 2016.10.20
 #### 기능 개선/변경
 * 기기의 고유 ID 값인 DeviceID 수집
