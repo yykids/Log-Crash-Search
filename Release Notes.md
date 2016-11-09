@@ -1,6 +1,10 @@
 ## Analytics > Log&Crash Search > Release Notes
 
-### 2016.11.17
+### 2016.11.24
+* [SDK] 일부 기기에서 host필드를 구하는데 사용되는 getaddrinfo 함수가 hang현상을 유발하여, host값은 내부 thread에서 구하도록 변경
+  * 수정버전 : Android-NDK 2.4.4
+
+### 2016.11.04
 #### 버그 수정
 * [SDK] Android 2.4.1 버전에서 AsyncTask가 Cancel 되지 못하는 버그가 있어, 해당 로직을 Thread로 변경
   * 수정버전 : Android 2.4.2
