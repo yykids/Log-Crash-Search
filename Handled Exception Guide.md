@@ -76,6 +76,6 @@ try {
 
 ## 전송된 Handled Exception 확인
 
-- [Toast Cloud - Console](https://console.cloud.toast.com)에 접속합니다
+- <a href="https://console.cloud.toast.com" target="_blank">Toast Cloud - Console</a>에 접속합니다
 - 프로젝트를 선택하고, Analytics - Log & Crash Search - App Crash Search를 선택합니다.
 - 현재 플랫폼을 Android로 확인하고, 에러 타입을 Handled로 선택합니다.
