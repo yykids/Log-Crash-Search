@@ -97,7 +97,7 @@ void DestroyToastLog();
 
 ```
 #define LOGNCRASH_VERSION         "1.0.0"
-#define LOGNCRASH_COLLECTOR_ADDR  "api-logncrash.cloud.toast.com"
+#define LOGNCRASH_COLLECTOR_ADDR  "http://api-logncrash.cloud.toast.com"
 #define LOGNCRASH_COLLECTOR_PORT  80
 #ifdef WIN32
 #define LOGNCRASH_LOGSOURCE       "logncrash-windows"
