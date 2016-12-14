@@ -56,7 +56,7 @@ sample/     ; Logback 샘플
 ```
 <dependency>
       <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-class</artifactId>
+      <artifactId>logback-classic</artifactId>
       <version>1.0.9</version>
   </dependency>
   <dependency>
