@@ -16,7 +16,7 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 	\- Mac OS X "Snow Leopard" 10.6 이상
 	\- Xcode 6.0 or later
 - Android
-	\- Android OS 4.0 이상
+	\- Android API 2.3.1
 	\- ARMv7 (Cortex family) CPU 단말
 
 ## 다운로드
@@ -24,7 +24,7 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 Toast Cloud에서 Unity SDK를 받을 수 있습니다.
 
 ```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK] 클릭
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK]
 ```
 
 ## 설치
@@ -286,3 +286,11 @@ false :  중복 제거 로직 비활성화
     </dict>
 </dict>
 ```
+
+## iOS Native Crash 해석 하기
+- Unity iOS의 Crash 는 Unity Engine에서 발생하는 Crash와 iOS native 에서 발생하는 Crash로 구분됩니다.
+- Native Crash를 해석하기 위해서는 output 파일의 .DSYM을 .zip으로 압축하여 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일탭에 등록 해야 합니다.
+
+## Android Proguard 적용
+- Unity iOS의 Crash는 Unity Engine에서 발생하는 Crash와 Android Naitve에서 발생하는 Crash, 외부 라이브러리에서 발생한 Crash로 구분됩니다.
+- Android Proguard가 적용된 프로젝트의 경우, Native 레벨의 Crash 해석를 위하기 위해서는 mapping.txt 파일을 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일 탭에 등록해야 합니다.
