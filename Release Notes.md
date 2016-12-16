@@ -1,7 +1,16 @@
 ## Analytics > Log&Crash Search > Release Notes
 
+### 2106.12.22
+#### 기능 개선/변경
+* Web 화면에서 로그 파일 다운로드시 최대 10만개로 제한함
+  * 10만개 이상 시도시 팝업 알람
+* [SDK] Unity 예외와 iOS/Android 의 네이티브 레벨 예외를 같이 수집할수 있도록 기능 및 문서 업데이트
+  * 수정버전 : unity-android-sdk-2.5.1, unity-ios-sdk-2.5.1
+* [SDK] Log Duplicate Queue Size 를 기존 제한 없음 에서 1000개로 제한 하도록 변경함
+  * 수정버전 : Android-2.4.3, Android-NDK-2.4.5, iOS-2.4.1, unity-android-2.5.1, unity-ios-2.5.1
+
 ### 2106.12.08
-#### 기능 개선/변
+#### 기능 개선/변경
 * 이슈 조회 > 이슈 상세 > 코멘트, 히스토리 탭에서 내용을 등록한 사용자가 프로젝트 멤버에서 삭제 된 경우
   이메일 노출 부분에 "[삭제된 멤버]"로 표시
 
