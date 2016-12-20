@@ -324,10 +324,10 @@ void setCrashCallback(const LogNCrashCallbackType cb, void* cbData = NULL);
 	- 설정 실패시 false
 	- AndroidNDK SDK는 단말의 /sdcard 디렉토리를 사용합니다. 단말에 위 디렉토리가 없으면 제대로 동작 안할수 있습니다.
 
-## 중복 제거 모드 설정
+### 중복 제거 모드 설정
   - 2.4.0 이상 SDK 부터 일반 로그에 중복 제거 로직이 적용되었습니다
   - 중복 로그 기능이 켜져있는 경우 body와 logLevel의 내용이 같은 로그가 발생하면 전송하지 않습니다.
-  
+
 ```
   	public static void setDuplicate(bool enable)
 ```
