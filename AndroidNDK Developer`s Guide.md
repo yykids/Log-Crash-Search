@@ -329,7 +329,7 @@ void setCrashCallback(const LogNCrashCallbackType cb, void* cbData = NULL);
   - 중복 로그 기능이 켜져있는 경우 body와 logLevel의 내용이 같은 로그가 발생하면 전송하지 않습니다.
 
 ```
-  	public static void setDuplicate(bool enable)
+public static void setDuplicate(bool enable)
 ```
   - true : (Default 값 ) 중복 제거 로직 활성화
 
