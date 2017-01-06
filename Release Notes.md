@@ -1,5 +1,12 @@
 ## Analytics > Log&Crash Search > Release Notes
 
+### 2017.01.19
+#### 기능 개선/변경
+* 앱 크래시 지표 버전 표시 기준 변경
+    * 앱 크래시 지표 > 크래시가 발생하지 않았지만 실행수가 존재하는 버전도 표시 되도록 수정
+#### 버그 수정
+* Log Search 화면에 로그 모두 보이기/숨기기 기능 수정
+
 ### 2106.12.22
 #### 기능 개선/변경
 * Web 화면에서 로그 파일 다운로드시 최대 10만개로 제한함
@@ -8,7 +15,6 @@
     * 수정버전 : unity-android-sdk-2.5.1, unity-ios-sdk-2.5.1
 * [SDK] Log Duplicate Queue Size 를 기존 제한 없음 에서 1000개로 제한 하도록 변경함
     * 수정버전 : Android-2.4.3, Android-NDK-2.4.5, iOS-2.4.1, unity-android-2.5.1, unity-ios-2.5.1
-
 
 ### 2106.12.08
 #### 기능 개선/변경
@@ -37,9 +43,8 @@
 * [SDK] 모든 로그에 대해 중복 로그 처리 루틴 적용
     * 중복 로그 기능이 켜져 있는 경우 Body 와 logLevel 의 내용이 같은 로그가 발생하면 전송하지 않습니다.
     * 필요한 경우 사용자가 별도의 API로 제어 가능하도록 기능 제공됨.
-    * 자세한 내용은 Developer's Guide 참고.
+    * 상세내용은 Developer's Guide 참고.
 * [Console] 앱 크래시 지표 화면 > '세션','사용자수' 타이틀 '실행 수' '크래시를 겪은 사용자'로 변경됨.
-
 
 ### 2016.09.29
 #### 기능 개선/변경
@@ -69,8 +74,8 @@
     * 2Kbyte 이상의 로그 전송이 필요한 경우 Field 명에 txt prefix 지정하여 Custom field 생성
 
     ```
-    txt*; string, 옵션 [in] 필드 이름이 txt로 시작하는 필드(txt_description 등)는 분석(analyzed) 필드로 저장
-    로그 검색 화면에서 필드 값의 일부 문자열로 검색이 가능
+    1. txt*; string, 옵션 [in] 필드 이름이 txt로 시작하는 필드(txt_description 등)는 분석(analyzed) 필드로 저장
+    2. 로그 검색 화면에서 필드 값의 일부 문자열로 검색이 가능
     ```
 
 ### 2016.08.18
