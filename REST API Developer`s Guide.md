@@ -25,8 +25,8 @@ projectName: string, 필수
 projectVersion: string, 필수
 	[in] 버전. 사용자가 지정할 수 있다. "A~Z, a~z, 0~9,-._" 만을 포함한다.
 
-body: string, 필수
-	[in] 로그 메시지. UTF-8을 사용하고 공백이면 안 된다.
+body: string, 옵션
+	[in] 로그 메시지.
 
 logVersion: string, 필수
 	[in] 로그 포맷 버전. "v2".
@@ -45,7 +45,7 @@ host: string, 옵션
 
 ```
 sendTime; string, 옵션
-	[in] 단말이 보낸 시간.
+	[in] 단말이 보낸 시간. 입력시 Unix Timestamp로 입력
 
 logLevel; string, 옵션
 	[in] Syslog event용.

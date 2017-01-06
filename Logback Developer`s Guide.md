@@ -76,6 +76,11 @@ sample/     ; Logback 샘플
   </dependency>
   <dependency>
       <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.2.6</version>
+  </dependency>
+  <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpcore</artifactId>
       <version>4.2.4</version>
   </dependency>
