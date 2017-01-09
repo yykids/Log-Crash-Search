@@ -11,10 +11,6 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 
 - 공통
 	\- Unity3D v4.0 이상
-- iOS
-	\- An Intel-based Mac
-	\- Mac OS X "Snow Leopard" 10.6 이상
-	\- Xcode 6.0 or later
 - Android
 	\- Android API 2.3.1
 	\- ARMv7 (Cortex family) CPU 단말
@@ -189,7 +185,7 @@ public static void SendError(string strMsg, Exception e)
 public static void SetUserId(string userID)
 public static string GetUserID()
 ```
-
+- 사용자별 통계 자료를 얻으려면 반드시 설정해주어야 합니다.
 - Parameter
 	- userID: string
 		- [in] 각 사용자를 구분할 user id
@@ -211,28 +207,6 @@ public static void SetDeduplicate(bool flag)
 true :(Default 값) 중복 제거 로직 활성화<br>
 false :  중복 제거 로직 비활성화
 
-## iOS build 하기
-
-1.File->Build Settings 클릭.
-
-![](http://static.toastoven.net/prod_logncrash/image023.png)
-
-![](http://static.toastoven.net/prod_logncrash/image024.png)
-
-- iOS Platform를 선택 한 뒤 Player Settings 클릭합니다.
-
-![](http://static.toastoven.net/prod_logncrash/image025.png)
-
-- Target iOS Version를 설정하고, Simulator를 사용하는 경우 SDK Version에서 Simulator SDK를, device를 사용하는 경우 Device SDK를 선택하고 Build settings의 Build 버튼을 클릭합니다.
-
-2.Build된 프로젝트가 저장될 경로를 선택 하고 Save를 선택하면 Unity에서 Xcode project를 생성합니다.
-
-![](http://static.toastoven.net/prod_logncrash/image026.png)
-
-![](http://static.toastoven.net/prod_logncrash/image027.png)
-
-3.생성된 Xcode project를 Xcode에서 엽니다.
-
 ## Android Build 하기
 
 1.File->Build Settings 클릭합니다.
@@ -248,48 +222,6 @@ false :  중복 제거 로직 비활성화
 - Internet Access는 Require, Write Access는 External(SDCard)로 설정합니다.
 
 2.Build settings에서 Build And Run 클릭합니다.
-
-## iOS에서 ATS(App transport Security)추가 하기
-- ATS는 iOS9,OS X 10.11에서 도입된 앱과 네트워크 간의 안전한 통신을 보장하기 위한 기능으로 안전하게 암호화된 https통신만 허용하고 안전하지 않는 수준의 https/http  통신을 차단하는 기능로, Log&Crash Search 에서는 http 프로토콜을 사용하여 통신을 시도중으로 info.plist에 아래와 같은 설정을 추가하셔야 합니다.
-
-자세한 설정은 아래 링크를 참고하세요
-
-- https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html
-
-1. 전체 http를 허용하는 방법
-```
-<key> NSAppTransportSecurity </key>
-<dict>
-    <key> NSAllowsArbitraryLoads </key>
-   <true />
-</dict>
-```
-
-2. 특정 도메인을 허용하는 방법
-```
-<key> NSAppTransportSecurity </key>
-<dict>
-    <key> NSExceptionDomains </key>
-    <dict>
-           <key> api-logncrash.cloud.toast.com </key>
-            <dict>
-		 <key>NSTemporaryExceptionAllowsInsecureHttpLoads </key>
-		 <true />
-	    </dict>
-
-	   <key> setting-logncrash.cloud.toast.com </key>
-            <dict>
-		 <key>NSTemporaryExceptionAllowsInsecureHttpLoads </key>
-		 <true />
-	    </dict>
-
-    </dict>
-</dict>
-```
-
-## iOS Native Crash 해석 하기
-- Unity iOS의 Crash 는 Unity Engine에서 발생하는 Crash와 iOS native 에서 발생하는 Crash로 구분됩니다.
-- Native Crash를 해석하기 위해서는 output 파일의 .DSYM을 .zip으로 압축하여 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일탭에 등록 해야 합니다.
 
 ## Android Proguard 적용
 - Unity iOS의 Crash는 Unity Engine에서 발생하는 Crash와 Android Naitve에서 발생하는 Crash, 외부 라이브러리에서 발생한 Crash로 구분됩니다.
