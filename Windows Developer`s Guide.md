@@ -277,27 +277,29 @@ void setUserId(const char* userId);
 
 ### 필요 도구
 - VS에 맞는 dump_syms을 사용합니다 ( VC_1500 = 2008, VC_1600 = 2010 )
-- VS 2008 이하 다운로드 [ https://github.com/zpao/v8monkey/blob/master/toolkit/crashreporter/tools/win32/dump_syms_vc1500.exe ]
-- VS 2010 이상 다운로드 [ http://hg.mozilla.org/mozilla-central/file/tip/toolkit/crashreporter/tools/win32 ]
-- minidump_stackwalk.exe [ http://hg.mozilla.org/build/tools/raw-file/755e58ebc9d4/breakpad/win32/minidump_stackwalk.exe ]
+- VS 2008 이하 다운로드 (https://github.com/zpao/v8monkey/blob/master/toolkit/crashreporter/tools/win32/dump_syms_vc1500.exe)
+- VS 2010 이상 다운로드 (http://hg.mozilla.org/mozilla-central/file/tip/toolkit/crashreporter/tools/win32)
+- minidump_stackwalk.exe (http://hg.mozilla.org/build/tools/raw-file/755e58ebc9d4/breakpad/win32/minidump_stackwalk.exe)
 
 ### 심볼 파일 생성
 - windows crash dumps 는 .pdb 파일을 .sym 심볼로 변환시켜 디버깅 정보를 얻을 수 있습니다.
 - .pdb 파일을 .sym 파일로 변환 시키기 :
-		1. .pdb 파일을 생성합니다. ( 프로젝트 빌드 시 생성 )
-		2. dump_syms.exe를 다운로드 합니다.
-		3. 아래 예제와 같이 dump_syms을 실행하여 심볼 파일을 생성합니다.
+		- .pdb 파일을 생성합니다. ( 프로젝트 빌드 시 생성 )
+		- dump_syms.exe를 다운로드 합니다.
+		- 아래 예제와 같이 dump_syms을 실행하여 심볼 파일을 생성합니다.
 			( 에러가 발생하지 않았다면, 심볼 파일 생성에 성공한 것입니다. )
-		 - CoCreateInstance CLSID_DiaSource failed (msdia*.dll unregistered?)에러가 발생하였다면 c:\Program Files\Common Files\Microsoft Shared\VC\. 에 해당 dll을 복사 합니다.
+		 	- CoCreateInstance CLSID_DiaSource failed (msdia*.dll unregistered?)에러가 발생하였다면 c:\Program Files\Common Files\Microsoft Shared\VC\. 에 해당 dll을 복사 합니다.
 
-		 - regsvr32 명령을 통해 dll을 등록합니다.
+		 	- regsvr32 명령을 통해 dll을 등록합니다.
+
 		 ```
 		 regsvr32 c:\Program Files\Common Files\Microsoft Shared\VC\msdia80.dll.
 		 ```
+
 		 - 0x80004005가 발생하였다면, 관리자 권한으로 재시도 합니다.
 		 ```
 		 'dump_syms {.pdb 파일} > {출력 파일}'
 
 		 'dump_syms Sample.pdb > Sample.sym'
 		 ```
-	 4. 생성한 심볼 파일을 웹 콘솔에 업로드 합니다.
+	 - 생성한 심볼 파일을 웹 콘솔에 업로드 합니다.
