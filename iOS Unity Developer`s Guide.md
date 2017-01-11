@@ -262,7 +262,7 @@ false :  중복 제거 로직 비활성화
 - https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html
 
 
-1. 전체 http를 허용하는 방법
+1.전체 http를 허용하는 방법
 
 ```
 <key> NSAppTransportSecurity </key>
@@ -272,7 +272,7 @@ false :  중복 제거 로직 비활성화
 </dict>
 ```
 
-2. 특정 도메인을 허용하는 방법
+2.특정 도메인을 허용하는 방법
 
 ```
 <key> NSAppTransportSecurity </key>
@@ -295,7 +295,8 @@ false :  중복 제거 로직 비활성화
 </dict>
 ```
 
-3. ATS 자동 설정 기능
+3.ATS 자동 설정 기능
+
 - Assets > Toast > LogNCrash > Editor > post_process.py 파일에는 iOS 빌드 시 info.plist에 api-logncrash.cloud.toast.com와 setting-logncrash.cloud.toast.com를 자동으로 추가하는 코드가 삽입되어 있습니다.
 
 ## iOS Native Crash 해석 하기
