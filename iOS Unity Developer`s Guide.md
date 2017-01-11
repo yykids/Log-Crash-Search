@@ -180,6 +180,20 @@ public static void SendError(string strMsg, Exception e)
 
 - try&catch에서 발생한 Exception을 전송합니다.
 
+### 크래시 콜백
+
+```
+public void Crash_Send_Complete_Callback(string message) {
+    Debug.Log("Crash_Send_Complete_Callback : " + message);
+}
+
+void Start() {
+    LogNCrashCallBack.ExceptionDelegate += Crash_Send_Complete_Callback;
+}
+```
+- ExceptionDelegate는 Unity CSharp에서 발생한 Crash를 서버로 전송한 이후 호출되는 콜백 입니다.<br>
+네이티브 Crash의 경우 호출되지 않습니다.
+
 ### 유저 아이디 설정
 
 ```
@@ -190,7 +204,7 @@ public static string GetUserID()
 - Parameter
 	- userID: string
 		- [in] 각 사용자를 구분할 user id
-
+		
 ### 중복 제거 모드 설정
 
 2.4.0 이상 SDK 부터 일반 로그에 중복 제거 로직이 적용되었습니다. 초기화 시 중복 제거 로직이 활성화됩니다.
@@ -270,5 +284,18 @@ false :  중복 제거 로직 비활성화
 ```
 
 ## iOS Native Crash 해석 하기
-- Unity iOS의 Crash 는 Unity Engine에서 발생하는 Crash와 iOS native 에서 발생하는 Crash로 구분됩니다.
-- Native Crash를 해석하기 위해서는 output 파일의 .DSYM을 .zip으로 압축하여 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일탭에 등록 해야 합니다.
+- Unity iOS의 Crash는 Unity Engine에서 발생하는 Crash와 iOS Naitve에서 발생하는 Crash로 구분됩니다.
+- Unity에서 발생한 Crash의 경우 Crash 정보가 String으로 수집되기 때문에 Symbol 파일이 필요하지 않습니다.
+- iOS에서 발생한 Crash의 경우 Crash 정보가 주소 값으로 수집되기 때문에 이를 해석하기 위한 Symbol 파일이 필요합니다.
+- Xcode를 실행하고 Windows > Organizer를 클릭합니다.
+![](http://static.toastoven.net/prod_logncrash/ios_12.png)
+- 빌드한 결과물을 클릭한 뒤, 오른쪽 버튼을 클릭하여 Show in Finder로 클릭합니다.
+![](http://static.toastoven.net/prod_logncrash/ios_13.png)
+- 결과물을 클릭하고 오른쪽 버튼을 눌러 '패키지 내용보기'를 클릭합니다.
+![](http://static.toastoven.net/prod_logncrash/ios_14.png)
+- .dSYM을 .zip으로 압축하여 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일 탭에 등록합니다.
+![](http://static.toastoven.net/prod_logncrash/ios_15.png)
+
+## iOS Unity Crash 주의 사항
+
+- 심볼이 없어 해석되지 않은 Crash 로그는 일반 로그로 취급됩니다.
