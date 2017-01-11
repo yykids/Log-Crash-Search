@@ -259,10 +259,11 @@ false :  중복 제거 로직 비활성화
 - ATS는 iOS9,OS X 10.11에서 도입된 앱과 네트워크 간의 안전한 통신을 보장하기 위한 기능으로 안전하게 암호화된 https통신만 허용하고 안전하지 않는 수준의 https/http  통신을 차단하는 기능로, Log&Crash Search 에서는 http 프로토콜을 사용하여 통신을 시도중으로 info.plist에 아래와 같은 설정을 추가하셔야 합니다.
 
 자세한 설정은 아래 링크를 참고하세요
-
 - https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html
 
-1. 전체 http를 허용하는 방법
+
+1.전체 http를 허용하는 방법
+
 ```
 <key> NSAppTransportSecurity </key>
 <dict>
@@ -271,7 +272,8 @@ false :  중복 제거 로직 비활성화
 </dict>
 ```
 
-2. 특정 도메인을 허용하는 방법
+2.특정 도메인을 허용하는 방법
+
 ```
 <key> NSAppTransportSecurity </key>
 <dict>
@@ -293,7 +295,8 @@ false :  중복 제거 로직 비활성화
 </dict>
 ```
 
-3. ATS 자동 설정 기능
+3.ATS 자동 설정 기능
+
 - Assets > Toast > LogNCrash > Editor > post_process.py 파일에는 iOS 빌드 시 info.plist에 api-logncrash.cloud.toast.com와 setting-logncrash.cloud.toast.com를 자동으로 추가하는 코드가 삽입되어 있습니다.
 
 ## iOS Native Crash 해석 하기
