@@ -295,11 +295,11 @@ void setUserId(const char* userId);
         ```
         regsvr32 c:\Program Files\Common Files\Microsoft Shared\VC\msdia80.dll.
         ```
-
+	<br><br><br><br>
         - 0x80004005가 발생하였다면, 관리자 권한으로 재시도 합니다.
         ```
         'dump_syms {.pdb 파일} > {출력 파일}'
         'dump_syms Sample.pdb > Sample.sym'
         ```
-
+	<br><br><br><br>
         - 생성한 심볼 파일을 웹 콘솔에 업로드 합니다.
