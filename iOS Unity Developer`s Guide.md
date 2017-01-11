@@ -15,9 +15,6 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 	\- An Intel-based Mac
 	\- Mac OS X "Snow Leopard" 10.6 이상
 	\- Xcode 6.0 or later
-- Android
-	\- Android API 2.3.1
-	\- ARMv7 (Cortex family) CPU 단말
 
 ## 다운로드
 
@@ -73,7 +70,6 @@ namespace Toast.LogNCrash
 
 ```
 public static Result Initialize();
-public static void Destroy()
 ```
 
 - 초기화에 필요한 값은 Toast>LogNCrash>Setting>Resources>LogNCrashSettings.asset 의 값을 참조합니다.
@@ -131,23 +127,34 @@ public static string GetLogType()
 
 - 로그타입을 구하거나 새로 지정합니다.
 
+### LEVEL 필터
+
+- Unity SDK에서는 Default 설정으로 FATAL 레벨의 로그만 전송 합니다. Error, Warning 레벨의 로그에는 변수값(시간, 경로, 진행도 등)의 삽입으로 인해 많은 로그들이 발생 할 수 있습니다.
+	- Send Error : 시스템에서 발생한 ERROR 레벨의 로그를 전송 합니다.
+	- Send Warning : 시스템에서 발생한 WARN 레벨의 로그를 전송 합니다.
+	- Send Debug Error : 사용자가 발생시킨 ERROR 레벨의 로그를 전송 합니다.
+	- Send Debug Warning : 사용자가 발생시킨 WARN 레벨의 로그를 전송 합니다.
+
+### API 사용 예제
+	- html > index.html을 참고해 주시기 바랍니다.
+
 ### 로그 전송
 
 ```
 //send info log message
-public static void SendInfo(string strMsg)
+public static void Info(string strMsg)
 
 //send debug log message
-public static void SendDebug(string strMsg)
+public static void Debug(string strMsg)
 
 //send warn log message
-public static void SendWarn(string strMsg)
+public static void Warn(string strMsg)
 
 //send fatal log message
-public static void SendFatal(string strMsg)
+public static void Fatal(string strMsg)
 
 //send error log message
-public static void SendError(string strMsg)
+public static void Error(string strMsg)
 ```
 
 - Parameters
@@ -158,30 +165,44 @@ public static void SendError(string strMsg)
 
 ```
 //send Handled info log message
-public static void SendInfo(string strMsg, Exception e)
+public static void Info(string strMsg, Exception e)
 
 //send Handled debug log message
-public static void SendDebug(string strMsg, Exception e)
+public static void Debug(string strMsg, Exception e)
 
 //send Handled warn log message
-public static void SendWarn(string strMsg, Exception e)
+public static void Warn(string strMsg, Exception e)
 
 //send Handled fatal log message
-public static void SendFatal(string strMsg, Exception e)
+public static void Fatal(string strMsg, Exception e)
 
 //send Handled error log message
-public static void SendError(string strMsg, Exception e)
+public static void Error(string strMsg, Exception e)
 ```
 
 ```
- try{
-    // Exception code
+try{
+	// Exception code
 }catch(Exception e){
-    LogNCrash.SendInfo("handled exception message", e)
+	LogNCrash.Info("handled exception message", e)
 }
 ```
 
 - try&catch에서 발생한 Exception을 전송합니다.
+
+### 크래시 콜백
+
+```
+public void Crash_Send_Complete_Callback(string message) {
+	Debug.Log("Crash_Send_Complete_Callback : " + message);
+}
+
+void Start() {
+	LogNCrashCallBack.ExceptionDelegate += Crash_Send_Complete_Callback;
+}
+```
+- ExceptionDelegate는 Unity CSharp에서 발생한 Crash를 서버로 전송한 이후 호출되는 콜백 입니다.<br>
+네이티브 Crash의 경우 호출되지 않습니다.
 
 ### 유저 아이디 설정
 
@@ -189,7 +210,7 @@ public static void SendError(string strMsg, Exception e)
 public static void SetUserId(string userID)
 public static string GetUserID()
 ```
-
+- 사용자별 통계 자료를 얻으려면 반드시 설정해주어야 합니다.
 - Parameter
 	- userID: string
 		- [in] 각 사용자를 구분할 user id
@@ -233,21 +254,6 @@ false :  중복 제거 로직 비활성화
 
 3.생성된 Xcode project를 Xcode에서 엽니다.
 
-## Android Build 하기
-
-1.File->Build Settings 클릭합니다.
-
-![](http://static.toastoven.net/prod_logncrash/image023.png)
-
-![](http://static.toastoven.net/prod_logncrash/image028.png)
-
-- Android Platform 선택 한 뒤 Player Settings 클릭합니다.
-
-![](http://static.toastoven.net/prod_logncrash/image029.png)
-
-- Internet Access는 Require, Write Access는 External(SDCard)로 설정합니다.
-
-2.Build settings에서 Build And Run 클릭합니다.
 
 ## iOS에서 ATS(App transport Security)추가 하기
 - ATS는 iOS9,OS X 10.11에서 도입된 앱과 네트워크 간의 안전한 통신을 보장하기 위한 기능으로 안전하게 암호화된 https통신만 허용하고 안전하지 않는 수준의 https/http  통신을 차단하는 기능로, Log&Crash Search 에서는 http 프로토콜을 사용하여 통신을 시도중으로 info.plist에 아래와 같은 설정을 추가하셔야 합니다.
@@ -287,10 +293,22 @@ false :  중복 제거 로직 비활성화
 </dict>
 ```
 
-## iOS Native Crash 해석 하기
-- Unity iOS의 Crash 는 Unity Engine에서 발생하는 Crash와 iOS native 에서 발생하는 Crash로 구분됩니다.
-- Native Crash를 해석하기 위해서는 output 파일의 .DSYM을 .zip으로 압축하여 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일탭에 등록 해야 합니다.
+3. ATS 자동 설정 기능
+- Assets > Toast > LogNCrash > Editor > post_process.py 파일에는 iOS 빌드 시 info.plist에 api-logncrash.cloud.toast.com와 setting-logncrash.cloud.toast.com를 자동으로 추가하는 코드가 삽입되어 있습니다.
 
-## Android Proguard 적용
-- Unity iOS의 Crash는 Unity Engine에서 발생하는 Crash와 Android Naitve에서 발생하는 Crash, 외부 라이브러리에서 발생한 Crash로 구분됩니다.
-- Android Proguard가 적용된 프로젝트의 경우, Native 레벨의 Crash 해석를 위하기 위해서는 mapping.txt 파일을 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일 탭에 등록해야 합니다.
+## iOS Native Crash 해석 하기
+- Unity iOS의 Crash는 Unity Engine에서 발생하는 Crash와 iOS Naitve에서 발생하는 Crash로 구분됩니다.
+- Unity에서 발생한 Crash의 경우 Crash 정보가 String으로 수집되기 때문에 Symbol 파일이 필요하지 않습니다.
+- iOS에서 발생한 Crash의 경우 Crash 정보가 주소 값으로 수집되기 때문에 이를 해석하기 위한 Symbol 파일이 필요합니다.
+- Xcode를 실행하고 Windows > Organizer를 클릭합니다.
+![](http://static.toastoven.net/prod_logncrash/ios_12.png)
+- 빌드한 결과물을 클릭한 뒤, 오른쪽 버튼을 클릭하여 Show in Finder로 클릭합니다.
+![](http://static.toastoven.net/prod_logncrash/ios_13.png)
+- 결과물을 클릭하고 오른쪽 버튼을 눌러 '패키지 내용보기'를 클릭합니다.
+![](http://static.toastoven.net/prod_logncrash/ios_14.png)
+- .dSYM을 .zip으로 압축하여 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일 탭에 등록합니다.
+![](http://static.toastoven.net/prod_logncrash/ios_15.png)
+
+## iOS Unity Crash 주의 사항
+
+- 심볼이 없어 해석되지 않은 Crash 로그는 일반 로그로 취급됩니다.
