@@ -292,13 +292,11 @@ void setUserId(const char* userId);
     ( 에러가 발생하지 않았다면, 심볼 파일 생성에 성공한 것입니다. )
         - CoCreateInstance CLSID_DiaSource failed (msdia*.dll unregistered?)에러가 발생하였다면 c:\Program Files\Common Files\Microsoft Shared\VC\. 에 해당 dll을 복사 합니다.
         - regsvr32 명령을 통해 dll을 등록합니다.
-
         ```
         regsvr32 c:\Program Files\Common Files\Microsoft Shared\VC\msdia80.dll.
         ```
 
         - 0x80004005가 발생하였다면, 관리자 권한으로 재시도 합니다.
-
         ```
         'dump_syms {.pdb 파일} > {출력 파일}'
         'dump_syms Sample.pdb > Sample.sym'
