@@ -221,12 +221,17 @@ public static void CloseCrashCatcher()
 ```
 
 - 크래시 처리를 시작하거나 종료합니다.
-- OpenCrashCatcher 파라미터
-	- bBackground : 크래시 리포터 동작 방식 설정합니다.
-	- langType : 크래시 리포터 GUI 언어를 설정합니다.
-- OpenCrashCatcher 반환값
-	- 설정 성공시 true
-	- 설정 실패시 false
+
+### 중복 제거 모드 설정
+중복 로그 기능이 켜져있는 경우 body와 logLevel의 내용이 같은 로그가 발생하면 전송하지 않습니다.
+
+```
+	public static void setDuplicate(bool enable)
+```
+
+true :  중복 제거 로직 활성화 (Default 값 )
+
+false : 중복 제거 로직 비활성화
 
 ### 기타 설정
 
@@ -238,18 +243,36 @@ public static void SetUserId(string userId)
 
 - 사용자 ID를 구하거나 지정합니다.
 
-```
-public static void EnableHostField()
+## 심볼 파일 생성 가이드
 
-public static void DisableHostField()
-```
+### 개요
+- Log&Crash Windows SDK 에서 발생한 Crash 를 해석하기 위해서는 심볼 파일을 생성하여 웹 콘솔에 업로드 해야 합니다.
 
-- Host 필드를 활성화하거나 비활성화합니다.
+### 필요 도구
+- VS에 맞는 dump_syms을 사용합니다 ( VC_1500 = 2008, VC_1600 = 2010 )
+- [VS 2008 이하 다운로드](https://github.com/zpao/v8monkey/blob/master/toolkit/crashreporter/tools/win32/dump_syms_vc1500.exe)
+- [VS 2010 이상 다운로드](http://hg.mozilla.org/mozilla-central/file/tip/toolkit/crashreporter/tools/win32)
+- [minidump_stackwalk.exe](http://hg.mozilla.org/build/tools/raw-file/755e58ebc9d4/breakpad/win32/minidump_stackwalk.exe)
 
-```
-public static void EnablePlatformField()
+### 심볼 파일 생성
+- windows crash dumps 는 .pdb 파일을 .sym 심볼로 변환시켜 디버깅 정보를 얻을 수 있습니다.
+- .pdb 파일을 .sym 파일로 변환 시키기 :
+    - .pdb 파일을 생성합니다. ( 프로젝트 빌드 시 생성 )
 
-public static void DisablePlatformField()
-```
+    - dump_syms.exe를 다운로드 합니다.
 
-- Platform 필드를 활성화하거나 비활성화합니다.
+    - 아래 예제와 같이 dump_syms을 실행하여 심볼 파일을 생성합니다.
+    ( 에러가 발생하지 않았다면, 심볼 파일 생성에 성공한 것입니다. )
+        - CoCreateInstance CLSID_DiaSource failed (msdia*.dll unregistered?)에러가 발생하였다면 c:\Program Files\Common Files\Microsoft Shared\VC\. 에 해당 dll을 복사 합니다.
+        - regsvr32 명령을 통해 dll을 등록합니다.
+        ```
+        regsvr32 c:\Program Files\Common Files\Microsoft Shared\VC\msdia80.dll.
+        ```
+
+        - 0x80004005가 발생하였다면, 관리자 권한으로 재시도 합니다.
+        ```
+        'dump_syms {.pdb 파일} > {출력 파일}'
+        'dump_syms Sample.pdb > Sample.sym'
+        ```
+
+        - 생성한 심볼 파일을 웹 콘솔에 업로드 합니다.
