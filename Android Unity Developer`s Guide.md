@@ -249,6 +249,8 @@ false :  중복 제거 로직 비활성화
 
 2.Build settings에서 Build And Run 클릭합니다.
 
+## Android Unity Crash 해석하기
+
 - Unity의 Crash는 Unity Engine에서 발생하는 Crash와 Android Naitve에서 발생하는 Crash로 구분됩니다.
 
 - Proguard가 적용되지 않은 경우 별도의 Symbol 등록 과정이 필요하지 않습니다.
@@ -259,7 +261,6 @@ false :  중복 제거 로직 비활성화
 <br><br>
 ![](http://static.toastoven.net/prod_logncrash/12.png)
 
-
-# Android Unity Crash 주의 사항
+## Android Unity Crash 주의 사항
 
 - 심볼이 없어 해석되지 않은 Crash 로그는 일반 로그로 취급됩니다.

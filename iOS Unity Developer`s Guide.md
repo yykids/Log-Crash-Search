@@ -70,7 +70,6 @@ namespace Toast.LogNCrash
 
 ```
 public static Result Initialize();
-public static void Destroy()
 ```
 
 - 초기화에 필요한 값은 Toast>LogNCrash>Setting>Resources>LogNCrashSettings.asset 의 값을 참조합니다.
@@ -128,23 +127,34 @@ public static string GetLogType()
 
 - 로그타입을 구하거나 새로 지정합니다.
 
+### LEVEL 필터
+
+- Unity SDK에서는 Default 설정으로 FATAL 레벨의 로그만 전송 합니다. Error, Warning 레벨의 로그에는 변수값(시간, 경로, 진행도 등)의 삽입으로 인해 많은 로그들이 발생 할 수 있습니다.
+	- Send Error : 시스템에서 발생한 ERROR 레벨의 로그를 전송 합니다.
+	- Send Warning : 시스템에서 발생한 WARN 레벨의 로그를 전송 합니다.
+	- Send Debug Error : 사용자가 발생시킨 ERROR 레벨의 로그를 전송 합니다.
+	- Send Debug Warning : 사용자가 발생시킨 WARN 레벨의 로그를 전송 합니다.
+
+### API 사용 예제
+	- html > index.html을 참고해 주시기 바랍니다.
+
 ### 로그 전송
 
 ```
 //send info log message
-public static void SendInfo(string strMsg)
+public static void Info(string strMsg)
 
 //send debug log message
-public static void SendDebug(string strMsg)
+public static void Debug(string strMsg)
 
 //send warn log message
-public static void SendWarn(string strMsg)
+public static void Warn(string strMsg)
 
 //send fatal log message
-public static void SendFatal(string strMsg)
+public static void Fatal(string strMsg)
 
 //send error log message
-public static void SendError(string strMsg)
+public static void Error(string strMsg)
 ```
 
 - Parameters
@@ -155,26 +165,26 @@ public static void SendError(string strMsg)
 
 ```
 //send Handled info log message
-public static void SendInfo(string strMsg, Exception e)
+public static void Info(string strMsg, Exception e)
 
 //send Handled debug log message
-public static void SendDebug(string strMsg, Exception e)
+public static void Debug(string strMsg, Exception e)
 
 //send Handled warn log message
-public static void SendWarn(string strMsg, Exception e)
+public static void Warn(string strMsg, Exception e)
 
 //send Handled fatal log message
-public static void SendFatal(string strMsg, Exception e)
+public static void Fatal(string strMsg, Exception e)
 
 //send Handled error log message
-public static void SendError(string strMsg, Exception e)
+public static void Error(string strMsg, Exception e)
 ```
 
 ```
- try{
-    // Exception code
+try{
+	// Exception code
 }catch(Exception e){
-    LogNCrash.SendInfo("handled exception message", e)
+	LogNCrash.Info("handled exception message", e)
 }
 ```
 
@@ -184,11 +194,11 @@ public static void SendError(string strMsg, Exception e)
 
 ```
 public void Crash_Send_Complete_Callback(string message) {
-    Debug.Log("Crash_Send_Complete_Callback : " + message);
+	Debug.Log("Crash_Send_Complete_Callback : " + message);
 }
 
 void Start() {
-    LogNCrashCallBack.ExceptionDelegate += Crash_Send_Complete_Callback;
+	LogNCrashCallBack.ExceptionDelegate += Crash_Send_Complete_Callback;
 }
 ```
 - ExceptionDelegate는 Unity CSharp에서 발생한 Crash를 서버로 전송한 이후 호출되는 콜백 입니다.<br>
@@ -204,7 +214,7 @@ public static string GetUserID()
 - Parameter
 	- userID: string
 		- [in] 각 사용자를 구분할 user id
-		
+
 ### 중복 제거 모드 설정
 
 2.4.0 이상 SDK 부터 일반 로그에 중복 제거 로직이 적용되었습니다. 초기화 시 중복 제거 로직이 활성화됩니다.
@@ -282,6 +292,9 @@ false :  중복 제거 로직 비활성화
     </dict>
 </dict>
 ```
+
+3. ATS 자동 설정 기능
+- Assets > Toast > LogNCrash > Editor > post_process.py 파일에는 iOS 빌드 시 info.plist에 api-logncrash.cloud.toast.com와 setting-logncrash.cloud.toast.com를 자동으로 추가하는 코드가 삽입되어 있습니다.
 
 ## iOS Native Crash 해석 하기
 - Unity iOS의 Crash는 Unity Engine에서 발생하는 Crash와 iOS Naitve에서 발생하는 Crash로 구분됩니다.
