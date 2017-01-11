@@ -262,7 +262,9 @@ false :  중복 제거 로직 비활성화
 
 - https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html
 
+
 1. 전체 http를 허용하는 방법
+
 ```
 <key> NSAppTransportSecurity </key>
 <dict>
@@ -272,6 +274,7 @@ false :  중복 제거 로직 비활성화
 ```
 
 2. 특정 도메인을 허용하는 방법
+
 ```
 <key> NSAppTransportSecurity </key>
 <dict>
