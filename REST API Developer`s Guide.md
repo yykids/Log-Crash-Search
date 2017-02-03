@@ -58,6 +58,12 @@ UserTxtData; string, 옵션
 
 txt*; string, 옵션
 	[in] 필드 이름이 txt로 시작하는 필드(txtMessage, txt_description 등)는 분석(analyzed) 필드로 저장된다. 로그 검색 화면에서 필드 값의 일부 문자열로 검색이 가능하다.
+
+long*; long, 옵션
+    [in] 필드 이름이 long으로 시작하는 필드(longElapsedTime, long_elapsed_time 등)는 long 타입 필드로 저장된다. 로그 검색 화면에서 long 타입 Range 검색이 가능하다.
+
+double*; double, 옵션
+    [in] 필드 이름이 double으로 시작하는 필드(doubleAvgScore, double_avg_score 등)는 double 타입 필드로 저장된다. 로그 검색 화면에서 double 타입 Range 검색이 가능하다.
 ```
 
 [커스텀 필드]
@@ -92,6 +98,44 @@ resultCode: int
 
 resultMessage: string
 	[out] 성공시 "Success", 실패시 에러 메시지
+```
+
+[Bulk 전송]
+Bulk 전송을 위해서는 JSON array 형태로 수집서버로 전송한다.
+수집서버에서는 전송된 순서에 따라 각각의 결과 값을 JSON array 형태로 다시 반환한다.
+
+```
+Content-Type: application/json
+
+{
+    "header":{
+        "isSuccessful":true,
+        "resultCode":0,
+        "resultMessage":"Success"
+    },
+    "body":{
+        "data":{
+            "total":5,
+            "errors":2,
+            "resultList":[
+                {"isSuccessful":true, "resultMessage":"Success"},
+                {"isSuccessful":true, "resultMessage":"Success"},
+                {"isSuccessful":false, "resultMessage":"LogVersion Mismatch: v1, /v2/log"},
+                {"isSuccessful":false, "resultMessage":"The project(invalidProject) is not registered"},
+                {"isSuccessful":true, "resultMessage":"Success"}
+            ]}
+        }
+    }
+}
+
+total: int
+    [out] 전송된 전체 로그 수
+
+errors: int
+    [out] 전송된 로그 중 오류 수
+
+resultList: array
+    [out] 전송된 각 로그들의 결과 값
 ```
 
 > 주의  
