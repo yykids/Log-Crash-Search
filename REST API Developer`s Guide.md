@@ -102,6 +102,30 @@ resultMessage: string
 
 [Bulk 전송]
 Bulk 전송을 위해서는 JSON array 형태로 수집서버로 전송한다.
+
+```
+[
+    {
+        "projectName": "__앱키__",
+        "projectVersion": "1.0.0",
+        "logVersion": "v2",
+        "body": "This log message come from HTTP client. (1/2)",
+        "logSource": "http",
+        "logType": "nelo2-log",
+        "host": "localhost"
+    },
+    {
+        "projectName": "__앱키__",
+        "projectVersion": "1.0.0",
+        "logVersion": "v2",
+        "body": "This log message come from HTTP client. (2/2)",
+        "logSource": "http",
+        "logType": "nelo2-log",
+        "host": "localhost"
+    }
+]
+```
+
 수집서버에서는 전송된 순서에 따라 각각의 결과 값을 JSON array 형태로 다시 반환한다.
 
 ```
@@ -193,4 +217,28 @@ $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.c
 	}'
 커스텀 키는 "A~Z, a~z, 0~9, -_"를 포함하고 알파벳으로 시작해야 한다.
 커스텀 키는 "A~Z, a~z, 0~9, -_"를 포함하고 알파벳으로 시작해야 한다.
+```
+
+[curl을 사용하여 bulk 로그전송한 경우]
+
+```
+//POST 메소드을 사용하여 로그 전송
+$ curl -H "content-type:application/json" -XPOST 'http://api-logncrash.cloud.toast.com/v2/log' -d '[
+    {
+        "projectName": "__앱키__",
+        "projectVersion": "1.0.0",
+        "logVersion": "v2",
+        "body": "This log message come from HTTP client, and it is a simple bulk sample. (1/2)",
+        "logSource": "http",
+        "logType": "nelo2-log"
+    },
+    {
+        "projectName": "__앱키__",
+        "projectVersion": "1.0.0",
+        "logVersion": "v2",
+        "body": "This log message come from HTTP client, and it is a simple bulk sample. (2/2)",
+        "logSource": "http",
+        "logType": "nelo2-log"
+    }
+]'
 ```
