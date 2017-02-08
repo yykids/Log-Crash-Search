@@ -290,6 +290,15 @@ void clearCustomKeys();
 	- 성공시 true
 	- key 형식이 맞지 않으면 추가 실패시 false
 
+### 호스트 타입 지정하기
+
+```
+bool setHostMode(int mode);
+```
+
+- mode 가 0인 경우 : Private IP를 구하여 host 필드를 채웁니다. Private IP를 구하는데 실패 하면 Public IP로 host 필드를 채웁니다.
+- mode 가 1인 경우 : Public IP 로 host 필드를 채웁니다.
+
 ### 크래시 처리하기
 
 ```
