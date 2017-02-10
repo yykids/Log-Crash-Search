@@ -2,14 +2,18 @@
 
 ### 2017.02.23
 #### 기능 개선/변경
-* log Bulk upload 기능추가
+* [API] log Bulk upload 기능추가
     * REST API 로그 전송시 JSON array 형태로 로그 전송이 가능합니다.
-* long,double 옵션 추가
+* [API] long,double 옵션 추가
     * REST API 로그 전송시 long, double 로 시작하는 필드 사용시 long,double 타입으로 저장
     * 로그 검색 화면에서 long, double 타입 Range 검색이 가능합니다.
 #### 버그 수정
-* 저장된 쿼리 보기 페이지에서 쿼리 삭제 불가능한 문제 수정
-* 이슈 상세에서 뒤로가기 클릭하면 이슈 목록 1페이지로 이동하지 않도록 pagination 개선
+* [WEB] 저장된 쿼리 보기 페이지에서 쿼리 삭제 불가능한 문제 수정
+* [WEB] 이슈 상세에서 뒤로가기 클릭하면 이슈 목록 1페이지로 이동하지 않도록 pagination 개선
+* [SDK] Thread간의 충돌 현상 수정
+    * unity-android-sdk 2.5.6.0
+* [SDK] 일부 기기에서 breakpad 의 작업이 완료되기 전 어플리케이션이 강제로 종료 되는 현상 수정
+    * androidndk-sdk 2.4.7.0
 
 ### 2017.01.19
 #### 기능 개선/변경
