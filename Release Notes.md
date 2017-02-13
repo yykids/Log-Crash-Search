@@ -7,6 +7,9 @@
 * [API] long,double 옵션 추가
     * REST API 로그 전송시 long, double 로 시작하는 필드 사용시 long,double 타입으로 저장
     * 로그 검색 화면에서 long, double 타입 Range 검색이 가능합니다.
+* [SDK] CrashCallback 기능 추가
+    * Windwos csharp SDK 2.5.2.1 / Windows cpp SDK 2.5.2.1
+    
 #### 버그 수정
 * [WEB] 저장된 쿼리 보기 페이지에서 쿼리 삭제 불가능한 문제 수정
 * [WEB] 이슈 상세에서 뒤로가기 클릭하면 이슈 목록 1페이지로 이동하지 않도록 pagination 개선
