@@ -126,6 +126,38 @@ Bulk 전송을 위해서는 JSON array 형태로 수집서버로 전송한다.
 ]
 ```
 
+* Note
+		* web 에서는 수신 시간 기준으로 로그를 정렬하여 표시하는데, bulk 전송의 경우 동일한 시간에 수신한 것으로 간주되어 사용자가
+		   전송한 순서가 유지 되지 않습니다.
+		* Bulk로 전송하는 로그들의 순서 관계를 유지하기 위해서는 각 로그에 lncBulkIndex 필드를 추가하여 integer 값을 지정 후 전송하면
+		  서버에서는 이 값을 기준으로 내림차순으로 표시 합니다.
+
+```
+[
+    {
+        "projectName": "__앱키__",
+        "projectVersion": "1.0.0",
+        "logVersion": "v2",
+        "body": "first message",
+        "logSource": "http",
+        "logType": "nelo2-log",
+        "host": "localhost",
+        "lncBulkIndex":1
+    },
+    {
+        "projectName": "__앱키__",
+        "projectVersion": "1.0.0",
+        "logVersion": "v2",
+        "body": "second message",
+        "logSource": "http",
+        "logType": "nelo2-log",
+        "host": "localhost",
+        "lncBulkIndex":2
+    }
+]
+```
+	* 위 예시와 같이 전송한 경우 서버에서는 second message -> first message 순서로 표시 합니다.
+
 수집서버에서는 전송된 순서에 따라 각각의 결과 값을 JSON array 형태로 다시 반환한다.
 
 ```
