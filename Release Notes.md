@@ -14,9 +14,9 @@
 * [WEB] 저장된 쿼리 보기 페이지에서 쿼리 삭제 불가능한 문제 수정
 * [WEB] 이슈 상세에서 뒤로가기 클릭하면 이슈 목록 1페이지로 이동하지 않도록 pagination 개선
 * [SDK] Thread간의 충돌 현상 수정
-    * unity-android-sdk 2.5.6.0
+    * [unity-android-sdk 2.5.6.0](/Download/#analytics-log-crash-search)
 * [SDK] 일부 기기에서 breakpad 의 작업이 완료되기 전 어플리케이션이 강제로 종료 되는 현상 수정
-    * androidndk-sdk 2.4.7.0
+    * [androidndk-sdk 2.4.7.0](/Download/#analytics-log-crash-search)
 
 ### 2017.01.19
 #### 기능 개선/변경
