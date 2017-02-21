@@ -16,7 +16,7 @@
 * [SDK] Thread간의 충돌 현상 수정
     * [unity-android-sdk 2.5.6.0](/Download/#analytics-log-crash-search)
 * [SDK] 외부 라이브러리와 logncrash를 함께 빌드 시 binaryimagesort duplicate symbol 오류 수정
-    * [unity-ios-sdk-2.5.26](/Download/#analytics-log-crash-search)
+    * [unity-ios-sdk-2.5.2.6](/Download/#analytics-log-crash-search)
 * [SDK] 일부 기기에서 breakpad 의 작업이 완료되기 전 어플리케이션이 강제로 종료 되는 현상 수정
     * [androidndk-sdk 2.4.7.0](/Download/#analytics-log-crash-search)
 * [SDK] Async 모드에서 customField 가 추가되지 않는 현상 수정
