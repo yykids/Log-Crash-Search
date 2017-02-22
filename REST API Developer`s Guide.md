@@ -58,6 +58,12 @@ UserTxtData; string, 옵션
 
 txt*; string, 옵션
 	[in] 필드 이름이 txt로 시작하는 필드(txtMessage, txt_description 등)는 분석(analyzed) 필드로 저장된다. 로그 검색 화면에서 필드 값의 일부 문자열로 검색이 가능하다.
+
+long*; long, 옵션
+    [in] 필드 이름이 long으로 시작하는 필드(longElapsedTime, long_elapsed_time 등)는 long 타입 필드로 저장된다. 로그 검색 화면에서 long 타입 Range 검색이 가능하다.
+
+double*; double, 옵션
+    [in] 필드 이름이 double으로 시작하는 필드(doubleAvgScore, double_avg_score 등)는 double 타입 필드로 저장된다. 로그 검색 화면에서 double 타입 Range 검색이 가능하다.
 ```
 
 [커스텀 필드]
@@ -92,6 +98,100 @@ resultCode: int
 
 resultMessage: string
 	[out] 성공시 "Success", 실패시 에러 메시지
+```
+
+[Bulk 전송]
+Bulk 전송을 위해서는 JSON array 형태로 수집서버로 전송한다.
+
+```
+[
+    {
+        "projectName": "__앱키__",
+        "projectVersion": "1.0.0",
+        "logVersion": "v2",
+        "body": "This log message come from HTTP client. (1/2)",
+        "logSource": "http",
+        "logType": "nelo2-log",
+        "host": "localhost"
+    },
+    {
+        "projectName": "__앱키__",
+        "projectVersion": "1.0.0",
+        "logVersion": "v2",
+        "body": "This log message come from HTTP client. (2/2)",
+        "logSource": "http",
+        "logType": "nelo2-log",
+        "host": "localhost"
+    }
+]
+```
+
+* Note
+		* web 에서는 수신 시간 기준으로 로그를 정렬하여 표시하는데, bulk 전송의 경우 동일한 시간에 수신한 것으로 간주되어 사용자가
+		   전송한 순서가 유지 되지 않습니다.
+		* Bulk로 전송하는 로그들의 순서 관계를 유지하기 위해서는 각 로그에 lncBulkIndex 필드를 추가하여 integer 값을 지정 후 전송하면
+		  서버에서는 이 값을 기준으로 내림차순으로 표시 합니다.
+
+```
+[
+    {
+        "projectName": "__앱키__",
+        "projectVersion": "1.0.0",
+        "logVersion": "v2",
+        "body": "first message",
+        "logSource": "http",
+        "logType": "nelo2-log",
+        "host": "localhost",
+        "lncBulkIndex":1
+    },
+    {
+        "projectName": "__앱키__",
+        "projectVersion": "1.0.0",
+        "logVersion": "v2",
+        "body": "second message",
+        "logSource": "http",
+        "logType": "nelo2-log",
+        "host": "localhost",
+        "lncBulkIndex":2
+    }
+]
+```
+	* 위 예시와 같이 전송한 경우 서버에서는 second message -> first message 순서로 표시 합니다.
+
+수집서버에서는 전송된 순서에 따라 각각의 결과 값을 JSON array 형태로 다시 반환한다.
+
+```
+Content-Type: application/json
+
+{
+    "header":{
+        "isSuccessful":true,
+        "resultCode":0,
+        "resultMessage":"Success"
+    },
+    "body":{
+        "data":{
+            "total":5,
+            "errors":2,
+            "resultList":[
+                {"isSuccessful":true, "resultMessage":"Success"},
+                {"isSuccessful":true, "resultMessage":"Success"},
+                {"isSuccessful":false, "resultMessage":"LogVersion Mismatch: v1, /v2/log"},
+                {"isSuccessful":false, "resultMessage":"The project(invalidProject) is not registered"},
+                {"isSuccessful":true, "resultMessage":"Success"}
+            ]}
+        }
+    }
+}
+
+total: int
+    [out] 전송된 전체 로그 수
+
+errors: int
+    [out] 전송된 로그 중 오류 수
+
+resultList: array
+    [out] 전송된 각 로그들의 결과 값
 ```
 
 > 주의  
@@ -149,4 +249,28 @@ $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.c
 	}'
 커스텀 키는 "A~Z, a~z, 0~9, -_"를 포함하고 알파벳으로 시작해야 한다.
 커스텀 키는 "A~Z, a~z, 0~9, -_"를 포함하고 알파벳으로 시작해야 한다.
+```
+
+[curl을 사용하여 bulk 로그전송한 경우]
+
+```
+//POST 메소드을 사용하여 로그 전송
+$ curl -H "content-type:application/json" -XPOST 'http://api-logncrash.cloud.toast.com/v2/log' -d '[
+    {
+        "projectName": "__앱키__",
+        "projectVersion": "1.0.0",
+        "logVersion": "v2",
+        "body": "This log message come from HTTP client, and it is a simple bulk sample. (1/2)",
+        "logSource": "http",
+        "logType": "nelo2-log"
+    },
+    {
+        "projectName": "__앱키__",
+        "projectVersion": "1.0.0",
+        "logVersion": "v2",
+        "body": "This log message come from HTTP client, and it is a simple bulk sample. (2/2)",
+        "logSource": "http",
+        "logType": "nelo2-log"
+    }
+]'
 ```
