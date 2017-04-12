@@ -13,7 +13,7 @@ Log & Crash Log4J SDK 특·장점은 다음과 같습니다.
 
 ## 다운로드
 
-Toast Cloud에서 Log4J SDK를 받을 수 있습니다.
+[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)에서 Log4J SDK를 받을 수 있습니다.
 
 ```
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Log4J SDK] 클릭
@@ -35,8 +35,8 @@ sample/     ; Log4J 샘플
 
 같이 제공되는 sample/log4j/에 대해 설명합니다.
 
-1.Eclipse를 실행하고 메뉴에서 File - Import - Maven - Existing Maven Projects 를 실행하여 sample/log4j/를 불러옵니다.  
-2.src/test/resources/log4j.xml 파일을 열어 발급받은 앱키와 수집 서버 주소를 변경합니다.  
+1.Eclipse를 실행하고 메뉴에서 `File - Import - Maven - Existing Maven Projects` 를 실행하여 sample/log4j/를 불러옵니다.
+2.`src/test/resources/log4j.xml` 파일을 열어 발급받은 앱키와 버전을 수정하고, 필요하면 수집 서버 주소를 변경합니다.
 
 ```
 <param name="collectorUrl" value="http://api-logncrash.cloud.toast.com" />
@@ -44,61 +44,61 @@ sample/     ; Log4J 샘플
 <param name="version" value="1.0.0" />
 ```
 
-3.Eclipse 메뉴에서 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-log4j-sdk-<version>.jar 를 추가합니다.  
-4.Eclipse 메뉴에서 Run - Run As - JUnit Test를 선택하여 실행합니다.  
+3.Eclipse 메뉴에서 `Project - Properties - Java Build Path - Libraries` 를 선택하여 `toast-logncrash-log4j-sdk-<version>.jar` 를 추가합니다.
+4.Eclipse 메뉴에서 `Run - Run As - JUnit Test`를 선택하여 실행합니다.
 
 ## 사용 예
 
 1.Log4J SDK 라이브러리를 Project에 추가합니다.  
-- 예를 들어 Eclipse 메뉴 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-log4j-sdk-<version>.jar 를 추가합니다.  
+- 예를 들어 Eclipse 메뉴 `Project - Properties - Java Build Path - Libraries` 를 선택하여 `toast-logncrash-log4j-sdk-<version>.jar` 를 추가합니다.
 
 2.Maven을 사용하는 경우, pom.xml에 dependency를 추가합니다.  
 
 ```
 <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
-  </dependency>
-  <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <version>2.5</version>
-  </dependency>
-  <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.2.6</version>
-  </dependency>
-  <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpcore</artifactId>
-      <version>4.2.4</version>
-  </dependency>
-  <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <version>2.4</version>
-  </dependency>
-  <dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <version>20090211</version>
-  </dependency>
+  <groupId>log4j</groupId>
+  <artifactId>log4j</artifactId>
+  <version>1.2.17</version>
+</dependency>
+<dependency>
+  <groupId>commons-lang</groupId>
+  <artifactId>commons-lang</artifactId>
+  <version>2.5</version>
+</dependency>
+<dependency>
+  <groupId>org.apache.httpcomponents</groupId>
+  <artifactId>httpclient</artifactId>
+  <version>4.2.6</version>
+</dependency>
+<dependency>
+  <groupId>org.apache.httpcomponents</groupId>
+  <artifactId>httpcore</artifactId>
+  <version>4.2.4</version>
+</dependency>
+<dependency>
+  <groupId>javax.servlet</groupId>
+  <artifactId>servlet-api</artifactId>
+  <version>2.4</version>
+</dependency>
+<dependency>
+  <groupId>org.json</groupId>
+  <artifactId>json</artifactId>
+  <version>20090211</version>
+</dependency>
 ```
 
 - SLF4J를 사용하시는 경우 다음 dependency를 추가합니다.
 
 ```
 <dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-api</artifactId>
-    <version>1.7.2</version>
+  <groupId>org.slf4j</groupId>
+  <artifactId>slf4j-api</artifactId>
+  <version>1.7.2</version>
 </dependency>
 <dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-log4j12</artifactId>
-    <version>1.7.2</version>
+  <groupId>org.slf4j</groupId>
+  <artifactId>slf4j-log4j12</artifactId>
+  <version>1.7.2</version>
 </dependency>
 ```
 
@@ -116,7 +116,7 @@ json, 20090211
 4.Appender 설정과 구성을 위해서 log4j.xml을 작성합니다.  
 
  - 전체 구성은 sample/log4j/src/test/resources/log4j.xml 를 참고해 주세요.  
- - collectorUrl, appKey에는 반드시 수집서버 주소, 발급받은 앱키 를 사용해야 합니다.  
+ - collectorUrl, appKey에는 반드시 **수집서버 주소**, **발급받은 앱키** 를 사용해야 합니다.
 
 ```
 <appender name="logncrash-http" class="com.toast.java.logncrash.log4j.LogNCrashHttpAppender">
@@ -194,7 +194,7 @@ try {
 
 ## 제약 사항
 
-- 현재 log4j 2.0 버전에서는 동작하지 않습니다. log4j 1.3은 alpha8만 작동하지만 log4j 1.2로 마이그레이션을 권장합니다. 권장 버전은 log4j 1.2.14, 1.2.16, 1.2.17입니다.
+- 현재 **log4j 2.0** 버전에서는 동작하지 않습니다. log4j 1.3은 alpha8만 작동하지만 log4j 1.2로 마이그레이션을 권장합니다. 권장 버전은 log4j 1.2.14, 1.2.16, 1.2.17입니다.
 - 오류 데이터가 한꺼번에 많이 발생하는 경우 logncrash-async appender의 bufferSize가 작으면 log4j 자체에서 처리시 지연이 발생할 수 있으므로, bufferSize 조절이 필요합니다.
 
 ## FAQ

@@ -13,69 +13,88 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 	\- Unity3D v4.0 이상
 - iOS
 	\- An Intel-based Mac
-	\- Mac OS X "Snow Leopard" 10.6 이상
 	\- Xcode 6.0 or later
 
 ## 다운로드
 
-Toast Cloud에서 Unity SDK를 받을 수 있습니다.
+[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)에서 iOS-Unity-Mac SDK를 받을 수 있습니다.
 
 ```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK]
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS-Unity-Mac]
 ```
 
 ## 설치
 
-![](http://static.toastoven.net/prod_logncrash/image019.png)
+ - 다운받은 Log & Crash Unity3D SDK.unitypackage을 더블클릭하여 해당 프로젝트에 Import합니다.
 
-다운받은 Log & Crash Unity3D SDK.unitypackage을 더블클릭하여 해당 프로젝트에 Import합니다.
-
-![](http://static.toastoven.net/prod_logncrash/image020.png)
-
-Import에 성공하면 다음과 같은 폴더 트리가 생성됩니다.
-
-![](http://static.toastoven.net/prod_logncrash/image021.png)
-
-이후 메뉴바에서 LogNCrash> Edit Settings를 선택하여 AssetDatabase를 생성합니다.
 
 ### 샘플 설명
 
 샘플의 실행은 Assets > LogNCrash > Sample > SampleScene을 더블클릭하여 실행합니다.  
 샘플에는 초기화, 로그 전송, 에러 발생에 대한 예제가 기술되어 있습니다.
 
+### 헤더 파일 추가
+
+iOS Unity 환경에서 사용하기 위해서는 'TLCLogUnity.h' 파일을 추가 합니다.
+
 ## 사용 예제
 
-![](http://static.toastoven.net/prod_logncrash/image022.png)
+1. LogNCrashSettings를 통한 초기화
 
-AssetDatabase가 생성이 되면 로그 수집 서버의 Appkey, URL을 입력하고 해당 프로젝트의 식별의 위하여 version을 입력합니다.  
-이후 SampleScript를 생성하여 Toast.LogNCrash 네임스페이스를 추가한 뒤, Start() 함수에서LogNCrash.Initialize() 함수를 호출합니다.  
+Unity 메뉴바에서 LogNCrash> Edit Settings를 선택하여 LogNCrashSettings를 생성합니다. LogNCrashSettings는 AssetDatabase로 사용자 앱키와 SDK 동작을 정의 합니다.
+
+- Appkey : 사용자 앱키
+- URL : 콜렉터 주소, http://api-logncrash.cloud.toast.com를 사용합니다.
+- Version : 로그 버전
+- Send Warning : Unity에서 발생한 Warning 로그의 수집 여부
+- Send Error : Unity에서 발생한 Error 로그의 수집 여부
+- Send Debug Warning : Unity에서 사용자가 Debug 객체를 이용해 발생시킨 Warning 로그의 수집 여부
+- Send Debug Error : Unity에서 사용자가 Debug 객체를 이용해 발생시킨 Error 로그의 수집 여부
+- PLCrashreporter Enable : PLCrashrepoter는 Native 영역에서 발생한 Crash를 탐지하기 위해 추가된 라이브러리 입니다. Native Crash 탐지를 원하는 경우에만 사용합니다.
+
+LogNCrashSettings에 정보를 입력하고 LogNCrash객체의 파라미터가 없는 Initialize 함수를 호출하면 LogNCrashSettings에서 정보를 읽어와 초기화를 시도 합니다.
 
 ```
 using Toast.LogNCrash;
 namespace Toast.LogNCrash
 {
-    public class SampleScript : MonoBehaviour
-    {
-        void Start ()
-        {
-            LogNCrash.Initialize ();
-        }
-    }
+	public class SampleScript : MonoBehaviour
+	{
+		void Start ()
+		{
+			LogNCrash.Initialize ();
+		}
+	}
 }
 ```
 
+2. Script를 통한 초기화
+
+LogNCrash.Initialize에 파라미터를 입력하여 초기화를 시도 합니다. 파라미터는 서버 주소, 앱키, 버전, 포트, PLCrashreporter Enable, Send Thread Lock 실행 여부에 대한 정보를 넘겨줌니다.
+
+```
+using Toast.LogNCrash;
+namespace Toast.LogNCrash
+{
+	public class SampleScript : MonoBehaviour
+	{
+		void Start ()
+		{
+			LogNCrash.Initialize ("http://api-logncrash.cloud.toast.com", "appkey", "1.0.0", 80, true, true);
+			LogNCrash.StartSendThread ();
+		}
+	}
+}
+```
+
+- Appkey : 사용자 앱키
+- URL : 콜렉터 주소, http, https의 콜렉터 정보를 설정
+- Version : 로그 버전
+- Port : 프로토콜에 따라 80, 443을 설정
+- PLCrashreporter Enable : PLCrashrepoter의 사용 여부를 결정합니다.
+- SendThreadLock : true인 경우 발생한 로그들은 StartSendThread가 호출되기 전까지 서버에 전송하지 않고, 큐에 저장합니다. 단 Native Crash가 발생한 경우 ThreadLock을 해제하고 로그를 전송합니다.
+
 ## 상세 API
-
-### 초기화
-
-```
-public static Result Initialize();
-```
-
-- 초기화에 필요한 값은 Toast>LogNCrash>Setting>Resources>LogNCrashSettings.asset 의 값을 참조합니다.
-	- appkey: 사용자 앱키
-	- url: 로그 수집 서버 주소
-	- version: 프로젝트 버전 정보
 
 ### 커스텀 필드 지정하기
 

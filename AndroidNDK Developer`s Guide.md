@@ -16,7 +16,7 @@ Log & Crash AndroidNDK SDK 특·장점은 다음과 같습니다.
 
 ## 다운로드
 
-Toast Cloud에서 AndroidNDK SDK를 받을 수 있습니다.
+[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)에서 Android SDK를 받을 수 있습니다.
 
 ```
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [AndroidNDK SDK] 클릭
@@ -44,14 +44,14 @@ androidndk-sdk-sample/      ; Android JNI 샘플
 같이 제공되는 androidndk-sdk-sample/에 대해 설명합니다.
 
 1. androidndk-sdk-sample/로 이동합니다.
-2. <ndk_path>/ndk-build로 NDK 부분을 빌드합니다.
+2. `<ndk_path>/ndk-build`로 NDK 부분을 빌드합니다.
 3. Eclipse로 Android project를 불러옵니다.
 4. AndroidNDKSample.java를 열어 발급받은 앱키로 수정합니다.
 5. 실행합니다.
 
 크래시 로그를 Log & Crash Search에서 보기 위해서는 심볼 파일을 올려줘야 합니다.
 
-1. obj/local/<abi>/liblogncrashjni_sample.so를 zip으로 압축합니다.
+1. `obj/local/<abi>/liblogncrashjni_sample.so`를 zip으로 압축합니다.
 2. Toast Cloud Console에서 "Analytics - Log & Crash Search - Settings - 심볼 파일" 로 이동해서 압축된 zip 파일을 올립니다. 이때 androidndk-sdk-sample과 같은 프로젝트 버전으로 올려야 합니다.
 3. androidndk-sdk-sample 을 실행하여 크래시 로그를 발생시킵니다.
 	- 크래시를 발생시키 위해서 "Initialize" 버튼을 누르고 "Test 2" 버튼을 눌러 줍니다.
@@ -112,7 +112,7 @@ androidndk-sdk-sample/      ; Android JNI 샘플
      DestroyToastLog();
 ```
 
-4.<ndk_path>/ndk-build로 NDK 부분을 빌드합니다.
+4.`<ndk_path>/ndk-build`로 NDK 부분을 빌드합니다.
 
 5.AndroidNDK SDK가 정상적으로 동작하기 위해서 AndroidManifest.xml에 다음 퍼미션을 주어야 합니다.
 
@@ -142,7 +142,7 @@ static {
 ```
 
 AndroidNDK SDK는 Java Exception을 처리할 수 없습니다. AndroidNDK SDK는 C++ Native code를 위해서 제작되었기 때문입니다.  
-androidndk-sdk-sample/jni/Android.mk 파일과 AndroidNDK에 포함된 문서(<ndk_path>/docs/)를 참조해 주세요.  
+androidndk-sdk-sample/jni/Android.mk 파일과 AndroidNDK에 포함된 문서(`<ndk_path>/docs/`)를 참조해 주세요.
 
 ## API List
 
@@ -181,12 +181,12 @@ void DestroyToastLog();
 #define LOGNCRASH_LOG_ERROR_PORT    -5
 
 int32_t initialize(
-    const char* appKey,
-    const char* version = LOGNCRASH_VERSION,
-    const char* collectorAddr = LOGNCRASH_COLLECTOR_ADDR,
-    const uint16_t collectorPort = LOGNCRASH_COLLECTOR_PORT,
-    const char* logSource = LOGNCRASH_LOGSOURCE,
-    const char* logType = LOGNCRASH_LOGTYPE);
+  const char* appKey,
+  const char* version = LOGNCRASH_VERSION,
+  const char* collectorAddr = LOGNCRASH_COLLECTOR_ADDR,
+  const uint16_t collectorPort = LOGNCRASH_COLLECTOR_PORT,
+  const char* logSource = LOGNCRASH_LOGSOURCE,
+  const char* logType = LOGNCRASH_LOGTYPE);
 
 void destroy();
 ```
@@ -201,6 +201,10 @@ void destroy();
 	- collectorPort : 수집서버 포트
 	- logSource : 로그 소스
 	- logType : 로그 타입
+  - clientHost : Host를 구하는 방식
+		- true : ioctl 방식을 사용하여 client에서 host를 구함
+		- false : server에서 전달된 값으로 host를 구함
+	- asyncStart : SendThread를 Lock시킨 상태로 시작.  Lock 상태에서 로그가 발생하는 경우 서버로 전송하지 않고 큐에 저장하며 대기. Crash가 발생하거나 StartSendThread 함수를 실행하는 경우 Lock 해제
 - initialize() 반환값
 	- LOGNCRASH_LOG_OK : 0, 초기화 성공
 	- LOGNCRASH_LOG_ERROR : -1, 내부 에러 코드
@@ -208,6 +212,14 @@ void destroy();
 	- LOGNCRASH_LOG_ERROR_VERSION : -3, 버전이 잘못된 경우
 	- LOGNCRASH_LOG_ERROR_ADDRESS : -4, 수집 서버 주소가 잘못된 경우
 	- LOGNCRASH_LOG_ERROR_PORT : -5, 수집 서버 포트가 잘못된 경우
+
+### SendThread Lock 상태 해제
+
+```
+  	void StartSendThread();
+```
+
+  - SendThread를 전송 가능 상태로 변경
 
 ### 로그 보내기
 
