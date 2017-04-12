@@ -16,7 +16,7 @@ Log & Crash iOS/Mac SDK 특·장점은 다음과 같습니다.
 
 ## 다운로드
 
-Toast Cloud에서 iOS/Mac SDK를 받을 수 있습니다.
+[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)에서 iOS-Unity-Mac SDK를 받을 수 있습니다.
 
 ```
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS/Mac SDK] 클릭
@@ -35,6 +35,16 @@ libs/Mac OS X               ; Mac SDK 라이브러리
 sample/LogNCrashiOSSample   ; iOS SDK 샘플
 sample/LogNCrashMacSample   ; Mac SDK 샘플
 ```
+
+### libs
+
+- iOS
+	- iOS 용 logncrash framework
+- Mac OS X
+	- Mac OS X 용 logncrash framework
+- Unity
+	- Unity 용 logncrash framework
+	- Unity package 포함
 
 ### 샘플 설명
 
@@ -97,11 +107,16 @@ NSString* userID = @"tester"; //사용자 ID
 
 TLCLog class에서 제공하는 기능들을 설명합니다.
 
+### 헤더 파일 추가
+
+'TLCLog.h' 파일을 추가 합니다.
+
 ### 초기화
 
 ```
 (bool) init:(NSString *)server ofAppKey:(NSString*)appName withVersion:(NSString*)appVersion;
 (bool) init:(NSString *)server ofAppKey:(NSString*)appName withVersion:(NSString*)appVersion forUserId:(NSString*)userId;
+(bool) init:(NSString *)server ofAppKey:(NSString*)appName withVersion:(NSString*)appVersion forUserId:(NSString*)userId enableSyncStart:(bool)flag;
 ```
 
 - TLCLog를 초기화 합니다.
@@ -112,33 +127,32 @@ TLCLog class에서 제공하는 기능들을 설명합니다.
 	- appKey: 앱키
 	- version: 앱 버전
 	- userId: 사용자 아이디
+	- enableSyncStart : true인 경우 발생한 로그들은 startSendThread가 호출되기 전까지 서버에 전송하지 않고, 큐에 저장합니다. 단 Crash가 발생한 경우 ThreadLock을 해제하고 로그를 전송합니다.
 - 반환값
 	- userId: 사용자 아이디
 	- 실패시 false
+
+### SendThread 잠금 해제
+
+```
+		(void) startSendThread;
+```
 
 ### 로그 보내기
 
 ```
 (void) debug:(NSString*)errorCode withMessage:(NSString*)message;
-
 (void) error:(NSString*)errorCode withMessage:(NSString*)message;
-
 (void) fatal:(NSString*)errorCode withMessage:(NSString*)message;
-
 (void) info:(NSString*)errorCode withMessage:(NSString*)message;
-
 (void) warn:(NSString*)errorCode withMessage:(NSString*)message;
 
 
 
 (void) debug:(NSString*)errorCode withMessage:(NSString*)message atLocation:(NSString*)location;
-
 (void) error:(NSString*)errorCode withMessage:(NSString*)message atLocation:(NSString*)location;
-
 (void) fatal:(NSString*)errorCode withMessage:(NSString*)message atLocation:(NSString*)location;
-
 (void) info:(NSString*)errorCode withMessage:(NSString*)message atLocation:(NSString*)location;
-
 (void) warn:(NSString*)errorCode withMessage:(NSString*)message atLocation:(NSString*)location;
 ```
 
@@ -152,9 +166,7 @@ TLCLog class에서 제공하는 기능들을 설명합니다.
 
 ```
 (void) setCustomField:(NSString*)value forKey:(NSString*)key;
-
 (void) removeAllCustomFields;
-
 (void) removeCustomFieldForKey:(NSString*)key;
 ```
 
@@ -211,3 +223,14 @@ false : 중복 제거 로직 비활성화
 - Mac OS X
 	\- Platform: Mac OS X 버전 정보
 	\- NetworkType: Wi-Fi 또는 Cellular (로그 전송이벤트 발생 시점에 네트워크 사용이 불가한 경우 "No Connection")
+
+## iOS Crash 해석하기
+- iOS에서 발생한 Crash의 경우 Crash 정보가 주소 값으로 수집되기 때문에 이를 해석하기 위한 Symbol 파일이 필요합니다.
+
+- Xcode를 실행하고 Windows > Organizer를 클릭합니다.
+
+- 빌드한 결과물을 클릭한 뒤, 오른쪽 버튼을 클릭하여 Show in Finder로 클릭합니다.
+![](http://static.toastoven.net/prod_logncrash/13.png)
+
+- 결과물을 클릭하고 오른쪽 버튼을 눌러 '패키지 내용보기'를 클릭합니다.
+![](http://static.toastoven.net/prod_logncrash/14.png)

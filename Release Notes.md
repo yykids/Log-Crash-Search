@@ -11,14 +11,14 @@
 * [Console] 알람 발송 포맷 변경(프로젝트 이름 대신 알람 이름 노출
 * [SDK] 기능 추가
     * Init함수와 Log 전송 사이의 AddCustomField를 보장하기 위하며, SendThread Lock 기능 추가
-        * 수정버전 : toast-logncrash-ios-unity-mac-sdk-2.6.0 / toast-logncrash-android-unity-sdk-2.6.0 / toast-logncrash-android-2.6.0
+        * 수정버전 : [toast-logncrash-ios-unity-mac-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-unity-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-2.6.0](/Download/#analytics-log-crash-search)
 * [SDK] 기능변경
     * Exception, errorCode, RequestHeader 필드를 콘솔에서 분석 가능한 형태로 전송
         * 수정버전 : toast-logncrash-log4j-sdk-2.2.6 / toast-logncrash-log4j2-sdk-2.2.6/ toast-logncrash-logback-sdk-2.2.6
     * 최대 2M까지 로그를 모아 전송하도록 Send 방식 변경
-        * 수정버전 : toast-logncrash-ios-unity-mac-sdk-2.6.0 / toast-logncrash-android-unity-sdk-2.6.0 / toast-logncrash-android-2.6.0
+        * 수정버전 : [toast-logncrash-ios-unity-mac-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-unity-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-2.6.0](/Download/#analytics-log-crash-search)
 * [SDK] Unity-ios / ios SDK 통합
-    * Toast-logncrash-ios-unity-mac-sdk-2.6.0
+    * [Toast-logncrash-ios-unity-mac-sdk-2.6.0](/Download/#analytics-log-crash-search)
     * toast-logncrash-unity-ios-sdk / toast-logncrash-ios-mac-sdk 삭제
 
 #### 버그 수정

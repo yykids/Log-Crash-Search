@@ -13,7 +13,7 @@ Log & Crash Log4back SDK 특·장점은 다음과 같습니다.
 
 ## 다운로드
 
-Toast Cloud에서 Logback SDK를 받을 수 있습니다.
+[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)에서 Logback SDK를 받을 수 있습니다.
 
 ```
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Logback SDK] 클릭
@@ -44,13 +44,13 @@ sample/     ; Logback 샘플
 <param name="version" value="1.0.0" />
 ```
 
-3.Eclipse 메뉴에서 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-logback-sdk-<version>.jar 를 추가합니다.  
-4.Eclipse 메뉴에서 Run - Run As - JUnit Test를 선택하여 실행합니다.  
+3.Eclipse 메뉴에서 `Project - Properties - Java Build Path - Libraries` 를 선택하여 `toast-logncrash-logback-sdk-<version>.jar` 를 추가합니다.  
+4.Eclipse 메뉴에서 `Run - Run As - JUnit Test`를 선택하여 실행합니다.  
 
 ## 사용 예
 
 1.Logback SDK 라이브러리를 Project에 추가합니다.  
-예를 들어 Eclipse 메뉴 Porject - Properties - Java Build Path - Libraies 를 선택하여 toast-logncrash-logback-sdk-<version>.jar 를 추가합니다.  
+예를 들어 Eclipse 메뉴 `Porject - Properties - Java Build Path - Libraies` 를 선택하여 `toast-logncrash-logback-sdk-<version>.jar` 를 추가합니다.  
 2.Maven을 사용하는 경우, pom.xml에 dependency를 추가합니다.  
 
 ```
@@ -174,7 +174,7 @@ try {
 } catch (InterruptedException ignore){}
 ```
 
-logncrash-async appender는 Logback에서는 Async Appender를 지원하지 않으므로 별도의 com.toast.java.logncrash.logback.LogNCrashAsyncAppender를 제공하고 있습니다.  
+logncrash-async appender는 Logback에서는 Async Appender를 지원하지 않으므로 별도의 `com.toast.java.logncrash.logback.LogNCrashAsyncAppender`를 제공하고 있습니다.  
 LogNCrashAsyncAppender는 내부에 로그를 기록하는 별도의 데몬 스레드가 있어서 비동기로 로그를 전달합니다. Java batch program에서는 main thread가 바로 종료되기 때문에 LogbackAsyncAppender의 데몬 스레드가 생성되어 로그를 보내기 전에 batch 애플리케이션이 종료됩니다.  
 데몬 스레드와 상관없이 살아 있는 일반 스레드가 없을 경우에 JVM은 바로 종료됩니다. 따라서, 위와 같이 프로그램 마지막에 대기하는 코드를 추가하여 모든 로그를 보내고 나서 종료하도록 합니다.  
 다른 방법은 아래처럼 batch용 logback.xml을 별도로 사용하는 것입니다. logger에서 appender logncrash을 바로 사용하도록 logback.xml을 수정합니다. 이 경우 logging이 동기모드로 작동되기 때문에 에러 발생시 에러 수집 서버 호출을 위해 delay가 발생됩니다. web project에서는 이 방법을 사용하지 않도록 합니다.  
