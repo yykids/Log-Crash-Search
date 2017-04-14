@@ -18,8 +18,9 @@
     * 최대 2M까지 로그를 모아 전송하도록 Send 방식 변경
         * 수정버전 : [toast-logncrash-ios-unity-mac-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-unity-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-2.6.0](/Download/#analytics-log-crash-search)
 * [SDK] Unity-ios / ios SDK 통합
+    * 변경사항은 SDK 파일내 README.md 파일 참고
     * [Toast-logncrash-ios-unity-mac-sdk-2.6.0](/Download/#analytics-log-crash-search)
-    * toast-logncrash-unity-ios-sdk / toast-logncrash-ios-mac-sdk 삭제
+    *  Toast-logncrash-unity-ios-sdk / toast-logncrash-ios-mac-sdk 삭제
 
 #### 버그 수정
 * 알람 주기가 1분이 아닌 경우 snooze 가 동작 하지 않는 무제 수정
