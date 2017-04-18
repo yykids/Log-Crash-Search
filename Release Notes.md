@@ -14,7 +14,9 @@
         * 수정버전 : [toast-logncrash-ios-unity-mac-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-unity-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-2.6.0](/Download/#analytics-log-crash-search)
 * [SDK] 기능변경
     * Exception, errorCode, RequestHeader 필드를 콘솔에서 분석 가능한 형태로 전송
-        * 수정버전 : toast-logncrash-log4j-sdk-2.2.6 / toast-logncrash-log4j2-sdk-2.2.6/ toast-logncrash-logback-sdk-2.2.6
+	* txtException, txterrorCode, txtRequestHeader 필드명으로 변경됨
+        * 수정버전 : [toast-logncrash-log4j-sdk-2.2.6](/Download/#analytics-log-crash-search) / [toast-logncrash-log4j2-sdk-2.2.6](/Download/#analytics-log-crash-search)/ [toast-logncrash-logback-sdk-2.2.6](/Download/#analytics-log-crash-search)
+	* Exception,errorCode,RequestHeader 필드에 대해 알람설정이 된경우 2.6 적용 후 `txt*` 필드로 수정이 필요함
     * 최대 2M까지 로그를 모아 전송하도록 Send 방식 변경
         * 수정버전 : [toast-logncrash-ios-unity-mac-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-unity-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-2.6.0](/Download/#analytics-log-crash-search)
 * [SDK] Unity-ios / ios SDK 통합
