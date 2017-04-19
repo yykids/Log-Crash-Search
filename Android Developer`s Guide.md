@@ -296,12 +296,12 @@ Proguard를 적용하기 위해서는 Release로 프로젝트를 생성해야 �
 1. libs/를 sample/libs/로 복사합니다.
 2. Eclipse를 구동해서 해당 프로젝트를 선택하고 메뉴에서 File - Export... 를 선택합니다.
 3. Export 창이 나타나면 Android - Export Android Application 을 선택합니다.
-4. 프로젝트 이름을 확인하고 Next를 클릭하고, Keystore 선택에서 `mykey.keystore`를 선택해 줍니다. Keystore 암호 'abcdefg', Alias 이름 'mykey', Alias 암호 'abcdefg'로 지정되어 있습니다. 자세한 내용은 [여기](http://developer.android.com/tools/publishing/app-signing.html) 을 참고해 주세요.
+4. 프로젝트 이름을 확인하고 Next를 클릭하고, Keystore 선택에서 mykey.keystore를 선택해 줍니다. Keystore 암호 'abcdefg', Alias 이름 'mykey', Alias 암호 'abcdefg'로 지정되어 있습니다. 자세한 내용은 [여기](http://developer.android.com/tools/publishing/app-signing.html) 을 참고해 주세요.
 5. 저장할 경로를 지정해 줍니다.
 6. 저장된 .apk 파일을 'adb install <파일이름>'으로 장치에 설치합니다.
 7. 실행하고 Initialize 버튼을 누른 후, crash 버튼을 눌러 크래시 로그를 발생시킵니다. sample 에서는 ToastLogSample.clickCrash() 멤버 펑션이 난독화 되어 있어서 정상적으로 나오지 않습니다.
 
-정상적으로 Proguard가 구동된 상태에서는 `proguard/mapping.txt`가 생성이 됩니다.
+정상적으로 Proguard가 구동된 상태에서는 proguard/mapping.txt가 생성이 됩니다.
 
 1. Console - Analytics - Log & Crash - Settings - 심볼 파일 에서 mapping.txt를 올립니다. 이때 프로젝트 버전은 반드시 동일하게 입력해야 합니다.
 2. 앱에서 크래시 로그를 보냅니다. Proguard가 풀린 로그는 "DmpData" 필드에 "보기"를 클릭하시면 확인할 수 있습니다.
@@ -310,20 +310,20 @@ Proguard를 적용하기 위해서는 Release로 프로젝트를 생성해야 �
 ### Ant 빌드를 사용하여 Proguard 테스트
 
 1. libs/를 sample/libs/로 복사합니다.
-2. build.xml이 없는 경우 `android update project -p . -n AndroidSDKSample` 명령어로 생성해 줍니다.
-3. `ant clean release`로 빌드해 줍니다. 결과물은 bin/ 안에 `AndroidSDKSampe-release.apk`로 저장됩니다.
+2. build.xml이 없는 경우 android update project -p . -n AndroidSDKSample 명령어로 생성해 줍니다.
+3. ant clean release로 빌드해 줍니다. 결과물은 bin/ 안에 AndroidSDKSampe-release.apk로 저장됩니다.
 
-Ant를 이용하여 Release 빌드를 하는 경우 Eclipse Release 빌드와는 달리 mapping.txt 위치가 `bin/proguard/mapping.txt` 입니다.
+Ant를 이용하여 Release 빌드를 하는 경우 Eclipse Release 빌드와는 달리 mapping.txt 위치가 bin/proguard/mapping.txt 입니다.
 
 ### AndroidStudio를 사용하여 Proguard 테스트
 
 1. libs/를 sample/libs/로 복사합니다.
-2. AndroidStudio를 구동하여 메뉴에서 `File - New - Import Project...`를 실행하여 새로운 위치에 AndroidStudio 프로젝트를 생성합니다.
-3. 기존 소스에서 `mykey.keystore`를 새로 생성된 프로젝트로 복사합니다.
-4. `Build - Generate Signed APK...`를 실행합니다. 첫번째 페이지에서 Module을 확인한 후 Next를 클릭합니다. 두번째 페이지에서 Key store path를 `mykey.keystore`로 지정해 주고,  Keystore 암호 'abcdefg', Alias 이름 'mykey', Alias 암호 'abcdefg'로 지정한 후 Next를 클릭합니다. 세번째 페이지에서 APK Destination Folder를 확인하고 Finish를 클릭합니다.
+2. AndroidStudio를 구동하여 메뉴에서 File - New - Import Project... 를 실행하여 새로운 위치에 AndroidStudio 프로젝트를 생성합니다.
+3. 기존 소스에서 mykey.keystore 를 새로 생성된 프로젝트로 복사합니다.
+4. Build - Generate Signed APK... 를 실행합니다. 첫번째 페이지에서 Module을 확인한 후 Next를 클릭합니다. 두번째 페이지에서 Key store path를 mykey.keystore로 지정해 주고,  Keystore 암호 'abcdefg', Alias 이름 'mykey', Alias 암호 'abcdefg'로 지정한 후 Next를 클릭합니다. 세번째 페이지에서 APK Destination Folder를 확인하고 Finish를 클릭합니다.
 5. 생성된 .apk를 설치합니다.
 
-AndroidStudio를 이용하여 Release 빌드를 하면 mapping.txt 위치가 `app/build/outputs/mapping/release/mapping.txt`입니다.
+AndroidStudio를 이용하여 Release 빌드를 하면 mapping.txt 위치가 app/build/outputs/mapping/release/mapping.txt입니다.
 
 ## JNI 적용 가이드
 
