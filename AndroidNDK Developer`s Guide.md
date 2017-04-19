@@ -44,14 +44,14 @@ androidndk-sdk-sample/      ; Android JNI 샘플
 같이 제공되는 androidndk-sdk-sample/에 대해 설명합니다.
 
 1. androidndk-sdk-sample/로 이동합니다.
-2. `<ndk_path>/ndk-build`로 NDK 부분을 빌드합니다.
+2. <ndk_path>/ndk-build로 NDK 부분을 빌드합니다.
 3. Eclipse로 Android project를 불러옵니다.
 4. AndroidNDKSample.java를 열어 발급받은 앱키로 수정합니다.
 5. 실행합니다.
 
 크래시 로그를 Log & Crash Search에서 보기 위해서는 심볼 파일을 올려줘야 합니다.
 
-1. `obj/local/<abi>/liblogncrashjni_sample.so`를 zip으로 압축합니다.
+1. obj/local/<abi>/liblogncrashjni_sample.so를 zip으로 압축합니다.
 2. Toast Cloud Console에서 "Analytics - Log & Crash Search - Settings - 심볼 파일" 로 이동해서 압축된 zip 파일을 올립니다. 이때 androidndk-sdk-sample과 같은 프로젝트 버전으로 올려야 합니다.
 3. androidndk-sdk-sample 을 실행하여 크래시 로그를 발생시킵니다.
 	- 크래시를 발생시키 위해서 "Initialize" 버튼을 누르고 "Test 2" 버튼을 눌러 줍니다.
@@ -112,7 +112,7 @@ androidndk-sdk-sample/      ; Android JNI 샘플
      DestroyToastLog();
 ```
 
-4.`<ndk_path>/ndk-build`로 NDK 부분을 빌드합니다.
+4.<ndk_path>/ndk-build로 NDK 부분을 빌드합니다.
 
 5.AndroidNDK SDK가 정상적으로 동작하기 위해서 AndroidManifest.xml에 다음 퍼미션을 주어야 합니다.
 
@@ -142,7 +142,7 @@ static {
 ```
 
 AndroidNDK SDK는 Java Exception을 처리할 수 없습니다. AndroidNDK SDK는 C++ Native code를 위해서 제작되었기 때문입니다.  
-androidndk-sdk-sample/jni/Android.mk 파일과 AndroidNDK에 포함된 문서(`<ndk_path>/docs/`)를 참조해 주세요.
+androidndk-sdk-sample/jni/Android.mk 파일과 AndroidNDK에 포함된 문서(<ndk_path>/docs/)를 참조해 주세요.
 
 ## API List
 

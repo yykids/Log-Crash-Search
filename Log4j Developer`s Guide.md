@@ -35,8 +35,8 @@ sample/     ; Log4J 샘플
 
 같이 제공되는 sample/log4j/에 대해 설명합니다.
 
-1.Eclipse를 실행하고 메뉴에서 `File - Import - Maven - Existing Maven Projects` 를 실행하여 sample/log4j/를 불러옵니다.
-2.`src/test/resources/log4j.xml` 파일을 열어 발급받은 앱키와 버전을 수정하고, 필요하면 수집 서버 주소를 변경합니다.
+1.Eclipse를 실행하고 메뉴에서 File - Import - Maven - Existing Maven Projects 를 실행하여 sample/log4j/를 불러옵니다.
+2.src/test/resources/log4j.xml 파일을 열어 발급받은 앱키와 버전을 수정하고, 필요하면 수집 서버 주소를 변경합니다.
 
 ```
 <param name="collectorUrl" value="http://api-logncrash.cloud.toast.com" />
@@ -44,13 +44,13 @@ sample/     ; Log4J 샘플
 <param name="version" value="1.0.0" />
 ```
 
-3.Eclipse 메뉴에서 `Project - Properties - Java Build Path - Libraries` 를 선택하여 `toast-logncrash-log4j-sdk-<version>.jar` 를 추가합니다.
-4.Eclipse 메뉴에서 `Run - Run As - JUnit Test`를 선택하여 실행합니다.
+3.Eclipse 메뉴에서 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-log4j-sdk-<version>.jar 를 추가합니다.
+4.Eclipse 메뉴에서 Run - Run As - JUnit Test를 선택하여 실행합니다.
 
 ## 사용 예
 
 1.Log4J SDK 라이브러리를 Project에 추가합니다.  
-- 예를 들어 Eclipse 메뉴 `Project - Properties - Java Build Path - Libraries` 를 선택하여 `toast-logncrash-log4j-sdk-<version>.jar` 를 추가합니다.
+- 예를 들어 Eclipse 메뉴 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-log4j-sdk-<version>.jar 를 추가합니다.
 
 2.Maven을 사용하는 경우, pom.xml에 dependency를 추가합니다.  
 
