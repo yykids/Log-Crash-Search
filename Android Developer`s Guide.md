@@ -14,7 +14,7 @@ Log & Crash Android SDK 특·장점은 다음과 같습니다.
 
 ## 다운로드
 
-Toast Cloud에서 Android SDK를 받을 수 있습니다.
+[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)에서 Android SDK를 받을 수 있습니다.
 
 ```
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Android SDK] 클릭
@@ -54,30 +54,22 @@ sample/     ; Android SDK 샘플
 
 ```
 <!-- 로그 전송을 위한 인터넷 접근 권한 (필수) -->
-  <uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.INTERNET" />
 
-  <!-- Platform, Carrier등 폰의 정보에 접근하기 위한 권한 (필수) -->
-  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+<!-- Platform, Carrier등 폰의 정보에 접근하기 위한 권한 (필수) -->
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-  <!-- 네트워크 상태에 접근하기 위한 권한 (필수) -->
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<!-- 네트워크 상태에 접근하기 위한 권한 (필수) -->
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-  <!-- 네트워크 접속이 안되는 경우 파일로 로그를 저장하기 위한 권한 (옵션) -->
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<!-- 네트워크 접속이 안되는 경우 파일로 로그를 저장하기 위한 권한 (옵션) -->
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-  <!-- Logcat에 접근하기 위한 권한 (옵션) -->
-  <uses-permission android:name="android.permission.READ_LOGS" />
+<!-- Logcat에 접근하기 위한 권한 (옵션) -->
+<uses-permission android:name="android.permission.READ_LOGS" />
 
-  <application
-      ......
-      <!-- 네트워크 상태를 검사하여 WIFI 동작시 로그를 보내기 위해 추가되어야 하는 Receiver -->
-      <!-- SendMode.All 사용시 사용할 필요 없음 -->
-      <receiver android:name="com.toast.android.logncrash.NetworkStatusReceiver" >
-          <intent-filter>
-              <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-          </intent-filter>
-      </receiver>
+<application
       ......
 ```
 
@@ -89,21 +81,21 @@ sample/     ; Android SDK 샘플
 
 ```
 .....
-  public class MainActivity extends Activity {
-      .....
-      @Override
-      protected void onCreate(Bundle savedInstanceState) {
-          .....
-          if (ToastLog.initialize(getApplication(), "__수집서버_주소__", 0, "__앱키__", "__버전__") {
-              // 초기화 성공
-              ToastLog.info("Init Success")
-          } else {
-              // 초기화 실패
-          }
-          .....
-      }
-  }
+public class MainActivity extends Activity {
   .....
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    .....
+    if (ToastLog.initialize(getApplication(), "__수집서버_주소__", 0, "__앱키__", "__버전__") {
+      // 초기화 성공
+      ToastLog.info("Init Success")
+    } else {
+      // 초기화 실패
+    }
+    .....
+  }
+}
+.....
 ```
 
 ## API List
@@ -123,6 +115,8 @@ public static final String DEFAULT_LOG_TYPE = "logncrash-logType";
 public static boolean initialize(Application application, String collectorAddr, int collectorPort, String appKey, String version, String userId);
 
 public static boolean initialize(Application application, String collectorAddr, int collectorPort, String appKey, String version);
+
+public static boolean initialize(Application application, String collectorAddr, int collectorPort, String appKey, String version, boolean syncStart);
 ```
 
 - ToastLog를 초기화합니다.
@@ -136,9 +130,20 @@ public static boolean initialize(Application application, String collectorAddr, 
 	- appKey : 앱키
 	- version : 앱 버전
 	- userId; 사용자 아이디
+  - syncStart : true인 경우 발생한 로그들은 startSendThread가 호출되기 전까지 서버에 전송하지 않고, 큐에 저장합니다. 단 Crash가 발생한 경우 ThreadLock을 해제하고 로그를 전송합니다.
 - 반환값
 	- 초기화 성공시 true
 	- 실패시 false
+
+### SendThread 잠금 해제
+```
+  	(void) startSendThread;
+```
+  - SendThread의 잠금 상태를 해제합니다.
+
+### 초기화 주의사항
+  - Application onCreate에서 초기화를 실행하는 경우
+  	- Application onCreate는 리시버, 서비스, 액티비티가 생성될 때 호출됨으로 의도하지 않은 호출이 발생할 수 있습니다.
 
 ```
 public static boolean isInitialized()
@@ -181,7 +186,7 @@ public static void crash(String message, Throwable t)
 	- Throwable t : 수집된 에러를 같이 전송합니다.
 		- 에러를 같이 전송하면 크래시 로그로 분류됩니다.
 
-errorCode, location 등의 정보를 Throwable에서 조사하도록 향상되면서 다음 Method들이 Deprecated 되었습니다.
+errorCode, location 등의 정보를 Throwable에서 조사하도록 향상되면서 다음 Method들이 **Deprecated** 되었습니다.
 
 ```
 public static void fatal(String errorCode, String message, String location)
@@ -248,15 +253,6 @@ public static void setLogType(String logType)
 ### Android 전용 기능
 
 ```
-public static boolean getSendInitLog()
-public static void setSendInitLog(boolean enable)
-```
-
-- 초기화 로그 보내기 설정을 구하거나 지정합니다.
-- 기본값은 true입니다.
-- 설정을 변경하기 위해서는 ToastLog.initialize() 호출 전에 설정해야 합니다.
-
-```
 public static boolean getEnableLogcatMain()
 public static void setEnableLogcatMain(boolean enable)
 
@@ -275,25 +271,6 @@ public static void clearLogcat()
 ```
 
 - Android 단말의 Logcat 내용을 모두 비웁니다.
-
-### 전송 모드 설정
-
-3G/WIFI 상태에 따라 로그를 파일로 저장할지, 버릴지 여부를 설정할 수 있습니다. 이 부분은 AndroidManifest.xml에 있는 NetworkStatusReceiver 관련 부분과 연관이 있습니다.  
-
-```
-public static SendMode getSendMode()
-
-public static void setSendMode(SendMode sendMode)
-```
-
-- 전송모드를 구하거나 설정합니다.
-- sendMode 동작에 대해서는 다음 테이블을 참조하세요.
-
-|네트워크 상태|	SendMode.ALL|	SendMode.ONLY_WIFI<br/>_WITH_FILE_SAVE|	SendMode.ONLY_WIFI <br/> _WITHOUT_FILE_SAVE|
-|---|---|---|---|
-|3G|	전송|	미전송, 파일 저장|	미전송, 파일 저장 안함|
-|WIFI|	전송|	전송|	전송|
-|No connection|	미전송, 파일 저장|	미전송, 파일 저장|	미전송, 파일 저장 안함|
 
 ### 중복 제거 모드 설정
 
@@ -319,7 +296,7 @@ Proguard를 적용하기 위해서는 Release로 프로젝트를 생성해야 �
 1. libs/를 sample/libs/로 복사합니다.
 2. Eclipse를 구동해서 해당 프로젝트를 선택하고 메뉴에서 File - Export... 를 선택합니다.
 3. Export 창이 나타나면 Android - Export Android Application 을 선택합니다.
-4. 프로젝트 이름을 확인하고 Next를 클릭하고, Keystore 선택에서 mykey.keystore를 선택해 줍니다. Keystore 암호 'abcdefg', Alias 이름 'mykey', Alias 암호 'abcdefg'로 지정되어 있습니다. 자세한 내용은 여기 을 참고해 주세요.
+4. 프로젝트 이름을 확인하고 Next를 클릭하고, Keystore 선택에서 mykey.keystore를 선택해 줍니다. Keystore 암호 'abcdefg', Alias 이름 'mykey', Alias 암호 'abcdefg'로 지정되어 있습니다. 자세한 내용은 [여기](http://developer.android.com/tools/publishing/app-signing.html) 을 참고해 주세요.
 5. 저장할 경로를 지정해 줍니다.
 6. 저장된 .apk 파일을 'adb install <파일이름>'으로 장치에 설치합니다.
 7. 실행하고 Initialize 버튼을 누른 후, crash 버튼을 눌러 크래시 로그를 발생시킵니다. sample 에서는 ToastLogSample.clickCrash() 멤버 펑션이 난독화 되어 있어서 정상적으로 나오지 않습니다.
@@ -341,101 +318,101 @@ Ant를 이용하여 Release 빌드를 하는 경우 Eclipse Release 빌드와는
 ### AndroidStudio를 사용하여 Proguard 테스트
 
 1. libs/를 sample/libs/로 복사합니다.
-2. AndroidStudio를 구동하여 메뉴에서 File - New - Import Project...를 실행하여 새로운 위치에 AndroidStudio 프로젝트를 생성합니다.
-3. 기존 소스에서 mykey.keystore를 새로 생성된 프로젝트로 복사합니다.
-4. Build - Generate Signed APK...를 실행합니다. 첫번째 페이지에서 Module을 확인한 후 Next를 클릭합니다. 두번째 페이지에서 Key store path를 mykey.keystore로 지정해 주고, Keystore 암호 'abcdefg', Alias 이름 'mykey', Alias 암호 'abcdefg'로 지정한 후 Next를 클릭합니다. 세번째 페이지에서 APK Destination Folder를 확인하고 Finish를 클릭합니다.
+2. AndroidStudio를 구동하여 메뉴에서 File - New - Import Project... 를 실행하여 새로운 위치에 AndroidStudio 프로젝트를 생성합니다.
+3. 기존 소스에서 mykey.keystore 를 새로 생성된 프로젝트로 복사합니다.
+4. Build - Generate Signed APK... 를 실행합니다. 첫번째 페이지에서 Module을 확인한 후 Next를 클릭합니다. 두번째 페이지에서 Key store path를 mykey.keystore로 지정해 주고,  Keystore 암호 'abcdefg', Alias 이름 'mykey', Alias 암호 'abcdefg'로 지정한 후 Next를 클릭합니다. 세번째 페이지에서 APK Destination Folder를 확인하고 Finish를 클릭합니다.
 5. 생성된 .apk를 설치합니다.
 
 AndroidStudio를 이용하여 Release 빌드를 하면 mapping.txt 위치가 app/build/outputs/mapping/release/mapping.txt입니다.
 
 ## JNI 적용 가이드
 
-Android NDK를 이용하여 JNI를 사용시 Android SDK를 활용하는 방법에 대하여 설명합니다.  
-Log&Crash Android SDK에서는 Java상에서 Exception을 Catch 할 수 있는 상황에서만 정상적으로 동작합니다. 그러기 위해서 작성한 Native Code에서 에러 발생시 에러를 전달하는 클래스를 생성하여야 합니다. 예를 들어 아래와 같이 getString 함수가 실행되는 과정에서 에러가 발생한다면, try/catch 구문을 이용하여 Error을 Catch한 후 Java 코드로 예외를 생성하여 Throw해주면, Java에서 해당 에러를 잡아 로그로 전송합니다.  
+[Android NDK](http://developer.android.com/tools/sdk/ndk/index.html)를 이용하여 [JNI](http://en.wikipedia.org/wiki/Java_Native_Interface)를 사용시 Android SDK를 활용하는 방법에 대하여 설명합니다.
+Log&Crash Android SDK에서는 Java상에서 Exception을 Catch 할 수 있는 상황에서만 정상적으로 동작합니다. 그러기 위해서 작성한 Native Code에서 에러 발생시 에러를 전달하는 클래스를 생성하여야 합니다.
+예를 들어 아래와 같이 getString 함수가 실행되는 과정에서 에러가 발생한다면, try/catch 구문을 이용하여 Error을 Catch한 후 Java 코드로 예외를 생성하여 Throw해주면, Java에서 해당 에러를 잡아 로그로 전송합니다.  
 
-[JNI code]
-
-```
-.....
-    // Native Code
-    void throwArithmeticError(JNIEnv *env, char *message) {
-        jclass exClass;
-        char *className = "java/lang/ArithmeticException: / by zero";
-        exClass = (*env)->FindClass(env, className);
-        if (exClass == NULL) {
-            return throwNoClassDefError(env, className);
-        }
-        (*env)->ThrowNew(env, exClass, message);
-    }
-
-    JNIEXPORT JNICALL jstring Java_com_example_jnitest_HelloJNI_getString(JNIEnv *env, jobject object) {
-        if (...) {
-            return str;
-        } else {
-            //On Error
-            throwArithmeticError(env, "THIS IS JNI EXCEPTION");
-        }
-    }
-    .....
-```
-
-[Java Code]
+**JNI code**
 
 ```
 .....
-    // Java Code
-    try{
-        mTextView.setText( new HelloJNI().getString() );
-    } catch(Throwable e){
-        ToastLog.crash(e, "JNI ERROR", "JNI ERROR MESSAGE - Throw Error");
-    }
-    .....
+// Native Code
+void throwArithmeticError(JNIEnv *env, char *message) {
+  jclass exClass;
+  char *className = "java/lang/ArithmeticException: / by zero";
+  exClass = (*env)->FindClass(env, className);
+  if (exClass == NULL) {
+    return throwNoClassDefError(env, className);
+  }
+  (*env)->ThrowNew(env, exClass, message);
+}
+
+JNIEXPORT JNICALL jstring Java_com_example_jnitest_HelloJNI_getString(JNIEnv *env, jobject object) {
+  if (...) {
+    return str;
+  } else {
+    //On Error
+    throwArithmeticError(env, "THIS IS JNI EXCEPTION");
+  }
+}
+.....
+
+**Java Code**
+
+.....
+// Java Code
+try{
+  mTextView.setText( new HelloJNI().getString() );
+} catch(Throwable e){
+  ToastLog.crash(e, "JNI ERROR", "JNI ERROR MESSAGE - Throw Error");
+}
+.....
 ```
 
-Segment falut와 같은 System Crash를 잡기 위해서는 Native Code에서 Signal을 잡는 구문을 추가하면 됩니다. 아래의 예제는 여기를 참고하여 작성되었습니다.
+Segment falut와 같은 System Crash를 잡기 위해서는 Native Code에서 Signal을 잡는 구문을 추가하면 됩니다.
+아래의 예제는 [여기](http://stackoverflow.com/questions/1083154/how-can-i-catch-sigsegv-segmentation-fault-and-get-a-stack-trace-under-jni-on)를 참고하여 작성되었습니다.
 
-[Native Code]
+**Native Code**
 
 ```
 .....
-    //Native Code
-    JNIEXPORT jint android_sigaction(int signal, siginfo_t *info, void *reserved) {
-        old_sa[signal].sa_handler(signal);
-        return throwNoClassDefError(env, "THIS android_sigaction ACTION");
-    }
+//Native Code
+JNIEXPORT jint android_sigaction(int signal, siginfo_t *info, void *reserved) {
+  old_sa[signal].sa_handler(signal);
+  return throwNoClassDefError(env, "THIS android_sigaction ACTION");
+}
 
-    JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved) {
-        jclass cls, vcls;
-        if ((*jvm)->GetEnv(jvm, (void **) &env, JNI_VERSION_1_2))
-            return JNI_ERR;
+JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved) {
+  jclass cls, vcls;
+  if ((*jvm)->GetEnv(jvm, (void **) &env, JNI_VERSION_1_2))
+    return JNI_ERR;
 
-        // Try to catch crashes...
-        struct sigaction handler;
-        memset(&handler, 0, sizeof(sigaction));
-        handler.sa_sigaction = android_sigaction;
-        handler.sa_flags = SA_RESETHAND;
+  // Try to catch crashes...
+  struct sigaction handler;
+  memset(&handler, 0, sizeof(sigaction));
+  handler.sa_sigaction = android_sigaction;
+  handler.sa_flags = SA_RESETHAND;
 
-        #define CATCHSIG(X) sigaction(X, &handler, &old_sa[X])
-        CATCHSIG(SIGILL);
-        CATCHSIG(SIGABRT);
-        CATCHSIG(SIGBUS);
-        CATCHSIG(SIGFPE);
-        CATCHSIG(SIGSEGV);
-        CATCHSIG(SIGSTKFLT);
-        CATCHSIG(SIGPIPE);
+  #define CATCHSIG(X) sigaction(X, &handler, &old_sa[X])
+  CATCHSIG(SIGILL);
+  CATCHSIG(SIGABRT);
+  CATCHSIG(SIGBUS);
+  CATCHSIG(SIGFPE);
+  CATCHSIG(SIGSEGV);
+  CATCHSIG(SIGSTKFLT);
+  CATCHSIG(SIGPIPE);
 
-        return JNI_VERSION_1_2;
-    }
+  return JNI_VERSION_1_2;
+}
 
-    jint throwNoClassDefError(JNIEnv *env, char *message) {
-        jclass exClass;
-        char *className = "java/lang/NoClassDefFoundError";
+jint throwNoClassDefError(JNIEnv *env, char *message) {
+  jclass exClass;
+  char *className = "java/lang/NoClassDefFoundError";
 
-        exClass = (*env)->FindClass(env, className);
-        if (exClass == NULL) {
-            return throwNoClassDefError(env, className);
-        }
-        (*env)->ThrowNew(env, exClass, message);
-    }
-    .....
+  exClass = (*env)->FindClass(env, className);
+  if (exClass == NULL) {
+    return throwNoClassDefError(env, className);
+  }
+  (*env)->ThrowNew(env, exClass, message);
+}
+.....
 ```

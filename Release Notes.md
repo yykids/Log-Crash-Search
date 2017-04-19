@@ -1,4 +1,31 @@
 ## Analytics > Log&Crash Search > Release Notes
+
+### 2017.04.20
+#### 기능 개선/변경
+* [Console] 앱크래시지표 화면 레이아웃 변경
+    * 앱크래시지표 화면에 SDK버전 표시
+    * 사용자 / 디바이스 정보 테이블에 같이 표시
+    * 테이블 헤더 변경 "버전" -> "앱버전 (SDK버전)"
+* [Console] 크래시맵 화면 레이아웃 변경 및 멥에 디바이스 수 추가
+* [Console] 새창 열기 기능 활성화
+* [Console] 알람 발송 포맷 변경(프로젝트 이름 대신 알람 이름 노출
+* [SDK] 기능 추가
+    * Init함수와 Log 전송 사이의 AddCustomField를 보장하기 위하며, SendThread Lock 기능 추가
+        * 수정버전 : [toast-logncrash-ios-unity-mac-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-unity-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-2.6.0](/Download/#analytics-log-crash-search)
+* [SDK] 기능변경
+    * Exception, errorCode, RequestHeader 필드를 콘솔에서 분석 가능한 형태로 전송
+		* txtException, txterrorCode, txtRequestHeader 필드명으로 변경됨
+		* 수정버전 : [toast-logncrash-log4j-sdk-2.2.6](/Download/#analytics-log-crash-search) / [toast-logncrash-log4j2-sdk-2.2.6](/Download/#analytics-log-crash-search)/ [toast-logncrash-logback-sdk-2.2.6](/Download/#analytics-log-crash-search)
+		* Exception,errorCode,RequestHeader 필드에 대해 알람설정이 된경우 2.6 적용 후 txt\* 필드로 수정이 필요함
+    * 최대 2M까지 로그를 모아 전송하도록 Send 방식 변경
+        * 수정버전 : [toast-logncrash-ios-unity-mac-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-unity-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-2.6.0](/Download/#analytics-log-crash-search)
+* [SDK] Unity-ios / ios SDK 통합
+    * 변경사항은 SDK 파일내 README.md 파일 참고
+    * [Toast-logncrash-ios-unity-mac-sdk-2.6.0](/Download/#analytics-log-crash-search)
+    *  Toast-logncrash-unity-ios-sdk / toast-logncrash-ios-mac-sdk 삭제
+
+#### 버그 수정
+* 알람 주기가 1분이 아닌 경우 snooze 가 동작 하지 않는 무제 수정
 ### 2017.03.23
 #### 기능 개선/변경
 * [Console] 덤프 분석에 실패한 크래시도 UNKNOWN 크래시 형태로 통계 정보를 제공 하도록 기능 개선
