@@ -1,5 +1,19 @@
 ## Analytics > Log&Crash Search > Release Notes
 
+### 2017.05.25
+#### 기능 개선/변경
+* [Console] 로그서치 필드명 자동완성 기능 추가
+* [Console] Crashes > 앱 크래시 지표 페이지 하단 테이블 UserID Column 표시 순서 변경 및 Gray 처리
+* [SDK] Unity Android / Android 통합
+  * 수정버전 : [toast-logncrash-android-2.6.1](/Download/#analytics-log-crash-search)
+* [SDK] hotfield Enable/ Disable추가
+  * 수정버전 : [toast-logncrash-android-2.6.1](/Download/#analytics-log-crash-search) / [toast-logncrash-androidndk-sdk-2.6.1](/Download/#analytics-log-crash-search)
+
+#### 버그 수정
+* [SDK] Unity Crash 재전송 시, Seesion 로그가 한 번 더 전송되는 동작 수정
+* [SDK] DevicID 필드가 누락되는 버그 수정
+  * 수정버전 : [toast-logncrash-ios-unity-mac-sdk-2.6.5.1](/Download/#analytics-log-crash-search)
+
 ### 2017.04.20
 #### 기능 개선/변경
 * [Console] 앱크래시지표 화면 레이아웃 변경
