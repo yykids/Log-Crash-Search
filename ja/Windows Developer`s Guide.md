@@ -301,5 +301,5 @@ void setUserId(const char* userId);
         'dump_syms {.pdb 파일} > {출력 파일}'
         'dump_syms Sample.pdb > Sample.sym'
         ```
-        
+
         - 생성한 심볼 파일을 웹 콘솔에 업로드 합니다.

@@ -51,7 +51,7 @@
 
 ### 2017.02.23
 #### 기능 개선/변경
-* [API] [log Bulk upload](/Analytics/Log%20&%20Crash%20Search/REST%20API%20Developer%60s%20Guide/) 기능 추가
+* [API] [log Bulk upload](/Analytics/ja/Log%20&%20Crash%20Search/REST%20API%20Developer%60s%20Guide/) 기능 추가
     * REST API 로그 전송시 JSON array 형태로 로그 전송이 가능합니다.
 * [API] long,double 옵션 추가
     * REST API 로그 전송시 long, double 로 시작하는 필드 사용시 long,double 타입으로 저장
