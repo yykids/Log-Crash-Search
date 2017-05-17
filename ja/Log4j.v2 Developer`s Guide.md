@@ -1,42 +1,42 @@
-## Analytics > Log&Crash Search > Log4j v2 Developer's Guide
+## Analytics > Log&Crash Search > Log4j Developer's Guide
 
-Log & Crash Log4J 2 SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.
-Log & Crash Log4J SDK 특·장점은 다음과 같습니다.
+Log & Crash Log4J SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。
+Log & Crash Log4J SDKの特徴は次の通りです。
 
-- 로그를 수집 서버로 보냅니다.
-- Log & Crash Search 에서 전송된 로그를 조회 및 검색이 가능합니다.
-- 멀티 쓰레딩 환경에서 동작합니다.
+- ログを収集してサーバーに送信します。
+- Log & Crash Searchから送られたログの照会/検索ができます。
+- マルチスレッディング環境で動作します。
 
-## 지원 환경
+## 動作環境
 
 - Log4J 2.x
 
-## 다운로드
+## ダウンロード
 
-[Toast Cloud](http://docs.cloud.toast.com/ja/Download/)에서 Log4J 2 SDK를 받을 수 있습니다.
-
-```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Log4J.v2 SDK] 클릭
-```
-
-## 설치
-
-### 구성
-
-Log4J SDK는 다음과 같이 구성되어 있습니다.
+[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)でLog4J SDKをダウンロードできます。
 
 ```
-docs/       ; Log4J 2 SDK 문서
-lib/        ; Log4J 2 라이브러리
-sample/     ; Log4J 2 샘플
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Log4J.v2 SDK]をクリックします。
 ```
 
-### SDK 샘플
+## インストール
 
-같이 제공되는 sample/log4j2/에 대해 설명합니다.
+### 構成
 
-1.Eclipse를 실행하고 메뉴에서 File - Import - Maven - Existing Maven Projects 를 실행하여 sample/log4j2/를 불러옵니다.  
-2.src/test/resources/log4j2.xml 파일을 열어 발급받은 앱키와 버전을 수정하고, 필요하면 수집 서버 주소를 변경합니다.  
+Log4J SDKは、次のように構成されています。
+
+```
+docs/       ; Log4J 2 SDKドキュメント
+lib/        ; Log4J 2 ライブラリ
+sample/     ; Log4J 2 サンプル
+```
+
+### SDKサンプル
+
+一緒に提供されているsample/log4j2/について説明します。
+
+1.Eclipseを起動し、メニューから「File - Import - Maven - Existing Maven Projects」を実行して、sample/log4j2/を開きます。  
+2.「src/test/resources/log4j2.xml」ファイルを開いて発行されたアプリケーションキーとバージョンを修正し、必要な場合は収集サーバーのアドレスを変更します。
 
 ```
 <collectorUrl>http://api-logncrash.cloud.toast.com </collectorUrl>
@@ -44,14 +44,15 @@ sample/     ; Log4J 2 샘플
 <version>1.0.0</version>
 ```
 
-3.Eclipse 메뉴에서 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-log4j2-sdk-<version>.jar 를 추가합니다.  
-4.Eclipse 메뉴에서 Run - Run As - JUnit Test를 선택하여 실행합니다.  
+3.Eclipseメニューから「Project - Properties - Java Build Path - Libraries」を選択して「toast-logncrash-log4j2-sdk- <version > .jar」を追加します。
+4.Eclipseメニューから「Run - Run As - JUnit Test」を選択して実行します。
 
-## 사용 예
+## 使用例
 
-1.Log4J SDK 라이브러리를 Project에 추가합니다.  
-예를 들어 Eclipse 메뉴 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-log4j2-sdk-<version>.jar 를 추가합니다.  
-2.Maven을 사용하는 경우, pom.xml에 dependency를 추가합니다.  
+1.Log4J SDKライブラリをProjectに追加します。  
+- 例えば、Eclipseのメニュー「Project - Properties - Java Build Path - Libraries」を選択して「toast-logncrash-log4j2-sdk- <version > .jar」を追加します。
+
+2.Mavenを使用している場合は、pom.xmlにdependencyを追加します。  
 
 ```
 <dependency>
@@ -91,7 +92,7 @@ sample/     ; Log4J 2 샘플
   </dependency>
 ```
 
-SLF4J를 사용하시는 경우 다음 dependency를 추가합니다.  
+- SLF4Jを使用している場合は、次のdependencyを追加します。
 
 ```
 <dependency>
@@ -106,7 +107,7 @@ SLF4J를 사용하시는 경우 다음 dependency를 추가합니다.
 </dependency>
 ```
 
-3.Maven을 사용하지 않는 경우 다음 라이브러리들을 별도로 다운로드를 받아 class path에 추가합니다.  
+3.Mavenを使用していない場合は、次のライブラリをダウンロードしてclass pathに追加します。  
 
 ```
 log4j, 2.3
@@ -118,33 +119,33 @@ servlet-api, 2.4
 json, 20090211
 ```
 
-4.Appender 설정과 구성을 위해서 log4j2.xml을 작성합니다.  
+4.Appender設定と構成のためにlog4j2.xmlを作成します。  
 
-- 전체 구성은 sample/log4j2/src/test/resources/log4j2.xml 를 참고해 주세요.
-- collectorUrl, appKey에는 반드시 수집서버 주소, 발급받은 앱키 를 사용해야 합니다.
+- 全体の構成は、sample/log4j/src/test/resources/log4j.xmlをご覧ください。  
+- collectorUrl、appKeyには必ず**収集サーバーのアドレス**、**発行されたアプリケーションキー**を使用する必要があります。
 
 ```
 <Appenders>
-	<LogNCrashHttpAppender name="HTTP">
-	<collectorUrl>http://api-logncrash.cloud.toast.com </collectorUrl>
+    <LogNCrashHttpAppender name="HTTP">
+    <collectorUrl>http://api-logncrash.cloud.toast.com </collectorUrl>
 
-	<appKey>__app_key__</appKey>
-	<version>1.0.0</version>
-	<logSource>http-log4j2</logSource>
-	<logType>log</logType>
-	<enable>true</enable>
-	<debug>false</debug>
-	</LogNCrashHttpAppender>
-	</Appenders>
-	...
-	<Loggers>
-	<Root level="debug">
-	<AppenderRef ref="HTTP"/>
-	</Root>
+    <appKey>__app_key__</appKey>
+    <version>1.0.0</version>
+    <logSource>http-log4j2</logSource>
+    <logType>log</logType>
+    <enable>true</enable>
+    <debug>false</debug>
+    </LogNCrashHttpAppender>
+    </Appenders>
+    ...
+    <Loggers>
+    <Root level="debug">
+    <AppenderRef ref="HTTP"/>
+    </Root>
 </Loggers>
 ```
 
-5.Java에서 다음과 같이 사용합니다.  
+5.Javaで次のように使用します。
 
 ```
 ...
@@ -155,46 +156,42 @@ ThreadContext.put("custom", "custom log test");
 log4j2Logger.debug("LogNCrash Log4J2 Test");
 ...
 try {
-	String npe = null;
-	npe.toString();
+    String npe = null;
+    npe.toString();
 } catch (Exception e) {
-	log4j2Logger.error(e.toString(), e);
+    log4j2Logger.error(e.toString(), e);
 }
 ```
 
 ## API List
 
-### log4j.xml 설정 항목
+### log4j.xml設定項目
 
-- collectorUrl : 수집 서버 주소
-	HTTP : http://api-logncrash.cloud.toast.com
-- appKey : 프로젝트 앱키, 필수
-- version : 프로젝트 버전, 기본값 "1.0.0"
-- logSource : 로그 소스, 기본값 "http-log4j2"
-- logType : 로그 타입, 기본값 "log"
-- enable : Appender 사용 여부 설정, 기본값 "true"
-- debug : 디버그 사용 여부 설정, 기본값 "false"
+- collectorUrl：収集サーバーのアドレス。  
+	HTTP：http://api-logncrash.cloud.toast.com
+- appKey：プロジェクトアプリケーションキー、必須。
+- version：プロジェクトのバージョン、デフォルト値「1.0.0」。
+- logSource：ログソース、デフォルト値「http-log4j」。
+- logType：ログタイプ、デフォルト値「log」。
+- enable：Appenderの使用可否設定、デフォルト値「true」。
+- debug：デバッグを使用するかどうかの設定、デフォルト値「false」。  
 
-## 제약 사항
+## 制約事項
 
-- **log4j 1.2** 버전에서는 동작하지 않습니다.
+- 現在、**log4j 1.2**バージョンでは動作しません。
 
 ## FAQ
 
-### 성능 향상을 위해 Asynchronous Logger를 사용하려면
+### Java stack traceをlog4j 2(Log & Crash Search含む)に記録するには？
 
-Asynchronous Loggers for Low-Latency Logging를 참고해주세요
-
-### Java stack trace를 Log4j 2(Log & Crash Search 포함)에 로깅하려면
-
-Log4j 2를 이요하여 stack trace 를 출력하려면 log.error(e.toString(),e); 형태를 사용합니다. log.error(e);의 경우에는 stack trace가 출력되지 않습니다.
+log4j 2 を利用して、stack traceを出力するには、log.error(e.getMessage()、e);フォームを使用します。 log.error(e);の場合は、stack traceが出力されません。  
 
 ```
-String[] aa= null;
+String[] aa = null;
 try {
-	aa[0] = "111";
-} catch(NullPointerexception e) {
-		log.error(e); // stacktrace 출력안됨.
-		log.error(e.toString(), e); // stacktrace 출력
+    aa[0] = "111";
+} catch (NullPointerException e) {
+    log.error(e); //stacktrace出力されない。
+    log.error(e.getMessage(), e); ///stacktrace出力
 }
 ```
