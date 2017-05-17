@@ -1,82 +1,100 @@
 ## Analytics > Log&Crash Search > Unity Developer's Guide
 
-Log & Crash Unity SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.  
-Log & Crash Unity SDK 특·장점은 다음과 같습니다.
+Log & Crash Unity SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。  
+Log & Crash Unity SDKは次のような特徴があります。
 
-- 로그를 수집 서버로 보냅니다.
-- 앱에서 발생한 크래시 로그를 수집 서버로 보냅니다.
-- Log & Crash Search 에서 전송된 로그를 조회 및 검색이 가능합니다.
+- ログを収集してサーバーに送信します。
+- アプリで発生したクラッシュログを収集サーバーに送信します。
+- Log & Crash Searchから送られたログの照会/検索ができます。
 
-## 지원 환경
+## 動作環境
 
-- 공통
-	\- Unity3D v4.0 이상
+- 共通
+	\- Unity3D v4.0 以上
 - Android
-	\- Android API 2.3.1
-	\- ARMv7 (Cortex family) CPU 단말
+	\- Android API 2.3.3
 
-## 다운로드
+## ダウンロード
 
-[Toast Cloud](http://docs.cloud.toast.com/ja/Download/)에서 Android SDK를 받을 수 있습니다.
+	[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)からAndroid SDKをダウンロードできます。
 
-```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK]
-```
+	```
+	[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK]
+	```
 
-## 설치
+## インストール
 
-![](http://static.toastoven.net/prod_logncrash/image019.png)
+ダウンロードしたtoast-logncrash-android-unity-sdk.unitypackageをダブルクリックして、プロジェクトにImportします。
 
-다운받은 Log & Crash Unity3D SDK.unitypackage을 더블클릭하여 해당 프로젝트에 Import합니다.
+### サンプル説明
 
-![](http://static.toastoven.net/prod_logncrash/image020.png)
+サンプルは、Assets > LogNCrash > Sample > SampleSceneをダブルクリックして実行します。  
+サンプルには、初期化、ログの送信、エラー発生の例が記述されています。
 
-Import에 성공하면 다음과 같은 폴더 트리가 생성됩니다.
+### ヘッダファイルを追加
 
-![](http://static.toastoven.net/prod_logncrash/image021.png)
+iOS Unity環境で使用するためには、「TLCLogUnity.h」ファイルを追加します。
 
-이후 메뉴바에서 LogNCrash> Edit Settings를 선택하여 AssetDatabase를 생성합니다.
+## 使用例
 
-### 샘플 설명
+1. LogNCrashSettingsで初期化
 
-샘플의 실행은 Assets > LogNCrash > Sample > SampleScene을 더블클릭하여 실행합니다.  
-샘플에는 초기화, 로그 전송, 에러 발생에 대한 예제가 기술되어 있습니다.
+UnityのメニューバーからLogNCrash > Edit Settingsを選択してLogNCrashSettingsを生成します。 LogNCrashSettingsはAssetDatabaseにユーザーアプリケーションキーおよびSDKの動作を定義します。
 
-## 사용 예제
+- Appkey：ユーザーアプリケーションキー
+- URL：コレクタアドレス、http://api-logncrash.cloud.toast.com を使用します。
+- Version：ログのバージョン
+- Send Warning：Unityで発生したWarningログの収集可否
+- Send Error：Unityで発生したErrorログの収集可否
+- Send Debug Warning：UnityでユーザがDebugオブジェクトを利用して発生させたWarningログの収集可否
+- Send Debug Error：UnityでユーザがDebugオブジェクトを利用して発生させたErrorログの収集可否
+- PLCrashreporter Enable：PLCrashrepoterはNative領域で発生したCrashを検出するために追加されたライブラリです。 Native Crash検出が必要な場合にのみ使用します。
 
-![](http://static.toastoven.net/prod_logncrash/image022.png)
-
-AssetDatabase가 생성이 되면 로그 수집 서버의 Appkey, URL을 입력하고 해당 프로젝트의 식별의 위하여 version을 입력합니다.  
-이후 SampleScript를 생성하여 Toast.LogNCrash 네임스페이스를 추가한 뒤, Start() 함수에서LogNCrash.Initialize() 함수를 호출합니다.  
+LogNCrashSettingsに情報を入力して、LogNCrashオブジェクトのパラメータがないInitialize関数を呼び出すと、LogNCrashSettingsから情報を読み取り、初期化を試みます。
 
 ```
 using Toast.LogNCrash;
 namespace Toast.LogNCrash
 {
-    public class SampleScript : MonoBehaviour
-    {
-        void Start ()
-        {
-            LogNCrash.Initialize ();
-        }
-    }
+	public class SampleScript : MonoBehaviour
+	{
+		void Start ()
+		{
+			LogNCrash.Initialize ();
+		}
+	}
 }
 ```
 
-## 상세 API
+2. Scriptを使用した初期化
 
-### 초기화
+LogNCrash.Initializeにパラメータを入力して、初期化を試みます。パラメータはサーバーのアドレス、アプリケーションキー、バージョン、ポート、PLCrashreporter Enable、Send Thread Lockの実行可否についての情報を渡します。
 
 ```
-public static Result Initialize();
+using Toast.LogNCrash;
+namespace Toast.LogNCrash
+{
+	public class SampleScript : MonoBehaviour
+	{
+		void Start ()
+		{
+			LogNCrash.Initialize ("http://api-logncrash.cloud.toast.com", "appkey", "1.0.0", 80, true, true);
+			LogNCrash.StartSendThread ();
+		}
+	}
+}
 ```
 
-- 초기화에 필요한 값은 Toast>LogNCrash>Setting>Resources>LogNCrashSettings.asset 의 값을 참조합니다.
-	- appkey: 사용자 앱키
-	- url: 로그 수집 서버 주소
-	- version: 프로젝트 버전 정보
+- Appkey：ユーザーアプリケーションキー
+- URL：コレクタアドレス、http、httpsのコレクタ情報を設定
+- Version：ログのバージョン
+- Port：プロトコルに基づいて80、443を設定
+- PLCrashreporter Enable：PLCrashrepoterを使用するかどうかを決定します。
+- SendThreadLock：trueの場合に発生したログは、StartSendThreadが呼び出されるまでサーバーに送信せずに、キューに格納します。ただしNative Crashが発生した場合はThreadLockを解除して、ログを送信します。
 
-### 커스텀 필드 지정하기
+## 詳細API
+
+### カスタムフィールドを指定する
 
 ```
 public static void AddCustomField(string key, string val)
@@ -86,11 +104,11 @@ public static void RemoveAllCustomFields()
 
 - Parameters
 	- key: string
-		- [in] custom field의 key, custom key는 “A~Z, a~z, 0~9, - \_” 문자를 포함하며 반드시 알파벳이나 숫자로 시작해야 합니다.
+		- [in] custom fieldのkey、c​​ustom keyは「A~Z、a~z、0~9、 - \_」の文字を含み、必ずアルファベットか数字で始まる必要があります。
 	- value: string
-		- [in] custom field의 값
+		- [in] custom fieldの値
 - Note
-	- 다음 keyword는 SDK에서 사용 중이므로 사용 할 수 없습니다.
+	- 次のkeywordはSDKで使用しているため、使用することはできません。
 		- projectName
         - projectVersion
         - host
@@ -108,159 +126,165 @@ public static void RemoveAllCustomFields()
         - NetworkType
         - DeviceModel
         - @logType
-	- custom filed의 값이 NULL이나 비어있는 경우, SDKs 는 해당 필드를 server로 전송 하지 않습니다.
+	- custom filedの値がNULLまたは空の場合、SDKsは、そのフィールドをserverに送信しません。
 
-### 기본 설정 관리
+### 基本設定管理
 
 ```
 public static void SetLogSource(string value)
 public static string GetLogSource()
 ```
 
-- 로그소스를 구하거나 새로 지정합니다.
+- ログソースを取得したり、新たに指定したりします。
 
 ```
 public static void SetLogType(string value)
 public static string GetLogType()
 ```
 
-- 로그타입을 구하거나 새로 지정합니다.
+- ログタイプを取得したり、新たに指定したりします。
 
-### LEVEL 필터
-- Unity SDK에서는 Default 설정으로 FATAL 레벨의 로그만 전송 합니다. Error, Warning 레벨의 로그에는 변수값(시간, 경로, 진행도 등)의 삽입으로 인해 많은 로그들이 발생 할 수 있습니다.
-	- Send Error : 시스템에서 발생한 ERROR 레벨의 로그를 전송 합니다.
-	- Send Warning : 시스템에서 발생한 WARN 레벨의 로그를 전송 합니다.
-	- Send Debug Error : 사용자가 발생시킨 ERROR 레벨의 로그를 전송 합니다.
-	- Send Debug Warning : 사용자가 발생시킨 WARN 레벨의 로그를 전송 합니다.
+### LEVELフィルタ
 
-### API 사용 예제
+- Unity SDKはDefault設定でFATALレベルのログのみを送信します。 Error、Warningレベルのログには、変数の値(時間、パス、進行度など)の挿入により、多くのログが発生することがあります。
+	- Send Error：システムで発生したERRORレベルのログを送信します。
+	- Send Warning：システムで発生したWARNレベルのログを送信します。
+	- Send Debug Error：ユーザーが生成したERRORレベルのログを送信します。
+	- Send Debug Warning：ユーザーが生成したWARNレベルのログを送信します。
 
-	- html > index.html을 참고해 주시기 바랍니다.
+### APIの使用例
+	- html > index.htmlをご覧ください。
 
-### 로그 전송
-
-```
-//send info log message
-public static void Info(string strMsg)
-
-//send debug log message
-public static void Debug(string strMsg)
-
-//send warn log message
-public static void Warn(string strMsg)
-
-//send fatal log message
-public static void Fatal(string strMsg)
-
-//send error log message
-public static void Error(string strMsg)
-```
-
-- Parameters
-	- strMsg: string
-		- [in] 전송할 log 메세지
-
-### Handled Exception
+### IP Address
 
 ```
-//send Handled info log message
-public static void Info(string strMsg, Exception e)
-
-//send Handled debug log message
-public static void Debug(string strMsg, Exception e)
-
-//send Handled warn log message
-public static void Warn(string strMsg, Exception e)
-
-//send Handled fatal log message
-public static void Fatal(string strMsg, Exception e)
-
-//send Handled error log message
-public static void Error(string strMsg, Exception e)
+public static void SetEnableHost:(bool flag)
 ```
+ - true : ip addressを求めhostフィールドに格納します
+ - false : hostフィールドに「 - 」を保存します。
 
-```
-try{
-	// Exception code
-}catch(Exception e){
-	LogNCrash.Info("handled exception message", e)
-}
-```
+ ### ログ送信
 
-- try&catch에서 발생한 Exception을 전송합니다.
+ ```
+ //send info log message
+ public static void Info(string strMsg)
 
-### 크래시 콜백  
+ //send debug log message
+ public static void Debug(string strMsg)
 
-```
-public void Crash_Send_Complete_Callback(string message) {
-	Debug.Log("Crash_Send_Complete_Callback : " + message);
-}
+ //send warn log message
+ public static void Warn(string strMsg)
 
-void Start() {
-	LogNCrashCallBack.ExceptionDelegate += Crash_Send_Complete_Callback;
-}
+ //send fatal log message
+ public static void Fatal(string strMsg)
 
-```
+ //send error log message
+ public static void Error(string strMsg)
+ ```
 
-- ExceptionDelegate는 Unity CSharp에서 발생한 Crash를 서버로 전송한 이후 호출되는 콜백 입니다.<br>
-네이티브 Crash의 경우 호출되지 않습니다.
+ - Parameters
+ 	- strMsg: string
+ 		- [in]転送するlogメッセージ
 
-### 유저 아이디 설정
+ ### Handled Exception
 
-```
-public static void SetUserId(string userID)
-public static string GetUserID()
-```
-- 사용자별 통계 자료를 얻으려면 반드시 설정해주어야 합니다.
-- Parameter
-	- userID: string
-		- [in] 각 사용자를 구분할 user id
+ ```
+ //send Handled info log message
+ public static void Info(string strMsg, Exception e)
 
-### 중복 제거 모드 설정
+ //send Handled debug log message
+ public static void Debug(string strMsg, Exception e)
 
-2.4.0 이상 SDK 부터 일반 로그에 중복 제거 로직이 적용되었습니다. 초기화 시 중복 제거 로직이 활성화됩니다.
+ //send Handled warn log message
+ public static void Warn(string strMsg, Exception e)
 
-일반 로그의 경우 body와 logLevel이 같은 로그가 발생한 경우 전송하지 않습니다.
+ //send Handled fatal log message
+ public static void Fatal(string strMsg, Exception e)
 
-크래시 로그의 경우 stackTrace와 condition 값이 같은 로그가 발생한 경우 전송하지 않습니다.
+ //send Handled error log message
+ public static void Error(string strMsg, Exception e)
+ ```
 
-원하지 않는 경우 초기화 이후, 아래 함수를 통해 기능을 비활성화시킬 수 있습니다.
+ ```
+ try{
+ 	// Exception code
+ }catch(Exception e){
+ 	LogNCrash.Info("handled exception message", e)
+ }
+ ```
 
-```
-public static void SetDeduplicate(bool flag)
-```
+ - try & catchで発生したExceptionを送信します。
 
-true :(Default 값) 중복 제거 로직 활성화<br>
-false :  중복 제거 로직 비활성화
+ ### クラッシュコールバック
 
-## Android Build 하기
+ ```
+ public void Crash_Send_Complete_Callback(string message) {
+ 	Debug.Log("Crash_Send_Complete_Callback : " + message);
+ }
 
-1.File->Build Settings 클릭합니다.
+ void Start() {
+ 	LogNCrashCallBack.ExceptionDelegate += Crash_Send_Complete_Callback;
+ }
+ ```
+ - ExceptionDelegateはUnity CSharpで発生したCrashをサーバーに送信した後に呼び出されるコールバックです。<br>
+ ネイティブCrashの場合は呼び出されません。
 
-![](http://static.toastoven.net/prod_logncrash/image023.png)
+ ### ユーザーIDの設定
 
-![](http://static.toastoven.net/prod_logncrash/image028.png)
+ ```
+ public static void SetUserId(string userID)
+ public static string GetUserID()
+ ```
+ - ユーザーごとの統計を取得するには、必ず設定する必要があります。
+ - Parameter
+ 	- userID：string
+ 		- [in]各ユーザを区別するuser id
 
-- Android Platform 선택 한 뒤 Player Settings 클릭합니다.
+ ### 重複除去モードの設定
 
-![](http://static.toastoven.net/prod_logncrash/image029.png)
+ 2.4.0以上のSDKから一般ログに重複除去ロジックが適用されました。初期化時に重複除去ロジックが有効になります。
 
-- Internet Access는 Require, Write Access는 External(SDCard)로 설정합니다.
+ 一般的ログの場合、bodyとlogLevelが同じログで発生した場合は送信しません。
 
-2.Build settings에서 Build And Run 클릭합니다.
+ クラッシュログの場合、stackTraceとconditionの値が同じログが発生した場合は送信しません。
 
-## Android Unity Crash 해석하기
+ 不要な場合、初期化後に、次の関数を使用して機能を無効にできます。
 
-- Unity의 Crash는 Unity Engine에서 발생하는 Crash와 Android Naitve에서 발생하는 Crash로 구분됩니다.
+ ```
+ public static void SetDeduplicate(bool flag)
+ ```
 
-- Proguard가 적용되지 않은 경우 별도의 Symbol 등록 과정이 필요하지 않습니다.
+ true：(Default値)重複除去ロジックを有効にする。  
+ false：重複除去ロジックを無効にする。
 
-- Proguard가 적용된 경우 Native 레벨의 Crash 해석를 위하기 위해서는 mapping.txt 파일을 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일 탭에 등록해야 합니다.
+ ## Android Build方法
 
-- mapping.txt 파일은 proguard 폴더 하위에 생성됩니다.
-<br><br>
-![](http://static.toastoven.net/prod_logncrash/12.png)
+ 1. File->Build Settingsをクリックします。
 
-## Android Unity Crash 주의 사항
+ ![](http://static.toastoven.net/prod_logncrash/image023.png)
 
-- 심볼이 없어 해석되지 않은 Crash 로그는 일반 로그로 취급됩니다.
+ ![](http://static.toastoven.net/prod_logncrash/image028.png)
+
+ - Android Platformを選択した後、Player Settingsをクリックします。
+
+ ![](http://static.toastoven.net/prod_logncrash/image029.png)
+
+ - Internet AccessはRequire、Write AccessはExternal(SDCard)に設定します。
+
+ 2. Build settingsでBuild And Runをクリックします。
+
+ ## Android Unity Crashを解析する
+
+ - UnityのCrashはUnity Engineで発生するCrashとAndroid Naitveで発生するCrashに区分されます。
+
+ - Proguardが適用されていない場合は、別途のSymbol登録は必要ありません。
+
+ - Proguardが適用された場合、NativeレベルのCrashを解析するためにmapping.txtファイルをWebコンソール > Analytic > Log & Crash Search > Settings >シンボルファイルタブに登録する必要があります。
+
+ - mapping.txtファイルはproguardフォルダの中に作成されます。
+
+ ![](http://static.toastoven.net/prod_logncrash/12.png)
+
+ ## Android Unity Crash注意事項
+
+ - シンボルがない未解析のCrashログは、通常のログとして扱われます。
