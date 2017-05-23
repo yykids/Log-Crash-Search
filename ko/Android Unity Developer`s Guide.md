@@ -12,8 +12,7 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 - 공통
 	\- Unity3D v4.0 이상
 - Android
-	\- Android API 2.3.1
-	\- ARMv7 (Cortex family) CPU 단말
+	\- Andorid SDK 2.3.3 API 이상
 
 ## 다운로드
 
@@ -25,17 +24,8 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 
 ## 설치
 
-![](http://static.toastoven.net/prod_logncrash/image019.png)
+* 다운받은 toast-logncrash-android-unity-sdk.unitypackage을 더블 클릭하여 Import합니다.
 
-다운받은 Log & Crash Unity3D SDK.unitypackage을 더블클릭하여 해당 프로젝트에 Import합니다.
-
-![](http://static.toastoven.net/prod_logncrash/image020.png)
-
-Import에 성공하면 다음과 같은 폴더 트리가 생성됩니다.
-
-![](http://static.toastoven.net/prod_logncrash/image021.png)
-
-이후 메뉴바에서 LogNCrash> Edit Settings를 선택하여 AssetDatabase를 생성합니다.
 
 ### 샘플 설명
 
@@ -44,37 +34,59 @@ Import에 성공하면 다음과 같은 폴더 트리가 생성됩니다.
 
 ## 사용 예제
 
-![](http://static.toastoven.net/prod_logncrash/image022.png)
+1. LogNCrashSettings를 통한 초기화
 
-AssetDatabase가 생성이 되면 로그 수집 서버의 Appkey, URL을 입력하고 해당 프로젝트의 식별의 위하여 version을 입력합니다.  
-이후 SampleScript를 생성하여 Toast.LogNCrash 네임스페이스를 추가한 뒤, Start() 함수에서LogNCrash.Initialize() 함수를 호출합니다.  
+Unity 메뉴바에서 LogNCrash> Edit Settings를 선택하여 LogNCrashSettings를 생성합니다. LogNCrashSettings는 AssetDatabase로 사용자 앱키와 SDK 동작을 정의 합니다.
+
+- Appkey : 사용자 앱키
+- URL : 콜렉터 주소, http://api-logncrash.cloud.toast.com를 사용합니다.
+- Version : 로그 버전
+- Send Warning : Unity에서 발생한 Warning 로그의 수집 여부
+- Send Error : Unity에서 발생한 Error 로그의 수집 여부
+- Send Debug Warning : Unity에서 사용자가 Debug 객체를 이용해 발생시킨 Warning 로그의 수집 여부
+- Send Debug Error : Unity에서 사용자가 Debug 객체를 이용해 발생시킨 Error 로그의 수집 여부
+
+LogNCrashSettings에 정보를 입력하고 LogNCrash객체의 파라미터가 없는 Initialize 함수를 호출하면 LogNCrashSettings에서 정보를 읽어와 초기화를 시도 합니다.
 
 ```
 using Toast.LogNCrash;
 namespace Toast.LogNCrash
 {
-    public class SampleScript : MonoBehaviour
-    {
-        void Start ()
-        {
-            LogNCrash.Initialize ();
-        }
-    }
+	public class SampleScript : MonoBehaviour
+	{
+		void Start ()
+		{
+			LogNCrash.Initialize ();
+		}
+	}
 }
 ```
 
+2. Script를 통한 초기화
+LogNCrash.Initialize에 파라미터를 입력하여 초기화를 시도 합니다. 파라미터는 서버 주소, 앱키, 버전, 포트, Send Thread Lock 실행 여부에 대한 정보를 넘겨줌니다.
+
+```
+using Toast.LogNCrash;
+namespace Toast.LogNCrash
+{
+	public class SampleScript : MonoBehaviour
+	{
+		void Start ()
+		{
+			LogNCrash.Initialize ("http://api-logncrash.cloud.toast.com", "appkey", "1.0.0", 80,  true);
+			LogNCrash.StartSendThread ();
+		}
+	}
+}
+```
+
+- Appkey : 사용자 앱키
+- URL : 콜렉터 주소, http, https의 콜렉터 정보를 설정
+- Version : 로그 버전
+- Port : 프로토콜에 따라 80, 443을 설정
+- SendThreadLock : true인 경우 발생한 로그들은 StartSendThread가 호출되기 전까지 서버에 전송하지 않고, 큐에 저장합니다. 단 Native Crash가 발생한 경우 ThreadLock을 해제하고 로그를 전송합니다.
+
 ## 상세 API
-
-### 초기화
-
-```
-public static Result Initialize();
-```
-
-- 초기화에 필요한 값은 Toast>LogNCrash>Setting>Resources>LogNCrashSettings.asset 의 값을 참조합니다.
-	- appkey: 사용자 앱키
-	- url: 로그 수집 서버 주소
-	- version: 프로젝트 버전 정보
 
 ### 커스텀 필드 지정하기
 
