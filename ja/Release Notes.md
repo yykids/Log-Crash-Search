@@ -12,7 +12,7 @@
 #### 버그 수정
 * [SDK] Unity Crash 재전송 시, Seesion 로그가 한 번 더 전송되는 동작 수정
 * [SDK] DevicID 필드가 누락되는 버그 수정
-  * 수정버전 : [toast-logncrash-ios-unity-mac-sdk-2.6.5.1](/Download/#analytics-log-crash-search)
+    * 수정버전 : [toast-logncrash-ios-unity-mac-sdk-2.6.5.1](/Download/#analytics-log-crash-search)
 
 ### 2017.04.20
 #### 기능 개선/변경
