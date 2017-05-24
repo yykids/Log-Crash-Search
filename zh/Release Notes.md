@@ -1,5 +1,19 @@
 ## Analytics > Log&Crash Search > Release Notes
 
+### 2017.05.25
+#### 기능 개선/변경
+* [Console] 로그서치 필드명 자동완성 기능 추가
+* [Console] Crashes > 앱 크래시 지표 페이지 하단 테이블 UserID Column 표시 순서 변경 및 Gray 처리
+* [SDK] Unity Android / Android 통합
+  * 수정버전 : [toast-logncrash-android-2.6.1](/Download/#analytics-log-crash-search)
+* [SDK] hotfield Enable/ Disable추가
+  * 수정버전 : [toast-logncrash-android-2.6.1](/Download/#analytics-log-crash-search) / [toast-logncrash-androidndk-sdk-2.6.1](/Download/#analytics-log-crash-search)
+
+#### 버그 수정
+* [SDK] Unity Crash 재전송 시, Seesion 로그가 한 번 더 전송되는 동작 수정
+* [SDK] DevicID 필드가 누락되는 버그 수정
+  * 수정버전 : [toast-logncrash-ios-unity-mac-sdk-2.6.5.1](/Download/#analytics-log-crash-search)
+
 ### 2017.04.20
 #### 기능 개선/변경
 * [Console] 앱크래시지표 화면 레이아웃 변경
@@ -37,7 +51,7 @@
 
 ### 2017.02.23
 #### 기능 개선/변경
-* [API] [log Bulk upload](/Analytics/Log%20&%20Crash%20Search/REST%20API%20Developer%60s%20Guide/) 기능 추가
+* [API] [log Bulk upload](/Analytics/zh/Log%20&%20Crash%20Search/REST%20API%20Developer%60s%20Guide/) 기능 추가
     * REST API 로그 전송시 JSON array 형태로 로그 전송이 가능합니다.
 * [API] long,double 옵션 추가
     * REST API 로그 전송시 long, double 로 시작하는 필드 사용시 long,double 타입으로 저장
@@ -129,9 +143,11 @@
     * Custom 필드 생성시 analyzed(분석여부) false 로 변경
     * 전송 가능한 로그 길이 128byte -> 2Kbyte 변경
     * 2Kbyte 이상의 로그 전송이 필요한 경우 Field 명에 txt prefix 지정하여 Custom field 생성
-    * txt*; string, 옵션 [in] 필드 이름이 txt로 시작하는 필드(txt_description 등)는 분석(analyzed) 필드로 저장<br>
-      로그 검색 화면에서 필드 값의 일부 문자열로 검색이 가능
 
+    ```
+    1. txt*; string, 옵션 [in] 필드 이름이 txt로 시작하는 필드(txt_description 등)는 분석(analyzed) 필드로 저장
+    2. 로그 검색 화면에서 필드 값의 일부 문자열로 검색이 가능
+    ```
 
 ### 2016.08.18
 #### 기능 개선/변경
