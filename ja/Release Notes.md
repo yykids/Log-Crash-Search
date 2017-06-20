@@ -1,5 +1,19 @@
 ## Analytics > Log&Crash Search > Release Notes
 
+### 2017.06.22
+#### 버그수정
+* [SDK] 중복제어 큐가 최대 사이즈가 넘은 경우, LFU 동작의 Delete 버그로 인해 Crash가 발생하는 현상 수정
+    * 수정버전 : [toast-logncrash-cpp-windows-sdk-2.5.3](/Download/#analytics-log-crash-search) / [toast-logncrash-csharp-windows-sdk-2.5.3](/Download/#analytics-log-crash-search)/ [toast-logncrash-androidndk-sdk-2.6.2](/Download/#analytics-log-crash-search)
+* [SDK] 일부 필드(국가 코드, 플랫폼정보 등) 누락 현상 수정
+    * 수정버전 : [toast-logncrash-android-2.6.2](/Download/#analytics-log-crash-search)
+
+
+### 2017.06.19
+#### 버그수정
+* [SDK] SendThread에 Sleep이 없어 CPU 사용률이 99%가 되는 현상 수정
+* [SDK] 초당 100건의 로그를 보내는 경우, 메모리 해제가 정상적으로 되지 않는 현상 수정
+    * 수정버전 : [toast-logncrash-ios-unity-mac-sdk-2.6.6.1](/Download/#analytics-log-crash-search)
+
 ### 2017.05.25
 #### 기능 개선/변경
 * [Console] 로그서치 필드명 자동완성 기능 추가
@@ -52,7 +66,7 @@
 
 ### 2017.02.23
 #### 기능 개선/변경
-* [API] [log Bulk upload](/Analytics/ja/Log%20&%20Crash%20Search/REST%20API%20Developer%60s%20Guide/) 기능 추가
+* [API] [log Bulk upload](/Analytics/Log%20&%20Crash%20Search/REST%20API%20Developer%60s%20Guide/) 기능 추가
     * REST API 로그 전송시 JSON array 형태로 로그 전송이 가능합니다.
 * [API] long,double 옵션 추가
     * REST API 로그 전송시 long, double 로 시작하는 필드 사용시 long,double 타입으로 저장
