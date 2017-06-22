@@ -3,9 +3,16 @@
 ### 2017.06.22
 #### 버그수정
 * [SDK] 중복제어 큐가 최대 사이즈가 넘은 경우, LFU 동작의 Delete 버그로 인해 Crash가 발생하는 현상 수정
-    * 수정버전 : [toast-logncrash-cpp-windows-sdk-2.5.3](/Download/#analytics-log-crash-search) / [toast-logncrash-csharp-windows-sdk-2.5.3](/Download/#analytics-log-crash-search)/ [toast-logncrash-androidndk-sdk-2.6.2](/Download/#analytics-log-crash-search)
+    * 수정버전 : [toast-logncrash-cpp-windows-sdk-2.5.4](/Download/#analytics-log-crash-search) / [toast-logncrash-csharp-windows-sdk-2.5.4](/Download/#analytics-log-crash-search)/ [toast-logncrash-androidndk-sdk-2.6.2](/Download/#analytics-log-crash-search)
+* [SDK] ReSend 로그 저장 시 2MB씩 총 20MB저장하는 방식에서 2MB만 저장하도록 변경
+* [SDK] Send Queue 사이즈를 500개에서 2000개로 변경
+* [SDK] 인터넷이 연결되어 있지 않은 경우, 전송 동작을 하지 않는 방식에서 파일로 저장하도록 변경
+* [SDK]인터넷 연결이 끊겼다가 다시 연결된 경우, 파일에 저장했던 로그를 재전송 하도록 변경
+    * 수정버전 : [toast-logncrash-cpp-windows-sdk-2.5.4](/Download/#analytics-log-crash-search) / [toast-logncrash-csharp-windows-sdk-2.5.4](/Download/#analytics-log-crash-search)
 * [SDK] 일부 필드(국가 코드, 플랫폼정보 등) 누락 현상 수정
     * 수정버전 : [toast-logncrash-android-2.6.2](/Download/#analytics-log-crash-search)
+* [SDK] 에러 내용을 errorCode와 txterrorCode 필드에 담아 전송하도록 변경
+    * 수정버전 : [toast-logncrash-logback-sdk-2.2.7](/Download/#analytics-log-crash-search) / [toast-logncrash-log4j-sdk-2.2.7](/Download/#analytics-log-crash-search)
 
 
 ### 2017.06.19
