@@ -25,7 +25,7 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 
 ## 설치
 
- - 다운받은 Log & Crash Unity3D SDK.unitypackage을 더블클릭하여 해당 프로젝트에 Import합니다.
+ - 다운받은 toast-logncrash-ios-unity-sdk.unitypackage 을 더블클릭하여 해당 프로젝트에 Import합니다.
 
 
 ### 샘플 설명
@@ -129,6 +129,15 @@ public static void RemoveAllCustomFields()
         - DeviceModel
         - @logType
 	- custom filed의 값이 NULL이나 비어있는 경우, SDKs 는 해당 필드를 server로 전송 하지 않습니다.
+
+### IP Address 수집 설정
+
+```
+		public static SetEnableHost(bool flag)
+```
+
+	- true  : ip address를 구하여 host 필드에 저장합니다.
+	- false : ip address를 구하지 않습니다.
 
 ### 기본 설정 관리
 

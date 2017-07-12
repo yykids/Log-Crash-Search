@@ -1,5 +1,14 @@
 ## Analytics > Log&Crash Search > Release Notes
 
+### 2017.07.20
+#### 기능 개선/변경
+* [SDK] WebGL플랫폼 지원
+    * 수정버전 : [toast-logncrash-unity-2.7.4](/Download/#analytics-log-crash-search)
+* [Console] 크래시 목록 화면 softing option에서 사용자수 제거
+
+#### 버그수정
+* [Console] 크래시 사용자 레이아웃 버그 수정
+
 ### 2017.06.22
 #### 버그수정
 * [SDK] 중복제어 큐가 최대 사이즈가 넘은 경우, LFU 동작의 Delete 버그로 인해 Crash가 발생하는 현상 수정
@@ -164,11 +173,9 @@
     * Custom 필드 생성시 analyzed(분석여부) false 로 변경
     * 전송 가능한 로그 길이 128byte -> 2Kbyte 변경
     * 2Kbyte 이상의 로그 전송이 필요한 경우 Field 명에 txt prefix 지정하여 Custom field 생성
+    * txt*; string, 옵션 [in] 필드 이름이 txt로 시작하는 필드(txt_description 등)는 분석(analyzed) 필드로 저장<br>
+      로그 검색 화면에서 필드 값의 일부 문자열로 검색이 가능
 
-    ```
-    1. txt*; string, 옵션 [in] 필드 이름이 txt로 시작하는 필드(txt_description 등)는 분석(analyzed) 필드로 저장
-    2. 로그 검색 화면에서 필드 값의 일부 문자열로 검색이 가능
-    ```
 
 ### 2016.08.18
 #### 기능 개선/변경
