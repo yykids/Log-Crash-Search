@@ -3,7 +3,7 @@
 ### 2017.07.20
 #### 기능 개선/변경
 * [SDK] WebGL플랫폼 지원
-    * 수정버전 : [toast-logncrash-unity-2.7.3](/Download/#analytics-log-crash-search)
+    * 수정버전 : [toast-logncrash-unity-2.7.4](/Download/#analytics-log-crash-search)
 * [Console] 크래시 목록 화면 softing option에서 사용자수 제거
 
 #### 버그수정
