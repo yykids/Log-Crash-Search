@@ -22,10 +22,6 @@
     * 수정버전 : [toast-logncrash-android-2.6.2](/Download/#analytics-log-crash-search)
 * [SDK] 에러 내용을 errorCode와 txterrorCode 필드에 담아 전송하도록 변경
     * 수정버전 : [toast-logncrash-logback-sdk-2.2.7](/Download/#analytics-log-crash-search) / [toast-logncrash-log4j-sdk-2.2.7](/Download/#analytics-log-crash-search)
-<<<<<<< HEAD
-
-=======
->>>>>>> alpha
 
 ### 2017.06.19
 #### 버그수정
