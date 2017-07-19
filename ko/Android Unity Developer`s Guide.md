@@ -149,6 +149,15 @@ public static string GetLogType()
 
 	- html > index.html을 참고해 주시기 바랍니다.
 
+### IP Address 수집 설정
+
+```
+public static void SetEnableHost:(bool flag)
+```
+
+- true인 경우 ip address를 구하여 host 필드에 저장합니다.
+- false인 경우 host 필드에 "-" 저장합니다.
+
 ### 로그 전송
 
 ```

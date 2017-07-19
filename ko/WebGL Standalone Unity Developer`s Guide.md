@@ -11,31 +11,23 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 
 - 공통
 	\- Unity3D v4.0 이상
-- iOS
-	\- An Intel-based Mac
-	\- Xcode 6.0 or later
 
 ## 다운로드
 
-[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)에서 iOS-Unity-Mac SDK를 받을 수 있습니다.
+[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)에서 Unity SDK를 받을 수 있습니다.
 
 ```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS-Unity-Mac]
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK]
 ```
 
 ## 설치
 
- - 다운받은 toast-logncrash-ios-unity-sdk.unitypackage 을 더블클릭하여 해당 프로젝트에 Import합니다.
-
+ - 다운받은 toast-logncrash-unity-sdk.unitypackage을 더블 클릭하여 Import합니다.
 
 ### 샘플 설명
 
 샘플의 실행은 Assets > LogNCrash > Sample > SampleScene을 더블클릭하여 실행합니다.  
 샘플에는 초기화, 로그 전송, 에러 발생에 대한 예제가 기술되어 있습니다.
-
-### 헤더 파일 추가
-
-iOS Unity 환경에서 사용하기 위해서는 'TLCLogUnity.h' 파일을 추가 합니다.
 
 ## 사용 예제
 
@@ -69,8 +61,7 @@ namespace Toast.LogNCrash
 ```
 
 2. Script를 통한 초기화
-
-LogNCrash.Initialize에 파라미터를 입력하여 초기화를 시도 합니다. 파라미터는 서버 주소, 앱키, 버전, 포트, PLCrashreporter Enable, Send Thread Lock 실행 여부에 대한 정보를 넘겨줌니다.
+LogNCrash.Initialize에 파라미터를 입력하여 초기화를 시도 합니다. 파라미터는 서버 주소, 앱키, 버전, 포트, Send Thread Lock 실행 여부에 대한 정보를 넘겨줌니다.
 
 ```
 using Toast.LogNCrash;
@@ -80,7 +71,7 @@ namespace Toast.LogNCrash
 	{
 		void Start ()
 		{
-			LogNCrash.Initialize ("http://api-logncrash.cloud.toast.com", "appkey", "1.0.0", 80, true, true);
+			LogNCrash.Initialize ("http://api-logncrash.cloud.toast.com", "appkey", "1.0.0", 80,  true);
 			LogNCrash.StartSendThread ();
 		}
 	}
@@ -91,7 +82,6 @@ namespace Toast.LogNCrash
 - URL : 콜렉터 주소, http, https의 콜렉터 정보를 설정
 - Version : 로그 버전
 - Port : 프로토콜에 따라 80, 443을 설정
-- PLCrashreporter Enable : PLCrashrepoter의 사용 여부를 결정합니다.
 - SendThreadLock : true인 경우 발생한 로그들은 StartSendThread가 호출되기 전까지 서버에 전송하지 않고, 큐에 저장합니다. 단 Native Crash가 발생한 경우 ThreadLock을 해제하고 로그를 전송합니다.
 
 ## 상세 API
@@ -130,15 +120,6 @@ public static void RemoveAllCustomFields()
         - @logType
 	- custom filed의 값이 NULL이나 비어있는 경우, SDKs 는 해당 필드를 server로 전송 하지 않습니다.
 
-### IP Address 수집 설정
-
-```
-		public static SetEnableHost(bool flag)
-```
-
-	- true  : ip address를 구하여 host 필드에 저장합니다.
-	- false : ip address를 구하지 않습니다.
-
 ### 기본 설정 관리
 
 ```
@@ -164,7 +145,17 @@ public static string GetLogType()
 	- Send Debug Warning : 사용자가 발생시킨 WARN 레벨의 로그를 전송 합니다.
 
 ### API 사용 예제
-	- html > index.html을 참고해 주시기 바랍니다.
+
+- html > index.html을 참고해 주시기 바랍니다.
+
+### IP Address 수집 설정
+
+```
+public static void SetEnableHost:(bool flag)
+```
+
+- true인 경우 ip address를 구하여 host 필드에 저장합니다.
+- false인 경우 host 필드에 "-" 저장합니다.
 
 ### 로그 전송
 
@@ -189,35 +180,6 @@ public static void Error(string strMsg)
 	- strMsg: string
 		- [in] 전송할 log 메세지
 
-### Handled Exception
-
-```
-//send Handled info log message
-public static void Info(string strMsg, Exception e)
-
-//send Handled debug log message
-public static void Debug(string strMsg, Exception e)
-
-//send Handled warn log message
-public static void Warn(string strMsg, Exception e)
-
-//send Handled fatal log message
-public static void Fatal(string strMsg, Exception e)
-
-//send Handled error log message
-public static void Error(string strMsg, Exception e)
-```
-
-```
-try{
-	// Exception code
-}catch(Exception e){
-	LogNCrash.Info("handled exception message", e)
-}
-```
-
-- try&catch에서 발생한 Exception을 전송합니다.
-
 ### 크래시 콜백
 
 ```
@@ -228,8 +190,10 @@ public void Crash_Send_Complete_Callback(string message) {
 void Start() {
 	LogNCrashCallBack.ExceptionDelegate += Crash_Send_Complete_Callback;
 }
+
 ```
-- ExceptionDelegate는 Unity CSharp에서 발생한 Crash를 서버로 전송한 이후 호출되는 콜백 입니다.<br>
+
+ExceptionDelegate는 Unity CSharp에서 발생한 Crash를 서버로 전송한 이후 호출되는 콜백 입니다.
 네이티브 Crash의 경우 호출되지 않습니다.
 
 ### 유저 아이디 설정
@@ -238,108 +202,88 @@ void Start() {
 public static void SetUserId(string userID)
 public static string GetUserID()
 ```
+
 - 사용자별 통계 자료를 얻으려면 반드시 설정해주어야 합니다.
 - Parameter
 	- userID: string
-		- [in] 각 사용자를 구분할 user id
+		- [in] 각 사용자를 구분할 user id.
 
 ### 중복 제거 모드 설정
-
-2.4.0 이상 SDK 부터 일반 로그에 중복 제거 로직이 적용되었습니다. 초기화 시 중복 제거 로직이 활성화됩니다.
-
 일반 로그의 경우 body와 logLevel이 같은 로그가 발생한 경우 전송하지 않습니다.
-
 크래시 로그의 경우 stackTrace와 condition 값이 같은 로그가 발생한 경우 전송하지 않습니다.
-
 원하지 않는 경우 초기화 이후, 아래 함수를 통해 기능을 비활성화시킬 수 있습니다.
 
 ```
-public static void SetDeduplicate(bool flag)
+	public static void SetDeduplicate(bool flag)
 ```
 
-true :(Default 값) 중복 제거 로직 활성화<br>
-false :  중복 제거 로직 비활성화
+ - true : (Default 값) 중복 제거 로직 활성화
+ - false : 중복 제거 로직 비활성화
 
-## iOS build 하기
+## build 하기
 
 1.File->Build Settings 클릭.
 
-![](http://static.toastoven.net/prod_logncrash/image023.png)
+![](http://static.toastoven.net/prod_logncrash/unity_5.png)
 
-![](http://static.toastoven.net/prod_logncrash/image024.png)
+ - PC, Mac & Linux Standalone Platform 선택 한 뒤 Player Settings 클릭합니다.
 
-- iOS Platform를 선택 한 뒤 Player Settings 클릭합니다.
+![](http://static.toastoven.net/prod_logncrash/unity_10.png)
 
-![](http://static.toastoven.net/prod_logncrash/image025.png)
+2.Build settings에서 Build And Run 클릭합니다.
 
-- Target iOS Version를 설정하고, Simulator를 사용하는 경우 SDK Version에서 Simulator SDK를, device를 사용하는 경우 Device SDK를 선택하고 Build settings의 Build 버튼을 클릭합니다.
+## WebGL 적용
 
-2.Build된 프로젝트가 저장될 경로를 선택 하고 Save를 선택하면 Unity에서 Xcode project를 생성합니다.
+### 지원 프로토콜
+ - Unity WebGL 환경에서 Log&Crash를 초기화 하는 경우, Collector 주소로 https를 지정해야 합니다.
+ - http의 경우 보안상의 이유로 지원하지 않습니다.
 
-![](http://static.toastoven.net/prod_logncrash/image026.png)
+### 지원하지 않는 API
+ - WebGL SDK에서는 asm.js이 try-catch를 지원하지 않기 때문에 Handled Exception을 지원하지 않습니다.
 
-![](http://static.toastoven.net/prod_logncrash/image027.png)
-
-3.생성된 Xcode project를 Xcode에서 엽니다.
-
-
-## iOS에서 ATS(App transport Security)추가 하기
-- ATS는 iOS9,OS X 10.11에서 도입된 앱과 네트워크 간의 안전한 통신을 보장하기 위한 기능으로 안전하게 암호화된 https통신만 허용하고 안전하지 않는 수준의 https/http  통신을 차단하는 기능로, Log&Crash Search 에서는 http 프로토콜을 사용하여 통신을 시도중으로 info.plist에 아래와 같은 설정을 추가하셔야 합니다.
-
-자세한 설정은 아래 링크를 참고하세요
-- https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html
-
-
-1.전체 http를 허용하는 방법
+### WebGL 지원 API
+ - 중복 제거 로그 큐의 최대 사이즈를 지정합니다.
 
 ```
-<key> NSAppTransportSecurity </key>
-<dict>
-    <key> NSAllowsArbitraryLoads </key>
-   <true />
-</dict>
+LogNCrash.setDuplciateQueueSize (100);
 ```
 
-2.특정 도메인을 허용하는 방법
+ - BulkMessage 사이즈의 최대 사이즈를 지정합니다.
 
 ```
-<key> NSAppTransportSecurity </key>
-<dict>
-    <key> NSExceptionDomains </key>
-    <dict>
-           <key> api-logncrash.cloud.toast.com </key>
-            <dict>
-		 <key>NSTemporaryExceptionAllowsInsecureHttpLoads </key>
-		 <true />
-	    </dict>
-
-	   <key> setting-logncrash.cloud.toast.com </key>
-            <dict>
-		 <key>NSTemporaryExceptionAllowsInsecureHttpLoads </key>
-		 <true />
-	    </dict>
-
-    </dict>
-</dict>
+LogNCrash.setMaximumBulkMessageSize (1024 * 512); // 512 KB
 ```
 
-3.ATS 자동 설정 기능
+- 로그 전송 실패 시, 저장할 수 있는 최대 파일의 수를 지정합니다.
 
-- Assets > Toast > LogNCrash > Editor > post_process.py 파일에는 iOS 빌드 시 info.plist에 api-logncrash.cloud.toast.com와 setting-logncrash.cloud.toast.com를 자동으로 추가하는 코드가 삽입되어 있습니다.
+```
+LogNCrash.setMaximumFileCount (100);
+```
 
-## iOS Native Crash 해석 하기
-- Unity iOS의 Crash는 Unity Engine에서 발생하는 Crash와 iOS Naitve에서 발생하는 Crash로 구분됩니다.
-- Unity에서 발생한 Crash의 경우 Crash 정보가 String으로 수집되기 때문에 Symbol 파일이 필요하지 않습니다.
-- iOS에서 발생한 Crash의 경우 Crash 정보가 주소 값으로 수집되기 때문에 이를 해석하기 위한 Symbol 파일이 필요합니다.
-- Xcode를 실행하고 Windows > Organizer를 클릭합니다.
-![](http://static.toastoven.net/prod_logncrash/ios_12.png)
-- 빌드한 결과물을 클릭한 뒤, 오른쪽 버튼을 클릭하여 Show in Finder로 클릭합니다.
-![](http://static.toastoven.net/prod_logncrash/ios_13.png)
-- 결과물을 클릭하고 오른쪽 버튼을 눌러 '패키지 내용보기'를 클릭합니다.
-![](http://static.toastoven.net/prod_logncrash/ios_14.png)
-- .dSYM을 .zip으로 압축하여 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일 탭에 등록합니다.
-![](http://static.toastoven.net/prod_logncrash/ios_15.png)
+- 전송 로그 큐의 최대 사이즈를 지정합니다.
 
-## iOS Unity Crash 주의 사항
+```
+LogNCrash.setMaximumSendCount (100);
+```
 
-- 심볼이 없어 해석되지 않은 Crash 로그는 일반 로그로 취급됩니다.
+### Crash 수집을 위한 설정
+- WebGL SDK에서 Crash를 수집하기 위해서는 PlayerSettings > Publishing Settings > Enable Exception 옵션이 Full로 설정되어 있어야 합니다.
+
+### 주의 사항
+- Log&Crash는 메모리를 전송하는 과정에서, 최대 2000개의 SendQueue에 로그를 저장합니다.
+- Log&Crash는 로그의 중복을 제거하기 위해, 최대 500개의 Duplicate 로그를 저장합니다.
+- Log&Crash는 전송에 실패한 로그를 재전송 하기 위해, 500개의 실패 로그를 저장합니다.
+- 따라서 충분한 메모리가 필요합니다.
+- 서버의 응답속도를 측정하는 경우 대상 서버에 Cross-Domain 설정이 되어있어야 합니다.
+
+## WebGL Build 하기
+
+1. File->Build Settings 클릭합니다.
+
+![](http://static.toastoven.net/prod_logncrash/unity_5.png)
+
+- WebGL Platform 선택 한 뒤 Player Settings 클릭합니다.
+
+![](http://static.toastoven.net/prod_logncrash/unity_11.png)
+
+2. Build settings에서 Build And Run 클릭합니다.

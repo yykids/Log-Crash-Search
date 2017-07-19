@@ -1,5 +1,14 @@
 ## Analytics > Log&Crash Search > Release Notes
 
+### 2017.07.20
+#### 기능 개선/변경
+* [SDK] WebGL플랫폼 지원
+    * 수정버전 : [toast-logncrash-unity-2.7.4](/Download/#analytics-log-crash-search)
+* [Console] 크래시 목록 화면 softing option에서 사용자수 제거
+
+#### 버그수정
+* [Console] 크래시 사용자 레이아웃 버그 수정
+
 ### 2017.06.22
 #### 버그수정
 * [SDK] 중복제어 큐가 최대 사이즈가 넘은 경우, LFU 동작의 Delete 버그로 인해 Crash가 발생하는 현상 수정
