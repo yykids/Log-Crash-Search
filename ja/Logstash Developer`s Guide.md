@@ -30,7 +30,7 @@ Logstash를 이용하여 Log&Crash Collector Log를 수집하는 방법을 설�
 input {
 ...
   file {
-	path => [ "/home1/irteam/apps/nelo2/collector/logs/*" ]
+	path => [ "/root/apps/nelo2/collector/logs/*" ]
   }
 }
 ```
@@ -121,11 +121,11 @@ Logstash를 이용하여 Apache Access/Error Log를 수집하는 방법을 설�
 input {
 ...
   file {
-	path => [ "/home1/irteam/logs/apache/access.log.*" ]
+	path => [ "/root/logs/apache/access.log.*" ]
 	type => "apache-access"
   }
   file {
-	path => [ "/home1/irteam/logs/apache/error.log.*" ]
+	path => [ "/root/logs/apache/error.log.*" ]
 	type => "apache-error"
   }
  ...
@@ -145,7 +145,7 @@ filter {
   if [type] == "apache-error" {
 	grok {
 	  match => { "message" => "%{APACHEERRORLOG}" }
-	  #patterns_dir => [ "/home1/irteam/kwonshin/logstash-1.5.6/my-pat.grok" ]
+	  #patterns_dir => [ "/root/kwonshin/logstash-1.5.6/my-pat.grok" ]
 	  patterns_dir => [ "./my-pat.grok" ]
 	}
   }
