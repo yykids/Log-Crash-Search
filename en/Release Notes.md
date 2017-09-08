@@ -1,5 +1,31 @@
 ## Analytics > Log&Crash Search > Release Notes
 
+### 2017.09.21
+#### 기능 개선/변경
+* [SDK] 초기화 과정에서 CrashHandler를 자동으로 등록하지 않는 함수 추가 (MultihandlerSample 참고)
+* [SDK] 외부에서 등록한 CrashHandler를 통해 Unity Crash를 전송할 수 있도록 변경 (MultihandlerSample 참고)
+* [SDK] Optimization 스크립트를 통한 필요없는 SDK 제거 ( Doc 문서 참고 )
+* [SDK] 사용자가 Settings 객체를 원하는 시점에 저장할 수 있도록 변경
+    * 수정버전 : [toast-logncrash-unity-2.8.2](/Download/#analytics-log-crash-search)
+* [Console] 로그 서치 시간 출력 방식 변경 (ms 단위 제거 및 timezone 명시)
+* [Console] 특정 필드의 distinct count가 100을 넘으면 TOTAL count를 출력
+* [Console] 트렌드 페이지에서 crash를 겪은 사용자 UI 삭제
+* [Console] 크래시 알람 메일 포맷 변경(dmpData 삭제 및 DmpReport formatting)
+* [Console] Unity 크래시 분류 기준 변경
+    * Unity 발생되는 ERROR 레벨의 로그들에 대해서 크래시로 분류 하지 않도록 수정됨
+        * Log Search 화면에서 검색 및 조회 가능
+
+#### 버그수정
+* [SDK] initialize를 여러번 호출하는 경우 SessionID가 갱신 되는 문제 수정
+* [SDK] BackKey로 Activity를 종료한 경우, SDK에서 마지막 Activity 상태를 저장하고 있어 Activity가 메모리에서 해제 되지 않는 문제 수정
+    * 수정버전 : [toast-logncrash-android-2.6.3](/Download/#analytics-log-crash-search) / [toast-logncrash-unity-2.8.2](/Download/#analytics-log-crash-search)
+* [SDK] PLCrashReporter가 Crash File을 생성하지 못하는 경우, 'EMPTY CRASH FILE'을 DmpData에 넣어 전송하도록 수정
+    * 수정버전 : [toast-logncrash-ios-mac-sdk-2.6.7](/Download/#analytics-log-crash-search) [toast-logncrash-unity-2.8.2](/Download/#analytics-log-crash-search)
+* [SDK] iOS SDK에서 Native Crash 발생 시, CrashStyle, SymMethod가 잘못 표기되는 문제 수정
+* [SDK] WebGL에서UserID가 설정되지 않던 문제 수정
+* [SDK] unity ios wrapper class에서 https 프로토콜이 지정되지 않던 문제 수정
+    * 수정버전 : [toast-logncrash-unity-2.8.2](/Download/#analytics-log-crash-search)
+
 ### 2017.07.20
 #### 기능 개선/변경
 * [SDK] WebGL플랫폼 지원
