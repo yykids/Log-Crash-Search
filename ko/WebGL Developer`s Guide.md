@@ -11,8 +11,6 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 
 - 공통
 	\- Unity3D v4.0 이상
-- Android
-	\- Andorid SDK 2.3.3 API 이상
 
 ## 다운로드
 
@@ -24,8 +22,7 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 
 ## 설치
 
-* 다운받은 toast-logncrash-android-unity-sdk.unitypackage을 더블 클릭하여 Import합니다.
-
+ - 다운받은 toast-logncrash-unity-sdk.unitypackage을 더블 클릭하여 Import합니다.
 
 ### 샘플 설명
 
@@ -45,6 +42,7 @@ Unity 메뉴바에서 LogNCrash> Edit Settings를 선택하여 LogNCrashSettings
 - Send Error : Unity에서 발생한 Error 로그의 수집 여부
 - Send Debug Warning : Unity에서 사용자가 Debug 객체를 이용해 발생시킨 Warning 로그의 수집 여부
 - Send Debug Error : Unity에서 사용자가 Debug 객체를 이용해 발생시킨 Error 로그의 수집 여부
+- PLCrashreporter Enable : PLCrashrepoter는 Native 영역에서 발생한 Crash를 탐지하기 위해 추가된 라이브러리 입니다. Native Crash 탐지를 원하는 경우에만 사용합니다.
 
 LogNCrashSettings에 정보를 입력하고 LogNCrash객체의 파라미터가 없는 Initialize 함수를 호출하면 LogNCrashSettings에서 정보를 읽어와 초기화를 시도 합니다.
 
@@ -119,9 +117,8 @@ public static void RemoveAllCustomFields()
         - NeloSDK
         - NetworkType
         - DeviceModel
-		- DeviceID
         - @logType
-	- custom filed의 값이 NULL이나 비어있는 경우, SDK 는 해당 필드를 server로 전송 하지 않습니다.
+	- custom filed의 값이 NULL이나 비어있는 경우, SDKs 는 해당 필드를 server로 전송 하지 않습니다.
 
 ### 기본 설정 관리
 
@@ -140,6 +137,7 @@ public static string GetLogType()
 - 로그타입을 구하거나 새로 지정합니다.
 
 ### LEVEL 필터
+
 - Unity SDK에서는 Default 설정으로 FATAL 레벨의 로그만 전송 합니다. Error, Warning 레벨의 로그에는 변수값(시간, 경로, 진행도 등)의 삽입으로 인해 많은 로그들이 발생 할 수 있습니다.
 	- Send Error : 시스템에서 발생한 ERROR 레벨의 로그를 전송 합니다.
 	- Send Warning : 시스템에서 발생한 WARN 레벨의 로그를 전송 합니다.
@@ -148,7 +146,7 @@ public static string GetLogType()
 
 ### API 사용 예제
 
-	- html > index.html을 참고해 주시기 바랍니다.
+- html > index.html을 참고해 주시기 바랍니다.
 
 ### IP Address 수집 설정
 
@@ -182,36 +180,7 @@ public static void Error(string strMsg)
 	- strMsg: string
 		- [in] 전송할 log 메세지
 
-### Handled Exception
-
-```
-//send Handled info log message
-public static void Info(string strMsg, Exception e)
-
-//send Handled debug log message
-public static void Debug(string strMsg, Exception e)
-
-//send Handled warn log message
-public static void Warn(string strMsg, Exception e)
-
-//send Handled fatal log message
-public static void Fatal(string strMsg, Exception e)
-
-//send Handled error log message
-public static void Error(string strMsg, Exception e)
-```
-
-```
-try{
-	// Exception code
-}catch(Exception e){
-	LogNCrash.Info("handled exception message", e)
-}
-```
-
-- try&catch에서 발생한 Exception을 전송합니다.
-
-### 크래시 콜백  
+### 크래시 콜백
 
 ```
 public void Crash_Send_Complete_Callback(string message) {
@@ -224,7 +193,7 @@ void Start() {
 
 ```
 
-- ExceptionDelegate는 Unity CSharp에서 발생한 Crash를 서버로 전송한 이후 호출되는 콜백 입니다.<br>
+ExceptionDelegate는 Unity CSharp에서 발생한 Crash를 서버로 전송한 이후 호출되는 콜백 입니다.
 네이티브 Crash의 경우 호출되지 않습니다.
 
 ### 유저 아이디 설정
@@ -233,59 +202,79 @@ void Start() {
 public static void SetUserId(string userID)
 public static string GetUserID()
 ```
+
 - 사용자별 통계 자료를 얻으려면 반드시 설정해주어야 합니다.
 - Parameter
 	- userID: string
-		- [in] 각 사용자를 구분할 user id
+		- [in] 각 사용자를 구분할 user id.
 
 ### 중복 제거 모드 설정
-
-2.4.0 이상 SDK 부터 일반 로그에 중복 제거 로직이 적용되었습니다. 초기화 시 중복 제거 로직이 활성화됩니다.
-
 일반 로그의 경우 body와 logLevel이 같은 로그가 발생한 경우 전송하지 않습니다.
-
 크래시 로그의 경우 stackTrace와 condition 값이 같은 로그가 발생한 경우 전송하지 않습니다.
-
 원하지 않는 경우 초기화 이후, 아래 함수를 통해 기능을 비활성화시킬 수 있습니다.
 
 ```
-public static void SetDeduplicate(bool flag)
+	public static void SetDeduplicate(bool flag)
 ```
 
-true :(Default 값) 중복 제거 로직 활성화<br>
-false :  중복 제거 로직 비활성화
+ - true : (Default 값) 중복 제거 로직 활성화
+ - false : 중복 제거 로직 비활성화
 
-## Android Build 하기
+## WebGL API
 
-1.File->Build Settings 클릭합니다.
+### 지원하지 않는 API
 
-![](http://static.toastoven.net/prod_logncrash/image023.png)
+- WebGL SDK에서는 asm.js이 try-catch를 지원하지 않기 때문에 Handled Exception을 지원하지 않습니다.
 
-![](http://static.toastoven.net/prod_logncrash/image028.png)
+### WebGL 전용 API
 
-- Android Platform 선택 한 뒤 Player Settings 클릭합니다.
+- 중복 제거 로그 큐의 최대 사이즈를 지정합니다.
 
-![](http://static.toastoven.net/prod_logncrash/image029.png)
+```
+LogNCrash.setDuplciateQueueSize (100);
+```
 
-- Internet Access는 Require, Write Access는 External(SDCard)로 설정합니다.
+- BulkMessage 사이즈의 최대 사이즈를 지정합니다.
+
+```
+LogNCrash.setMaximumBulkMessageSize (1024 * 512); // 512 KB
+```
+
+- 로그 전송 실패 시, 저장할 수있는 최대 파일의 수를 지정합니다.
+
+```
+LogNCrash.setMaximumFileCount (100);
+```
+
+- 전송 로그 큐의 최대 사이즈를 지정합니다.
+
+```
+LogNCrash.setMaximumSendCount (100);
+```
+
+### Crash 수집을 위한 설정
+
+- WebGL SDK에서 Crash를 수집하기 위해서는 PlayerSettings > Publishing Settings > Enable Exception 옵션이 Full로 설정되어 있어야 합니다.
+
+### 주의 사항
+
+- Log&Crash는 메모리를 전송하는 과정에서, 최대 2000개의 SendQueue에 로그를 저장합니다.
+- Log&Crash는 로그의 중복을 제거하기 위해, 최대 500개의 Duplicate 로그를 저장합니다.
+- Log&Crash는 전송에 실패한 로그를 재전송 하기 위해, 500개의 실패 로그를 저장합니다.
+- 따라서 충분한 메모리가 필요합니다.
+- 서버의 응답속도를 측정하는 경우 대상 서버에 Cross-Domain 설정이 되어있어야 합니다.
+
+## WebGL Build 하기
+
+1.File->Build Settings 클릭.
+
+![](http://static.toastoven.net/prod_logncrash/gl_5.png)
+
+ - WebGL Platform 선택 한 뒤 Player Settings 클릭합니다.
+
+![](http://static.toastoven.net/prod_logncrash/gl_11.png)
 
 2.Build settings에서 Build And Run 클릭합니다.
-
-## Android Unity Crash 해석하기
-
-- Unity의 Crash는 Unity Engine에서 발생하는 Crash와 Android Naitve에서 발생하는 Crash로 구분됩니다.
-
-- Proguard가 적용되지 않은 경우 별도의 Symbol 등록 과정이 필요하지 않습니다.
-
-- Proguard가 적용된 경우 Native 레벨의 Crash 해석를 위하기 위해서는 mapping.txt 파일을 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일 탭에 등록해야 합니다.
-
-- mapping.txt 파일은 proguard 폴더 하위에 생성됩니다.
-<br><br>
-![](http://static.toastoven.net/prod_logncrash/12.png)
-
-## Android Unity Crash 주의 사항
-
-- 심볼이 없어 해석되지 않은 Crash 로그는 일반 로그로 취급됩니다.
 
 ## 외부 CrashHandler 사용하기
 
@@ -316,70 +305,4 @@ void HandleLog(string logString, string stackTrace, LogType type)
 			LogNCrash.unity3dHandleException (logString, stackTrace, type);
 		}
 }
-```
-
-### AssetDataBase를 활용한 빌드 환경 분기
-
-- 메뉴바의 LogNCrash > Edit Settings를 클릭하면 간단한 데이터를 저장할 수 있는AssetDataBase가 생성됩니다.
-- BuildPipeline.BuildPlayer를 통한 Build를 진행하는 경우 LogNCrashSettings.Setter_BuildType와 LogNCrashSettings.Getter_BuildType를 활용하여 빌드 환경을 분기 합니다.
-
-```
-using UnityEditor;
-using UnityEngine;
-using Toast.LogNCrash.Implementation;
-
-public class lncAndroidBuildPipeline: MonoBehaviour
-{
-	[MenuItem("Build/Build Android (Alpha)")]
-	public static void AndroidAlphaBuildScript()
-	{
-		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
-		buildPlayerOptions.scenes = new[] {"Assets/Toast/Sample/Scene/Command/commandScene.unity"};
-		buildPlayerOptions.locationPathName = "AndroidBuild.apk";
-		buildPlayerOptions.target = BuildTarget.Android;
-		buildPlayerOptions.options = BuildOptions.AutoRunPlayer;
-
-		LogNCrashSettings.Setter_BuildType = LogNCrashSettings.BuildType.alpha;
-
-		BuildPipeline.BuildPlayer(buildPlayerOptions);
-	}
-
-	[MenuItem("Build/Build Android (Real)")]
-	public static void AndroidRealBuildScript()
-	{
-		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
-		buildPlayerOptions.scenes = new[] {"Assets/Toast/Sample/Scene/Command/commandScene.unity"};
-		buildPlayerOptions.locationPathName = "AndroidBuild.apk";
-		buildPlayerOptions.target = BuildTarget.Android;
-		buildPlayerOptions.options = BuildOptions.AutoRunPlayer;
-
-		LogNCrashSettings.Setter_BuildType = LogNCrashSettings.BuildType.real;
-
-		BuildPipeline.BuildPlayer(buildPlayerOptions);
-	}
-}
-```
-
-- 명령에 따라 AssetDataBase에 저장된 값을 통해 LogNCrash 동작을 결정합니다.
-
-```
-using Toast.LogNCrash.Implementation;
-
-void Start () {
-		if (LogNCrashSettings.Getter_BuildType == LogNCrashSettings.BuildType.real) {
-			SetReal ();
-		} else if (LogNCrashSettings.Getter_BuildType == LogNCrashSettings.BuildType.alpha) {
-			SetAlpha ();
-		} else {
-			UnityEngine.Debug.Log ("Default Type");
-		}
-}
-```
-
-- build type은 총 5개로 구성되어 있습니다.
-
-```
-public enum BuildType{
-		real, alpha, beta, development, test
-	}
 ```

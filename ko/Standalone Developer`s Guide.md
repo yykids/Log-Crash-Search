@@ -182,35 +182,6 @@ public static void Error(string strMsg)
 	- strMsg: string
 		- [in] 전송할 log 메세지
 
-### Handled Exception
-
-```
-//send Handled info log message
-public static void Info(string strMsg, Exception e)
-
-//send Handled debug log message
-public static void Debug(string strMsg, Exception e)
-
-//send Handled warn log message
-public static void Warn(string strMsg, Exception e)
-
-//send Handled fatal log message
-public static void Fatal(string strMsg, Exception e)
-
-//send Handled error log message
-public static void Error(string strMsg, Exception e)
-```
-
-```
-try{
-	// Exception code
-}catch(Exception e){
-	LogNCrash.Info("handled exception message", e)
-}
-```
-
-- try&catch에서 발생한 Exception을 전송합니다.
-
 ### 크래시 콜백  
 
 ```
@@ -255,37 +226,17 @@ public static void SetDeduplicate(bool flag)
 true :(Default 값) 중복 제거 로직 활성화<br>
 false :  중복 제거 로직 비활성화
 
-## Android Build 하기
+## Build 하기
 
 1.File->Build Settings 클릭합니다.
 
-![](http://static.toastoven.net/prod_logncrash/image023.png)
+![](http://static.toastoven.net/prod_logncrash/csharp_5.png)
 
-![](http://static.toastoven.net/prod_logncrash/image028.png)
+- PC, Mac & Linux Standalone Platform 선택 한 뒤 Player Settings 클릭합니다.
 
-- Android Platform 선택 한 뒤 Player Settings 클릭합니다.
-
-![](http://static.toastoven.net/prod_logncrash/image029.png)
-
-- Internet Access는 Require, Write Access는 External(SDCard)로 설정합니다.
+![](http://static.toastoven.net/prod_logncrash/csharp_10.png)
 
 2.Build settings에서 Build And Run 클릭합니다.
-
-## Android Unity Crash 해석하기
-
-- Unity의 Crash는 Unity Engine에서 발생하는 Crash와 Android Naitve에서 발생하는 Crash로 구분됩니다.
-
-- Proguard가 적용되지 않은 경우 별도의 Symbol 등록 과정이 필요하지 않습니다.
-
-- Proguard가 적용된 경우 Native 레벨의 Crash 해석를 위하기 위해서는 mapping.txt 파일을 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일 탭에 등록해야 합니다.
-
-- mapping.txt 파일은 proguard 폴더 하위에 생성됩니다.
-<br><br>
-![](http://static.toastoven.net/prod_logncrash/12.png)
-
-## Android Unity Crash 주의 사항
-
-- 심볼이 없어 해석되지 않은 Crash 로그는 일반 로그로 취급됩니다.
 
 ## 외부 CrashHandler 사용하기
 
