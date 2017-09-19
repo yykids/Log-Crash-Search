@@ -319,5 +319,5 @@ Symbolication fileが登録されていると、クラッシュログを確認�
 - 一般的なログ、セッションログ、クラッシュログを送信するかどうかを設定できます。
 - 設定を保存した後、APPを再起動すると適用されます。
 
-![[図18 : ログ送信設定]](http://static.toastoven.net/prod_analytics/setting_05_en.png)
+![[図18 : ログ送信設定]](http://static.toastoven.net/prod_logncrash/setting_05_en.png)
 <center>[図18 : ログ送信設定]</center>

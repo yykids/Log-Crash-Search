@@ -319,5 +319,5 @@ Symbolication file이 등록 되어 있어야 크래시 로그를 확인할 수 
 - 일반로그 , 세션 로그, 크래시 로그 각각에 대해 전송 여부를 설정할 수 있습니다.
 - 설정을 저장한 뒤 APP을 재시작 하면 적용됩니다.
 
-![[그림 18 로그 전송 설정]](hhttp://static.toastoven.net/prod_logncrash/setting_06_en.png)
+![[그림 18 로그 전송 설정]](http://static.toastoven.net/prod_logncrash/setting_06_en.png)
 <center>[그림 18 로그 전송 설정]</center>
