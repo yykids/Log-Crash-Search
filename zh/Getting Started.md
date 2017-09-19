@@ -285,7 +285,7 @@ Android, iOS 단말의 크래시 정보는 App Crash Search에서 볼 수 있습
 - Private token: 이슈 트래커를 GitLab으로 선택할 경우 GitLab 사이트의 My profile - Account에서 생성한 token값을 입력합니다.
 - 테스트: 설정이 정상적인지를 체크합니다.
 
-![[그림 15 이슈 트래커 설정]](http://static.toastoven.net/prod_analytics/setting_02_en.png)
+![[그림 15 이슈 트래커 설정]](http://static.toastoven.net/prod_logncrash/setting_02_en.png)
 <center>[그림 15 이슈 트래커 설정]</center>
 
 ### 심볼 파일
@@ -296,10 +296,10 @@ Symbolication file이 등록 되어 있어야 크래시 로그를 확인할 수 
 - Android: 안드로이드 심볼리케이션을 업로드 할 때에는 mapping.txt 파일을 업로드 해야 합니다.
 - Android-NDK: 안드로이드 NDK파일을 업로드 할 때에는 ZIP 압축방법으로 lib.so 파일을 압축하십시오.
 - Windows: Windows 심볼리케이션 파일을 업로드 할때는, ZIP 압축방법으로 BundleName.sym 파일을 압축하십시오.
-- 심볼 파일의 최대 크기는 200MB 입니다.s
+- 심볼 파일의 최대 크기는 200MB 입니다.
 - 안드로이드 NDK 심볼리케이션 파일이 허용하는 최대 파일 사이즈를 초과할 경우 원본 ‘lib.so’ 바이너리 파일의 텍스트 형태 심볼을 포함하고 있는 하나의 ‘lib.so.sym’을 포함하는 ZIP 파일의 형태로 업로드 하실 수 있습니다.
 
-![[그림 16 심볼 파일 관리]](http://static.toastoven.net/prod_analytics/setting_03_en.png)
+![[그림 16 심볼 파일 관리]](http://static.toastoven.net/prod_logncrash/setting_03_en.png)
 <center>[그림 16 심볼 파일 관리]</center>
 
 ### 로그 보관 기간
@@ -309,7 +309,7 @@ Symbolication file이 등록 되어 있어야 크래시 로그를 확인할 수 
 - 로그 보관 기간은 1개월/2개월/3개월/6개월/1년 중에서 선택할 수 있으며 월 1회에 한해 변경 가능합니다.
 - 로그 보관 기간이 지난 데이터는 익일 새벽 삭제됩니다.
 
-![[그림 17 로그 보관 기간]](http://static.toastoven.net/prod_analytics/setting_04_en.png)
+![[그림 17 로그 보관 기간]](http://static.toastoven.net/prod_logncrash/setting_04_en.png)
 <center>[그림 17 로그 보관 기간]</center>
 
 ### 로그 전송 설정
@@ -319,5 +319,5 @@ Symbolication file이 등록 되어 있어야 크래시 로그를 확인할 수 
 - 일반로그 , 세션 로그, 크래시 로그 각각에 대해 전송 여부를 설정할 수 있습니다.
 - 설정을 저장한 뒤 APP을 재시작 하면 적용됩니다.
 
-![[그림 18 로그 전송 설정]](http://static.toastoven.net/prod_analytics/setting_06_en.png)
+![[그림 18 로그 전송 설정]](hhttp://static.toastoven.net/prod_logncrash/setting_06_en.png)
 <center>[그림 18 로그 전송 설정]</center>

@@ -16,7 +16,7 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 
 ## 다운로드
 
-[Toast Cloud](http://docs.cloud.toast.com/en/Download/)에서 Android SDK를 받을 수 있습니다.
+[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)에서 Unity SDK를 받을 수 있습니다.
 
 ```
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK]
@@ -119,8 +119,9 @@ public static void RemoveAllCustomFields()
         - NeloSDK
         - NetworkType
         - DeviceModel
+		- DeviceID
         - @logType
-	- custom filed의 값이 NULL이나 비어있는 경우, SDKs 는 해당 필드를 server로 전송 하지 않습니다.
+	- custom filed의 값이 NULL이나 비어있는 경우, SDK 는 해당 필드를 server로 전송 하지 않습니다.
 
 ### 기본 설정 관리
 
@@ -148,6 +149,15 @@ public static string GetLogType()
 ### API 사용 예제
 
 	- html > index.html을 참고해 주시기 바랍니다.
+
+### IP Address 수집 설정
+
+```
+public static void SetEnableHost:(bool flag)
+```
+
+- true인 경우 ip address를 구하여 host 필드에 저장합니다.
+- false인 경우 host 필드에 "-" 저장합니다.
 
 ### 로그 전송
 
@@ -276,3 +286,100 @@ false :  중복 제거 로직 비활성화
 ## Android Unity Crash 주의 사항
 
 - 심볼이 없어 해석되지 않은 Crash 로그는 일반 로그로 취급됩니다.
+
+## 외부 CrashHandler 사용하기
+
+- 기존 SDK에서는 초기화 단계에서 logMessageReceived 등을 사용하여 Unity의 CrashHandler를 LogNCrash 전용 Callback 함수에 등록하여 사용하였습니다.
+- 외부 CrashHandler와 같이 사용하는 경우가 있어, 같이 적용할 수 있도록 구조를 수정하였습니다. ( MultihandlerSample 참고 )
+
+### 적용방법
+
+- LogNCrash.SetCrashHandler 함수에 false를 파라미터로 넘겨 자동으로 CrashHandler가 등록되는 것을 막습니다.
+- 반드시 Initialize 함수 이전에 설정되어야 합니다.
+
+```
+LogNCrash.SetCrashHanlder (false);
+LogNCrash.Initialize ();
+```
+
+- 이후 LogNCrash.unity3dHandleException 함수를 사용하여 CrashHandler의 파라미터를 LogNCrash 객체로 넘겨줍니다.
+
+```
+void OnEnable()
+{
+		Application.logMessageReceived += HandleLog;
+}
+
+void HandleLog(string logString, string stackTrace, LogType type)
+{
+		if (LogNCrash.isInitialized) {
+			LogNCrash.unity3dHandleException (logString, stackTrace, type);
+		}
+}
+```
+
+### AssetDataBase를 활용한 빌드 환경 분기
+
+- 메뉴바의 LogNCrash > Edit Settings를 클릭하면 간단한 데이터를 저장할 수 있는AssetDataBase가 생성됩니다.
+- BuildPipeline.BuildPlayer를 통한 Build를 진행하는 경우 LogNCrashSettings.Setter_BuildType와 LogNCrashSettings.Getter_BuildType를 활용하여 빌드 환경을 분기 합니다.
+
+```
+using UnityEditor;
+using UnityEngine;
+using Toast.LogNCrash.Implementation;
+
+public class lncAndroidBuildPipeline: MonoBehaviour
+{
+	[MenuItem("Build/Build Android (Alpha)")]
+	public static void AndroidAlphaBuildScript()
+	{
+		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+		buildPlayerOptions.scenes = new[] {"Assets/Toast/Sample/Scene/Command/commandScene.unity"};
+		buildPlayerOptions.locationPathName = "AndroidBuild.apk";
+		buildPlayerOptions.target = BuildTarget.Android;
+		buildPlayerOptions.options = BuildOptions.AutoRunPlayer;
+
+		LogNCrashSettings.Setter_BuildType = LogNCrashSettings.BuildType.alpha;
+
+		BuildPipeline.BuildPlayer(buildPlayerOptions);
+	}
+
+	[MenuItem("Build/Build Android (Real)")]
+	public static void AndroidRealBuildScript()
+	{
+		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+		buildPlayerOptions.scenes = new[] {"Assets/Toast/Sample/Scene/Command/commandScene.unity"};
+		buildPlayerOptions.locationPathName = "AndroidBuild.apk";
+		buildPlayerOptions.target = BuildTarget.Android;
+		buildPlayerOptions.options = BuildOptions.AutoRunPlayer;
+
+		LogNCrashSettings.Setter_BuildType = LogNCrashSettings.BuildType.real;
+
+		BuildPipeline.BuildPlayer(buildPlayerOptions);
+	}
+}
+```
+
+- 명령에 따라 AssetDataBase에 저장된 값을 통해 LogNCrash 동작을 결정합니다.
+
+```
+using Toast.LogNCrash.Implementation;
+
+void Start () {
+		if (LogNCrashSettings.Getter_BuildType == LogNCrashSettings.BuildType.real) {
+			SetReal ();
+		} else if (LogNCrashSettings.Getter_BuildType == LogNCrashSettings.BuildType.alpha) {
+			SetAlpha ();
+		} else {
+			UnityEngine.Debug.Log ("Default Type");
+		}
+}
+```
+
+- build type은 총 5개로 구성되어 있습니다.
+
+```
+public enum BuildType{
+		real, alpha, beta, development, test
+	}
+```

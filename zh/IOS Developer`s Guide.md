@@ -16,7 +16,7 @@ Log & Crash iOS/Mac SDK 특·장점은 다음과 같습니다.
 
 ## 다운로드
 
-[Toast Cloud](http://docs.cloud.toast.com/zh/Download/)에서 iOS-Unity-Mac SDK를 받을 수 있습니다.
+[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)에서 iOS-Unity-Mac SDK를 받을 수 있습니다.
 
 ```
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS/Mac SDK] 클릭
@@ -35,16 +35,6 @@ libs/Mac OS X               ; Mac SDK 라이브러리
 sample/LogNCrashiOSSample   ; iOS SDK 샘플
 sample/LogNCrashMacSample   ; Mac SDK 샘플
 ```
-
-### libs
-
-- iOS
-	- iOS 용 logncrash framework
-- Mac OS X
-	- Mac OS X 용 logncrash framework
-- Unity
-	- Unity 용 logncrash framework
-	- Unity package 포함
 
 ### 샘플 설명
 
@@ -137,6 +127,17 @@ TLCLog class에서 제공하는 기능들을 설명합니다.
 ```
 		(void) startSendThread;
 ```
+
+- SendThread의 잠금 상태를 해제합니다.
+
+### Host 잠금 설정
+
+```
+	(void) enableHost;
+```
+
+- true  : ip address를 구하여 host 필드에 저장합니다.
+- false : ip address를 구하지 않습니다.
 
 ### 로그 보내기
 
@@ -234,3 +235,9 @@ false : 중복 제거 로직 비활성화
 
 - 결과물을 클릭하고 오른쪽 버튼을 눌러 '패키지 내용보기'를 클릭합니다.
 ![](http://static.toastoven.net/prod_logncrash/14.png)
+
+- .dSYM을 .zip으로 압축하여 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일 탭에 등록합니다.
+
+## iOS Unity Crash 주의 사항
+
+- 심볼이 없어 해석되지 않은 Crash 로그는 일반 로그로 취급됩니다.
