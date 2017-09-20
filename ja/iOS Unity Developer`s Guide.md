@@ -1,4 +1,4 @@
-## Analytics > Log&Crash Search > Unity Developer's Guide
+## Analytics > Log&Crash Search > Unity iOS Developer's Guide
 
 Log & Crash Unity SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。  
 Log & Crash Unity SDKは次のような特徴があります。
