@@ -1,5 +1,12 @@
 ## Analytics > Log&Crash Search > Release Notes
 
+### 2017.10.26
+#### 기능 개선/변경
+* [Console] 새로운 크래시 발생 시 알람 설정 기능 추가
+
+### 버그수정
+* [console] 세션 만료 시 에러 메시지를 노출하도록 수정
+
 ### 2017.09.21
 #### 기능 개선/변경
 * [SDK] 초기화 과정에서 CrashHandler를 자동으로 등록하지 않는 함수 추가 (MultihandlerSample 참고)
