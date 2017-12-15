@@ -191,17 +191,74 @@ Android, iOS 단말의 크래시 정보는 App Crash Search에서 볼 수 있습
 [Analytics] > [Log & Crash Search] > [Alarms] 클릭
 ```
 
-### 로그 알람 이력
+### 로그 알람 설정
+
+로그 알람에 대한 모든 기능을 수행할 수 있는 페이지입니다.
+
+- 알람은 발생수에 따른 알람과, 로그의 증감률에 따른 알람으로 구분됩니다.
+- 알람 수신을 원하는 로그유형(Lucene 쿼리)을 등록하고 해당 로그가 발생하면 조건에 따라 알람을 발송합니다.
+- [발생수], [증감률] 두 가지 유형의 알람이 있습니다.
+- [알람 추가] 버튼을 누르면 알람을 등록할 수 있습니다.
+
+### 로그 알람 조회
+- 구체적인 알람 내용을 보거나 수정할 수 있습니다.
+- 알람을 삭제할 수 있습니다.
+- 알람을 켜거나 끌 수 있습니다.
+- 알람에 해당하는 로그(Lucene 쿼리)를 조회할 수 있습니다.
+- 알람 발생 내역을 확인할 수 있습니다.
+
+![[그림 11 로그 알람 조회]](http://static.toastoven.net/prod_analytics/new_alarm_1_en.png)
+<center>[그림 11 로그 알람 조회]</center>
+
+### 발생 수 알람
+- 알람 설정 방법은 다음과 같습니다.
+    - 알람 제목: 알람 설정 목록에 표시될 이름을 입력합니다.
+    - 검색 조건: 알람 수신을 원하는 로그유형을 Lucene 쿼리로 입력합니다.
+    - 알람 규칙: '임계값'에 적용될 부등호를 선택합니다.
+    - 임곗값: '검색 조건'에 해당하는 로그가 '알람 규칙' 부등호에 따라 '임계값' 개수만큼 발생하면 알람을 발송합니다.
+    - 발생 주기: 분 단위로 입력하며, 입력한 시간 값 내에 로그가 '임계값'만큼 발생해야 알람을 발송합니다.
+    - 스누즈: 분 단위로 입력하며, 최소 1분 ~ 최대 1,440분 (24시간) 사이의 값을 설정합니다. (0이면 off)
+    - 수신자: 알람을 수신할 수신자를 입력합니다. 각 수신자마다 이메일과 SMS를 선택할 수 있습니다.
+    - SMS 알람 문구: 알람 발송 시 SMS로 보낼 문구를 입력합니다.
+    - 콜백 수신지: 알람 발송 시 호출될 URL을 입력합니다. http(s):// 와 이메일을 지원합니다.
+
+![[그림 12 발생수 알람]](http://static.toastoven.net/prod_analytics/new_alarm_2_en.png)
+<center>[그림 12 발생수 알람]</center>
+
+### 즘감률 알람
+원하는 로그유형(Lucene 쿼리)의 발생 증감률에 따라 알람을 발송합니다.
+
+- 알람 설정 방법은 다음과 같습니다.
+    - 알람 제목: 알람 설정 목록에 표시될 이름을 입력합니다.
+    - 검색 조건: 알람 수신을 원하는 로그유형을 Lucene 쿼리로 입력합니다.
+    - 임곗값: '검색 조건'에 해당하는 로그의 증감률입니다. 양수는 로그가 이전 간격 대비 증가한 비율, 0은 이전 간격과 로그 양이 동일, 음수는 이전 간격보다 로그 양이 감소한 비율입니다.
+    - 비교 시간: 시간 단위로 입력하며, 입력한 시간 간격과 그 이전 간격 사이의 로그양을 '임계값'에 맞춰 비교합니다. '비교 시간'동안 발생한 로그의 증감률이 '임계값'을 만족하면, 알람을 발송합니다.
+    - 스누즈: 분 단위로 입력하며, 최소 1분 ~ 최대 1,440분 (24시간) 사이의 값을 설정합니다. (0이면 off)
+    - 수신자: 알람을 수신할 수신자를 입력합니다. 각 수신자마다 이메일과 SMS를 선택할 수 있습니다.
+    - SMS 알람 문구: 알람 발송 시 SMS로 보낼 문구를 입력합니다.
+    - 콜백 수신지: 알람 발송 시 호출될 URL을 입력합니다. http(s):// 와 이메일을 지원합니다.
+
+![[그림 13 증감률 알람]](http://static.toastoven.net/prod_analytics/new_alarm_3_en.png)
+<center>[그림 13 증감률 알람]</center>
+
+### 로그 알람 발생 이력 조회
+
+로그 알람이 발생한 이력을 조회합니다.
+
+- 로그 알람 화면에서 이력 조회(번개) 버튼을 누르면 알람 발생 이력을 확인할 수 있습니다.
+- 로그 알람 조회/수정 화면에서 [발생 이력] 버튼을 누르면 알람 발생 이력을 확인할 수 있습니다.
+
+### (구) 로그 알람 이력
 
 로그 알람 발송 이력을 조회할 수 있습니다.
 - 알람 시간을 기준으로 검색 기간 설정을 통한 검색이 가능하며 버전별 검색 기능 또한 제공합니다.
 - 알람시간, 버전, 로그레벨, 임계값, 발송방식(SMS/Email), 이벤트 수 및 발송 성공 여부를 제공합니다.
 - 또한, 각 행을 클릭하면 상세 로그 메시지와 로그 규칙 정보를 확인할 수 있습니다.
 
-![[그림 11 로그 알람 이력]](http://static.toastoven.net/prod_analytics/alarm_01_en.png)
-<center>[그림 11 로그 알람 이력]</center>
+![[그림 14 로그 알람 이력]](http://static.toastoven.net/prod_analytics/alarm_01_en.png)
+<center>[그림 14 로그 알람 이력]</center>
 
-### 로그 알람 설정
+### (구) 로그 알람 설정
 
 로그 알람 목록 조회 및 등록/수정/삭제 기능을 제공합니다. 알람 설정 방법은 다음과 같습니다.
 
@@ -220,9 +277,9 @@ Android, iOS 단말의 크래시 정보는 App Crash Search에서 볼 수 있습
 - 알람 수신자 설정 : 프로젝트 멤버 중 알람을 수신할 멤버들을 선택합니다.
 - 콜백URL: 알람이 발생하면 호출될 URL을 설정합니다. http://로 시작하는 형식을 지원합니다.
 
-![[그림 12 로그 알람 설정/등록]](http://static.toastoven.net/prod_analytics/alarm_02_en.png)
-![[그림 12 로그 알람 설정/등록]](http://static.toastoven.net/prod_analytics/alarm_03_en.png)
-<center>[그림 12 로그 알람 설정/등록]</center>
+![[그림 15 로그 알람 설정/등록]](http://static.toastoven.net/prod_analytics/alarm_02_en.png)
+![[그림 15 로그 알람 설정/등록]](http://static.toastoven.net/prod_analytics/alarm_03_en.png)
+<center>[그림 15 로그 알람 설정/등록]</center>
 
 ### 크래시 알람 설정
 
@@ -236,8 +293,8 @@ Android, iOS 단말의 크래시 정보는 App Crash Search에서 볼 수 있습
 - 임계치: 크래시 발생 빈도수와 평균 빈도수 중 하나를 선택하여 임계치를 입력합니다. 탐지 주기는 10분 입니다.
 - 알람 수신자: 프로젝트 멤버 목록에서 알람을 수신할 사용자의 이메일, SMS를 선택합니다.
 
-![[그림 13 크래시 알람 설정]](http://static.toastoven.net/prod_analytics/alarm_04_en.png)
-<center>[그림 13 크래시 알람 설정]</center>
+![[그림 16 크래시 알람 설정]](http://static.toastoven.net/prod_analytics/alarm_04_en.png)
+<center>[그림 16 크래시 알람 설정]</center>
 
 ### 사용자기반 알람설정
 
@@ -251,8 +308,8 @@ Android, iOS 단말의 크래시 정보는 App Crash Search에서 볼 수 있습
 - 임계치 : 크래시를 겪은 사용자 비율이 임계치(%) 이상인 경우 지정된 사용자의 폰 또는 이메일로 알람을 전송합니다.
 - 알람 수신자 : 프로젝트 멤버 목록에서 알람을 수신할 사용자의 이메일, SMS를 선택합니다.
 
-![[그림 13-1 사용자기반 알람 설정]](http://static.toastoven.net/prod_analytics/alarm_05_en.png)
-<center>[그림 13-1 사용자기반 알람 설정]</center>
+![[그림 16-1 사용자기반 알람 설정]](http://static.toastoven.net/prod_analytics/alarm_05_en.png)
+<center>[그림 16-1 사용자기반 알람 설정]</center>
 
 ## 설정
 
@@ -266,8 +323,8 @@ Android, iOS 단말의 크래시 정보는 App Crash Search에서 볼 수 있습
 
 로그 검색 시 사용되는 검색 필드를 조회하는 기능으로 시스템 필드인 기본 필드 목록 외에 사용자 전송 필드인 커스텀 필드를 확인할 수 있습니다.
 
-![[그림 14 검색 필드 설정]](http://static.toastoven.net/prod_analytics/setting_01_en.png)
-<center>[그림 14 검색 필드 설정]</center>
+![[그림 17 검색 필드 설정]](http://static.toastoven.net/prod_analytics/setting_01_en.png)
+<center>[그림 17 검색 필드 설정]</center>
 
 1. 로그 전송 시 필드 이름이 txt로 시작하는 경우 분석여부가 true로 설정되고, 그 외에는 분석 여부가 false로 설정됩니다. 분석 여부가 false 인경우 로그 검색의 검색 필드로 등록하여 사용할 수 있습니다.
 2. 로그 파일이나 바이너리 파일을 전송하고 로그 검색 화면에서 [다운로드|보기] 링크를 이용하고자 하는 경우, UserBinaryData 혹은 UserTxtData라는 이름의 필드에 base64 인코딩된 값을 담아 전송하시기 바랍니다.
@@ -285,8 +342,8 @@ Android, iOS 단말의 크래시 정보는 App Crash Search에서 볼 수 있습
 - Private token: 이슈 트래커를 GitLab으로 선택할 경우 GitLab 사이트의 My profile - Account에서 생성한 token값을 입력합니다.
 - 테스트: 설정이 정상적인지를 체크합니다.
 
-![[그림 15 이슈 트래커 설정]](http://static.toastoven.net/prod_logncrash/setting_02_en.png)
-<center>[그림 15 이슈 트래커 설정]</center>
+![[그림 18 이슈 트래커 설정]](http://static.toastoven.net/prod_logncrash/setting_02_en.png)
+<center>[그림 18 이슈 트래커 설정]</center>
 
 ### 심볼 파일
 
@@ -299,8 +356,8 @@ Symbolication file이 등록 되어 있어야 크래시 로그를 확인할 수 
 - 심볼 파일의 최대 크기는 200MB 입니다.
 - 안드로이드 NDK 심볼리케이션 파일이 허용하는 최대 파일 사이즈를 초과할 경우 원본 ‘lib.so’ 바이너리 파일의 텍스트 형태 심볼을 포함하고 있는 하나의 ‘lib.so.sym’을 포함하는 ZIP 파일의 형태로 업로드 하실 수 있습니다.
 
-![[그림 16 심볼 파일 관리]](http://static.toastoven.net/prod_logncrash/setting_03_en.png)
-<center>[그림 16 심볼 파일 관리]</center>
+![[그림 19 심볼 파일 관리]](http://static.toastoven.net/prod_logncrash/setting_03_en.png)
+<center>[그림 19 심볼 파일 관리]</center>
 
 ### 로그 보관 기간
 
@@ -309,8 +366,8 @@ Symbolication file이 등록 되어 있어야 크래시 로그를 확인할 수 
 - 로그 보관 기간은 1개월/2개월/3개월/6개월/1년 중에서 선택할 수 있으며 월 1회에 한해 변경 가능합니다.
 - 로그 보관 기간이 지난 데이터는 익일 새벽 삭제됩니다.
 
-![[그림 17 로그 보관 기간]](http://static.toastoven.net/prod_logncrash/setting_04_en.png)
-<center>[그림 17 로그 보관 기간]</center>
+![[그림 20 로그 보관 기간]](http://static.toastoven.net/prod_logncrash/setting_04_en.png)
+<center>[그림 20 로그 보관 기간]</center>
 
 ### 로그 전송 설정
 
@@ -319,5 +376,5 @@ Symbolication file이 등록 되어 있어야 크래시 로그를 확인할 수 
 - 일반로그 , 세션 로그, 크래시 로그 각각에 대해 전송 여부를 설정할 수 있습니다.
 - 설정을 저장한 뒤 APP을 재시작 하면 적용됩니다.
 
-![[그림 18 로그 전송 설정]](http://static.toastoven.net/prod_logncrash/setting_06_en.png)
-<center>[그림 18 로그 전송 설정]</center>
+![[그림 21 로그 전송 설정]](http://static.toastoven.net/prod_logncrash/setting_06_en.png)
+<center>[그림 21 로그 전송 설정]</center>

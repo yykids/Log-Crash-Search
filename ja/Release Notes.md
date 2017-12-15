@@ -1,5 +1,9 @@
 ## Analytics > Log&Crash Search > Release Notes
 
+### 2017.12.21
+#### 기능 개선/변경
+* [Console] 쿼리 기반 신규 알람 기능 추가
+
 ### 2017.10.26
 #### 기능 개선/변경
 * [Console] 새로운 크래시 발생 시 알람 설정 기능 추가
