@@ -1,4 +1,4 @@
-## Analytics > Log & Crash Search > logback SDK 사용 가이드
+## Analytics > Log & Crash Search > Logback SDK 사용 가이드
 
 Log & Crash Logback SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.
 Log & Crash Log4back SDK 특·장점은 다음과 같습니다.
