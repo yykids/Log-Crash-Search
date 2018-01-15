@@ -1,6 +1,6 @@
 ## Analytics > Log & Crash Search > Release Notes
 
-## Analytics > Log&Crash Search > Release Notes
+## Analytics > Log & Crash Search > Release Notes
 
 ### 2017.12.21
 #### 기능 개선/변경
@@ -177,7 +177,7 @@
 ### 2016.10.20
 #### 기능 개선/변경
 * 기기의 고유 ID 값인 DeviceID 수집
-    * 신규 SDK을 통한 Crash Log 전송시 DeviceID가 수집되어 Console > Log&Crash Search > Crashes > 앱 크래시 지표 화면에서
+    * 신규 SDK을 통한 Crash Log 전송시 DeviceID가 수집되어 Console > Log & Crash Search > Crashes > 앱 크래시 지표 화면에서
       DeviceID 기준으로 지표 확인이 가능합니다.
 * [SDK] 로그 전송이 안되는 경우 파일로 저장 후 이후 정상 통신이 되는 경우 로그 파일 전송하도록 기능 변경됨.
 * [SDK] 모든 로그에 대해 중복 로그 처리 루틴 적용
@@ -219,7 +219,7 @@
 ### 2016.08.18
 #### 기능 개선/변경
 * Log 전송 ON / OFF 기능 추가
-    * Log&Crash Search 로 전송되는 로그(일반로그/크래시로그/세션로그)에 대해 사용자가 콘솔에서
+    * Log & Crash Search 로 전송되는 로그(일반로그/크래시로그/세션로그)에 대해 사용자가 콘솔에서
       On/Off 설정, 수집여부를 결정할수 있습니다.
     * 수집되지 않은 로그는 화면에 노출되지 않고, API 및 Storage 요금에 포함되지 않습니다.
     * Log on/off 기능 추가로 SDK 업데이트 되었습니다.

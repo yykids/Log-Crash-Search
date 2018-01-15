@@ -246,7 +246,7 @@ public static void SetUserId(string userId)
 ## 심볼 파일 생성 가이드
 
 ### 개요
-- Log&Crash Windows SDK 에서 발생한 Crash 를 해석하기 위해서는 심볼 파일을 생성하여 웹 콘솔에 업로드 해야 합니다.
+- Log & Crash Windows SDK 에서 발생한 Crash 를 해석하기 위해서는 심볼 파일을 생성하여 웹 콘솔에 업로드 해야 합니다.
 
 ### 필요 도구
 - VS에 맞는 dump_syms을 사용합니다 ( VC_1500 = 2008, VC_1600 = 2010 )

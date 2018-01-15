@@ -20,9 +20,9 @@ Configuring Logstash를 참고해 주세요.
 
 Logstash를 사용하여 Log 수집하기와 전송하기를 설명합니다.
 
-### Log&Crash Collector Log 수집하기
+### Log & Crash Collector Log 수집하기
 
-Logstash를 이용하여 Log&Crash Collector Log를 수집하는 방법을 설명합니다.
+Logstash를 이용하여 Log & Crash Collector Log를 수집하는 방법을 설명합니다.
 
 #### - input, file에 path를 정의합니다. path에는 반드시 절대 경로가 사용되어야 합니다.
 
@@ -56,16 +56,16 @@ filter {
 ...
 ```
 
-### Log&Crash Collector로 전송하기
+### Log & Crash Collector로 전송하기
 
-Logstash를 사용하여 Log&Crash Collector로 Log를 전송하는 방법을 설명합니다.
+Logstash를 사용하여 Log & Crash Collector로 Log를 전송하는 방법을 설명합니다.
 
-#### - filter, mutate를 사용하여 Logstash Log를 Log&Crash HTTP REST API 형식으로 변환합니다.
+#### - filter, mutate를 사용하여 Logstash Log를 Log & Crash HTTP REST API 형식으로 변환합니다.
 
 ```
 filter {
 ...
-  ## Convert Logstash event to Log&Crash HTTP REST event
+  ## Convert Logstash event to Log & Crash HTTP REST event
   mutate {
 	remove_field => [ "@version", "@timestamp", "path", "tags" ]
 	rename => {
@@ -84,8 +84,8 @@ filter {
   }
 }
 - remove_field를 사용하여 필요없는 field를 제거합니다. 전송되는 로그 크기를 줄이기 위해 사용할 수 있습니다.
-- rename을 사용하여 Log&Crash HTTP REST API에 맞춰 field 이름을 변경합니다.
-- add_field를 사용하여 Log&Crash HTTP REST API에 필요한 field를 추가합니다.
+- rename을 사용하여 Log & Crash HTTP REST API에 맞춰 field 이름을 변경합니다.
+- add_field를 사용하여 Log & Crash HTTP REST API에 필요한 field를 추가합니다.
     - "projectName" : 필수, 프로젝트 이름/앱키
     - "projectVersion" : 필수, 프로젝트 버전
     - "logVersion" : 필수, 로그 포맷 버전
@@ -94,7 +94,7 @@ filter {
     - "logLevel" : 옵션, 로그 레벨
 ```
 
-#### - output, http를 사용하여 Log&Crash Collector로 전송합니다.
+#### - output, http를 사용하여 Log & Crash Collector로 전송합니다.
 
 ```
 output {
@@ -106,8 +106,8 @@ output {
 	verify_ssl => false
   }
 }
-- url에 전송할 Log&Crash Collector 주소로 수정해야 합니다.
-- Toast Cloud Log&Crash Collector 주소 : http://api-logncrash.cloud.toast.com/v2/log
+- url에 전송할 Log & Crash Collector 주소로 수정해야 합니다.
+- Toast Cloud Log & Crash Collector 주소 : http://api-logncrash.cloud.toast.com/v2/log
 - URI는 반드시 /v2/log 이어야 합니다.
 ```
 

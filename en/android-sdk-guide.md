@@ -328,7 +328,7 @@ AndroidStudio를 이용하여 Release 빌드를 하면 mapping.txt 위치가 app
 ## JNI 적용 가이드
 
 [Android NDK](http://developer.android.com/tools/sdk/ndk/index.html)를 이용하여 [JNI](http://en.wikipedia.org/wiki/Java_Native_Interface)를 사용시 Android SDK를 활용하는 방법에 대하여 설명합니다.
-Log&Crash Android SDK에서는 Java상에서 Exception을 Catch 할 수 있는 상황에서만 정상적으로 동작합니다. 그러기 위해서 작성한 Native Code에서 에러 발생시 에러를 전달하는 클래스를 생성하여야 합니다.
+Log & Crash Android SDK에서는 Java상에서 Exception을 Catch 할 수 있는 상황에서만 정상적으로 동작합니다. 그러기 위해서 작성한 Native Code에서 에러 발생시 에러를 전달하는 클래스를 생성하여야 합니다.
 예를 들어 아래와 같이 getString 함수가 실행되는 과정에서 에러가 발생한다면, try/catch 구문을 이용하여 Error을 Catch한 후 Java 코드로 예외를 생성하여 Throw해주면, Java에서 해당 에러를 잡아 로그로 전송합니다.  
 
 **JNI code**

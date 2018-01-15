@@ -235,7 +235,7 @@ public static string GetUserID()
 ## WebGL 적용
 
 ### 지원 프로토콜
- - Unity WebGL 환경에서 Log&Crash를 초기화 하는 경우, Collector 주소로 https를 지정해야 합니다.
+ - Unity WebGL 환경에서 Log & Crash를 초기화 하는 경우, Collector 주소로 https를 지정해야 합니다.
  - http의 경우 보안상의 이유로 지원하지 않습니다.
 
 ### 지원하지 않는 API
@@ -270,9 +270,9 @@ LogNCrash.setMaximumSendCount (100);
 - WebGL SDK에서 Crash를 수집하기 위해서는 PlayerSettings > Publishing Settings > Enable Exception 옵션이 Full로 설정되어 있어야 합니다.
 
 ### 주의 사항
-- Log&Crash는 메모리를 전송하는 과정에서, 최대 2000개의 SendQueue에 로그를 저장합니다.
-- Log&Crash는 로그의 중복을 제거하기 위해, 최대 500개의 Duplicate 로그를 저장합니다.
-- Log&Crash는 전송에 실패한 로그를 재전송 하기 위해, 500개의 실패 로그를 저장합니다.
+- Log & Crash는 메모리를 전송하는 과정에서, 최대 2000개의 SendQueue에 로그를 저장합니다.
+- Log & Crash는 로그의 중복을 제거하기 위해, 최대 500개의 Duplicate 로그를 저장합니다.
+- Log & Crash는 전송에 실패한 로그를 재전송 하기 위해, 500개의 실패 로그를 저장합니다.
 - 따라서 충분한 메모리가 필요합니다.
 - 서버의 응답속도를 측정하는 경우 대상 서버에 Cross-Domain 설정이 되어있어야 합니다.
 
