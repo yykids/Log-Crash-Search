@@ -111,7 +111,7 @@ TLCLog class에서 제공하는 기능들을 설명합니다.
 
 - TLCLog를 초기화 합니다.
 - TLCLog 기능이 제대로 동작하기 위해서는 반드시 호출되어야 합니다.
-- 사용자별 통계를 원하는 경우 userId는 반드시 입력해야 합니다.
+- 사용자 별 통계를 원하는 경우 userId는 반드시 입력해야 합니다.
 - 파라미터
 	- server: 수집서버 주소
 	- appKey: 앱키
@@ -157,9 +157,9 @@ TLCLog class에서 제공하는 기능들을 설명합니다.
 (void) warn:(NSString*)errorCode withMessage:(NSString*)message atLocation:(NSString*)location;
 ```
 
-- 지정된 로그레벨로 수집서버에 로그를 보냅니다.
+- 지정된 로그 레벨로 수집서버에 로그를 보냅니다.
 - 파라미터
-	- errorCode: 에러코드
+	- errorCode: 에러 코드
 	- message: 로그 메세지
 	- location: 에러 위치
 

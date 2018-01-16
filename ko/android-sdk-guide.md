@@ -170,7 +170,7 @@ public static void info(String message)
 public static void debug(String message)
 ```
 
-- 지정된 로그레벨로 수집서버에 로그를 보냅니다.
+- 지정된 로그 레벨로 수집서버에 로그를 보냅니다.
 - 파라미터
 	- message : 로그 메시지. null이나 ""를 쓰면 기본 메시지가 전송됩니다.
 	- Throwable t : 수집된 에러를 같이 전송합니다. null을 사용할 수 있습니다.
@@ -248,7 +248,7 @@ public static String getLogType()
 public static void setLogType(String logType)
 ```
 
-- 로그타입을 구하거나 새로 지정합니다.
+- 로그 타입을 구하거나 새로 지정합니다.
 
 ### Android 전용 기능
 

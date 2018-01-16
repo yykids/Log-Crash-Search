@@ -134,7 +134,7 @@ public static void SetLogType(string value)
 public static string GetLogType()
 ```
 
-- 로그타입을 구하거나 새로 지정합니다.
+- 로그 타입을 구하거나 새로 지정합니다.
 
 ### LEVEL 필터
 
@@ -203,7 +203,7 @@ public static void SetUserId(string userID)
 public static string GetUserID()
 ```
 
-- 사용자별 통계 자료를 얻으려면 반드시 설정해주어야 합니다.
+- 사용자 별 통계 자료를 얻으려면 반드시 설정해주어야 합니다.
 - Parameter
 	- userID: string
 		- [in] 각 사용자를 구분할 user id.
