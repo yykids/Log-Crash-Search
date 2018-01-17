@@ -1,6 +1,8 @@
 ## Analytics > Log & Crash Search > Release Notes
 
-## Analytics > Log & Crash Search > Release Notes
+### 2018.01.22
+#### 기능 개선/변경
+* [Console] Network Insights 신규 기능 출시
 
 ### 2017.12.21
 #### 기능 개선/변경
