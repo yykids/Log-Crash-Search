@@ -239,7 +239,7 @@ void Start() {
 public static void SetUserId(string userID)
 public static string GetUserID()
 ```
-- 사용자 별 통계 자료를 얻으려면 반드시 설정해주어야 합니다.
+- 사용자별 통계 자료를 얻으려면 반드시 설정해주어야 합니다.
 - Parameter
 	- userID: string
 		- [in] 각 사용자를 구분할 user id
