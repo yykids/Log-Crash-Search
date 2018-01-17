@@ -1,5 +1,9 @@
 ## Analytics > Log & Crash Search > 릴리스 노트
 
+### 2018.01.22
+#### 기능 개선/변경
+* [Console] Network Insights 신규 기능 출시
+
 ### 2017.12.21
 #### 기능 개선/변경
 * [Console] 쿼리 기반 신규 알람 기능 추가
