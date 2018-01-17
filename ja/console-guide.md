@@ -23,18 +23,18 @@ Consoleに接続してLog & Crash Searchを有効にします。
 ![[図1 : 商品有効化]](http://static.toastoven.net/prod_analytics/log_1.jpg)
 <center>[図1 : 商品有効化]</center>
 
-## AppKey確認
+## Appkey確認
 
 
-商品を有効にすると、Log & Crash Search用AppKeyが生成されます。ログを送信するにはAppKeyが必要です。 AppKeyの値を確認します。
+商品を有効にすると、Log & Crash Search用Appkeyが生成されます。ログを送信するにはAppkeyが必要です。 Appkeyの値を確認します。
 
 ```
 [Analytics] > [Log & Crash Search] > [Log Search]をクリック
-[AppKey]欄の値を確認
+[Appkey]欄の値を確認
 ```
 
-![[図2 : AppKey確認]](http://static.toastoven.net/prod_analytics/log_2.jpg)
-<center>[図2 : AppKey確認]</center>
+![[図2 : Appkey確認]](http://static.toastoven.net/prod_analytics/log_2.jpg)
+<center>[図2 : Appkey確認]</center>
 
 ## ログ送信
 
