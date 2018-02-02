@@ -20,8 +20,11 @@ Consoleに接続してLog & Crash Searchを有効にします。
 > [参照]  
 > 商品を有効にした後は、約5分後から送信可能です。
 
-![[図1 : 商品有効化]](http://static.toastoven.net/prod_analytics/log_1.jpg)
-<center>[図1 : 商品有効化]</center>
+![[図1 : 商品を選択]](http://static.toastoven.net/prod_logncrash/console_1.png)
+<center>[図1 : 商品を選択]</center>
+
+![[図1-1 : 商品有効化]](http://static.toastoven.net/prod_logncrash/console_1-1.png)
+<center>[図1-1 : 商品有効化]</center>
 
 ## Appkey確認
 
@@ -33,12 +36,17 @@ Consoleに接続してLog & Crash Searchを有効にします。
 [Appkey]欄の値を確認
 ```
 
-![[図2 : Appkey確認]](http://static.toastoven.net/prod_analytics/log_2.jpg)
+![[図2 : Appkey確認]](http://static.toastoven.net/prod_logncrash/console_2.png)
 <center>[図2 : Appkey確認]</center>
 
 ## ログ送信
 
-ログを送信するにはLog & Crash Search SDKが必要です。 SDKは、DevCenter(http://cloud.toast.com)の[DOCUMENTS] > [Download]からダウンロードできます。各SDKの使い方(log4j、logback)を参照して、ログを送信してください。  
+ログを送信するにはLog & Crash Search SDKが必要です。 SDKは、DevCenter(http://toast.com/developer_center)の[DOCUMENTS] > [Download]からダウンロードできます。各SDKの使い方(log4j、logback)を参照して、ログを送信してください。  
+
+```
+SDK ダウンロード: [개발자센터] > [설명서] > [Downloads] > [Analytics > Log & Crash Search] 영역의 SDK 다운로드
+SDK マニュアル: [개발자센터] > [설명서] > [Analytics] > [Log & Crash Search]에서 사용하려는 SDK의 사용 가이드 참고
+```
 
 > [参照]  
 > ログ量が少ない場合は、約5分後にログ送信結果が反映されます。
@@ -53,8 +61,11 @@ Consoleに接続してLog & Crash Searchを有効にします。
 
 [Log Search]に入ると、基本的に24時間分のログ量のグラフと詳細を確認できます。
 
-![[図3 : Log Search]](http://static.toastoven.net/prod_analytics/log_3.jpg)
-<center>[図3 : Log Search]</center>
+![[図3 : Log Search 進入]](http://static.toastoven.net/prod_logncrash/console_3.png)
+<center>[図3 : Log Search 進入]</center>
+
+![[図3-1 : Log Search 画面]](http://static.toastoven.net/prod_logncrash/console_3-1.png)
+<center>[図3-1 : Log Search 画面]</center>
 
 [Log Search]画面の詳細を見てみましょう。
 
