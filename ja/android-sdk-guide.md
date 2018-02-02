@@ -14,7 +14,7 @@ Log & Crash Android SDKの特徴は次の通りです。
 
 ## ダウンロード
 
-[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)からAndroid SDKをダウンロードできます。
+[TOAST Document](http://docs.toast.com/ko/Download/)からAndroid SDKをダウンロードできます。
 
 ```
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Android SDK]をクリック

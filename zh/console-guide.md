@@ -28,8 +28,11 @@ Console에 접속하여 왼쪽 메뉴를 이용하여 조직(Organization)과 �
 > [참고]  
 > 서비스를 활성화한 이후에는 약 5분 이후부터 전송 가능합니다.
 
-![[그림 1 서비스 활성화]](http://static.toastoven.net/prod_analytics/log_1.jpg)
-<center>[그림 1 서비스 활성화]</center>
+![[그림 1 서비스 선택]](http://static.toastoven.net/prod_logncrash/console_1.png)
+<center>[그림 1 서비스 선택]</center>
+
+![[그림 1-1 서비스 활성화]](http://static.toastoven.net/prod_logncrash/console_1-1.png)
+<center>[그림 1-1 서비스 활성화]
 
 서비스가 활성화되면 왼쪽 메뉴에 해당 서비스가 노출되고 Appkey가 생성됩니다.
 
@@ -42,16 +45,16 @@ Console에 접속하여 왼쪽 메뉴를 이용하여 조직(Organization)과 �
 화면 상단의 [URL & Appkey] 버튼을 클릭하여 Appkey 확인
 ```
 
-![[그림 2 Appkey 확인]](http://static.toastoven.net/prod_analytics/log_2.jpg)
+![[그림 2 Appkey 확인]](http://static.toastoven.net/prod_logncrash/console_2.png)
 <center>[그림 2 Appkey 확인]</center>
 
 ## 로그 전송
 
-로그 전송을 위해서는 Log & Crash Search SDK가 필요합니다. SDK는 TOAST 개발자센터(http://toast.com/developer_center)의 화면 왼쪽 상단의 [서비스] 버튼을 클릭하고 [Downloads] 메뉴를 클릭하면 다운로드 페이지가 노출됩니다. [Analytics > Log & Crash Search] 영역에서 Log & Crash Search SDK 목록을 확인할 수 있습니다. 화면 왼쪽 상단의 [서비스] 버튼을 클릭하고 [Analytics] > [Log & Crash Search]를 클릭하여 각 플랫폼별 SDK의 사용 가이드를 참고하실 수 있습니다. SDK 사용 가이드를 참고하여 로그를 전송해 주십시오.  
+로그 전송을 위해서는 Log & Crash Search SDK가 필요합니다. SDK는 TOAST 개발자센터(http://toast.com/developer_center)의 화면의 [서비스] 버튼을 클릭하고 [Downloads] 메뉴를 클릭하면 다운로드 페이지가 노출됩니다. [Analytics > Log & Crash Search] 영역에서 Log & Crash Search SDK 목록을 확인할 수 있습니다(http://docs.toast.com/ko/Download/#analytics-log-crash-search). 화면 왼쪽 상단의 [서비스] 버튼을 클릭하고 [Analytics] > [Log & Crash Search]를 클릭하여 각 플랫폼별 SDK의 사용 가이드를 참고하실 수 있습니다. SDK 사용 가이드를 참고하여 로그를 전송해 주십시오.  
 
 ```
-SDK 다운로드: [서비스] > [Downloads] > [Analytics > Log & Crash Search] 영역의 SDK 다운로드
-SDK 사용 가이드: [서비스] > [Analytics] > [Log & Crash Search]에서 사용하려는 SDK의 사용 가이드 참고
+SDK 다운로드: [개발자센터] > [설명서] > [Downloads] > [Analytics > Log & Crash Search] 영역의 SDK 다운로드
+SDK 사용 가이드: [개발자센터] > [설명서] > [Analytics] > [Log & Crash Search]에서 사용하려는 SDK의 사용 가이드 참고
 ```
 
 > [참고]  
@@ -67,8 +70,11 @@ SDK 사용 가이드: [서비스] > [Analytics] > [Log & Crash Search]에서 사
 
 [Log Search]로 들어가면 기본적으로 24시간 동안의 로그량이 그래프와 상세 내용으로 나옵니다.
 
-![[그림 3 Log Search]](http://static.toastoven.net/prod_analytics/log_3.jpg)
-<center>[그림 3 Log Search]</center>
+![[그림 3 Log Search 진입]](http://static.toastoven.net/prod_logncrash/console_3.png)
+<center>[그림 3 Log Search 진입]</center>
+
+![[그림 3-1 Log Search 화면]](http://static.toastoven.net/prod_logncrash/console_3-1.png)
+<center>[그림 3 Log Search 화면]</center>
 
 [Log Search] 화면의 세부 항목을 살펴보겠습니다.
 

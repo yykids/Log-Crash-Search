@@ -13,7 +13,7 @@ Log & Crash Log4J SDKの特徴は次の通りです。
 
 ## ダウンロード
 
-[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)でLog4J SDKをダウンロードできます。
+[TOAST Document](http://docs.toast.com/ko/Download/)でLog4J SDKをダウンロードできます。
 
 ```
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Log4J.v2 SDK]をクリックします。
