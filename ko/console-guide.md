@@ -32,7 +32,7 @@ Console에 접속하여 왼쪽 메뉴를 이용하여 조직(Organization)과 �
 <center>[그림 1 서비스 선택]</center>
 
 ![[그림 1-1 서비스 활성화]](http://static.toastoven.net/prod_logncrash/console_1-1.png)
-<center>[그림 1-1 서비스 활성화]
+<center>[그림 1-1 서비스 활성화]</center>
 
 서비스가 활성화되면 왼쪽 메뉴에 해당 서비스가 노출되고 Appkey가 생성됩니다.
 
