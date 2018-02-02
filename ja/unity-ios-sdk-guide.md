@@ -17,7 +17,7 @@ Log & Crash Unity SDKは次のような特徴があります。
 
 ## ダウンロード
 
-[Toast Cloud](http://docs.cloud.toast.com/ko/Download/)でiOS-Unity-Mac SDKをダウンロードできます。
+[TOAST Document](http://docs.toast.com/ko/Download/)でiOS-Unity-Mac SDKをダウンロードできます。
 
 ```
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS-Unity-Mac]
