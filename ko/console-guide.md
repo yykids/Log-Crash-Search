@@ -19,22 +19,22 @@ Console에 접속하여 왼쪽 메뉴를 이용하여 조직(Organization)과 �
 
 ## 서비스 활성화
 
-프로젝트(Project)를 선택한 상태에서 화면 상단의 "서비스 선택" 버튼을 클릭하고 Analytics 분류의 Log & Crash Search를 찾아서 활성화합니다. Log & Crash Search를 클릭하여 활성화하면 초록색이 켜집니다.  
+프로젝트(Project)를 선택한 상태에서 화면 상단의 [서비스] 버튼을 클릭하고 Analytics 분류의 Log & Crash Search를 찾아서 활성화합니다. Log & Crash Search를 클릭하여 활성화하면 초록색이 켜집니다.  
 
 ```
-화면 상단의 [서비스 선택] 버튼 클릭
+화면 상단의 [서비스] 버튼 클릭
 ```
 
 > [참고]  
 > 서비스를 활성화한 이후에는 약 5분 이후부터 전송 가능합니다.
 
-![[그림 1 서비스 선택]](http://static.toastoven.net/prod_logncrash/console_1.png)
-<center>[그림 1 서비스 선택]</center>
+![[그림 1 그림 1 서비스 버튼 클릭]](http://static.toastoven.net/prod_logncrash/console_1.png)
+<center>[그림 1 서비스 버튼 클릭]</center>
 
-![[그림 1-1 서비스 활성화]](http://static.toastoven.net/prod_logncrash/console_1-1.png)
-<center>[그림 1-1 서비스 활성화]</center>
+![[그림 1-1 Log & Crash Search 서비스 활성화]](http://static.toastoven.net/prod_logncrash/console_1-1.png)
+<center>[그림 1-1 Log & Crash Search 서비스 활성화]</center>
 
-서비스가 활성화되면 왼쪽 메뉴에 해당 서비스가 노출되고 Appkey가 생성됩니다.
+Log & Crash Search 가 활성화되면 왼쪽 메뉴에 Analytics > Log & Crash Search 메뉴가 노출되고 Appkey가 생성됩니다.
 
 ## Appkey 확인
 
@@ -50,7 +50,7 @@ Console에 접속하여 왼쪽 메뉴를 이용하여 조직(Organization)과 �
 
 ## 로그 전송
 
-로그 전송을 위해서는 Log & Crash Search SDK가 필요합니다. SDK는 TOAST 개발자센터(http://toast.com/developer_center)의 화면의 [서비스] 버튼을 클릭하고 [Downloads] 메뉴를 클릭하면 다운로드 페이지가 노출됩니다. [Analytics > Log & Crash Search] 영역에서 Log & Crash Search SDK 목록을 확인할 수 있습니다(http://docs.toast.com/ko/Download/#analytics-log-crash-search). 화면 왼쪽 상단의 [서비스] 버튼을 클릭하고 [Analytics] > [Log & Crash Search]를 클릭하여 각 플랫폼별 SDK의 사용 가이드를 참고하실 수 있습니다. SDK 사용 가이드를 참고하여 로그를 전송해 주십시오.  
+로그 전송을 위해서는 Log & Crash Search SDK가 필요합니다. SDK는 [TOAST 개발자센터](http://toast.com/developer_center)의 화면의 [서비스] 버튼을 클릭하고 [Downloads] 메뉴를 클릭하면 다운로드 페이지가 노출됩니다. [Analytics > Log & Crash Search] 영역에서 Log & Crash Search SDK 목록을 확인할 수 있습니다. [링크](http://docs.toast.com/ko/Download/#analytics-log-crash-search). 화면 왼쪽 상단의 [서비스] 버튼을 클릭하고 [Analytics] > [Log & Crash Search]를 클릭하여 각 플랫폼별 SDK의 사용 가이드를 참고하실 수 있습니다. SDK 사용 가이드를 참고하여 로그를 전송해 주십시오.  
 
 ```
 SDK 다운로드: [개발자센터] > [설명서] > [Downloads] > [Analytics > Log & Crash Search] 영역의 SDK 다운로드
@@ -86,7 +86,7 @@ SDK 사용 가이드: [개발자센터] > [설명서] > [Analytics] > [Log & Cra
 | 검색 쿼리 입력 | 쿼리 필드 검색은 Lucene 문법을 사용할 수 있습니다. <br/> (참고: http://lucene.apache.org/core/2_9_4/queryparsersyntax.html)|
 | 검색 대상 기간 | 검색 쿼리의 기간 조건을 설정할 수 있습니다. |
 | 로그 검색 결과 > 차트 | 로그 검색 결과를 막대 그래프로 출력하며, 클릭하면 오른쪽 단위(ex: 1Bar=1hour)에 맞는 기간을 기준으로 출력합니다. |
-| 필드 검색 조건 | - host : 호스트 이름이나 IP 주소로 구분<br/> - logLevel : 로그 레벨로 구분 (FATAL / ERROR / WARN / INFO / DEBUG)<br/> - logSource : 사용자가 설정한 로그 소스로 구분<br/> - logType : 사용자가 설정한 프로젝트 이름으로 구분<br/> - projectVersion : 사용자가 설정한 프로젝트 버전으로 구분<br/><br/> - Show all fields를 클릭하여 다른 필드를 검색 조건으로 사용할 수 있습니다. |
+| 필드 검색 조건 | - host: 호스트 이름이나 IP 주소로 구분<br/> - logLevel: 로그 레벨로 구분 (FATAL / ERROR / WARN / INFO / DEBUG)<br/> - logSource: 사용자가 설정한 로그 소스로 구분<br/> - logType: 사용자가 설정한 프로젝트 이름으로 구분<br/> - projectVersion: 사용자가 설정한 프로젝트 버전으로 구분<br/><br/> - Show all fields를 클릭하여 다른 필드를 검색 조건으로 사용할 수 있습니다. |
 | 로그 검색 결과 > 로그 레코드 | 검색한 로그의 자세한 내용이 출력되는 부분입니다. 출력된 로그의 각 항목은 클릭하여 검색 쿼리를 변경할 수 있습니다. |
 
 사용자가 설정한 검색 조건은 검색 쿼리 입력창에 반영이 되는데, 이 쿼리를 저장할 수도 있고([쿼리 저장]), 기존에 저장되어 있는 쿼리를 이용해서 검색할 수도([저장 쿼리 선택]) 있습니다.
@@ -290,13 +290,13 @@ Android, iOS 단말의 크래시 정보는 App Crash Search에서 볼 수 있습
 - 필터링 규칙: 검색 필드, 포함 문자열, 비포함 문자열 설정 및 정규식 사용 여부를 설정합니다.
 - 검색 필드: Settings > 검색 필드 메뉴에서 등록한 검색 필드 중 분석 여부가 false인 검색 필드를 선택할 수 있습니다.
 - 포함 문자열: 검색 필드에 포함될 문자열을 입력합니다.
-- 알람 유형 : '발생 건수' 와 '증감율'중 선택합니다.
+- 알람 유형: '발생 건수' 와 '증감율'중 선택합니다.
 - 임계값: 알람 유형이 '발생 건수'인 경우 하나의 '알람 주기' 내에 로그량에 대한 임계값을 설정 합니다. 알람 유형이 '증감율'인 경우 '비교 시간' 대비 증가/감소 비율을 임계값으로 설정합니다.
-- 알람 주기 : 분단위로 입력할 수 있으며 최소 1분 ~ 최대 60분 사이의 값을 설정 합니다.
-- 비교 주기 : 시간단위로 입력할 수 있으며 1시간 ~ 24시간 사이의 값을 설정합니다.
-- Snooze : 분단위로 입력할 수 있으며 최소 1분 ~ 최대 1,440분(24시간) 사이의 값을 설정합니다. (0이면 off)
-- 설명 : 알람에 대한 설명을 기술합니다.
-- 알람 수신자 설정 : 프로젝트 멤버 중 알람을 수신할 멤버들을 선택합니다.
+- 알람 주기: 분단위로 입력할 수 있으며 최소 1분 ~ 최대 60분 사이의 값을 설정 합니다.
+- 비교 주기: 시간단위로 입력할 수 있으며 1시간 ~ 24시간 사이의 값을 설정합니다.
+- Snooze: 분단위로 입력할 수 있으며 최소 1분 ~ 최대 1,440분(24시간) 사이의 값을 설정합니다. (0이면 off)
+- 설명: 알람에 대한 설명을 기술합니다.
+- 알람 수신자 설정: 프로젝트 멤버 중 알람을 수신할 멤버들을 선택합니다.
 - 콜백URL: 알람이 발생하면 호출될 URL을 설정합니다. http://로 시작하는 형식을 지원합니다.
 
 ![[그림 15 로그 알람 설정/등록]](http://static.toastoven.net/prod_analytics/alarm_02_en.png)
@@ -309,9 +309,9 @@ Android, iOS 단말의 크래시 정보는 App Crash Search에서 볼 수 있습
 
 알람 설정 방법은 다음과 같습니다.
 
-- 플랫폼 선택 : 알람 발생 대상 플랫폼을 iOS, Android, Unity 중 하나로 지정합니다.
+- 플랫폼 선택: 알람 발생 대상 플랫폼을 iOS, Android, Unity 중 하나로 지정합니다.
 - 알람 발생 여부: 알람 발생을 On/Off 처리할 수 있습니다.
-- SMS 알림문구 사용 : 활성화하면 장애 내용 대신 SMS 알람 문구에 입력된 내용이 SMS로 전송됩니다.
+- SMS 알림문구 사용: 활성화하면 장애 내용 대신 SMS 알람 문구에 입력된 내용이 SMS로 전송됩니다.
 - 임계치: 크래시 발생 빈도수와 평균 빈도수 중 하나를 선택하여 임계치를 입력합니다. 탐지 주기는 10분 입니다.
 - 알람 수신자: 프로젝트 멤버 목록에서 알람을 수신할 사용자의 이메일, SMS를 선택합니다.
 
@@ -324,11 +324,11 @@ Android, iOS 단말의 크래시 정보는 App Crash Search에서 볼 수 있습
 
 알람 설정 방법은 다음과 같습니다.
 
-- 플랫폼 선택 : 알람 발생 대상 플랫폼을 iOS, Android, Unity 중 하나로 지정합니다.
+- 플랫폼 선택: 알람 발생 대상 플랫폼을 iOS, Android, Unity 중 하나로 지정합니다.
 - 알람 발생 여부: 알람 발생을 ON/OFF 처리 할 수 있습니다.
-- SMS 알람문구 사용 : 활성화 하면 장애 내용 대신 SMS알람 문구에 입력된 내용이 SMS로 전송됩니다.
-- 임계치 : 크래시를 겪은 사용자 비율이 임계치(%) 이상인 경우 지정된 사용자의 폰 또는 이메일로 알람을 전송합니다.
-- 알람 수신자 : 프로젝트 멤버 목록에서 알람을 수신할 사용자의 이메일, SMS를 선택합니다.
+- SMS 알람문구 사용: 활성화 하면 장애 내용 대신 SMS알람 문구에 입력된 내용이 SMS로 전송됩니다.
+- 임계치: 크래시를 겪은 사용자 비율이 임계치(%) 이상인 경우 지정된 사용자의 폰 또는 이메일로 알람을 전송합니다.
+- 알람 수신자: 프로젝트 멤버 목록에서 알람을 수신할 사용자의 이메일, SMS를 선택합니다.
 
 ![[그림 16-1 사용자기반 알람 설정]](http://static.toastoven.net/prod_analytics/alarm_05_en.png)
 <center>[그림 16-1 사용자기반 알람 설정]</center>
@@ -395,7 +395,7 @@ Symbolication file이 등록 되어 있어야 크래시 로그를 확인할 수 
 
 서비스별 로그 전송 여부를 설정합니다.
 
-- 일반로그 , 크래시 로그 , Network Insights 로그 각각에 대해 전송 여부를 설정할 수 있습니다.
+- 일반로그, 크래시 로그, Network Insights 로그 각각에 대해 전송 여부를 설정할 수 있습니다.
 - 설정을 저장한 뒤 APP을 재시작 하면 적용됩니다.
 
 ![[그림 21 로그 전송 설정]](http://static.toastoven.net/prod_logncrash/setting_06_en.png)
@@ -403,9 +403,9 @@ Symbolication file이 등록 되어 있어야 크래시 로그를 확인할 수 
 
 ## Network Insights
 
-Log & Crash Search SDK가 전송한 지연시간과 에려율을 타임라인 차트와 URL 목록, 지도로 표시 합니다.
+Log & Crash Search SDK에서 전송한 지연시간과 에려율을 타임라인 차트와 URL 목록, 지도로 표시 합니다.
 
-- SDK는 URL 설정 화면에서 설정한 URL에 대한 요청의 지연시간(Letency)과 상태값(Status)을 Log & Crash Search로 전송합니다.
+- SDK에서는 클라이언트로부터 URL 설정 화면에서 설정한 URL까지 요청의 지연시간(Letency)과 상태 값(Status)을 Log & Crash Search로 전송합니다.
 - 모니터링, 지표 화면에서 현재 플랫폼과 필터를 설정하고 지연시간과 에러율을 확인할 수 있습니다.
 
 ```
@@ -418,4 +418,4 @@ Log & Crash Search SDK가 전송한 지연시간과 에려율을 타임라인 �
 
 |항목|	설명|
 |---|---|
-|필터 조건 | - 최근 : 최근 15분, 60분, 24시간, 48시간동안의 조건동안의 시간별 조회 필터, 사용자 지정은 시작/종료 일자를 선택하여 조회(최대 48시간) <br> - 앱 버전 : 앱 버전별 조회 필터 <br> - OS 버전 : OS 버전별 조회 필터 <br> - 디바이스 : 디바이스명 입력
+|필터 조건 | - 최근: 최근 15분, 60분, 24시간, 48시간동안의 조건동안의 시간별 조회 필터, 사용자 지정은 시작/종료 일자를 선택하여 조회(최대 48시간) <br> - 앱 버전: 앱 버전별 조회 필터 <br> - OS 버전: OS 버전별 조회 필터 <br> - 디바이스: 디바이스명 입력
