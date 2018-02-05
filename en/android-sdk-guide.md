@@ -122,15 +122,15 @@ public static boolean initialize(Application application, String collectorAddr, 
 - ToastLog를 초기화합니다.
 - ToastLog 기능이 제대로 동작하기 위해서는 반드시 호출되어야 합니다.
 - 파라미터
-	- application : Android Application 정보. getApplication() 반환값을 넣어 줍니다.
-	- collectorAddr : 수집서버 주소
-		- HTTP 수집 서버 : http://api-logncrash.cloud.toast.com
-	- collectorPort : 수집서버의 포트 정보, 0으로 지정하면 각 protocol 기본 포트가 사용됩니다.
-		- HTTP : 80
-	- appKey : 앱키
-	- version : 앱 버전
+	- application: Android Application 정보. getApplication() 반환값을 넣어 줍니다.
+	- collectorAddr: 수집서버 주소
+		- HTTP 수집 서버: http://api-logncrash.cloud.toast.com
+	- collectorPort: 수집서버의 포트 정보, 0으로 지정하면 각 protocol 기본 포트가 사용됩니다.
+		- HTTP: 80
+	- appKey: 앱키
+	- version: 앱 버전
 	- userId; 사용자 아이디
-  - syncStart : true인 경우 발생한 로그들은 startSendThread가 호출되기 전까지 서버에 전송하지 않고, 큐에 저장합니다. 단 Crash가 발생한 경우 ThreadLock을 해제하고 로그를 전송합니다.
+  - syncStart: true인 경우 발생한 로그들은 startSendThread가 호출되기 전까지 서버에 전송하지 않고, 큐에 저장합니다. 단 Crash가 발생한 경우 ThreadLock을 해제하고 로그를 전송합니다.
 - 반환값
 	- 초기화 성공시 true
 	- 실패시 false
@@ -172,8 +172,8 @@ public static void debug(String message)
 
 - 지정된 로그 레벨로 수집서버에 로그를 보냅니다.
 - 파라미터
-	- message : 로그 메시지. null이나 ""를 쓰면 기본 메시지가 전송됩니다.
-	- Throwable t : 수집된 에러를 같이 전송합니다. null을 사용할 수 있습니다.
+	- message: 로그 메시지. null이나 ""를 쓰면 기본 메시지가 전송됩니다.
+	- Throwable t: 수집된 에러를 같이 전송합니다. null을 사용할 수 있습니다.
 		- 에러를 같이 전송하면 핸들드 로그로 분류됩니다.
 
 ```
@@ -182,8 +182,8 @@ public static void crash(String message, Throwable t)
 
 - 실행시 발생한 Exception을 수집서버로 보냅니다.
 - 파라미터
-	- message : 로그 메시지. null이나 ""을 쓰면 기본 메시지가 전송됩니다.
-	- Throwable t : 수집된 에러를 같이 전송합니다.
+	- message: 로그 메시지. null이나 ""을 쓰면 기본 메시지가 전송됩니다.
+	- Throwable t: 수집된 에러를 같이 전송합니다.
 		- 에러를 같이 전송하면 크래시 로그로 분류됩니다.
 
 errorCode, location 등의 정보를 Throwable에서 조사하도록 향상되면서 다음 Method들이 **Deprecated** 되었습니다.

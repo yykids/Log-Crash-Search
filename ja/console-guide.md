@@ -20,11 +20,11 @@ Consoleに接続してLog & Crash Searchを有効にします。
 > [参照]  
 > 商品を有効にした後は、約5分後から送信可能です。
 
-![[図1 : 商品を選択]](http://static.toastoven.net/prod_logncrash/console_1.png)
-<center>[図1 : 商品を選択]</center>
+![[図1: 商品を選択]](http://static.toastoven.net/prod_logncrash/console_1.png)
+<center>[図1: 商品を選択]</center>
 
-![[図1-1 : 商品有効化]](http://static.toastoven.net/prod_logncrash/console_1-1.png)
-<center>[図1-1 : 商品有効化]</center>
+![[図1-1: 商品有効化]](http://static.toastoven.net/prod_logncrash/console_1-1.png)
+<center>[図1-1: 商品有効化]</center>
 
 ## Appkey確認
 
@@ -36,8 +36,8 @@ Consoleに接続してLog & Crash Searchを有効にします。
 [Appkey]欄の値を確認
 ```
 
-![[図2 : Appkey確認]](http://static.toastoven.net/prod_logncrash/console_2.png)
-<center>[図2 : Appkey確認]</center>
+![[図2: Appkey確認]](http://static.toastoven.net/prod_logncrash/console_2.png)
+<center>[図2: Appkey確認]</center>
 
 ## ログ送信
 
@@ -61,23 +61,23 @@ SDK マニュアル: [개발자센터] > [설명서] > [Analytics] > [Log & Cras
 
 [Log Search]に入ると、基本的に24時間分のログ量のグラフと詳細を確認できます。
 
-![[図3 : Log Search 進入]](http://static.toastoven.net/prod_logncrash/console_3.png)
-<center>[図3 : Log Search 進入]</center>
+![[図3: Log Search 進入]](http://static.toastoven.net/prod_logncrash/console_3.png)
+<center>[図3: Log Search 進入]</center>
 
-![[図3-1 : Log Search 画面]](http://static.toastoven.net/prod_logncrash/console_3-1.png)
-<center>[図3-1 : Log Search 画面]</center>
+![[図3-1: Log Search 画面]](http://static.toastoven.net/prod_logncrash/console_3-1.png)
+<center>[図3-1: Log Search 画面]</center>
 
 [Log Search]画面の詳細を見てみましょう。
 
-![[図4 : Log Search詳細]](http://static.toastoven.net/prod_analytics/log_4.jpg)
-<center>[図4 : Log Search詳細]</center>
+![[図4: Log Search詳細]](http://static.toastoven.net/prod_analytics/log_4.jpg)
+<center>[図4: Log Search詳細]</center>
 
 |項目|	説明|
 |---|---|
-|検索クエリを入力|	クエリフィールド検索は、ルシーン文法を使用できます。 <br/>(参照 : http://lucene.apache.org/core/2_9_4/queryparsersyntax.html)|
+|検索クエリを入力|	クエリフィールド検索は、ルシーン文法を使用できます。 <br/>(参照: http://lucene.apache.org/core/2_9_4/queryparsersyntax.html)|
 |検索クエリの時間条件|	検索クエリの時間条件を設定できます。|
-|ログ検索結果 >チャートビュー|	ログ検索結果を棒グラフで出力し、クリックすると、右側の単位(ex : 1Bar = 1hour)に合った期間を基準に表示します|
-|フィールド検索| - host : プロジェクトに属するホストを選択するのに1つ以上のホストを選択する場合、クエリを使用します。 <br/> - logLevel : ログレベル別の表示が可能です。 (FATAL/ERROR/WARN/INFO/DEBUG)<br/> - logSource : ユーザーが設定した[ログソース]で区分します。 <br/> - logType : ユーザーが設定した[プロジェクト名]で区分します。 <br/> - projectVersion : ユーザーが設定した[プロジェクトバージョン]で区分します。 <br/> - カスタムフィールド : Setting >検索フィールドで登録したカスタムフィールドを追加して使用できます。|
+|ログ検索結果 >チャートビュー|	ログ検索結果を棒グラフで出力し、クリックすると、右側の単位(ex: 1Bar = 1hour)に合った期間を基準に表示します|
+|フィールド検索| - host: プロジェクトに属するホストを選択するのに1つ以上のホストを選択する場合、クエリを使用します。 <br/> - logLevel: ログレベル別の表示が可能です。 (FATAL/ERROR/WARN/INFO/DEBUG)<br/> - logSource: ユーザーが設定した[ログソース]で区分します。 <br/> - logType: ユーザーが設定した[プロジェクト名]で区分します。 <br/> - projectVersion: ユーザーが設定した[プロジェクトバージョン]で区分します。 <br/> - カスタムフィールド: Setting >検索フィールドで登録したカスタムフィールドを追加して使用できます。|
 |ログ検索結果 >ボディビュー|	検索したログの詳細が表示される部分です。表示されたログの各項目は、クリック可能です。|
 
 ## アプリのクラッシュ照会
@@ -90,11 +90,11 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 
 ### イシュー照会
 
-![[図5-1 : イシュー照会]](http://static.toastoven.net/prod_analytics/log_5.jpg)
-<center>[図5-1 : イシュー照会]</center>
+![[図5-1: イシュー照会]](http://static.toastoven.net/prod_analytics/log_5.jpg)
+<center>[図5-1: イシュー照会]</center>
 
-![[図5-2 : Handledイシュー照会]](http://static.toastoven.net/prod_analytics/log_18.jpg)
-<center>[図5-2 : Handledイシュー照会]</center>
+![[図5-2: Handledイシュー照会]](http://static.toastoven.net/prod_analytics/log_18.jpg)
+<center>[図5-2: Handledイシュー照会]</center>
 
 |項目|	説明|
 |---|---|
@@ -105,8 +105,8 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 
 リストからイシューをクリックすると、そのイシューに関する詳細情報を表示します。
 
-![[図6 : 詳細情報]](http://static.toastoven.net/prod_analytics/log_6.jpg)
-<center>[図6 : 詳細情報]</center>
+![[図6: 詳細情報]](http://static.toastoven.net/prod_analytics/log_6.jpg)
+<center>[図6: 詳細情報]</center>
 
 |項目|	説明|
 |---|---|
@@ -124,15 +124,15 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 
 ### リアルタイムモニタリング
 
-![[図7 : リアルタイムモニタリング]](http://static.toastoven.net/prod_analytics/log_7.jpg)
-<center>[図7 : リアルタイムモニタリング]</center>
+![[図7: リアルタイムモニタリング]](http://static.toastoven.net/prod_analytics/log_7.jpg)
+<center>[図7: リアルタイムモニタリング]</center>
 
 約5分間のアプリのクラッシュ発生を監視します。
 
 ### トレンド
 
-![[図8 : トレンド項目内容]](http://static.toastoven.net/prod_analytics/log_8.jpg)
-<center>[図8 : トレンド項目内容]</center>
+![[図8: トレンド項目内容]](http://static.toastoven.net/prod_analytics/log_8.jpg)
+<center>[図8: トレンド項目内容]</center>
 
 |項目|	説明|
 |---|---|
@@ -154,11 +154,11 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 3. 検索期間と検索件数を調整できます。
 4. バージョン別の結果をテーブルで確認できます。
 
-![[図9 : アプリのクラッシュ指標]](http://static.toastoven.net/prod_analytics/log_11.jpg)
-<center>[図9 : アプリのクラッシュ指標]</center>
+![[図9: アプリのクラッシュ指標]](http://static.toastoven.net/prod_analytics/log_11.jpg)
+<center>[図9: アプリのクラッシュ指標]</center>
 
-![[図9-1 : クラッシュマップ]](http://static.toastoven.net/prod_analytics/crashmap_en.png)
-<center>[図9-1 : クラッシュマップ]</center>
+![[図9-1: クラッシュマップ]](http://static.toastoven.net/prod_analytics/crashmap_en.png)
+<center>[図9-1: クラッシュマップ]</center>
 
 ### クラッシュユーザー
 
@@ -167,8 +167,8 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 1. SDKでuser_idを設定すると使用でき、設定していない場合、すべてのユーザーに、「 - 」が表示されます。
 2. ユニークなユーザーは、ユーザーIDとデバイス名の組み合わせです。つまり、ユーザーIDが同じでもデバイスが異なると、別のユーザーとして集計されます。
 
-![[図9-2 : クラッシュユーザー]](http://static.toastoven.net/prod_analytics/crashuser_en.png)
-<center>[図9-2 : クラッシュユーザー]</center>
+![[図9-2: クラッシュユーザー]](http://static.toastoven.net/prod_analytics/crashuser_en.png)
+<center>[図9-2: クラッシュユーザー]</center>
 
 |項目|	説明|
 |---|---|
@@ -180,11 +180,11 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 
 ### イシューの統計
 
-![[図10-1 : イシュー統計]](http://static.toastoven.net/prod_analytics/log_9.jpg)
-<center>[図10-1 : イシュー統計]</center>
+![[図10-1: イシュー統計]](http://static.toastoven.net/prod_analytics/log_9.jpg)
+<center>[図10-1: イシュー統計]</center>
 
-![[図10-2 : Handledイシュー統計]](http://static.toastoven.net/prod_analytics/log_19.jpg)
-<center>[図10-2 : Handledイシュー統計]</center>
+![[図10-2: Handledイシュー統計]](http://static.toastoven.net/prod_analytics/log_19.jpg)
+<center>[図10-2: Handledイシュー統計]</center>
 
 |項目|	説明|
 |---|---|
@@ -209,31 +209,31 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 - アラーム時間、バージョン、ログレベル、しきい値、送信方法(SMS/Email)、イベント数および送信に成功したかどうかを提供します。
 - また、各行をクリックすると、詳細なログメッセージとログルール情報を確認できます。
 
-![[図11 : ログアラーム履歴]](http://static.toastoven.net/prod_analytics/alarm_01_en.png)
-<center>[図11 : ログアラーム履歴]</center>
+![[図11: ログアラーム履歴]](http://static.toastoven.net/prod_analytics/alarm_01_en.png)
+<center>[図11: ログアラーム履歴]</center>
 
 ### ログアラーム設定
 
 ログアラームリスト照会/登録/修正/削除機能を提供します。アラームを設定する方法は、次の通りです。
 
-- アラーム名 : アラーム設定リストに表示される名前を入力します。
-- ログレベル : ALL、TRACE、DEBUG、INFO、NOTICD、WARNING、ERROR、FATAL、ALERT、EMERGのいずれかの値を選択します。
-- ルールの追加 : 「ルールの追加」リンクをクリックして、1つ以上のフィルタリングルールを追加できます。
-- フィルタリングルール : 検索フィールド、含む文字列、含まない文字列の設定と正規表現を使用するかどうかを設定します。
-- 検索フィールド : Setting >検索フィールドメニューで登録した検索フィールドの中で、分析可否がfalseの検索フィールドを選択できます。
-- 含む文字列 : 検索フィールドに含める文字列を入力します。
-- アラームの種類 : 「発生件数」と「増減率」の中から選択します。
-- しきい値 : アラームタイプが「発生件数」の場合、1つの「アラームサイクル」内にログ量のしきい値を設定します。アラームの種類が「増減率」の場合、「比較時間」に対する増加/減少の比率をしきい値として設定します。
-- アラームサイクル : 分単位で入力することができ、1分～最大60分を設定します。
-- 比較サイクル : 時間単位で入力することができ、1時間～24時間を設定します。
-- Snooze : 分単位で入力することができ、1分～最大1,440分(24時間)を設定します。 (0の場合off)
-- 説明 : アラームの説明を記述します。
-- アラーム受信者の設定 : プロジェクトメンバーのうち、アラームを受信するメンバーを選択します。
-- コールバックURL : アラームが発生した時に呼び出されるURLを設定します。 http://で始まる形式をサポートします。
+- アラーム名: アラーム設定リストに表示される名前を入力します。
+- ログレベル: ALL、TRACE、DEBUG、INFO、NOTICD、WARNING、ERROR、FATAL、ALERT、EMERGのいずれかの値を選択します。
+- ルールの追加: 「ルールの追加」リンクをクリックして、1つ以上のフィルタリングルールを追加できます。
+- フィルタリングルール: 検索フィールド、含む文字列、含まない文字列の設定と正規表現を使用するかどうかを設定します。
+- 検索フィールド: Setting >検索フィールドメニューで登録した検索フィールドの中で、分析可否がfalseの検索フィールドを選択できます。
+- 含む文字列: 検索フィールドに含める文字列を入力します。
+- アラームの種類: 「発生件数」と「増減率」の中から選択します。
+- しきい値: アラームタイプが「発生件数」の場合、1つの「アラームサイクル」内にログ量のしきい値を設定します。アラームの種類が「増減率」の場合、「比較時間」に対する増加/減少の比率をしきい値として設定します。
+- アラームサイクル: 分単位で入力することができ、1分～最大60分を設定します。
+- 比較サイクル: 時間単位で入力することができ、1時間～24時間を設定します。
+- Snooze: 分単位で入力することができ、1分～最大1,440分(24時間)を設定します。 (0の場合off)
+- 説明: アラームの説明を記述します。
+- アラーム受信者の設定: プロジェクトメンバーのうち、アラームを受信するメンバーを選択します。
+- コールバックURL: アラームが発生した時に呼び出されるURLを設定します。 http://で始まる形式をサポートします。
 
-![[図12 : ログアラーム設定/登録]](http://static.toastoven.net/prod_analytics/alarm_02_en.png)
-![[図12 : ログアラーム設定/登録]](http://static.toastoven.net/prod_analytics/alarm_03_en.png)
-<center>[図12 : ログアラーム設定/登録]</center>
+![[図12: ログアラーム設定/登録]](http://static.toastoven.net/prod_analytics/alarm_02_en.png)
+![[図12: ログアラーム設定/登録]](http://static.toastoven.net/prod_analytics/alarm_03_en.png)
+<center>[図12: ログアラーム設定/登録]</center>
 
 ### クラッシュアラーム設定
 
@@ -241,14 +241,14 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 
 アラームを設定する方法は、次の通りです。
 
-- プラットフォームの選択 : アラーム発生対象のプラットフォームをiOS、Android、、Unityの中から1つ指定します。
+- プラットフォームの選択: アラーム発生対象のプラットフォームをiOS、Android、、Unityの中から1つ指定します。
 - アラーム発生On/Off：アラーム発生のOn/Offを切り替えることができます。
-- SMS通知文言の使用 : 有効にすると、障害内容の代わりにSMSアラーム文言に入力した内容が、SMSで送信されます。
-- しきい値 : クラッシュ発生頻度と平均頻度のいずれかを選択して、しきい値を入力します。検出周期は10分です。
-- アラーム受信者 : プロジェクトメンバーリストからアラームを受信するユーザーのEメール、SMSを選択します。
+- SMS通知文言の使用: 有効にすると、障害内容の代わりにSMSアラーム文言に入力した内容が、SMSで送信されます。
+- しきい値: クラッシュ発生頻度と平均頻度のいずれかを選択して、しきい値を入力します。検出周期は10分です。
+- アラーム受信者: プロジェクトメンバーリストからアラームを受信するユーザーのEメール、SMSを選択します。
 
-![[図13 : クラッシュアラーム設定]](http://static.toastoven.net/prod_analytics/alarm_04_en.png)
-<center>[図13 : クラッシュアラーム設定]</center>
+![[図13: クラッシュアラーム設定]](http://static.toastoven.net/prod_analytics/alarm_04_en.png)
+<center>[図13: クラッシュアラーム設定]</center>
 
 ### ユーザーベースのアラーム設定
 
@@ -256,14 +256,14 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 
 アラームを設定する方法は、次の通りです。
 
-- プラットフォームの選択 : アラーム発生対象のプラットフォームをiOS、Android、、Unityの中から1つ指定します。
+- プラットフォームの選択: アラーム発生対象のプラットフォームをiOS、Android、、Unityの中から1つ指定します。
 - アラーム発生On/Off：アラーム発生のON/OFFを切り替えることができます。
-- SMSアラームフレーズの使用 : 有効にすると、障害内容の代わりにSMSアラームフレーズに入力した内容をSMSで送信します。
-- しきい値 : クラッシュしたユーザーの割合がしきい値(%)以上の場合、指定したユーザーの携帯電話またはEメールにアラームを送信します。
-- アラーム受信者 : プロジェクトメンバーリストからアラームを受信するユーザーのEメール、SMSを選択します。
+- SMSアラームフレーズの使用: 有効にすると、障害内容の代わりにSMSアラームフレーズに入力した内容をSMSで送信します。
+- しきい値: クラッシュしたユーザーの割合がしきい値(%)以上の場合、指定したユーザーの携帯電話またはEメールにアラームを送信します。
+- アラーム受信者: プロジェクトメンバーリストからアラームを受信するユーザーのEメール、SMSを選択します。
 
-![[図13-1 : ユーザーベースのアラーム設定]](http://static.toastoven.net/prod_analytics/alarm_05_en.png)
-<center>[図13-1 : ユーザーベースのアラーム設定]</center>
+![[図13-1: ユーザーベースのアラーム設定]](http://static.toastoven.net/prod_analytics/alarm_05_en.png)
+<center>[図13-1: ユーザーベースのアラーム設定]</center>
 
 ## 設定
 
@@ -277,8 +277,8 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 
 ログ検索に使用される検索フィールドを照会する機能です。システムフィールドである既定のフィールドのリストに加えて、ユーザー送信フィールドのカスタムフィールドを確認できます。
 
-![[図14 : 検索フィールド設定]](http://static.toastoven.net/prod_analytics/setting_01_en.png)
-<center>[図14 : 検索フィールド設定]</center>
+![[図14: 検索フィールド設定]](http://static.toastoven.net/prod_analytics/setting_01_en.png)
+<center>[図14: 検索フィールド設定]</center>
 
 1. ログ送信時のフィールドの名前がtxtで始まる場合、分析可否がtrueに設定され、それ以外は分析可否がfalseに設定されます。分析可否がfalseの場合、ログ検索の検索フィールドに登録して使用できます。
 2. ログファイルやバイナリファイルを送信し、ログ検索画面で、[ダウンロード|表示]リンクを利用する場合は、UserBinaryDataまたはUserTxtDataという名前のフィールドにbase64エンコードされた値を入れて送信してください。
@@ -287,31 +287,31 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 
 イシュートラッカーを設定すると、App Crach Search > イシュー照会ページのイシューリストをクリックした時に移動するError Detailページ(図6参照)で、エラーをイシュートラッカーに登録して管理できます。
 
-- プラットフォーム : iOS、Android、Unityのいずれかのプラットフォームを選択します。イシュートラッカーは、プラットフォームごとにそれぞれ1つずつ設定可能です。
-- イシュートラッカー : GitHub、GitLabのいずれかを選択します。
-- Issue Title Format : イシュータイトルにバージョンと位置情報を含めるかどうかを選択します。
-- GitHubプロジェクトURL : イシュートラッカーをGitHubに選択した場合https://github.com/{user}/{project}形式のURLを入力します。
+- プラットフォーム: iOS、Android、Unityのいずれかのプラットフォームを選択します。イシュートラッカーは、プラットフォームごとにそれぞれ1つずつ設定可能です。
+- イシュートラッカー: GitHub、GitLabのいずれかを選択します。
+- Issue Title Format: イシュータイトルにバージョンと位置情報を含めるかどうかを選択します。
+- GitHubプロジェクトURL: イシュートラッカーをGitHubに選択した場合https://github.com/{user}/{project}形式のURLを入力します。
 - Access token：イシュートラッカーをGitHubに選択した場合、GitHubで作成したAccess tokenを入力します。(参照：https://help.github.com/articles/creating-an-access-token-for-command-line-use)
-- GitLabプロジェクトURL : イシュートラッカーをGitLabに選択した場合、http://{baseUrl}/{namespace}/{project}形式のURLを入力します。
-- Private token : イシュートラッカーをGitLabに選択した場合、GitLabサイトのMy profile - Accountで生成されたtokenの値を入力します。
-- テスト : 設定が正常かどうかをチェックします。
+- GitLabプロジェクトURL: イシュートラッカーをGitLabに選択した場合、http://{baseUrl}/{namespace}/{project}形式のURLを入力します。
+- Private token: イシュートラッカーをGitLabに選択した場合、GitLabサイトのMy profile - Accountで生成されたtokenの値を入力します。
+- テスト: 設定が正常かどうかをチェックします。
 
-![[図15 : イシュートラッカー設定]](http://static.toastoven.net/prod_analytics/setting_02_en.png)
-<center>[図15 : イシュートラッカー設定]</center>
+![[図15: イシュートラッカー設定]](http://static.toastoven.net/prod_analytics/setting_02_en.png)
+<center>[図15: イシュートラッカー設定]</center>
 
 ### シンボルファイル
 
 Symbolication fileが登録されていると、クラッシュログを確認できます。このメニューでは、Symbolication fileをアップロード/ダウンロード/削除できます。
 
-- iOS : iOSシンボリケーションファイルをアップロードする時は、ZIP形式でBundleName.app.dSYMファイルを圧縮します。
-- Android : Androidのシンボリケーションをアップロードする時は、mapping.txtファイルをアップロードする必要があります。
-- Android-NDK : Android NDKファイルをアップロードする時は、ZIP形式でlib.soファイルを圧縮してください。
-- Windows : Windowsシンボリケーションファイルをアップロードする時は、ZIP形式でBundleName.symファイルを圧縮してください。
+- iOS: iOSシンボリケーションファイルをアップロードする時は、ZIP形式でBundleName.app.dSYMファイルを圧縮します。
+- Android: Androidのシンボリケーションをアップロードする時は、mapping.txtファイルをアップロードする必要があります。
+- Android-NDK: Android NDKファイルをアップロードする時は、ZIP形式でlib.soファイルを圧縮してください。
+- Windows: Windowsシンボリケーションファイルをアップロードする時は、ZIP形式でBundleName.symファイルを圧縮してください。
 - シンボルファイルの最大サイズは200MBです。
 - Android NDKシンボリケーションファイルが許容する最大ファイルサイズを超えた場合、元の「lib.so」バイナリファイルのテキスト形式のシンボルを含んでいる「lib.so.sym」が1つ入ったZIPファイル形式にしてアップロードできます。
 
-![[図16 : シンボルファイル管理]](http://static.toastoven.net/prod_analytics/setting_03_en.png)
-<center>[図16 : シンボルファイル管理]</center>
+![[図16: シンボルファイル管理]](http://static.toastoven.net/prod_analytics/setting_03_en.png)
+<center>[図16: シンボルファイル管理]</center>
 
 ### ログの保存期間
 
@@ -320,8 +320,8 @@ Symbolication fileが登録されていると、クラッシュログを確認�
 - ログ保存期間は1ヶ月/ 2ヶ月/ 3ヶ月/ 6ヶ月/ 1年の中から選択することができ、月1回に限り変更可能です。
 - ログ保存期間が過ぎたデータは、翌営業日の早朝、削除されます。
 
-![[図17 : ログ保存期間]](http://static.toastoven.net/prod_analytics/setting_04_en.png)
-<center>[図17 : ログ保存期間]</center>
+![[図17: ログ保存期間]](http://static.toastoven.net/prod_analytics/setting_04_en.png)
+<center>[図17: ログ保存期間]</center>
 
 ### ログ送信設定
 
@@ -330,5 +330,5 @@ Symbolication fileが登録されていると、クラッシュログを確認�
 - 一般的なログ、セッションログ、クラッシュログを送信するかどうかを設定できます。
 - 設定を保存した後、APPを再起動すると適用されます。
 
-![[図18 : ログ送信設定]](http://static.toastoven.net/prod_logncrash/setting_05_en.png)
-<center>[図18 : ログ送信設定]</center>
+![[図18: ログ送信設定]](http://static.toastoven.net/prod_logncrash/setting_05_en.png)
+<center>[図18: ログ送信設定]</center>

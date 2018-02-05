@@ -117,7 +117,7 @@ TLCLog class에서 제공하는 기능들을 설명합니다.
 	- appKey: 앱키
 	- version: 앱 버전
 	- userId: 사용자 아이디
-	- enableSyncStart : true인 경우 발생한 로그들은 startSendThread가 호출되기 전까지 서버에 전송하지 않고, 큐에 저장합니다. 단 Crash가 발생한 경우 ThreadLock을 해제하고 로그를 전송합니다.
+	- enableSyncStart: true인 경우 발생한 로그들은 startSendThread가 호출되기 전까지 서버에 전송하지 않고, 큐에 저장합니다. 단 Crash가 발생한 경우 ThreadLock을 해제하고 로그를 전송합니다.
 - 반환값
 	- userId: 사용자 아이디
 	- 실패시 false
@@ -136,8 +136,8 @@ TLCLog class에서 제공하는 기능들을 설명합니다.
 	(void) enableHost;
 ```
 
-- true  : ip address를 구하여 host 필드에 저장합니다.
-- false : ip address를 구하지 않습니다.
+- true : ip address를 구하여 host 필드에 저장합니다.
+- false: ip address를 구하지 않습니다.
 
 ### 로그 보내기
 
@@ -188,8 +188,8 @@ TLCLog class에서 제공하는 기능들을 설명합니다.
 public static void setLogDeduplicate(bool enable)
 ```
 
-true : (Default 값) 중복 제거 로직 활성화<br>
-false : 중복 제거 로직 비활성화
+true: (Default 값) 중복 제거 로직 활성화<br>
+false: 중복 제거 로직 비활성화
 
 ### 기본 설정 관리
 

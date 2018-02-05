@@ -127,20 +127,20 @@ void destroy();
 - ToastLog를 초기화하고 해제합니다.
 - ToastLog 기능이 제대로 동작하기 위해서는 반드시 initialize()가 호출되어야 합니다.
 - 파라미터
-	- appKey : 앱키
-	- version : 앱 버전
-	- collectorAddr : 수집서버 주소
-		- Log & Crash 수집서버 : api-logncrash.cloud.toast.com
-	- collectorPort : 수집서버 포트
-	- logSource : 로그 소스
-	- logType : 로그 타입
+	- appKey: 앱키
+	- version: 앱 버전
+	- collectorAddr: 수집서버 주소
+		- Log & Crash 수집서버: api-logncrash.cloud.toast.com
+	- collectorPort: 수집서버 포트
+	- logSource: 로그 소스
+	- logType: 로그 타입
 - initialize() 반환값
-	- LOGNCRASH_LOG_OK : 0, 초기화 성공
-	- LOGNCRASH_LOG_ERROR : -1, 내부 에러 코드
-	- LOGNCRASH_LOG_ERROR_APPKEY : -2, 앱키가 잘못된 경우
-	- LOGNCRASH_LOG_ERROR_VERSION : -3, 버전이 잘못된 경우
-	- LOGNCRASH_LOG_ERROR_ADDRESS : -4, 수집 서버 주소가 잘못된 경우
-	- LOGNCRASH_LOG_ERROR_PORT : -5, 수집 서버 포트가 잘못된 경우
+	- LOGNCRASH_LOG_OK: 0, 초기화 성공
+	- LOGNCRASH_LOG_ERROR: -1, 내부 에러 코드
+	- LOGNCRASH_LOG_ERROR_APPKEY: -2, 앱키가 잘못된 경우
+	- LOGNCRASH_LOG_ERROR_VERSION: -3, 버전이 잘못된 경우
+	- LOGNCRASH_LOG_ERROR_ADDRESS: -4, 수집 서버 주소가 잘못된 경우
+	- LOGNCRASH_LOG_ERROR_PORT: -5, 수집 서버 포트가 잘못된 경우
 
 ### 로그 보내기
 
@@ -154,10 +154,10 @@ bool sendLog(
 
 - 지정된 logLevel로 로그를 보냅니다.
 - 파라미터
-	- logLevel : 전송할 logLevel. setLogLevel()로 지정된 logLevel보다 큰 logLevel은 전송이 안됩니다.
-	- message : 전송할 메시지
-	- errorCode : 에러 코드. NULL이나 ""을 쓰면 전송되지 않습니다.
-	- location : 에러 위치. NULL이나 ""을 쓰면 전송되지 않습니다.
+	- logLevel: 전송할 logLevel. setLogLevel()로 지정된 logLevel보다 큰 logLevel은 전송이 안됩니다.
+	- message: 전송할 메시지
+	- errorCode: 에러 코드. NULL이나 ""을 쓰면 전송되지 않습니다.
+	- location: 에러 위치. NULL이나 ""을 쓰면 전송되지 않습니다.
 - 반환값
 	- 성공시 true
 	- logLevel이 크거나, message가 비어있는 경우 false
@@ -257,8 +257,8 @@ void setCrashCallback(const LogNCrashCallbackType cb, void* cbData = NULL);
 ```
 public static void setDuplicate(bool enable)
 ```
-- true : 중복 제거 로직 활성화 (Default 값)
-- false : 중복 제거 로직 비활성화
+- true: 중복 제거 로직 활성화 (Default 값)
+- false: 중복 제거 로직 비활성화
 
 ### 기타 설정
 

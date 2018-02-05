@@ -4,7 +4,7 @@ HTTPプロトコルを使用してLog & Crash収集サーバーにログを送�
 
 ```
 {
-	"projectName" : "__appkey__"、
+	"projectName": "__appkey__"、
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
 	"body": "This log message come from HTTP client.",
@@ -197,7 +197,7 @@ resultList: array
 > 注意  
 > 1. JSON/HTTPでLog & Crash収集サーバーにログを送信する時、次のアドレスを使用する必要があります。  
 > Log & Crash: api-logncrash.cloud.toast.com  
-> 送信方式 : POST  
+> 送信方式: POST  
 > URI: /v2/log  
 > Content-Type: "application/json"  
 > 2. ログを送信する前に、Log & Crashにプロジェクトを登録したかを確認します。  
@@ -211,7 +211,7 @@ resultList: array
 ```
 //POSTメソッドを使用してログを送信
 $ curl -H "content-type:application/json" -XPOST 'http://api-logncrash.cloud.toast.com/v2/log' -d '{
-	"projectName" : "__アプリケーションキー__",
+	"projectName": "__アプリケーションキー__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
 	"body": "this log message come from http client, and it is a simple sample.",
@@ -225,7 +225,7 @@ $ curl -H "content-type:application/json" -XPOST 'http://api-logncrash.cloud.toa
 ```
 //URLが間違っている場合(log → loggg)
 $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.com/v2/loggg" -d '{
-	"projectName" : "__アプリケーションキー__"、
+	"projectName": "__アプリケーションキー__"、
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
 	"body": "this log message come from http client, and it is a simple sample.",
@@ -236,7 +236,7 @@ $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.c
 
 //間違ったフィールドのキーを使用した場合(_xxx)
 $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.com/v2/log" -d '{
-	"projectName" : "__アプリケーションキー__",
+	"projectName": "__アプリケーションキー__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
 	"body": "this log message come from http client, and it is a simple sample.",

@@ -127,7 +127,7 @@ TLCLog.hファイルを追加します。
 	- appKey: アプリケーションキー
 	- version: アプリのバージョン
 	- userId: ユーザー ID
-	- enableSyncStart : trueの場合に発生したログは、startSendThreadが呼び出されるまでサーバーに送信せずに、キューに格納します。ただしCrashが発生した場合、ThreadLockを解除してログを送信します。
+	- enableSyncStart: trueの場合に発生したログは、startSendThreadが呼び出されるまでサーバーに送信せずに、キューに格納します。ただしCrashが発生した場合、ThreadLockを解除してログを送信します。
 - 戻り値
 	- userId: ユーザー ID
 	- 失敗時 false
@@ -187,8 +187,8 @@ TLCLog.hファイルを追加します。
 public static void setLogDeduplicate(bool enable)
 ```
 
-true : (Default値)重複除去ロジックを有効に<br>
-false : 重複除去ロジックを無効に
+true: (Default値)重複除去ロジックを有効に<br>
+false: 重複除去ロジックを無効に
 
 ### 基本設定管理
 
@@ -216,7 +216,7 @@ false : 重複除去ロジックを無効に
 
 - iOS
 	\- Platform: iOSバージョン情報
-	\- DeviceModel:  iPhoneのモデル情報
+	\- DeviceModel: iPhoneのモデル情報
 	\ - Carrier: ユーザーの通信サービスプロバイダー
 	\ - CountryCode: ユーザーの通信サービスプロバイダーのISO国名コード
 	\ - NetworkType: Wi-FiまたはCellular(ログ送信イベントの発生時に、ネットワークが使用できない場合は、「No Connection」)

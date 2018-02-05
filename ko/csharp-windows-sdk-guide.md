@@ -106,19 +106,19 @@ public static void Destroy();
 - 초기화 및 해제를 수행합니다.
 - 처음 사용시 반드시 ToastLog.Initialize()를 호출해 주고, 종료시 ToastLog.Destroy()를 호출해 주어야 합니다.
 - ToastLog.Initialize() 파라미터
-	- appKey : 앱키
-	- version : 앱 버전. 기본값으로 VERSION이 사용됩니다.
-	- collectorAddr : 수집 서버 주소. 기본값으로 COLLECTOR_ADDR가 사용됩니다.
-	- collectorPort : 수집 서버 포트. 기본값으로 COLLECTOR_PORT가 사용됩니다.
-	- logSource : 로그 소스. 기본값으로 LOGSOURCE가 사용됩니다.
-	- logType : 로그 타입. 기본값으로 LOGTYPE이 사용됩니다.
+	- appKey: 앱키
+	- version: 앱 버전. 기본값으로 VERSION이 사용됩니다.
+	- collectorAddr: 수집 서버 주소. 기본값으로 COLLECTOR_ADDR가 사용됩니다.
+	- collectorPort: 수집 서버 포트. 기본값으로 COLLECTOR_PORT가 사용됩니다.
+	- logSource: 로그 소스. 기본값으로 LOGSOURCE가 사용됩니다.
+	- logType: 로그 타입. 기본값으로 LOGTYPE이 사용됩니다.
 - ToastLog.Initialize() 반환값
-	- LOG_OK : 0, 초기화 성공
-	- LOG_ERROR : -1, 내부 에러 코드
-	- LOG_ERROR_APPKEY : -2, 앱키가 잘못된 경우
-	- LOG_ERROR_VERSION : -3, 버전이 잘못된 경우
-	- LOG_ERROR_ADDRESS : -4, 수집 서버 주소가 잘못된 경우
-	- LOG_ERROR_PORT : -5, 수집 서버 포트가 잘못된 경우
+	- LOG_OK: 0, 초기화 성공
+	- LOG_ERROR: -1, 내부 에러 코드
+	- LOG_ERROR_APPKEY: -2, 앱키가 잘못된 경우
+	- LOG_ERROR_VERSION: -3, 버전이 잘못된 경우
+	- LOG_ERROR_ADDRESS: -4, 수집 서버 주소가 잘못된 경우
+	- LOG_ERROR_PORT: -5, 수집 서버 포트가 잘못된 경우
 
 ### 로그 보내기
 
@@ -131,10 +131,10 @@ public static bool SendLog(LogLevel logLevel,
 
 - 지정된 logLevel로 로그를 보냅니다.
 - 파라미터
-	- logLevel : 전송할 logLevel. SetLogLevel()로 지정된 logLevel보다 큰 logLevel은 전송이 안됩니다.
-	- message : 전송할 메시지
-    - errorCode : 에러 코드. null이나 ""을 쓰면 전송되지 않습니다.
-	- location : 에러 위치. null이나 ""을 쓰면 전송되지 않습니다.
+	- logLevel: 전송할 logLevel. SetLogLevel()로 지정된 logLevel보다 큰 logLevel은 전송이 안됩니다.
+	- message: 전송할 메시지
+    - errorCode: 에러 코드. null이나 ""을 쓰면 전송되지 않습니다.
+	- location: 에러 위치. null이나 ""을 쓰면 전송되지 않습니다.
 - 반환값
 	- 성공시 true
 	- logLevel이 크거나, message가 비어있는 경우 false
@@ -229,9 +229,9 @@ public static void CloseCrashCatcher()
 	public static void setDuplicate(bool enable)
 ```
 
-true :  중복 제거 로직 활성화 (Default 값 )
+true: 중복 제거 로직 활성화 (Default 값 )
 
-false : 중복 제거 로직 비활성화
+false: 중복 제거 로직 비활성화
 
 ### 기타 설정
 

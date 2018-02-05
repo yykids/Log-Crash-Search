@@ -12,7 +12,7 @@ Log & Crash AndroidNDK SDKの特徴は次の通りです。
 
 - Android 2.3.3、API Level 10以上
 - AndroidNDK最新バージョン推奨
-- サポート ABI : armeabi、armeabi-v7a、x86
+- サポート ABI: armeabi、armeabi-v7a、x86
 
 ## ダウンロード
 
@@ -308,8 +308,8 @@ void clearCustomKeys();
 bool setHostMode(int mode);
 ```
 
-- modeが0の場合 : Private IPを取得しhostフィールドを入力します。 Private IPを取得するのに失敗した場合、Public IPにhostフィールドを入力します。
-- modeが1の場合 : Public IPにhostフィールドに入力します。
+- modeが0の場合: Private IPを取得しhostフィールドを入力します。 Private IPを取得するのに失敗した場合、Public IPにhostフィールドを入力します。
+- modeが1の場合: Public IPにhostフィールドに入力します。
 
 ### クラッシュ処理
 
@@ -338,8 +338,8 @@ void setCrashCallback(const LogNCrashCallbackType cb, void* cbData = NULL);
 
 - クラッシュ処理を開始するか、終了します。
 - openCrashCatcherパラメータ
-	- bBackground : クラッシュレポーター動作方式を設定します。
-	- langType : クラッシュレポーターGUI言語を設定します。
+	- bBackground: クラッシュレポーター動作方式を設定します。
+	- langType: クラッシュレポーターGUI言語を設定します。
 - openCrashCatcher戻り値
 	- 設定成功時true。
 	- 設定失敗時false。

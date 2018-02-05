@@ -12,7 +12,7 @@ Log & Crash AndroidNDK SDK 특·장점은 다음과 같습니다.
 
 - Android 2.3.3, API Level 10 이상
 - AndroidNDK 최신 버전 권장
-- 지원 ABI : armeabi, armeabi-v7a, x86
+- 지원 ABI: armeabi, armeabi-v7a, x86
 
 ## 다운로드
 
@@ -194,24 +194,24 @@ void destroy();
 - ToastLog를 초기화하고 해제합니다.
 - ToastLog 기능이 제대로 동작하기 위해서는 반드시 initialize()가 호출되어야 합니다.
 - 파라미터
-	- appKey : 앱키
-	- version : 앱 버전
-	- collectorAddr : 수집서버 주소
-		- Log & Crash 수집서버 : api-logncrash.cloud.toast.com
-	- collectorPort : 수집서버 포트
-	- logSource : 로그 소스
-	- logType : 로그 타입
-  - clientHost : Host를 구하는 방식
-		- true : ioctl 방식을 사용하여 client에서 host를 구함
-		- false : server에서 전달된 값으로 host를 구함
-	- asyncStart : SendThread를 Lock시킨 상태로 시작.  Lock 상태에서 로그가 발생하는 경우 서버로 전송하지 않고 큐에 저장하며 대기. Crash가 발생하거나 StartSendThread 함수를 실행하는 경우 Lock 해제
+	- appKey: 앱키
+	- version: 앱 버전
+	- collectorAddr: 수집서버 주소
+		- Log & Crash 수집서버: api-logncrash.cloud.toast.com
+	- collectorPort: 수집서버 포트
+	- logSource: 로그 소스
+	- logType: 로그 타입
+  - clientHost: Host를 구하는 방식
+		- true: ioctl 방식을 사용하여 client에서 host를 구함
+		- false: server에서 전달된 값으로 host를 구함
+	- asyncStart: SendThread를 Lock시킨 상태로 시작.  Lock 상태에서 로그가 발생하는 경우 서버로 전송하지 않고 큐에 저장하며 대기. Crash가 발생하거나 StartSendThread 함수를 실행하는 경우 Lock 해제
 - initialize() 반환값
-	- LOGNCRASH_LOG_OK : 0, 초기화 성공
-	- LOGNCRASH_LOG_ERROR : -1, 내부 에러 코드
-	- LOGNCRASH_LOG_ERROR_APPKEY : -2, 앱키가 잘못된 경우
-	- LOGNCRASH_LOG_ERROR_VERSION : -3, 버전이 잘못된 경우
-	- LOGNCRASH_LOG_ERROR_ADDRESS : -4, 수집 서버 주소가 잘못된 경우
-	- LOGNCRASH_LOG_ERROR_PORT : -5, 수집 서버 포트가 잘못된 경우
+	- LOGNCRASH_LOG_OK: 0, 초기화 성공
+	- LOGNCRASH_LOG_ERROR: -1, 내부 에러 코드
+	- LOGNCRASH_LOG_ERROR_APPKEY: -2, 앱키가 잘못된 경우
+	- LOGNCRASH_LOG_ERROR_VERSION: -3, 버전이 잘못된 경우
+	- LOGNCRASH_LOG_ERROR_ADDRESS: -4, 수집 서버 주소가 잘못된 경우
+	- LOGNCRASH_LOG_ERROR_PORT: -5, 수집 서버 포트가 잘못된 경우
 
 ### SendThread Lock 상태 해제
 
@@ -233,10 +233,10 @@ bool sendLog(
 
 - 지정된 logLevel로 로그를 보냅니다.
 - 파라미터
-	- logLevel : 전송할 logLevel. setLogLevel()로 지정된 logLevel보다 큰 logLevel은 전송이 안됩니다.
-	- message : 전송할 메시지
-	- errorCode : 에러 코드. NULL이나 ""을 쓰면 전송되지 않습니다.
-	- location : 에러 위치. NULL이나 ""을 쓰면 전송되지 않습니다.
+	- logLevel: 전송할 logLevel. setLogLevel()로 지정된 logLevel보다 큰 logLevel은 전송이 안됩니다.
+	- message: 전송할 메시지
+	- errorCode: 에러 코드. NULL이나 ""을 쓰면 전송되지 않습니다.
+	- location: 에러 위치. NULL이나 ""을 쓰면 전송되지 않습니다.
 - 반환값
 	- 성공시 true
 	- logLevel이 크거나, message가 비어있는 경우 false
@@ -308,8 +308,8 @@ void clearCustomKeys();
 bool setHostMode(int mode);
 ```
 
-- mode 가 0인 경우 : Private IP를 구하여 host 필드를 채웁니다. Private IP를 구하는데 실패 하면 Public IP로 host 필드를 채웁니다.
-- mode 가 1인 경우 : Public IP 로 host 필드를 채웁니다.
+- mode 가 0인 경우: Private IP를 구하여 host 필드를 채웁니다. Private IP를 구하는데 실패 하면 Public IP로 host 필드를 채웁니다.
+- mode 가 1인 경우: Public IP 로 host 필드를 채웁니다.
 
 ### 크래시 처리하기
 
@@ -338,8 +338,8 @@ void setCrashCallback(const LogNCrashCallbackType cb, void* cbData = NULL);
 
 - 크래시 처리를 시작하거나 종료합니다.
 - openCrashCatcher 파라미터
-	- bBackground : 크래시 리포터 동작 방식 설정합니다.
-	- langType : 크래시 리포터 GUI 언어를 설정합니다.
+	- bBackground: 크래시 리포터 동작 방식 설정합니다.
+	- langType: 크래시 리포터 GUI 언어를 설정합니다.
 - openCrashCatcher 반환값
 	- 설정 성공시 true
 	- 설정 실패시 false
@@ -352,9 +352,9 @@ void setCrashCallback(const LogNCrashCallbackType cb, void* cbData = NULL);
 ```
 public static void setDuplicate(bool enable)
 ```
-  - true : (Default 값 ) 중복 제거 로직 활성화
+  - true: (Default 값 ) 중복 제거 로직 활성화
 
-  - false : 중복 제거 로직 비활성화
+  - false: 중복 제거 로직 비활성화
 
 ### 기타 설정
 

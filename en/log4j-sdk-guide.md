@@ -179,18 +179,18 @@ try {
 
 ### log4j.xml 설정 항목
 
-- collectorUrl : 수집 서버 주소  
-	HTTP : http://api-logncrash.cloud.toast.com
-- appKey : 프로젝트 앱키, 필수
-- version : 프로젝트 버전, 기본값 "1.0.0"
-- logSource : 로그 소스, 기본값 "http-log4j"
-- logType : 로그 타입, 기본값 "log"
-- Threshold : 전송할 로그 레벨 지정, 기본값 "ALL"
-- enable : Appender 사용 여부 설정, 기본값 "true"
-- debug : 디버그 사용 여부 설정, 기본값 "false"
-- errorCodeType : 에러 코드 타입 설정, 기본값 "default"  
-	default : Exception 정보를 사용  
-	mdc : Log4j MDC의 errorCode 항목값을 설정해서 사용한다.  
+- collectorUrl: 수집 서버 주소  
+	HTTP: http://api-logncrash.cloud.toast.com
+- appKey: 프로젝트 앱키, 필수
+- version: 프로젝트 버전, 기본값 "1.0.0"
+- logSource: 로그 소스, 기본값 "http-log4j"
+- logType: 로그 타입, 기본값 "log"
+- Threshold: 전송할 로그 레벨 지정, 기본값 "ALL"
+- enable: Appender 사용 여부 설정, 기본값 "true"
+- debug: 디버그 사용 여부 설정, 기본값 "false"
+- errorCodeType: 에러 코드 타입 설정, 기본값 "default"  
+	default: Exception 정보를 사용  
+	mdc: Log4j MDC의 errorCode 항목값을 설정해서 사용한다.  
 
 ## 제약 사항
 
