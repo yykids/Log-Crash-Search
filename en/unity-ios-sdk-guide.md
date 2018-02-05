@@ -58,7 +58,7 @@ LogNCrashSettings에 정보를 입력하고 LogNCrash객체의 파라미터가 �
 using Toast.LogNCrash;
 namespace Toast.LogNCrash
 {
-	public class SampleScript: MonoBehaviour
+	public class SampleScript : MonoBehaviour
 	{
 		void Start ()
 		{
@@ -76,7 +76,7 @@ LogNCrash.Initialize에 파라미터를 입력하여 초기화를 시도 합니�
 using Toast.LogNCrash;
 namespace Toast.LogNCrash
 {
-	public class SampleScript: MonoBehaviour
+	public class SampleScript : MonoBehaviour
 	{
 		void Start ()
 		{
@@ -223,7 +223,7 @@ try{
 
 ```
 public void Crash_Send_Complete_Callback(string message) {
-	Debug.Log("Crash_Send_Complete_Callback: " + message);
+	Debug.Log("Crash_Send_Complete_Callback : " + message);
 }
 
 void Start() {

@@ -56,7 +56,7 @@ LogNCrashSettingsに情報を入力して、LogNCrashオブジェクトのパラ
 using Toast.LogNCrash;
 namespace Toast.LogNCrash
 {
-	public class SampleScript: MonoBehaviour
+	public class SampleScript : MonoBehaviour
 	{
 		void Start ()
 		{
@@ -74,7 +74,7 @@ LogNCrash.Initializeにパラメータを入力して、初期化を試みます
 using Toast.LogNCrash;
 namespace Toast.LogNCrash
 {
-	public class SampleScript: MonoBehaviour
+	public class SampleScript : MonoBehaviour
 	{
 		void Start ()
 		{
@@ -219,7 +219,7 @@ public static void SetEnableHost:(bool flag)
 
  ```
  public void Crash_Send_Complete_Callback(string message) {
- 	Debug.Log("Crash_Send_Complete_Callback: " + message);
+ 	Debug.Log("Crash_Send_Complete_Callback : " + message);
  }
 
  void Start() {
