@@ -57,7 +57,7 @@ sample/     ; Android SDK 샘플
 1.Android SDK의 libs/를 해당 프로젝트 libs/에 복사합니다.
 2.AndroidManifest.xml 파일에 권한을 추가합니다.
 
-- 네트워크 상태, 디바이스정보, 통신사, Logcat등의 정보를 가져오기 위하여 권한이 필요합니다.
+- 네트워크 상태, 디바이스정보, 통신사 등의 정보를 가져오기 위하여 권한이 필요합니다.
 
 ```
 <!-- 로그 전송을 위한 인터넷 접근 권한 (필수) -->
@@ -72,9 +72,6 @@ sample/     ; Android SDK 샘플
 <!-- 네트워크 접속이 안되는 경우 파일로 로그를 저장하기 위한 권한 (옵션) -->
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-<!-- Logcat에 접근하기 위한 권한 (옵션) -->
-<uses-permission android:name="android.permission.READ_LOGS" />
 
 <application
       ......
@@ -230,7 +227,7 @@ public static void clearCustomFields()
 	- "DmpData", "Platform", "NeloSDK", "Exception", "Location", "Cause"
 	- "SessionID", "UserID"
 	- "Carrier", "CountyCode", "DeviceModel", "Locale", "NetworkType", "Rooted"
-	- "LogcatMain", "LogcatRadio", "LogcatEvents"
+    
 
 ### 기본 설정 관리
 
@@ -256,28 +253,6 @@ public static void setLogType(String logType)
 ```
 
 - 로그 타입을 구하거나 새로 지정합니다.
-
-### Android 전용 기능
-
-```
-public static boolean getEnableLogcatMain()
-public static void setEnableLogcatMain(boolean enable)
-
-public static boolean getEnableLogcatRadio()
-public static void setEnableLogcatRadio(boolean enable)
-
-public static boolean getEnableLogcatEvents()
-public static void setEnableLogcatEvents(boolean enable)
-```
-
-- Logcat Main/Radio/Events 내용을 같이 보낼지를 구하거나 설정합니다.
-- 기본값은 false입니다.
-
-```
-public static void clearLogcat()
-```
-
-- Android 단말의 Logcat 내용을 모두 비웁니다.
 
 ### 중복 제거 모드 설정
 

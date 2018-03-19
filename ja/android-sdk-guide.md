@@ -57,7 +57,7 @@ sample/     ; Android SDKサンプル
 1. Android SDKのlibs/を、プロジェクトlibs/にコピーします。
 2. AndroidManifest.xmlファイルに権限を追加します。
 
-- ネットワークの状態、デバイス情報、キャリア、Logcatなどの情報を取得するために権限が必要です。
+- ネットワークの状態、デバイス情報、キャリア の情報を取得するために権限が必要です。
 
 ```
 <!-- ログ送信のためのインターネットアクセス権限(必須) -->
@@ -72,9 +72,6 @@ sample/     ; Android SDKサンプル
 <!-- ネットワーク接続がない場合、ファイルにログを保存するための権限(オプション) -->
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-<!-- Logcatにアクセスするための権限(オプション) -->
-<uses-permission android:name="android.permission.READ_LOGS" />
 
 <application
       ......
@@ -230,7 +227,6 @@ public static void clearCustomFields()
 	- "DmpData", "Platform", "NeloSDK", "Exception", "Location", "Cause"
 	- "SessionID", "UserID"
 	- "Carrier", "CountyCode", "DeviceModel", "Locale", "NetworkType", "Rooted"
-	- "LogcatMain", "LogcatRadio", "LogcatEvents"
 
 ### 基本設定管理
 
@@ -256,28 +252,6 @@ public static void setLogType(String logType)
 ```
 
 - ログタイプを取得したり、新たに指定したりします。
-
-### Android専用の機能
-
-```
-public static boolean getEnableLogcatMain()
-public static void setEnableLogcatMain(boolean enable)
-
-public static boolean getEnableLogcatRadio()
-public static void setEnableLogcatRadio(boolean enable)
-
-public static boolean getEnableLogcatEvents()
-public static void setEnableLogcatEvents(boolean enable)
-```
-
-- Logcat Main/Radio/Events内容を一緒に送信するかを取得したり、設定したりします。
-- 基本値はfalseです。
-
-```
-public static void clearLogcat()
-```
-
-- Android端末のLogcat内容をすべてクリアします。
 
 ### 重複除去モードの設定
 
