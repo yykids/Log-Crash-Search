@@ -16,7 +16,7 @@
 * [SDK][[AOS-2.6.6](/Download/#analytics-log-crash-search)] 
     * 중복 제거 필터 오류 수정
 
-* [SDK][[iOS/OSX-2.6.10](/Download/#analytics-log-crash-search)]
+* [SDK][[iOS-2.6.10](/Download/#analytics-log-crash-search)]
     * 초기화 과정에서 UserID 의 값이 nil 일 때 Crash가 발생하던 문제 수정
     * 초기화 과정에서 enableSyncStart 의 값이 YES 일 경우 CPU 이용률이 100%까지 올라가는 문제 수정
 
