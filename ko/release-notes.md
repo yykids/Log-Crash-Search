@@ -3,9 +3,10 @@
 ### 2018.05.02
 
 #### 버그수정
-* [SDK] 초기화 과정에서 UserID 의 값이 nil일 때 Crash가 발생하던 문제 수정
-* [SDK] 초기화 과정에서 enableSyncStart 의 값이 YES일 경우 CPU 이용률이 100%까지 올라가는 문제 수정 
-    * 수정버전: [toast-logncrash-ios-mac-sdk-2.6.10](/Download/#analytics-log-crash-search)
+* [SDK] [[iOS/OSX-2.6.10](/Download/#analytics-log-crash-search)]
+    * 초기화 과정에서 UserID 의 값이 nil일 때 Crash가 발생하던 문제 수정
+    * 초기화 과정에서 enableSyncStart 의 값이 YES일 경우 CPU 이용률이 100%까지 올라가는 문제 수정 
+    
 
 ### 2018.04.24
 
