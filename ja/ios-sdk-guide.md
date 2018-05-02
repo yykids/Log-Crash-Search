@@ -7,8 +7,8 @@
 
 ### iOS SDK 사용 가이드
 
-Log & Crash iOS/Mac SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。  
-Log & Crash iOS/Mac SDK特徴は次の通りです。  
+Log & Crash iOS SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。  
+Log & Crash iOS SDK特徴は次の通りです。  
 
 - ログを収集してサーバーに送信します。
 - アプリで発生したクラッシュログを収集サーバーに送信します。
@@ -19,36 +19,31 @@ Log & Crash iOS/Mac SDK特徴は次の通りです。
 
 - iPhone 3GS, 4, 4S, 5, 5S, 6, 6 Plus (armv7, armv7s, arm64)
 - iOS 5.1以上(arm64は7.0.3以上)
-- Mac OS X 10.5以降(Intel 64ビット)
 
 ## ダウンロード
 
-[TOAST Document](http://docs.toast.com/ko/Download/)でiOS-Unity-Mac SDKをダウンロードできます。
+[TOAST Document](http://docs.toast.com/ko/Download/)でiOS SDK(native)をダウンロードできます。
 
 ```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS/Mac SDK]をクリック
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS SDK]をクリック
 ```
 
 ## インストール
 
 ### 構成
 
-iOS/Mac SDKは次のように構成されています。
+iOS SDKは次のように構成されています。
 
 ```
-docs/                       ; iOS/Mac SDKドキュメント
+docs/                       ; iOS SDKドキュメント
 libs/iOS                    ; iOS SDKライブラリ
-libs/Mac OS X               ; Mac SDKライブラリ
 sample/LogNCrashiOSSample   ; iOS SDKサンプル
-sample/LogNCrashMacSample   ; Mac SDKサンプル
 ```
 
 ### libs
 
 - iOS
 	- iOS用のlogncrash framework
-- Mac OS X
-	- Mac OS X用のlogncrash framework
 - Unity
 	- Unity用のlogncrash framework
 	- Unity packageを含む
@@ -65,12 +60,6 @@ sample/LogNCrashMacSample   ; Mac SDKサンプル
 5. Send Info、Send Debug、Send Warn、Send Fatal、Send Errorボタンをクリックしてログを送信します。
 6. Send crashボタンを押して、クラッシュログを送信します。
 
-- Mac OS X
-
-1. sample/LogNCrashMacSample/LogNCrashMacSample.xcodeprojをXCodeで開きます。
-2. AppDelegate.mdを開いてアプリケーションキー、収集サーバーのアドレスを修正します。
-3. 実行します。
-4. initログが送信されたことを確認します。
 
 ## 使用例
 
@@ -83,13 +72,6 @@ sample/LogNCrashMacSample   ; Mac SDKサンプル
 	- CoreTelephony.framework
 	- Foundation.framework
 
-- Mac OS X
-
-1. 「Frameworks」にLogNCrashSDK.frameworkとCrashReporter.frameworkを追加します。
-2. 「Build Phases」の「Link Binary With Libraries」の項目に、以下のシステムのフレームワークを追加します。
-	- Cocoa.framework
-	- SystemConfiguration.framework
-3. /Library/FrameworksにLogNCrashSDK.frameworkとCrashReporter.frameworkをコピーします。
 
 - 提供されるTLCLog classを使用してログを送信します。
 	 - init:ofAppKey:withVersion:forUserId: を実行して、初期化します。
@@ -227,9 +209,7 @@ false: 重複除去ロジックを無効に
 	\ - Carrier: ユーザーの通信サービスプロバイダー
 	\ - CountryCode: ユーザーの通信サービスプロバイダーのISO国名コード
 	\ - NetworkType: Wi-FiまたはCellular(ログ送信イベントの発生時に、ネットワークが使用できない場合は、「No Connection」)
-- Mac OS X
-	\- Platform: Mac OS Xバージョン情報
-	\ - NetworkType: Wi-FiまたはCellular(ログ送信イベントの発生時に、ネットワークが使用できない場合は、「No Connection」)
+	
 
 ## iOS Crashを解析
 - iOSで発生したCrashの場合、Crash情報がアドレス値に収集されるため、これを解析するためのSymbolファイルが必要です。
