@@ -7,8 +7,8 @@
 
 ### iOS SDK 사용 가이드
 
-Log & Crash iOS/Mac SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.  
-Log & Crash iOS/Mac SDK 특·장점은 다음과 같습니다.  
+Log & Crash iOS SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.  
+Log & Crash iOS SDK 특·장점은 다음과 같습니다.  
 
 - 로그를 수집 서버로 보냅니다.
 - 앱에서 발생한 크래시 로그를 수집 서버로 보냅니다.
@@ -19,28 +19,25 @@ Log & Crash iOS/Mac SDK 특·장점은 다음과 같습니다.
 
 - iPhone 3GS, 4, 4S, 5, 5S, 6, 6 Plus (armv7, armv7s, arm64)
 - iOS 5.1 이상 (arm64는 7.0.3 이상)
-- Mac OS X 10.5 이상 (Intel 64 비트)
 
 ## 다운로드
 
-[TOAST Document](http://docs.toast.com/ko/Download/)에서 iOS-Unity-Mac SDK를 받을 수 있습니다.
+[TOAST Document](http://docs.toast.com/ko/Download/)에서 iOS SDK(native)를 받을 수 있습니다.
 
 ```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS/Mac SDK] 클릭
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS SDK] 클릭
 ```
 
 ## 설치
 
 ### 구성
 
-iOS/Mac SDK는 다음와 같이 구성되어 있습니다.
+iOS SDK는 다음와 같이 구성되어 있습니다.
 
 ```
-docs/                       ; iOS/Mac SDK 문서
+docs/                       ; iOS SDK 문서
 libs/iOS                    ; iOS SDK 라이브러리
-libs/Mac OS X               ; Mac SDK 라이브러리
 sample/LogNCrashiOSSample   ; iOS SDK 샘플
-sample/LogNCrashMacSample   ; Mac SDK 샘플
 ```
 
 ### 샘플 설명
@@ -55,13 +52,6 @@ sample/LogNCrashMacSample   ; Mac SDK 샘플
 5. Send Info, Send Debug, Send Warn, Send Fatal, Send Error 버튼을 눌러 로그를 전송 합니다.
 6. Send crash 버튼을 눌러 크래시 로그를 전송합니다.
 
-- Mac OS X
-
-1. sample/LogNCrashMacSample/LogNCrashMacSample.xcodeproj를 XCode로 엽니다.
-2. AppDelegate.md을 열어서 앱키, 수집서버 주소를 수정해 줍니다.
-3. 실행합니다.
-4. init 로그가 전송 되었는지 확인 합니다.
-
 ## 사용 예
 
 - iOS
@@ -73,13 +63,6 @@ sample/LogNCrashMacSample   ; Mac SDK 샘플
 	- CoreTelephony.framework
 	- Foundation.framework
 
-- Mac OS X
-
-1. “Frameworks”에 LogNCrashSDK.framework와 CrashReporter.framework를 추가합니다.
-2. “Build Phases”의 “Link Binary With Libraries” 항목에 아래 시스템 프레임워크를 추가합니다.
-	- Cocoa.framework
-	- SystemConfiguration.framework
-3. /Library/Frameworks에 LogNCrashSDK.framework와 CrashReporter.framework를 복사합니다.
 
 - 제공되는 TLCLog class를 사용하여 로그를 전송 합니다.
 	- init:ofAppKey:withVersion:forUserId: 를 실행하여 초기화를 해줍니다.
@@ -227,9 +210,6 @@ false: 중복 제거 로직 비활성화
 	\- DeviceModel: 아이폰 모델 정보
 	\- Carrier: 사용자의 텔레콤 서비스 제공자
 	\- CountryCode: 사용자의 텔레콤 서비스 제공자의 ISO 국가 코드
-	\- NetworkType: Wi-Fi 또는 Cellular (로그 전송이벤트 발생 시점에 네트워크 사용이 불가한 경우 "No Connection")
-- Mac OS X
-	\- Platform: Mac OS X 버전 정보
 	\- NetworkType: Wi-Fi 또는 Cellular (로그 전송이벤트 발생 시점에 네트워크 사용이 불가한 경우 "No Connection")
 
 ## iOS Crash 해석하기
