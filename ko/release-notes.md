@@ -1,5 +1,25 @@
 ## Analytics > Log & Crash Search > 릴리스 노트
 
+### 2018.05.02 
+
+#### 기능 개선/변경
+
+* [SDK][[AOS-2.6.6](/Download/#analytics-log-crash-search)]
+    * IP Address 수집 필드 제거
+        * 콘솔에 표시되는 "host" 값은 서버에서 수집한 정보를 사용합니다.
+
+* [SDK][[Unity-2.8.4](/Download/#analytics-log-crash-search)]
+    * Android Native SDK 호출 API 개선
+
+#### 버그 수정
+
+* [SDK][[AOS-2.6.6](/Download/#analytics-log-crash-search)] 
+    * 중복 제거 필터 오류 수정
+
+* [SDK][[iOS-2.6.10](/Download/#analytics-log-crash-search)]
+    * 초기화 과정에서 UserID 의 값이 nil 일 때 Crash가 발생하던 문제 수정
+    * 초기화 과정에서 enableSyncStart 의 값이 YES 일 경우 CPU 이용률이 100%까지 올라가는 문제 수정
+
 ### 2018.04.24
 
 #### 버그수정
