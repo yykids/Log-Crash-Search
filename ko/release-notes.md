@@ -1,5 +1,9 @@
 ## Analytics > Log & Crash Search > 릴리스 노트
 
+### 2018.05.29
+
+* [Console] iOS 크래시 심볼리케이션 중 중복된 이름의 Bundle(ex. Framework.UIKit, Accessibility.UIKit)이 존재 할 경우 심볼리케이션이 정상적으로 되지 않는 문제 수정
+
 ### 2018.05.02 
 
 #### 기능 개선/변경
