@@ -1,8 +1,12 @@
 ## Analytics > Log & Crash Search > Release Notes
 
-### 2018.05.29
+### 2018.05.09
 
-* [Console] iOS 크래시 심볼리케이션 중 중복된 이름의 Bundle(ex. Framework.UIKit, Accessibility.UIKit)이 존재 할 경우 심볼리케이션이 정상적으로 되지 않는 문제 수정
+#### 버그 수정
+
+* [SDK][[Unity-2.8.5](/Download/#analytics-log-crash-search)]
+    * Unity Script에서 발생한Crash logType 롤백
+        * Unity Script에서 발생한Crash를HANDLED로 처리하는 로직이 적용되어 롤백합니다.  
 
 ### 2018.05.02 
 
