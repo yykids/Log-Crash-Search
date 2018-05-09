@@ -5,8 +5,8 @@
 #### 버그 수정
 
 * [SDK][[Unity-2.8.5](/Download/#analytics-log-crash-search)]
-    * Unity Script에서 발생한Crash logType 롤백
-        * Unity Script에서 발생한Crash를HANDLED로 처리하는 로직이 적용되어 롤백합니다.
+    * Unity Script에서 발생한 Crash logType 롤백
+        * Unity Script에서 발생한 Crash를 HANDLED로 처리하는 로직이 적용되어 롤백합니다.
 
 ### 2018.05.02 
 
