@@ -1,7 +1,5 @@
 ## Analytics > Log & Crash Search > Unity Android SDK Guide
 
-### Unity Android SDK 사용 가이드
-
 Log & Crash Unity SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。  
 Log & Crash Unity SDKは次のような特徴があります。
 

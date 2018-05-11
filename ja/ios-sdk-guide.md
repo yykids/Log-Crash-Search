@@ -1,7 +1,5 @@
 ## Analytics > Log & Crash Search > iOS SDK Guide
 
-### iOS SDK 사용 가이드
-
 Log & Crash iOS SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。  
 Log & Crash iOS SDK特徴は次の通りです。  
 
