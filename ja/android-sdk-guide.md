@@ -1,7 +1,5 @@
 ## Analytics > Log & Crash Search > Android SDK Guide
 
-### Android SDK 사용 가이드
-
 Log & Crash Android SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。  
 Log & Crash Android SDKの特徴は次の通りです。  
 
