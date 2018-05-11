@@ -1,10 +1,5 @@
 ## Analytics > Log & Crash Search > Android SDK Guide
 
-### deprecated
-
-- Log & Crash Android SDK 버전은 더 이상 지원되지 않습니다.
-- [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)를 이용해 주시기 바랍니다.
-
 ### Android SDK 사용 가이드
 
 Log & Crash Android SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.  

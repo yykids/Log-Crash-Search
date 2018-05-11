@@ -1,10 +1,5 @@
 ## Analytics > Log & Crash Search > Unity iOS SDK Guide
 
-### deprecated
-
-- Log & Crash Unity iOS SDK 버전은 더 이상 지원되지 않습니다.
-- [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)를 이용해 주시기 바랍니다.
-
 ### Unity iOS SDK 사용 가이드
 
 Log & Crash Unity SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。  
