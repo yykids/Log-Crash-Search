@@ -35,7 +35,7 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 
 ### 헤더 파일 추가
 
-iOS Unity 환경에서 사용하기 위해서는 'TLCLogUnity.h' 파일을 추가 합니다.
+iOS Unity 환경에서 사용하기 위해서는 #import <LogNCrashSDK/LogNCrashSDK.h\> 추가 합니다.
 
 ## 사용 예제
 

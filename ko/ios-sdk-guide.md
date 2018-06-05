@@ -21,13 +21,11 @@ Log & Crash iOS SDK 특·장점은 다음과 같습니다.
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS SDK] 클릭
 ```
 
-## Interface
-
-TLCLog class에서 제공하는 기능들을 설명합니다.
+## SDK 사용방법
 
 ### 헤더 파일 추가
 
-#import <LogNCrashSDK/LogNCrashSDK.h> 파일을 추가 합니다.
+\#import <LogNCrashSDK/LogNCrashSDK.h\> 추가 합니다.
 
 ### 초기화
 

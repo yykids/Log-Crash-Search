@@ -21,68 +21,11 @@ Log & Crash iOS SDK 특·장점은 다음과 같습니다.
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS SDK] 클릭
 ```
 
-## 설치
-
-### 구성
-
-iOS SDK는 다음와 같이 구성되어 있습니다.
-
-```
-docs/                       ; iOS SDK 문서
-libs/iOS                    ; iOS SDK 라이브러리
-sample/LogNCrashiOSSample   ; iOS SDK 샘플
-```
-
-### 샘플 설명
-
-같이 제공되는 sample/ 에 대해 설명합니다.
-- iOS
-
-1. sample/LogNCrashiOSSample/LogNCrashiOSSample.xcodeproj를 XCode로 엽니다.
-2. ViewController.m을 열어서 앱키, 수집서버 주소를 수정해 줍니다. 버전, 로그 소스, 로그 타입 등을 수정하면 검색에 도움이 됩니다.
-3. 실행합니다.
-4. TLCLog Init 버튼 눌러 시작합니다.
-5. Send Info, Send Debug, Send Warn, Send Fatal, Send Error 버튼을 눌러 로그를 전송 합니다.
-6. Send crash 버튼을 눌러 크래시 로그를 전송합니다.
-
-## 사용 예
-
-- iOS
-
-1. “Frameworks”에 LogNCrashSDK.framework와 CrashReporter.framework를 추가합니다.
-2. “Build Phases”의 “Link Binary With Libraries” 항목에 아래 시스템 프레임워크를 추가합니다.
-	- UIKit.framework
-	- SystemConfiguration.framework
-	- CoreTelephony.framework
-	- Foundation.framework
-
-
-- 제공되는 TLCLog class를 사용하여 로그를 전송 합니다.
-	- init:ofAppKey:withVersion:forUserId: 를 실행하여 초기화를 해줍니다.
-	- info:withMessage:, -debug:withMessage: 등을 사용하여 해당 logLevel 로그를 수집서버로 보냅니다.
-	- 앱 크래시가 발생하면 크래시 로그 수집 서버로 전송됩니다.
-
-```
-NSString* appKey = @"5b10bc2ba2b80d99ff00a5c8bff3b5050d48dd797fe7ed1c1a857066c1bdb8e4"; // Project AppKey
-NSString* appVer= @"1.0";
-NSString* serverAddr = @"http://api-logncrash.cloud.toast.com"; //Log & Crash 수집서버 주소
-NSString* userID = @"tester"; //사용자 ID
-
-//init 호출시 crash report 자동 전송
-[TLCLog init:serverAddr ofAppKey:appKey withVersion:appVer forUserId:userID];
-
-[TLCLog setCustomField:@"Test" forKey:@"DevelopmentStage" ];
-[TLCLog info:self.errorCode.text withMessage:self.msg.text];
-[TLCLog debug:self.errorCode.text withMessage:self.msg.text atLocation:@"test loc"];
-```
-
-## 자세한 API List
-
-TLCLog class에서 제공하는 기능들을 설명합니다.
+## SDK 사용방법
 
 ### 헤더 파일 추가
 
-'TLCLog.h' 파일을 추가 합니다.
+\#import <LogNCrashSDK/LogNCrashSDK.h\> 추가 합니다.
 
 ### 초기화
 
@@ -108,7 +51,7 @@ TLCLog class에서 제공하는 기능들을 설명합니다.
 ### SendThread 잠금 해제
 
 ```
-		(void) startSendThread;
+	(void) startSendThread;
 ```
 
 - SendThread의 잠금 상태를 해제합니다.

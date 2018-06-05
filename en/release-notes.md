@@ -1,5 +1,15 @@
 ## Analytics > Log & Crash Search > Release Notes
 
+### 2018.06.05
+
+#### 버그 수정
+
+* [SDK][iOS-2.7.0] 
+    * SDK 안정화
+    
+* [SDK][Unity-2.8.6]
+    * iOS 에서 Unity Crash Log 발생시 LogLevel 이 전부 FATAL로 설정되던 문제 수정
+
 ### 2018.05.29
 
 * [Console] iOS 크래시 심볼리케이션 중 중복된 이름의 Bundle(ex. Framework.UIKit, Accessibility.UIKit)이 존재 할 경우 심볼리케이션이 정상적으로 되지 않는 문제 수
@@ -163,7 +173,7 @@
 
 ### 2017.02.23
 #### 기능 개선/변경
-* [API] [log Bulk upload](/Analytics/Log%20&%20Crash%20Search/en/api-guide/) 기능 추가
+* [API] [log Bulk upload](/Analytics/Log%20&%20Crash%20Search/ko/api-guide/) 기능 추가
     * REST API 로그 전송시 JSON array 형태로 로그 전송이 가능합니다.
 * [API] long,double 옵션 추가
     * REST API 로그 전송시 long, double 로 시작하는 필드 사용시 long,double 타입으로 저장
