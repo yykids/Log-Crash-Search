@@ -1,5 +1,21 @@
 ## Analytics > Log & Crash Search > 릴리스 노트
 
+### 2018.06.05
+
+#### 기능 개선/변경
+* [SDK][[Android-2.6.7](/Download/#analytics-log-crash-search)]
+    * 저장된 로그의 경우, 필터를 거치지 않고 전송하도록 동작 변경
+
+#### 버그 수정
+* [SDK][[iOS-2.7.0](/Download/#analytics-log-crash-search)]
+    * SDK 내부 로직 개선
+    
+* [SDK][[Android-2.6.7](/Download/#analytics-log-crash-search)]
+    * Android 4.1.2 이하 버전에서 로그가 전송되지 않던 버그 수정 ( Android-2.6.6 SDK 버그 )
+
+* [SDK][[Unity-2.8.6](/Download/#analytics-log-crash-search)]
+    * iOS 에서 Unity Crash Log 발생시 LogLevel 이 전부 FATAL로 설정되던 문제 수정
+
 ### 2018.05.29
 
 * [Console] iOS 크래시 심볼리케이션 중 중복된 이름의 Bundle(ex. Framework.UIKit, Accessibility.UIKit)이 존재 할 경우 심볼리케이션이 정상적으로 되지 않는 문제 수

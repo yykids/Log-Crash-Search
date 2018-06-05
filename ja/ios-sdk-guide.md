@@ -9,9 +9,7 @@ Log & Crash iOS SDK特徴は次の通りです。
 - マルチスレッディング環境で動作します。
 
 ## 動作環境
-
-- iPhone 3GS, 4, 4S, 5, 5S, 6, 6 Plus (armv7, armv7s, arm64)
-- iOS 5.1以上(arm64は7.0.3以上)
+- iOS 8.0以上
 
 ## ダウンロード
 
