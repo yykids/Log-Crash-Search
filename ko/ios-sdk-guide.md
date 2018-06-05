@@ -9,9 +9,7 @@ Log & Crash iOS SDK 특·장점은 다음과 같습니다.
 - 멀티 쓰레딩 환경에서 동작합니다.
 
 ## 지원 환경
-
-- iPhone 3GS, 4, 4S, 5, 5S, 6, 6 Plus (armv7, armv7s, arm64)
-- iOS 5.1 이상 (arm64는 7.0.3 이상)
+- iOS 8.0 이상
 
 ## 다운로드
 
