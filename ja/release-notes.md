@@ -3,15 +3,17 @@
 ### 2018.06.05
 
 #### 기능 개선/변경
-* [SDK][Android-2.6.7]
+* [SDK][[Android-2.6.7](/Download/#analytics-log-crash-search)]
     * 저장된 로그의 경우, 필터를 거치지 않고 전송하도록 동작 변경
 
 #### 버그 수정
-* [SDK][iOS-2.7.0]
-    * SDK 안정화
-* [SDK][Android-2.6.7]
+* [SDK][[iOS-2.7.0](/Download/#analytics-log-crash-search)]
+    * SDK 내부 로직 개선
+    
+* [SDK][[Android-2.6.7](/Download/#analytics-log-crash-search)]
     * Android 4.1.2 이하 버전에서 로그가 전송되지 않던 버그 수정 ( Android-2.6.6 SDK 버그 )
-* [SDK][Unity-2.8.6]
+
+* [SDK][[Unity-2.8.6](/Download/#analytics-log-crash-search)]
     * iOS 에서 Unity Crash Log 발생시 LogLevel 이 전부 FATAL로 설정되던 문제 수정
 
 ### 2018.05.29
