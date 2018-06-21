@@ -1,5 +1,11 @@
 ## Analytics > Log & Crash Search > 릴리스 노트
 
+### 2018.06.26
+
+#### 버그 수정
+* [SDK][[iOS-2.7.1](/Download/#analytics-log-crash-search)]
+    * 중복하여 초기화 수행시 크래시 발생하던 버그 수정
+
 ### 2018.06.05
 
 #### 기능 개선/변경
