@@ -16,7 +16,7 @@ Log & Crash Unity SDKは次のような特徴があります。
 
 ## ダウンロード
 
-	[TOAST Document](http://docs.toast.com/ko/Download/)からAndroid SDKをダウンロードできます。
+	[TOAST Document](http://docs.toast.com/ja/Download/)からAndroid SDKをダウンロードできます。
 
 	```
 	[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK]

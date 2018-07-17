@@ -13,7 +13,7 @@ Log & Crash Log4back SDKの特徴は次の通りです。
 
 ## ダウンロード
 
-[TOAST Document](http://docs.toast.com/ko/Download/)でLogback SDKをダウンロードできます。
+[TOAST Document](http://docs.toast.com/ja/Download/)でLogback SDKをダウンロードできます。
 
 ```
 [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Logback SDK]をクリックします。
