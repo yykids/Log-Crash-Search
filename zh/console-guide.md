@@ -50,7 +50,7 @@ Log & Crash Search 가 활성화되면 왼쪽 메뉴에 Analytics > Log & Crash 
 
 ## 로그 전송
 
-로그 전송을 위해서는 Log & Crash Search SDK가 필요합니다. SDK는 [TOAST 개발자센터](http://toast.com/developer_center)의 화면의 [서비스] 버튼을 클릭하고 [Downloads] 메뉴를 클릭하면 다운로드 페이지가 노출됩니다. [Analytics > Log & Crash Search] 영역에서 Log & Crash Search SDK 목록을 확인할 수 있습니다. [링크](http://docs.toast.com/ko/Download/#analytics-log-crash-search). 화면 왼쪽 상단의 [서비스] 버튼을 클릭하고 [Analytics] > [Log & Crash Search]를 클릭하여 각 플랫폼별 SDK의 사용 가이드를 참고하실 수 있습니다. SDK 사용 가이드를 참고하여 로그를 전송해 주십시오.  
+로그 전송을 위해서는 Log & Crash Search SDK가 필요합니다. SDK는 [TOAST 개발자센터](http://toast.com/developer_center)의 화면의 [서비스] 버튼을 클릭하고 [Downloads] 메뉴를 클릭하면 다운로드 페이지가 노출됩니다. [Analytics > Log & Crash Search] 영역에서 Log & Crash Search SDK 목록을 확인할 수 있습니다. [링크](http://docs.toast.com/zh/Download/#analytics-log-crash-search). 화면 왼쪽 상단의 [서비스] 버튼을 클릭하고 [Analytics] > [Log & Crash Search]를 클릭하여 각 플랫폼별 SDK의 사용 가이드를 참고하실 수 있습니다. SDK 사용 가이드를 참고하여 로그를 전송해 주십시오.  
 
 ```
 SDK 다운로드: [개발자센터] > [설명서] > [Downloads] > [Analytics > Log & Crash Search] 영역의 SDK 다운로드

@@ -1,5 +1,10 @@
 ## Analytics > Log & Crash Search > Release Notes
 
+### 2018.07.24
+
+#### 기능 개선/변경
+* [Console] 설정 페이지 UI 변경
+
 ### 2018.06.26
 
 #### 버그 수정
@@ -24,8 +29,7 @@
 
 ### 2018.05.29
 
-* [Console] iOS 크래시 심볼리케이션 중 중복된 이름의 Bundle(ex. Framework.UIKit, Accessibility.UIKit)이 존재 할 경우 심볼리케이션이 정상적으로 되지 않는 문제 수
-정
+* [Console] iOS 크래시 심볼리케이션 중 중복된 이름의 Bundle(ex. Framework.UIKit, Accessibility.UIKit)이 존재 할 경우 심볼리케이션이 정상적으로 되지 않는 문제 수정
 
 ### 2018.05.09
 
