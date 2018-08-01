@@ -14,17 +14,11 @@ Log & Crash Search SDKを通してログ送信を開始します。
 Consoleに接続してLog & Crash Searchを有効にします。
 
 ```
-[Analytics] > [Log & Crash Search] > [Enable]をクリック
+[Service] > [Analytics] > [Log & Crash Search] > [Enable]をクリック
 ```
 
 > [参照]  
 > 商品を有効にした後は、約5分後から送信可能です。
-
-![[図1: 商品を選択]](http://static.toastoven.net/prod_logncrash/console_1.png)
-<center>[図1: 商品を選択]</center>
-
-![[図1-1: 商品有効化]](http://static.toastoven.net/prod_logncrash/console_1-1.png)
-<center>[図1-1: 商品有効化]</center>
 
 ## Appkey確認
 
@@ -36,8 +30,8 @@ Consoleに接続してLog & Crash Searchを有効にします。
 [Appkey]欄の値を確認
 ```
 
-![[図2: Appkey確認]](http://static.toastoven.net/prod_logncrash/console_2.png)
-<center>[図2: Appkey確認]</center>
+![[Appkey確認]](http://static.toastoven.net/prod_logncrash/console_2.png)
+<center>[Appkey確認]</center>
 
 ## ログ送信
 
@@ -61,16 +55,13 @@ SDK マニュアル: [개발자센터] > [설명서] > [Analytics] > [Log & Cras
 
 [Log Search]に入ると、基本的に24時間分のログ量のグラフと詳細を確認できます。
 
-![[図3: Log Search 進入]](http://static.toastoven.net/prod_logncrash/console_3.png)
-<center>[図3: Log Search 進入]</center>
-
-![[図3-1: Log Search 画面]](http://static.toastoven.net/prod_logncrash/console_3-1.png)
-<center>[図3-1: Log Search 画面]</center>
+![[Log Search 画面]](http://static.toastoven.net/prod_logncrash/console_3-1.png)
+<center>[Log Search 画面]</center>
 
 [Log Search]画面の詳細を見てみましょう。
 
-![[図4: Log Search詳細]](http://static.toastoven.net/prod_analytics/log_4.jpg)
-<center>[図4: Log Search詳細]</center>
+![[Log Search詳細]](http://static.toastoven.net/prod_analytics/log_4.jpg)
+<center>[Log Search詳細]</center>
 
 |項目|	説明|
 |---|---|
@@ -90,11 +81,11 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 
 ### イシュー照会
 
-![[図5-1: イシュー照会]](http://static.toastoven.net/prod_analytics/log_5.jpg)
-<center>[図5-1: イシュー照会]</center>
+![[イシュー照会]](http://static.toastoven.net/prod_analytics/log_5.jpg)
+<center>[イシュー照会]</center>
 
-![[図5-2: Handledイシュー照会]](http://static.toastoven.net/prod_analytics/log_18.jpg)
-<center>[図5-2: Handledイシュー照会]</center>
+![[Handledイシュー照会]](http://static.toastoven.net/prod_analytics/log_18.jpg)
+<center>[Handledイシュー照会]</center>
 
 |項目|	説明|
 |---|---|
@@ -105,8 +96,8 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 
 リストからイシューをクリックすると、そのイシューに関する詳細情報を表示します。
 
-![[図6: 詳細情報]](http://static.toastoven.net/prod_analytics/log_6.jpg)
-<center>[図6: 詳細情報]</center>
+![[詳細情報]](http://static.toastoven.net/prod_analytics/log_6.jpg)
+<center>[詳細情報]</center>
 
 |項目|	説明|
 |---|---|
@@ -124,15 +115,15 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 
 ### リアルタイムモニタリング
 
-![[図7: リアルタイムモニタリング]](http://static.toastoven.net/prod_analytics/log_7.jpg)
-<center>[図7: リアルタイムモニタリング]</center>
+![[リアルタイムモニタリング]](http://static.toastoven.net/prod_analytics/log_7.jpg)
+<center>[リアルタイムモニタリング]</center>
 
 約5分間のアプリのクラッシュ発生を監視します。
 
 ### トレンド
 
-![[図8: トレンド項目内容]](http://static.toastoven.net/prod_analytics/log_8.jpg)
-<center>[図8: トレンド項目内容]</center>
+![[トレンド項目内容]](http://static.toastoven.net/prod_analytics/log_8.jpg)
+<center>[トレンド項目内容]</center>
 
 |項目|	説明|
 |---|---|
@@ -154,11 +145,11 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 3. 検索期間と検索件数を調整できます。
 4. バージョン別の結果をテーブルで確認できます。
 
-![[図9: アプリのクラッシュ指標]](http://static.toastoven.net/prod_analytics/log_11.jpg)
-<center>[図9: アプリのクラッシュ指標]</center>
+![[アプリのクラッシュ指標]](http://static.toastoven.net/prod_analytics/log_11.jpg)
+<center>[アプリのクラッシュ指標]</center>
 
-![[図9-1: クラッシュマップ]](http://static.toastoven.net/prod_analytics/crashmap_en.png)
-<center>[図9-1: クラッシュマップ]</center>
+![[クラッシュマップ]](http://static.toastoven.net/prod_analytics/crashmap_en.png)
+<center>[クラッシュマップ]</center>
 
 ### クラッシュユーザー
 
@@ -167,8 +158,8 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 1. SDKでuser_idを設定すると使用でき、設定していない場合、すべてのユーザーに、「 - 」が表示されます。
 2. ユニークなユーザーは、ユーザーIDとデバイス名の組み合わせです。つまり、ユーザーIDが同じでもデバイスが異なると、別のユーザーとして集計されます。
 
-![[図9-2: クラッシュユーザー]](http://static.toastoven.net/prod_analytics/crashuser_en.png)
-<center>[図9-2: クラッシュユーザー]</center>
+![[クラッシュユーザー]](http://static.toastoven.net/prod_analytics/crashuser_en.png)
+<center>[クラッシュユーザー]</center>
 
 |項目|	説明|
 |---|---|
@@ -180,11 +171,11 @@ Android、iOS端末のクラッシュ情報は、App Crash Searchで確認でき
 
 ### イシューの統計
 
-![[図10-1: イシュー統計]](http://static.toastoven.net/prod_analytics/log_9.jpg)
-<center>[図10-1: イシュー統計]</center>
+![[イシュー統計]](http://static.toastoven.net/prod_analytics/log_9.jpg)
+<center>[イシュー統計]</center>
 
-![[図10-2: Handledイシュー統計]](http://static.toastoven.net/prod_analytics/log_19.jpg)
-<center>[図10-2: Handledイシュー統計]</center>
+![[Handledイシュー統計]](http://static.toastoven.net/prod_analytics/log_19.jpg)
+<center>[Handledイシュー統計]</center>
 
 |項目|	説明|
 |---|---|
