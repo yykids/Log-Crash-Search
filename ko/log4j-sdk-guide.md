@@ -1,6 +1,6 @@
 ## Analytics > Log & Crash Search > Log4J SDK 사용 가이드
 
-### deprecated
+## deprecated
 
 - Log & Crash Android SDK 버전은 더 이상 지원되지 않습니다.
 - [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)를 이용해 주시기 바랍니다.
