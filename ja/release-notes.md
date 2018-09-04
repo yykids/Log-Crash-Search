@@ -1,5 +1,9 @@
 ## Analytics > Log & Crash Search > Release Notes
 
+### 2018.09.18
+#### 기능 개선/ 변경
+* [Console] 저장 쿼리 공유하기
+
 ### 2018.07.24
 
 #### 기능 개선/변경
