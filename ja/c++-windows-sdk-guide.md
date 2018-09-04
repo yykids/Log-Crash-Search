@@ -1,5 +1,9 @@
 ## Analytics > Log & Crash Search > C++ Windows SDK Guide
 
+> [Deprecated]
+> Log & Crash C++ Windows SDK 버전은 더 이상 지원되지 않습니다.
+> [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)를 이용해 주시기 바랍니다.
+
 Log & Crash C++ Windows SDKは、Log & Crash Search収集サーバーにログを送信する機能を提供します。  
 Log & Crash C++ Windows SDKの特徴は次の通りです。
 
