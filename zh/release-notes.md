@@ -4,6 +4,11 @@
 #### 기능 개선/ 변경
 * [Console] 저장 쿼리 공유하기
 
+### 2018.09.04
+#### 버그 수정
+* [SDK][[logback-3.0.2](/Download/#analytics-log-crash-search)]
+    * SDK 내부 로직 개선
+
 ### 2018.07.24
 
 #### 기능 개선/변경
