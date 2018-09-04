@@ -1,4 +1,4 @@
-# Analytics > Log & Crash Search > Logback SDK 사용 가이드
+## Analytics > Log & Crash Search > Logback SDK 사용 가이드
 
 Log & Crash Logback SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다. Log & Crash Search 에서 전송된 로그를 조회 및 검색이 가능하고 멀티 쓰레딩 환경에서 동작합니다.
 
