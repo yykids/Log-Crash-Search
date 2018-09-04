@@ -108,6 +108,17 @@ appKey를 제외한 나머지 값들은 선택 항목으로 param을 기입하�
 | category | 수집하는 log의 category를 명시합니다. |  |
 | errorCodeType | 에러 발생 시 수집되는 에러 정보의 타입을 설정합니다. default, action, message, mdc 타입이 존재합니다.<br>- default: Throwable 정보를 사용합니다.<br>- action: URL path의 정보도 포함하여 에러를 반환합니다. <br>- message: logger에 설정한 메시지만 반환합니다. <br>- mdc: MDC의 errorCode 항목값을 설정해서 사용합니다. | default |
 
+### 3.3 사용자 정의 옵션
+
+slf4j의 MDC를 사용하여 Log & Crash의 LogNCrashHttpAppender에서 정의되지 않은 항목을 정의할 수 있습니다.
+
+```java
+MDC.put("userid", "nhnent-userId");
+MDC.put("userIp", "127.0.0.1");
+...
+MDC.clear();
+```
+
 ## 4. LogNCrash SDK 사용 예
 
 Java에서 다음과 같이 사용합니다.
@@ -115,12 +126,19 @@ Java에서 다음과 같이 사용합니다.
 ```java
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 public class LogNCrash {
     private static final Logger USER_LOG = LoggerFactory.getLogger("user-logger");
 
     public void logging() {
         logger.debug("LogNCrash Debug.") ;
+
+        // Log & Crash에서 예약된 항목 이외, 사용자 정의 항목 사용 시 MDC 활용
+        MDC.put("userid", "nhnent-userId");
+        logger.warn("Customize items...") ;
+        MDC.clear();
+
         try {
             String logncrash = null;
             if(true) {
