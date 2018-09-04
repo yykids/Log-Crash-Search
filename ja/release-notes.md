@@ -5,9 +5,15 @@
 * [Console] 저장 쿼리 공유하기
 
 ### 2018.09.04
+#### 기능 개선/변경
+* [SDK][[logback-3.0.2](/Download/#analytics-log-crash-search)]
+    * Logncrash Appender의 예약어 중 기본값이 없는 항목이 empty, null일 경우, 예약어 항목이 추가되지 않도록 개선
+    * Logncrash REST API 타임아웃 설정
+    * Logback의 AsyncAppender 사용
+
 #### 버그 수정
 * [SDK][[logback-3.0.2](/Download/#analytics-log-crash-search)]
-    * SDK 내부 로직 개선
+    * 일부 empty, null의 예약어 항목이 추가된 버그 수정
 
 ### 2018.07.24
 
