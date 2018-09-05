@@ -4,7 +4,7 @@ Log & Crash Logback SDK는 Log & Crash Search 수집 서버에 로그를 보내�
 
 ## 1. Log & Crash Logback SDK 추가
 
-logncrash-java-sdk3-3.0.2.jar를 의존성에 추가합니다.
+logncrash-java-sdk3-3.0.3.jar를 의존성에 추가합니다.
 [TOAST Document](http://docs.toast.com/ko/Download/)에서 Log & Crash Logback SDK를 다운로드할 수 있습니다.
 
 ```
@@ -110,7 +110,8 @@ appKey를 제외한 나머지 값들은 선택 항목으로 param을 기입하�
 
 ### 3.3 사용자 정의 옵션
 
-slf4j의 MDC를 사용하여 Log & Crash의 LogNCrashHttpAppender에서 정의되지 않은 항목을 정의할 수 있습니다.
+slf4j의 MDC를 사용하여 Log & Crash의 LogNCrashHttpAppender에서 정의되지 않은 항목을 추가할 수 있습니다.
+(단, `category`는 변경할 수 있습니다.)
 
 ```java
 MDC.put("userid", "nhnent-userId");
@@ -118,6 +119,13 @@ MDC.put("userIp", "127.0.0.1");
 ...
 MDC.clear();
 ```
+
+#### MDC로 변경불가능한 에약어 (대소문자를 구분하지 않습니다.)
+
+|projectName|clientIp|projectVersion|url|logSource|headers|
+|---|---|---|---|---|---|
+|form|logType|cookie|body|agent|logLevel|
+|host|referer|sendTime|dmpData|dmpFormat| |
 
 ## 4. LogNCrash SDK 사용 예
 
