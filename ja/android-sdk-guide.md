@@ -4,8 +4,8 @@
 > Log & Crash Android SDK 버전은 더 이상 지원되지 않습니다.
 > [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)를 이용해 주시기 바랍니다.
 
-Log & Crash Android SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。  
-Log & Crash Android SDKの特徴は次の通りです。  
+Log & Crash Android SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。
+Log & Crash Android SDKの特徴は次の通りです。
 
 - ログを収集してサーバーに送信します。
 - アプリで発生したクラッシュログを収集サーバーに送信します。
@@ -108,7 +108,7 @@ com.toast.android.logncrash.ToastLog classで提供される機能を説明し�
 ```
 public static final String DEFAULT_APP_KEY = "__app_key__";
 public static final String DEFAULT_VERSION = "1.0.0";
-public static final String DEFAULT_COLLECTOR_ADDR = "http://api-logncrash.cloud.toast.com";
+public static final String DEFAULT_COLLECTOR_ADDR = "https://api-logncrash.cloud.toast.com";
 public static final int DEFAULT_COLLECTOR_PORT = 0;
 public static final String DEFAULT_LOG_SOURCE = "logncrash-logSource";
 public static final String DEFAULT_LOG_TYPE = "logncrash-logType";
@@ -125,7 +125,7 @@ public static boolean initialize(Application application, String collectorAddr, 
 - パラメータ
 	- application: Android Application情報。 getApplication()の戻り値を入れます。
 	- collectorAddr: 収集サーバーのアドレス
-		- HTTP収集サーバー: http://api-logncrash.cloud.toast.com
+		- HTTP収集サーバー: https://api-logncrash.cloud.toast.com
 	- collectorPort: 収集サーバーのポート情報、0に設定すると、各protocolデフォルトのポートが使用されます。
 		- HTTP: 80
 	- appKey: アプリケーションキー
@@ -265,8 +265,8 @@ false: 重複除去ロジックを無効にする
 
 ## SDKサンプルを利用したProguardテスト
 
-Androidで提供されるProguardを通じてコード難読化をテストする方法を説明します。  
-Proguardを適用するためには、Releaseでプロジェクトを作成する必要があります。これに必要なキーストア、Proguard設定などがsample/に含まれています。  
+Androidで提供されるProguardを通じてコード難読化をテストする方法を説明します。
+Proguardを適用するためには、Releaseでプロジェクトを作成する必要があります。これに必要なキーストア、Proguard設定などがsample/に含まれています。
 
 
 ### Eclipseを使用してProguardテスト
@@ -307,7 +307,7 @@ AndroidStudioを利用してReleaseビルドをするとmapping.txtの位置は�
 
 [Android NDK](http://developer.android.com/tools/sdk/ndk/index.html)を利用して、[JNI](http://en.wikipedia.org/wiki/Java_Native_Interface)を使用する際、Android SDKを活用する方法について説明します。
 Log & Crash Android SDKは、Java上でExceptionをCatchすることができる状況でのみ正常に動作します。そのため、作成されたNative Codeでエラー発生時、エラーを伝達するクラスを作成する必要があります。
-例えば以下のようにgetString関数が実行される過程でエラーが発生した場合、try/catch構文を使用して、ErrorをCatchした後、Javaコードで例外を生成してThrowすれば、Javaからエラーを取得してログに送信します。  
+例えば以下のようにgetString関数が実行される過程でエラーが発生した場合、try/catch構文を使用して、ErrorをCatchした後、Javaコードで例外を生成してThrowすれば、Javaからエラーを取得してログに送信します。
 
 **JNI code**
 

@@ -97,7 +97,7 @@ void DestroyToastLog();
 
 ```
 #define LOGNCRASH_VERSION         "1.0.0"
-#define LOGNCRASH_COLLECTOR_ADDR  "http://api-logncrash.cloud.toast.com"
+#define LOGNCRASH_COLLECTOR_ADDR  "https://api-logncrash.cloud.toast.com"
 #define LOGNCRASH_COLLECTOR_PORT  80
 #ifdef WIN32
 #define LOGNCRASH_LOGSOURCE       "logncrash-windows"
@@ -130,7 +130,7 @@ void destroy();
 	- appKey：アプリケーションキー
 	- version：アプリバージョン
 	- collectorAddr：収集サーバーのアドレス
-		- Log & Crash収集サーバー：http://api-logncrash.cloud.toast.com
+		- Log & Crash収集サーバー：https://api-logncrash.cloud.toast.com
 	- collectorPort：収集サーバーポート
 	- logSource：ログソース
 	- logType：ログタイプ

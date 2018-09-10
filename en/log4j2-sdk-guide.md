@@ -35,23 +35,23 @@ sample/     ; Log4J 2 샘플
 
 같이 제공되는 sample/log4j2/에 대해 설명합니다.
 
-1.Eclipse를 실행하고 메뉴에서 File - Import - Maven - Existing Maven Projects 를 실행하여 sample/log4j2/를 불러옵니다.  
-2.src/test/resources/log4j2.xml 파일을 열어 발급받은 앱키와 버전을 수정하고, 필요하면 수집 서버 주소를 변경합니다.  
+1.Eclipse를 실행하고 메뉴에서 File - Import - Maven - Existing Maven Projects 를 실행하여 sample/log4j2/를 불러옵니다.
+2.src/test/resources/log4j2.xml 파일을 열어 발급받은 앱키와 버전을 수정하고, 필요하면 수집 서버 주소를 변경합니다.
 
 ```
-<collectorUrl>http://api-logncrash.cloud.toast.com </collectorUrl>
+<collectorUrl>https://api-logncrash.cloud.toast.com </collectorUrl>
 <appkey>__app_key__</appkey>
 <version>1.0.0</version>
 ```
 
-3.Eclipse 메뉴에서 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-log4j2-sdk-<version>.jar 를 추가합니다.  
-4.Eclipse 메뉴에서 Run - Run As - JUnit Test를 선택하여 실행합니다.  
+3.Eclipse 메뉴에서 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-log4j2-sdk-<version>.jar 를 추가합니다.
+4.Eclipse 메뉴에서 Run - Run As - JUnit Test를 선택하여 실행합니다.
 
 ## 사용 예
 
-1.Log4J SDK 라이브러리를 Project에 추가합니다.  
-예를 들어 Eclipse 메뉴 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-log4j2-sdk-<version>.jar 를 추가합니다.  
-2.Maven을 사용하는 경우, pom.xml에 dependency를 추가합니다.  
+1.Log4J SDK 라이브러리를 Project에 추가합니다.
+예를 들어 Eclipse 메뉴 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-log4j2-sdk-<version>.jar 를 추가합니다.
+2.Maven을 사용하는 경우, pom.xml에 dependency를 추가합니다.
 
 ```
 <dependency>
@@ -91,7 +91,7 @@ sample/     ; Log4J 2 샘플
   </dependency>
 ```
 
-SLF4J를 사용하시는 경우 다음 dependency를 추가합니다.  
+SLF4J를 사용하시는 경우 다음 dependency를 추가합니다.
 
 ```
 <dependency>
@@ -106,7 +106,7 @@ SLF4J를 사용하시는 경우 다음 dependency를 추가합니다.
 </dependency>
 ```
 
-3.Maven을 사용하지 않는 경우 다음 라이브러리들을 별도로 다운로드를 받아 class path에 추가합니다.  
+3.Maven을 사용하지 않는 경우 다음 라이브러리들을 별도로 다운로드를 받아 class path에 추가합니다.
 
 ```
 log4j, 2.3
@@ -118,7 +118,7 @@ servlet-api, 2.4
 json, 20090211
 ```
 
-4.Appender 설정과 구성을 위해서 log4j2.xml을 작성합니다.  
+4.Appender 설정과 구성을 위해서 log4j2.xml을 작성합니다.
 
 - 전체 구성은 sample/log4j2/src/test/resources/log4j2.xml 를 참고해 주세요.
 - collectorUrl, appKey에는 반드시 수집서버 주소, 발급받은 앱키 를 사용해야 합니다.
@@ -126,7 +126,7 @@ json, 20090211
 ```
 <Appenders>
 	<LogNCrashHttpAppender name="HTTP">
-	<collectorUrl>http://api-logncrash.cloud.toast.com </collectorUrl>
+	<collectorUrl>https://api-logncrash.cloud.toast.com </collectorUrl>
 
 	<appKey>__app_key__</appKey>
 	<version>1.0.0</version>
@@ -144,7 +144,7 @@ json, 20090211
 </Loggers>
 ```
 
-5.Java에서 다음과 같이 사용합니다.  
+5.Java에서 다음과 같이 사용합니다.
 
 ```
 ...
@@ -167,7 +167,7 @@ try {
 ### log4j.xml 설정 항목
 
 - collectorUrl: 수집 서버 주소
-	HTTP: http://api-logncrash.cloud.toast.com
+	HTTP: https://api-logncrash.cloud.toast.com
 - appKey: 프로젝트 앱키, 필수
 - version: 프로젝트 버전, 기본값 "1.0.0"
 - logSource: 로그 소스, 기본값 "http-log4j2"
