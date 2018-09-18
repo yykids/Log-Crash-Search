@@ -4,8 +4,8 @@
 > Log & Crash iOS SDK 버전은 더 이상 지원되지 않습니다.
 > [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)를 이용해 주시기 바랍니다.
 
-Log & Crash iOS SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。  
-Log & Crash iOS SDK特徴は次の通りです。  
+Log & Crash iOS SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。
+Log & Crash iOS SDK特徴は次の通りです。
 
 - ログを収集してサーバーに送信します。
 - アプリで発生したクラッシュログを収集サーバーに送信します。
@@ -76,7 +76,7 @@ sample/LogNCrashiOSSample   ; iOS SDKサンプル
 ```
 NSString* appKey = @"5b10bc2ba2b80d99ff00a5c8bff3b5050d48dd797fe7ed1c1a857066c1bdb8e4"; // Project AppKey
 NSString* appVer= @"1.0";
-NSString* serverAddr = @"http://api-logncrash.cloud.toast.com"; //Log & Crash収集サーバーのアドレス
+NSString* serverAddr = @"https://api-logncrash.cloud.toast.com"; //Log & Crash収集サーバーのアドレス
 NSString* userID = @"tester"; //ユーザーID
 
 //initの呼び出し時にcrash report自動送信
@@ -196,7 +196,7 @@ false: 重複除去ロジックを無効に
 
 ## 自動収集される情報
 
-以下の情報は、Log & Crash SDKによって自動的に収集され、Log & Crash Searchで確認できます。ログ送信時に情報収集ができない場合は、値を表示できない場合があります。  
+以下の情報は、Log & Crash SDKによって自動的に収集され、Log & Crash Searchで確認できます。ログ送信時に情報収集ができない場合は、値を表示できない場合があります。
 
 - iOS
 	\- Platform: iOSバージョン情報
@@ -204,7 +204,7 @@ false: 重複除去ロジックを無効に
 	\ - Carrier: ユーザーの通信サービスプロバイダー
 	\ - CountryCode: ユーザーの通信サービスプロバイダーのISO国名コード
 	\ - NetworkType: Wi-FiまたはCellular(ログ送信イベントの発生時に、ネットワークが使用できない場合は、「No Connection」)
-	
+
 
 ## iOS Crashを解析
 - iOSで発生したCrashの場合、Crash情報がアドレス値に収集されるため、これを解析するためのSymbolファイルが必要です。

@@ -4,7 +4,7 @@
 > Log & Crash Unity Android SDK 버전은 더 이상 지원되지 않습니다.
 > [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)를 이용해 주시기 바랍니다.
 
-Log & Crash Unity SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。  
+Log & Crash Unity SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。
 Log & Crash Unity SDKは次のような特徴があります。
 
 - ログを収集してサーバーに送信します。
@@ -32,7 +32,7 @@ Log & Crash Unity SDKは次のような特徴があります。
 
 ### サンプル説明
 
-サンプルは、Assets > LogNCrash > Sample > SampleSceneをダブルクリックして実行します。  
+サンプルは、Assets > LogNCrash > Sample > SampleSceneをダブルクリックして実行します。
 サンプルには、初期化、ログの送信、エラー発生の例が記述されています。
 
 ### ヘッダファイルを追加
@@ -46,7 +46,7 @@ iOS Unity環境で使用するためには、「TLCLogUnity.h」ファイルを�
 UnityのメニューバーからLogNCrash > Edit Settingsを選択してLogNCrashSettingsを生成します。 LogNCrashSettingsはAssetDatabaseにユーザーアプリケーションキーおよびSDKの動作を定義します。
 
 - Appkey：ユーザーアプリケーションキー
-- URL：コレクタアドレス、http://api-logncrash.cloud.toast.com を使用します。
+- URL：コレクタアドレス、https://api-logncrash.cloud.toast.com を使用します。
 - Version：ログのバージョン
 - Send Warning：Unityで発生したWarningログの収集可否
 - Send Error：Unityで発生したErrorログの収集可否
@@ -82,7 +82,7 @@ namespace Toast.LogNCrash
 	{
 		void Start ()
 		{
-			LogNCrash.Initialize ("http://api-logncrash.cloud.toast.com", "appkey", "1.0.0", 80, true, true);
+			LogNCrash.Initialize ("https://api-logncrash.cloud.toast.com", "appkey", "1.0.0", 80, true, true);
 			LogNCrash.StartSendThread ();
 		}
 	}
@@ -258,7 +258,7 @@ public static void SetEnableHost:(bool flag)
  public static void SetDeduplicate(bool flag)
  ```
 
- true：(Default値)重複除去ロジックを有効にする。  
+ true：(Default値)重複除去ロジックを有効にする。
  false：重複除去ロジックを無効にする。
 
  ## Android Build方法
