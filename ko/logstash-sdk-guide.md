@@ -100,14 +100,14 @@ filter {
 output {
 ...
   http {
-	url => "http://api-logncrash.cloud.toast.com/v2/log"
+	url => "https://api-logncrash.cloud.toast.com/v2/log"
 	http_method => "post"
 	format => "json"
 	verify_ssl => false
   }
 }
 - url에 전송할 Log & Crash Collector 주소로 수정해야 합니다.
-- Toast Cloud Log & Crash Collector 주소: http://api-logncrash.cloud.toast.com/v2/log
+- Toast Cloud Log & Crash Collector 주소: https://api-logncrash.cloud.toast.com/v2/log
 - URI는 반드시 /v2/log 이어야 합니다.
 ```
 
@@ -176,7 +176,7 @@ logstash는 다음 환경 변수를 지원합니다. logstash가 사용하는 �
  - LS_JAVA_OPTS="xxx" to append extra options to the defaults JAVA_OPTS provided by logstash
  - JAVA_OPTS="xxx" to completely override the defauls set of JAVA_OPTS provided by logstash
 
-> 참고  
-> Logstash 홈페이지  
-> Logstash Reference  
-> A bit of logstash cooking  
+> 참고
+> Logstash 홈페이지
+> Logstash Reference
+> A bit of logstash cooking

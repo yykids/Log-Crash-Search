@@ -76,7 +76,7 @@ double*; double、オプション
 カスタムフィールドの長さは2kbyteで制限され、2kbyte以上を送信する時は、txt * prefixを付けてフィールドを作成する必要があります。
 ```
 
-[戻り値]  
+[戻り値]
 収集サーバーでは、次のように返します。
 
 ```
@@ -194,15 +194,15 @@ resultList: array
   [out] 送信された各ログの結果値。
 ```
 
-> 注意  
-> 1. JSON/HTTPでLog & Crash収集サーバーにログを送信する時、次のアドレスを使用する必要があります。  
-> Log & Crash: api-logncrash.cloud.toast.com  
-> 送信方式: POST  
-> URI: /v2/log  
-> Content-Type: "application/json"  
-> 2. ログを送信する前に、Log & Crashにプロジェクトを登録したかを確認します。  
-> 3. 「logTime」はLog & Crashシステムで使用します。そのキーを使用する時はLog & Crashでは無視します。  
-> 4. キー名に空白文字が入らないように注意してください。例えば、"UserID"と"UserID "は、異なるキーとして認識されます。  
+> 注意
+> 1. JSON/HTTPでLog & Crash収集サーバーにログを送信する時、次のアドレスを使用する必要があります。
+> Log & Crash: api-logncrash.cloud.toast.com
+> 送信方式: POST
+> URI: /v2/log
+> Content-Type: "application/json"
+> 2. ログを送信する前に、Log & Crashにプロジェクトを登録したかを確認します。
+> 3. 「logTime」はLog & Crashシステムで使用します。そのキーを使用する時はLog & Crashでは無視します。
+> 4. キー名に空白文字が入らないように注意してください。例えば、"UserID"と"UserID "は、異なるキーとして認識されます。
 
 ## サンプル
 
@@ -210,7 +210,7 @@ resultList: array
 
 ```
 //POSTメソッドを使用してログを送信
-$ curl -H "content-type:application/json" -XPOST 'http://api-logncrash.cloud.toast.com/v2/log' -d '{
+$ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.toast.com/v2/log' -d '{
 	"projectName": "__アプリケーションキー__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
@@ -251,7 +251,7 @@ $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.c
 
 ```
 //POSTメソッドを使用してログを送信
-$ curl -H "content-type:application/json" -XPOST 'http://api-logncrash.cloud.toast.com/v2/log' -d '[
+$ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.toast.com/v2/log' -d '[
     {
         "projectName": "__アプリケーションキー__",
         "projectVersion": "1.0.0",
