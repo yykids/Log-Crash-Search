@@ -76,7 +76,7 @@ double*; double, 옵션
 커스텀 필드의 길이 제한은 2kbyte 로 제한되며, 2kbyte 이상 전송시 txt* prefix 붙여 필드생성 해야된다.
 ```
 
-[반환값]  
+[반환값]
 수집 서버에서 다음과 같은 반환을 한다.
 
 ```
@@ -194,18 +194,18 @@ resultList: array
     [out] 전송된 각 로그들의 결과 값
 ```
 
-> 주의  
-> 1. JSON/HTTP로 Log & Crash 수집 서버에 로그 전송시 다음 주소를 사용해야 한다.  
-> Log & Crash: api-logncrash.cloud.toast.com  
+> 주의
+> 1. JSON/HTTP로 Log & Crash 수집 서버에 로그 전송시 다음 주소를 사용해야 한다.
+> Log & Crash: api-logncrash.cloud.toast.com
 >
-> 전송 방식: POST  
+> 전송 방식: POST
 >
-> URI: /v2/log  
+> URI: /v2/log
 >
-> Content-Type: "application/json"  
-> 2. 로그 전송 전에, Log & Crash에 프로젝트를 등록하였는지 확인한다.  
-> 3. "logTime"은 Log & Crash 시스템에서 사용한다. 해당 키를 사용시 Log & Crash에서는 무시한다.  
-> 4. 키 이름에 공백 문자가 안 들어가도록 주의해야 한다. 예를 들어 "UserID"와 "UserID "은 서로 다른 키로 인식이 된다.  
+> Content-Type: "application/json"
+> 2. 로그 전송 전에, Log & Crash에 프로젝트를 등록하였는지 확인한다.
+> 3. "logTime"은 Log & Crash 시스템에서 사용한다. 해당 키를 사용시 Log & Crash에서는 무시한다.
+> 4. 키 이름에 공백 문자가 안 들어가도록 주의해야 한다. 예를 들어 "UserID"와 "UserID "은 서로 다른 키로 인식이 된다.
 
 ## 샘플
 
@@ -213,7 +213,7 @@ resultList: array
 
 ```
 //POST 메소드을 사용하여 로그 전송
-$ curl -H "content-type:application/json" -XPOST 'http://api-logncrash.cloud.toast.com/v2/log' -d '{
+$ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.toast.com/v2/log' -d '{
 	"projectName": "__앱키__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
@@ -255,7 +255,7 @@ $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.c
 
 ```
 //POST 메소드을 사용하여 로그 전송
-$ curl -H "content-type:application/json" -XPOST 'http://api-logncrash.cloud.toast.com/v2/log' -d '[
+$ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.toast.com/v2/log' -d '[
     {
         "projectName": "__앱키__",
         "projectVersion": "1.0.0",

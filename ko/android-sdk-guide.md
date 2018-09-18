@@ -4,8 +4,8 @@
 > Log & Crash Android SDK 버전은 더 이상 지원되지 않습니다.
 > [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)를 이용해 주시기 바랍니다.
 
-Log & Crash Android SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.  
-Log & Crash Android SDK 특·장점은 다음과 같습니다.  
+Log & Crash Android SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.
+Log & Crash Android SDK 특·장점은 다음과 같습니다.
 
 - 로그를 수집 서버로 보냅니다.
 - 앱에서 발생한 크래시 로그를 수집 서버로 보냅니다.
@@ -108,7 +108,7 @@ com.toast.android.logncrash.ToastLog class에서 제공하는 기능들을 설�
 ```
 public static final String DEFAULT_APP_KEY = "__app_key__";
 public static final String DEFAULT_VERSION = "1.0.0";
-public static final String DEFAULT_COLLECTOR_ADDR = "http://api-logncrash.cloud.toast.com";
+public static final String DEFAULT_COLLECTOR_ADDR = "https://api-logncrash.cloud.toast.com";
 public static final int DEFAULT_COLLECTOR_PORT = 0;
 public static final String DEFAULT_LOG_SOURCE = "logncrash-logSource";
 public static final String DEFAULT_LOG_TYPE = "logncrash-logType";
@@ -125,7 +125,7 @@ public static boolean initialize(Application application, String collectorAddr, 
 - 파라미터
 	- application: Android Application 정보. getApplication() 반환값을 넣어 줍니다.
 	- collectorAddr: 수집서버 주소
-		- HTTP 수집 서버: http://api-logncrash.cloud.toast.com
+		- HTTP 수집 서버: https://api-logncrash.cloud.toast.com
 	- collectorPort: 수집서버의 포트 정보, 0으로 지정하면 각 protocol 기본 포트가 사용됩니다.
 		- HTTP: 80
 	- appKey: 앱키
@@ -224,7 +224,7 @@ public static void clearCustomFields()
 	- "DmpData", "Platform", "NeloSDK", "Exception", "Location", "Cause"
 	- "SessionID", "UserID"
 	- "Carrier", "CountyCode", "DeviceModel", "Locale", "NetworkType", "Rooted"
-    
+
 
 ### 기본 설정 관리
 
@@ -266,8 +266,8 @@ false: 중복 제거 로직 비활성화
 
 ## SDK 샘플을 이용한 Proguard 테스트
 
-Android에서 제공하는 Proguard를 통해서 코드 난독화를 테스트하는 방법을 설명합니다.  
-Proguard를 적용하기 위해서는 Release로 프로젝트를 생성해야 합니다. 이에 필요한 키스토어, Proguard 설정 등이 sample/에 포함되어 있습니다.  
+Android에서 제공하는 Proguard를 통해서 코드 난독화를 테스트하는 방법을 설명합니다.
+Proguard를 적용하기 위해서는 Release로 프로젝트를 생성해야 합니다. 이에 필요한 키스토어, Proguard 설정 등이 sample/에 포함되어 있습니다.
 
 
 ### Eclipse를 사용하여 Proguard 테스트
@@ -308,7 +308,7 @@ AndroidStudio를 이용하여 Release 빌드를 하면 mapping.txt 위치가 app
 
 [Android NDK](http://developer.android.com/tools/sdk/ndk/index.html)를 이용하여 [JNI](http://en.wikipedia.org/wiki/Java_Native_Interface)를 사용시 Android SDK를 활용하는 방법에 대하여 설명합니다.
 Log & Crash Android SDK에서는 Java상에서 Exception을 Catch 할 수 있는 상황에서만 정상적으로 동작합니다. 그러기 위해서 작성한 Native Code에서 에러 발생시 에러를 전달하는 클래스를 생성하여야 합니다.
-예를 들어 아래와 같이 getString 함수가 실행되는 과정에서 에러가 발생한다면, try/catch 구문을 이용하여 Error을 Catch한 후 Java 코드로 예외를 생성하여 Throw해주면, Java에서 해당 에러를 잡아 로그로 전송합니다.  
+예를 들어 아래와 같이 getString 함수가 실행되는 과정에서 에러가 발생한다면, try/catch 구문을 이용하여 Error을 Catch한 후 Java 코드로 예외를 생성하여 Throw해주면, Java에서 해당 에러를 잡아 로그로 전송합니다.
 
 **JNI code**
 

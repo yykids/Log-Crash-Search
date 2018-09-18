@@ -35,11 +35,11 @@ sample/     ; Log4J 2 サンプル
 
 一緒に提供されているsample/log4j2/について説明します。
 
-1.Eclipseを起動し、メニューから「File - Import - Maven - Existing Maven Projects」を実行して、sample/log4j2/を開きます。  
+1.Eclipseを起動し、メニューから「File - Import - Maven - Existing Maven Projects」を実行して、sample/log4j2/を開きます。
 2.「src/test/resources/log4j2.xml」ファイルを開いて発行されたアプリケーションキーとバージョンを修正し、必要な場合は収集サーバーのアドレスを変更します。
 
 ```
-<collectorUrl>http://api-logncrash.cloud.toast.com </collectorUrl>
+<collectorUrl>https://api-logncrash.cloud.toast.com </collectorUrl>
 <appkey>__app_key__</appkey>
 <version>1.0.0</version>
 ```
@@ -49,10 +49,10 @@ sample/     ; Log4J 2 サンプル
 
 ## 使用例
 
-1.Log4J SDKライブラリをProjectに追加します。  
+1.Log4J SDKライブラリをProjectに追加します。
 - 例えば、Eclipseのメニュー「Project - Properties - Java Build Path - Libraries」を選択して「toast-logncrash-log4j2-sdk- <version > .jar」を追加します。
 
-2.Mavenを使用している場合は、pom.xmlにdependencyを追加します。  
+2.Mavenを使用している場合は、pom.xmlにdependencyを追加します。
 
 ```
 <dependency>
@@ -107,7 +107,7 @@ sample/     ; Log4J 2 サンプル
 </dependency>
 ```
 
-3.Mavenを使用していない場合は、次のライブラリをダウンロードしてclass pathに追加します。  
+3.Mavenを使用していない場合は、次のライブラリをダウンロードしてclass pathに追加します。
 
 ```
 log4j, 2.3
@@ -119,15 +119,15 @@ servlet-api, 2.4
 json, 20090211
 ```
 
-4.Appender設定と構成のためにlog4j2.xmlを作成します。  
+4.Appender設定と構成のためにlog4j2.xmlを作成します。
 
-- 全体の構成は、sample/log4j/src/test/resources/log4j.xmlをご覧ください。  
+- 全体の構成は、sample/log4j/src/test/resources/log4j.xmlをご覧ください。
 - collectorUrl、appKeyには必ず**収集サーバーのアドレス**、**発行されたアプリケーションキー**を使用する必要があります。
 
 ```
 <Appenders>
     <LogNCrashHttpAppender name="HTTP">
-    <collectorUrl>http://api-logncrash.cloud.toast.com </collectorUrl>
+    <collectorUrl>https://api-logncrash.cloud.toast.com </collectorUrl>
 
     <appKey>__app_key__</appKey>
     <version>1.0.0</version>
@@ -167,14 +167,14 @@ try {
 
 ### log4j.xml設定項目
 
-- collectorUrl：収集サーバーのアドレス。  
-	HTTP：http://api-logncrash.cloud.toast.com
+- collectorUrl：収集サーバーのアドレス。
+	HTTP：https://api-logncrash.cloud.toast.com
 - appKey：プロジェクトアプリケーションキー、必須。
 - version：プロジェクトのバージョン、デフォルト値「1.0.0」。
 - logSource：ログソース、デフォルト値「http-log4j」。
 - logType：ログタイプ、デフォルト値「log」。
 - enable：Appenderの使用可否設定、デフォルト値「true」。
-- debug：デバッグを使用するかどうかの設定、デフォルト値「false」。  
+- debug：デバッグを使用するかどうかの設定、デフォルト値「false」。
 
 ## 制約事項
 
@@ -184,7 +184,7 @@ try {
 
 ### Java stack traceをlog4j 2(Log & Crash Search含む)に記録するには？
 
-log4j 2 を利用して、stack traceを出力するには、log.error(e.getMessage()、e);フォームを使用します。 log.error(e);の場合は、stack traceが出力されません。  
+log4j 2 を利用して、stack traceを出力するには、log.error(e.getMessage()、e);フォームを使用します。 log.error(e);の場合は、stack traceが出力されません。
 
 ```
 String[] aa = null;

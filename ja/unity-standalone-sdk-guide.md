@@ -1,6 +1,6 @@
 ## Analytics > Log & Crash Search > Unity Standalone SDK Guide
 
-Log & Crash Unity SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.  
+Log & Crash Unity SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.
 Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 
 - 로그를 수집 서버로 보냅니다.
@@ -29,7 +29,7 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 
 ### 샘플 설명
 
-샘플의 실행은 Assets > LogNCrash > Sample > SampleScene을 더블클릭하여 실행합니다.  
+샘플의 실행은 Assets > LogNCrash > Sample > SampleScene을 더블클릭하여 실행합니다.
 샘플에는 초기화, 로그 전송, 에러 발생에 대한 예제가 기술되어 있습니다.
 
 ## 사용 예제
@@ -39,7 +39,7 @@ Log & Crash Unity SDK 특·장점은 다음과 같습니다.
 Unity 메뉴바에서 LogNCrash> Edit Settings를 선택하여 LogNCrashSettings를 생성합니다. LogNCrashSettings는 AssetDatabase로 사용자 앱키와 SDK 동작을 정의 합니다.
 
 - Appkey: 사용자 앱키
-- URL: 콜렉터 주소, http://api-logncrash.cloud.toast.com를 사용합니다.
+- URL: 콜렉터 주소, https://api-logncrash.cloud.toast.com를 사용합니다.
 - Version: 로그 버전
 - Send Warning: Unity에서 발생한 Warning 로그의 수집 여부
 - Send Error: Unity에서 발생한 Error 로그의 수집 여부
@@ -73,7 +73,7 @@ namespace Toast.LogNCrash
 	{
 		void Start ()
 		{
-			LogNCrash.Initialize ("http://api-logncrash.cloud.toast.com", "appkey", "1.0.0", 80,  true);
+			LogNCrash.Initialize ("https://api-logncrash.cloud.toast.com", "appkey", "1.0.0", 80,  true);
 			LogNCrash.StartSendThread ();
 		}
 	}
@@ -182,7 +182,7 @@ public static void Error(string strMsg)
 	- strMsg: string
 		- [in] 전송할 log 메세지
 
-### 크래시 콜백  
+### 크래시 콜백
 
 ```
 public void Crash_Send_Complete_Callback(string message) {

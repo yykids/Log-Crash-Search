@@ -213,7 +213,7 @@ resultList: array
 
 ```
 //POST 메소드을 사용하여 로그 전송
-$ curl -H "content-type:application/json" -XPOST 'http://api-logncrash.cloud.toast.com/v2/log' -d '{
+$ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.toast.com/v2/log' -d '{
 	"projectName": "__앱키__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
@@ -255,7 +255,7 @@ $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.c
 
 ```
 //POST 메소드을 사용하여 로그 전송
-$ curl -H "content-type:application/json" -XPOST 'http://api-logncrash.cloud.toast.com/v2/log' -d '[
+$ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.toast.com/v2/log' -d '[
     {
         "projectName": "__앱키__",
         "projectVersion": "1.0.0",
