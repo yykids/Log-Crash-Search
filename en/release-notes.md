@@ -1,5 +1,10 @@
 ## Analytics > Log & Crash Search > Release Notes
 
+### 2018.10.23
+#### 기능 개선/ 변경
+* [Console] (구) 로그 알람 종료
+    * [관련공지](https://toast.com/support/notice/detail/1453435858K00594)
+
 ### 2018.09.18
 #### 기능 개선/ 변경
 * [Console] 저장 쿼리 공유하기
