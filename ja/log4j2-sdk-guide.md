@@ -1,42 +1,42 @@
 ## Analytics > Log & Crash Search > Log4J v2 SDK Guide
 
-Log & Crash Log4J SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。
-Log & Crash Log4J SDKの特徴は次の通りです。
+Log & Crash Log4J v2 SDK sends logs to a Log & Crash Search collector server.
+Below describe benefits and features of Log & Crash Log4J v2 SDK.
 
-- ログを収集してサーバーに送信します。
-- Log & Crash Searchから送られたログの照会/検索ができます。
-- マルチスレッディング環境で動作します。
+- Send logs to a collector server.
+- Retrieve and search logs sent from Log & Crash Search.
+- Operate under a multi-threading environment.
 
-## 動作環境
+## Supporting Environment
 
 - Log4J 2.x
 
-## ダウンロード
+## Download
 
-[TOAST Document](http://docs.toast.com/ja/Download/)でLog4J SDKをダウンロードできます。
-
-```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Log4J.v2 SDK]をクリックします。
-```
-
-## インストール
-
-### 構成
-
-Log4J SDKは、次のように構成されています。
+Go to [TOAST Document](http://docs.toast.com/ja/Download/) and download **Log4J 2 SDK**.[DOCUMENTS] > 
 
 ```
-docs/       ; Log4J 2 SDKドキュメント
-lib/        ; Log4J 2 ライブラリ
-sample/     ; Log4J 2 サンプル
+Click [Download] > [Analytics > Log & Crash Search] > [Log4J.v2 SDK] 
 ```
 
-### SDKサンプル
+## Install
 
-一緒に提供されているsample/log4j2/について説明します。
+### Configuration
 
-1.Eclipseを起動し、メニューから「File - Import - Maven - Existing Maven Projects」を実行して、sample/log4j2/を開きます。
-2.「src/test/resources/log4j2.xml」ファイルを開いて発行されたアプリケーションキーとバージョンを修正し、必要な場合は収集サーバーのアドレスを変更します。
+SDK is configured as below.
+
+```
+docs/       ; Log4J 2 SDK Document
+lib/        ; Log4J 2 Library
+sample/     ; Log4J 2 Sample
+```
+
+### SDK Sample
+
+Below describe sample/log4j2/ that is provided.
+
+1. Run Eclipse, execute **File > Import > Maven > Existing Maven Projects** in the menu and import sample/log4j2/.
+2. Open the src/test/resources/log4j2.xml file and update with issued Appkey and version, and collector server address, if necessary.
 
 ```
 <collectorUrl>https://api-logncrash.cloud.toast.com </collectorUrl>
@@ -44,15 +44,15 @@ sample/     ; Log4J 2 サンプル
 <version>1.0.0</version>
 ```
 
-3.Eclipseメニューから「Project - Properties - Java Build Path - Libraries」を選択して「toast-logncrash-log4j2-sdk- <version > .jar」を追加します。
-4.Eclipseメニューから「Run - Run As - JUnit Test」を選択して実行します。
+3. Go to **Project > Properties > Java Build Path > Libraries** in Eclipse and add toast-logncrash-log4j2-sdk-.jar.
+4. In Eclipse, select **Run > Run As > JUnit Test** and execute.
 
-## 使用例
+## Example
 
-1.Log4J SDKライブラリをProjectに追加します。
-- 例えば、Eclipseのメニュー「Project - Properties - Java Build Path - Libraries」を選択して「toast-logncrash-log4j2-sdk- <version > .jar」を追加します。
+1. Add Log4J 2 SDK library to your project.
+For instance, select **Project > Properties > Java Build Path > Libraries** in the Eclipse menu and add toast-logncrash-log4j2-sdk-.jar
+2. In the case of Maven, add dependency to pom.xml.
 
-2.Mavenを使用している場合は、pom.xmlにdependencyを追加します。
 
 ```
 <dependency>
@@ -92,7 +92,7 @@ sample/     ; Log4J 2 サンプル
   </dependency>
 ```
 
-- SLF4Jを使用している場合は、次のdependencyを追加します。
+For SLF4J, add the following dependency.
 
 ```
 <dependency>
@@ -107,7 +107,7 @@ sample/     ; Log4J 2 サンプル
 </dependency>
 ```
 
-3.Mavenを使用していない場合は、次のライブラリをダウンロードしてclass pathに追加します。
+3. For non-Maven users, download libraries as below and add to the class path.
 
 ```
 log4j, 2.3
@@ -119,33 +119,32 @@ servlet-api, 2.4
 json, 20090211
 ```
 
-4.Appender設定と構成のためにlog4j2.xmlを作成します。
-
-- 全体の構成は、sample/log4j/src/test/resources/log4j.xmlをご覧ください。
-- collectorUrl、appKeyには必ず**収集サーバーのアドレス**、**発行されたアプリケーションキー**を使用する必要があります。
+4. For the setting and configuration of appender, write log4j2.xml.
+- Refer to sample/log4j2/src/test/resources/log4j2.xml for the entire configuration.
+- Make sure to use issued Appkey and collector server address, to appKey and collectorUrl, respectively.
 
 ```
 <Appenders>
-    <LogNCrashHttpAppender name="HTTP">
-    <collectorUrl>https://api-logncrash.cloud.toast.com </collectorUrl>
+	<LogNCrashHttpAppender name="HTTP">
+	<collectorUrl>https://api-logncrash.cloud.toast.com </collectorUrl>
 
-    <appKey>__app_key__</appKey>
-    <version>1.0.0</version>
-    <logSource>http-log4j2</logSource>
-    <logType>log</logType>
-    <enable>true</enable>
-    <debug>false</debug>
-    </LogNCrashHttpAppender>
-    </Appenders>
-    ...
-    <Loggers>
-    <Root level="debug">
-    <AppenderRef ref="HTTP"/>
-    </Root>
+	<appKey>__app_key__</appKey>
+	<version>1.0.0</version>
+	<logSource>http-log4j2</logSource>
+	<logType>log</logType>
+	<enable>true</enable>
+	<debug>false</debug>
+	</LogNCrashHttpAppender>
+	</Appenders>
+	...
+	<Loggers>
+	<Root level="debug">
+	<AppenderRef ref="HTTP"/>
+	</Root>
 </Loggers>
 ```
 
-5.Javaで次のように使用します。
+5. For Java, use as follows.
 
 ```
 ...
@@ -156,42 +155,47 @@ ThreadContext.put("custom", "custom log test");
 log4j2Logger.debug("LogNCrash Log4J2 Test");
 ...
 try {
-    String npe = null;
-    npe.toString();
+	String npe = null;
+	npe.toString();
 } catch (Exception e) {
-    log4j2Logger.error(e.toString(), e);
+	log4j2Logger.error(e.toString(), e);
 }
 ```
 
 ## API List
 
-### log4j.xml設定項目
+### Setting Items for log4j2.xml
 
-- collectorUrl：収集サーバーのアドレス。
-	HTTP：https://api-logncrash.cloud.toast.com
-- appKey：プロジェクトアプリケーションキー、必須。
-- version：プロジェクトのバージョン、デフォルト値「1.0.0」。
-- logSource：ログソース、デフォルト値「http-log4j」。
-- logType：ログタイプ、デフォルト値「log」。
-- enable：Appenderの使用可否設定、デフォルト値「true」。
-- debug：デバッグを使用するかどうかの設定、デフォルト値「false」。
+- collectorUrl: Collector server address
+  HTTP : https://api-logncrash.cloud.toast.com
+- appKey: Project Appkey: required
+- version: Project version. Default is "1.0.0".
+- logSource: Log source. Default is "http-log4j2".
+- logType: Log type. Default is "log".
+- enable: Whether to use Appender or not. Default is "true".
+- debug: Whether to use Debug or not. Default is "false".
 
-## 制約事項
 
-- 現在、**log4j 1.2**バージョンでは動作しません。
+## Constraints
+
+- **log4j 1.2** is not supported.  
 
 ## FAQ
 
-### Java stack traceをlog4j 2(Log & Crash Search含む)に記録するには？
+### How can I use Asynchronous Logger to enhance performance?
 
-log4j 2 を利用して、stack traceを出力するには、log.error(e.getMessage()、e);フォームを使用します。 log.error(e);の場合は、stack traceが出力されません。
+Make a reference of Asynchronous Loggers for Low-Latency Logging
+
+### How can a Java stack trace be logged to a log4j 2 (including Log & Crash Search)?
+To get an output of stack trace with log4j 2, use the log.error(e.toString(),e); type: cannot get an output of stack trace for log.error(e);.  
+
 
 ```
-String[] aa = null;
+String[] aa= null;
 try {
-    aa[0] = "111";
-} catch (NullPointerException e) {
-    log.error(e); //stacktrace出力されない。
-    log.error(e.getMessage(), e); ///stacktrace出力
+	aa[0] = "111";
+} catch(NullPointerexception e) {
+		log.error(e); // no output of stacktrace
+		log.error(e.toString(), e); // output of stacktrace
 }
 ```

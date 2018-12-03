@@ -1,65 +1,64 @@
 ## Analytics > Log & Crash Search > C++ Windows SDK Guide
 
 > [Deprecated]
-> Log & Crash C++ Windows SDK 버전은 더 이상 지원되지 않습니다.
-> [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)를 이용해 주시기 바랍니다.
+> Log & Crash C++ Windows SDK is not supported any more.
+> Please use [TOAST SDK](http://docs.toast.com/ja/TOAST/ja/toast-sdk/overview/). 
 
-Log & Crash C++ Windows SDKは、Log & Crash Search収集サーバーにログを送信する機能を提供します。  
-Log & Crash C++ Windows SDKの特徴は次の通りです。
+Log & Crash C++Windows SDK sends logs to a Log & Crash Search collector server.
+Below describe benefits and features of Log & Crash C++ Windows SDK.
 
-- ログを収集してサーバーに送信します。
-- アプリで発生したクラッシュログを収集サーバーに送信します。
-- Log & Crash Searchから送られたログの照会/検索ができます。
-- マルチスレッディング環境で動作します。
+  - Send logs to a collector server.
+  - Send crash logs occurred in an app to a collector server.
+  - Retrieve and search logs sent from Log & Crash Search.
+  - Operate under a multi-threading environment.
 
-## 動作環境
+## Supporting Environment
 
-- Windows 2000、Windows Vista、Windows XP、Windows 2003、Windows 2008、Windows 7、Windows 8
+- Windows 2000, Windows Vista, Windows XP, Windows 2003, Windows 2008, Windows 7, Windows 8
 - 32bit/64bit
 
-## ダウンロード
+## Download
 
-Toast CloudからC++ Windows SDKをダウンローできます。
-
-```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Windows SDK]をクリックします。
-```
-
-## インストール
-
-### 構成
-
-C++ Windows SDKには、次のように構成されています。
+Go to [TOAST Document](http://docs.toast.com/ja/Download/) and download **C++ Windows SDK**.
 
 ```
-docs/						; C++ Windows SDKドキュメント
-include/					; C++ Windows SDK使用例
-include/toast/logncrash.h	; C++ヘッダファイル
-windows-sdk/lib32/			; C++ Windows 32bitライブラリ
-windows-sdk/lib64/			; C++ Windows 64bitライブラリ
-windows-sdk-sample/			; VS 2010用サンプルプロジェクト
+Click [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Windows SDK]
+``` 
+
+## Install
+
+### Configuration
+
+C# Windows SDK is configured as below.
+
+```
+docs/						; C++ Windows SDK Document
+include/					; C++ Windows SDK Example
+include/toast/logncrash.h	; C++ Header File
+windows-sdk/lib32/			; C++ Windows 32bit Library
+windows-sdk/lib64/			; C++ Windows 64bit Library
+windows-sdk-sample/			; Sample Project for VS 2010
 ```
 
-### SDKサンプル
+### SDK Sample
 
-一緒に提供されているwindows-sdk-sample/について説明します。
+Below describes sample/ provided along with SDK.
 
-1. Microsoft Visual Studio 2010を起動して、windows-sdk-sample/Sample.slnを開きます。
-2. sample.cppを開いて発行されたアプリケーションキーに修正します。
-3. 32bit/64bitとDebug/Releaseに応じてアプリを起動するために必要な\*.dllを実行ファイルのディレクトリにコピーします。
-4. 実行します。
+1. Run Microsoft Visual Studio 2010 and open windows-sdk-sample/Sample.sln.
+2. Open Sample.cpp and update with issued Appkey.
+3. Copy *.dll required for app execution to an execution file directory, depending on 32bit/64bit and Debug/Release.
+4. Execute.
 
-## 使用例
+## Example
 
-
-1. include/toast/をインクルードパスに入れます。
-2. 32bit/64bitとDebug/Releaseに応じて、次のようにImportライブラリを指定します。
-	- 32bit, Debug   ; lib32/liblogncrashD.lib
-	- 32bit, Release ; lib32/liblogncrash.lib
-	- 64bit, Debug   ; lib64/liblogncrashD.lib
-	- 64bit, Release ; lib64/liblogncrash.lib
-3. アプリ実行のために\*.dllを実行ファイルのディレクトリにコピーします。
-4. toast/logncrash.hをインクルードして、ToastLog classを使用します。
+1. Add include/toast/ to the include path.
+2. Specify an import library as below, depending on 32bit/64bit and Debug/Release.
+	- 32bit, Debug: lib32/liblogncrashD.lib
+	- 32bit, Release: lib32/liblogncrash.lib
+	- 64bit, Debug: lib64/liblogncrashD.lib
+	- 64bit, Release: lib64/liblogncrash.lib
+3. Copy *.dll to the execution file directory for app execution.
+4. Include toast/logncrash.h and use ToastLog class.
 
 ```
 ...
@@ -83,9 +82,9 @@ windows-sdk-sample/			; VS 2010用サンプルプロジェクト
 
 ## API List
 
-toast::logncrash::ToastLog classで提供している機能を説明します。
+Below describe functions provided by toast::logncrash::ToastLog class.
 
-### ToastLogインスタンスの割り当て/解除
+### Assign/Destroy
 
 ```
 toast::logncrash::ToastLog* GetToastLog();
@@ -93,11 +92,12 @@ toast::logncrash::ToastLog* GetToastLog();
 void DestroyToastLog();
 ```
 
-- ToastLog instanceを割り当てて解除します。
-- シングルトーン方式で1つのインスタンスのみが返されます。
-- 返されたToastLog instanceに対してdeleteをしないでください。削除するには、必ずDestroyToastLog()を呼び出してください。
+- Assign ToastLog instance, then destroy it.
+- With a single-tone method, only one instance is returned.
+- Do not delete a returned ToastLog instance; it is required to call DestroyToastLog() to delete it.
 
-### 初期化/解除
+
+### Initialize/Destroy
 
 ```
 #define LOGNCRASH_VERSION         "1.0.0"
@@ -128,25 +128,25 @@ int32_t initialize(
 void destroy();
 ```
 
-- ToastLogを初期化して解除します。
-- ToastLog機能が正常に動作するためには、必ずinitialize()を呼び出す必要があります。
-- パラメータ
-	- appKey：アプリケーションキー。
-	- version：アプリバージョン。
-	- collectorAddr：収集サーバーのアドレス。
-		- Log & Crash収集サーバー：api-logncrash.cloud.toast.com
-	- collectorPort：収集サーバーポート。
-	- logSource：ログソース。
-	- logType：ログタイプ。
-- initialize()の戻り値
-	- LOGNCRASH_LOG_OK：0、初期化に成功。
-	- LOGNCRASH_LOG_ERROR：-1、内部エラーコード。
-	- LOGNCRASH_LOG_ERROR_APPKEY：-2、アプリケーションキーが間違っている場合。
-	- LOGNCRASH_LOG_ERROR_VERSION：-3、バージョンが間違っている場合。
-	- LOGNCRASH_LOG_ERROR_ADDRESS：-4、収集サーバーのアドレスが間違っている場合。
-	- LOGNCRASH_LOG_ERROR_PORT：-5、収集サーバーのポートが間違っている場合。
+- Initialize ToastLog, then destroy it.
+- Requires a call of Initialize() to operate ToastLog.
+- Parameters
+  - appKey: Appkey
+  - version: App version
+  - collectorAddr: Collector server address
+    - Log&Crash collector server: api-logncrash.cloud.toast.com
+  - collectorPort: Collector server port
+  - logSource: Log source
+  - logType: Log type
+- Return value of initialize()
+  - LOGNCRASH\_LOG\_OK: 0, Succeeded to initialize
+  - LOGNCRASH\_LOG\_ERROR: -1, Internal error code
+  - LOGNCRASH\_LOG\_ERROR\_APPKEY: -2, Error in Appkey
+  - LOGNCRASH\_LOG\_ERROR\_VERSION: -3, Error in version
+  - LOGNCRASH\_LOG\_ERROR\_ADDRESS: -4, Error in collector server address
+  - LOGNCRASH\_LOG\_ERROR\_PORT: -5, Error in collector server port
 
-### ログ送信
+### Send Logs
 
 ```
 bool sendLog(
@@ -156,17 +156,17 @@ bool sendLog(
     const char* location = NULL);
 ```
 
-- 指定されたlogLevelでログを送信します。
-- パラメータ
-	- logLevel：送信logLevel.setLogLevel()で指定されたlogLevelよりも大きいlogLevelは送信ができません。
-	- message：送信するメッセージ。
-	- errorCode：エラーコード。 NULLまたは ""を使えば送信されません。
-	- location：エラーの場所。 NULLまたは ""を使えば送信されません。
-- 戻り値
-	- 成功時true。
-	- logLevelが大きかったり、messageが空の場合はfalse。
-- 参照
-	- setLogLevel(), getLogLevel();
+- Send logs to a specified logLevel.
+- Parameters
+  - logLevel: A logLevel to send. Cannot send a logLevel that is higher than what has been specified as setLogLevel().
+  - message: Messages to send
+  - errorCode: Error code. Cannot send with NULL or \"\".
+  - location: Error location. Cannot send with NULL or \"\".
+- Return value
+  - True if successful
+  - False if a logLevel is high or message is empty
+- Note
+  - setLogLevel(), getLogLevel();
 
 ```
 bool debug(const char* message, const char* errorCode = NULL, const char* location = NULL);
@@ -180,13 +180,13 @@ bool error(const char* message, const char* errorCode = NULL, const char* locati
 bool fatal(const char* message, const char* errorCode = NULL, const char* location = NULL);
 ```
 
-- 決められたDEBUG、INFO、WARN、ERROR、FATALログを送信します。
-- logLevelが固定されているという点以外はsendLog()と同じです。
-- 戻り値
-	- 成功時true。
-	- logLevelが大きかったり、messageが空の場合はfalse。
+- Send specified DEBUG, INFO, WARN, ERROR, or FATAL logs.
+- Same as sendLog(), except that it has a fixed logLevel.
+- Return value
+  - true: if successful
+  - false: if logLevel is high or message is empty
 
-### ログレベルを指定
+### Specify Log Levels
 
 ```
 typedef enum {
@@ -203,10 +203,11 @@ LogNCrashLogLevel getLogLevel();
 void setLogLevel(const LogNCrashLogLevel logLevel);
 ```
 
-- ToastLog instanceのlogLevelを入手するか、指定します。
-- ToastLogのデフォルトはLOGNCRASH_INFOです。したがってdebug()関数を使用するにはsetLogLevel(LOGNCRASH_DEBUG)に設定する必要があります。
+- Get or specify a logLevel of ToastLog instance.
 
-### カスタムキーを指定
+- The default of ToastLog is LOGNCRASH\_INFO. Therefore, to use debug() function, it should be set to setLogLevel(LOGNCRASH\_DEBUG).
+
+### Specify Custom Keys
 
 ```
 bool addCustomKey(const char* key, const char* value);
@@ -216,18 +217,18 @@ void removeCustomKey(const char* key);
 void clearCustomKeys();
 ```
 
-- カスタムキーを追加/削除/全て削除機能を提供します。
-- カスタムキーは、大文字か小文字で始まり、大文字と小文字、数字、「 - 」、「_」のみを使用できます。 ( [A-Za-z][A-Za-z0-9-_]* )
-- カスタムキーは、最大64文字です。
-- カスタムキーは、大文字と小文字に関わらず、次の名前は使用できません。
-	- projectname, projectversion, host, body, logsource, logtype
-	- logType, sendTime, logLevel, userId, platform
-	- dmpdata, dmpreport
-- addCustomKey()の戻り値
-	- 成功時true。
-	- key形式が合わない場合、追加失敗時false。
+- Provide functions such as to Add, Delete, or Delete All custom keys.
+- A custom key starts with an upper or lower-case alphabet: only alphabets, numbers, \'-\', and \'\' can be used (\[A-Za-z\]\[A-Za-z0-9-\]\*).
+- A custom key cannot have more than 64 characters.
+- Following names cannot be used, irrespective of upper or lower cases:
+  - projectname, projectversion, host, body, logsource, and logtype
+  - logType, sendTime, logLevel, userId, and platform
+  - dmpdata and dmpreport
+- Return value of addCustomKey()
+  - true: if successful
+  - false: if the key format is wrong
 
-### クラッシュ処理
+### Process Crashed
 
 ```
 typedef enum {
@@ -252,19 +253,19 @@ void closeCrashCatcher();
 void setCrashCallback(const LogNCrashCallbackType cb, void* cbData = NULL);
 ```
 
-- クラッシュ処理を開始するか、終了します。
+- Start or end processing crashes.
 
-### 重複除去モードの設定
+### Remove Duplicates
 
-- 重複ログ機能がオンになっている場合、bodyとLogLevelの内容が同じログが発生しても送信しません。
+- When duplicate logging is enabled, do not send any same logs that occur in the body and logLevel.
 
 ```
 public static void setDuplicate(bool enable)
 ```
-- true：重複除去ロジックを有効にする。(Default値)
-- false：重複除去ロジックを無効にする。
+- true: (Default) Remove duplicates is enabled.
+- false: Remove duplicates is disabled.
 
-### その他の設定
+### Other Settings
 
 ```
 const char* getUserId();
@@ -272,38 +273,38 @@ const char* getUserId();
 void setUserId(const char* userId);
 ```
 
-- ユーザーIDを取得するか、指定します。
+- Get or specify a user ID.
 
-## シンボルファイルの作成ガイド
+## Guide to Create Symbol Files
 
-### 概要
-- Log & Crash Windows SDKで発生したCrashを解析するためには、シンボルファイルを作成して、Webコンソールにアップロードする必要があります。
+- To interpret crashes occurred in Log & Crash Windows SDK, symbol files need to be created and uploaded to Console.
 
-### 必要なツール
-- VSに合わせてdump_symsを使用します( VC_1500 = 2008, VC_1600 = 2010 )
-- [VS 2008以下のダウンロード](https://github.com/zpao/v8monkey/blob/master/toolkit/crashreporter/tools/win32/dump_syms_vc1500.exe)
-- [VS 2010以上のダウンロード](http://hg.mozilla.org/mozilla-central/file/tip/toolkit/crashreporter/tools/win32)
-- [minidump_stackwalk.exe](http://hg.mozilla.org/build/tools/raw-file/755e58ebc9d4/breakpad/win32/minidump_stackwalk.exe)
+### Requirements
 
-### シンボルファイルの作成
-- windows crash dumpsは.pdbファイルを.symシンボルに変換させてデバッグ情報を得ることができます。
-- .pdbファイルを.symファイルに変換させる。
-- .pdbファイルを生成します。(プロジェクトのビルド時に生成)
+- Use dump\_syms which fits for the VS. ( VC\_1500 = 2008, VC\_1600 = 2010 )
+- Download for [VS 2008 or lower](https://github.com/zpao/v8monkey/blob/master/toolkit/crashreporter/tools/win32/dump_syms_vc1500.exe)
+- Download for [VS 2010 or higher](http://hg.mozilla.org/mozilla-central/file/tip/toolkit/crashreporter/tools/win32)
+- [minidump\_stackwalk.exe](http://hg.mozilla.org/build/tools/raw-file/755e58ebc9d4/breakpad/win32/minidump_stackwalk.exe)
 
-- dump_syms.exeをダウンロードします。
+### Create Symbol Files
+- Get debugging information for windows crash dumps, by converting .pdb files to .sym symbol files.
 
-- 次の例のようにdump_symsを実行して、シンボルファイルを生成します。
-(エラーが発生していない場合はシンボルファイルの生成に成功しています)
-        - CoCreateInstance CLSID_DiaSource failed (msdia*.dll unregistered?)エラーが発生した場合、c:\Program Files\Common Files\Microsoft Shared\VC\に該当dllをコピーします。
-    - regsvr32コマンドを使用してdllを登録します。
+- How to convert .pdb files to .sym files:
+
+    - Create.pdb files (to be created with a project build)
+    - Download dump\_syms.exe.
+    - Execute dump.syms as below, to create symbol files (it is deemed successful if no error has occurred).
+      - If an error has occurred, like CoCreateInstance CLSID\_DiaSource failed (msdia\*.dll unregistered?), copy its dll to c:\\Program Files\\Common Files\\Microsoft Shared\\VC.
+      - Register dll by order of regsvr32.
+
+       ```
+      regsvr32 c:\Program Files\Common Files\Microsoft Shared\VC\msdia80.dll.
+       ```
+
+        - If 0x80004005 has occurred, retry at manager's authority.
         ```
-        regsvr32 c:\Program Files\Common Files\Microsoft Shared\VC\msdia80.dll.
+      'dump_syms {.pdb file} > {File ouput}'
+      'dump_syms Sample.pdb > Sample.sym'
         ```
 
-    - 0x80004005が発生した場合、管理者権限で再試行します。
-        ```
-    'dump_syms {.pdbファイル} > {出力ファイル}'
-        'dump_syms Sample.pdb > Sample.sym'
-        ```
-
-- 作成したシンボルファイルをWebコンソールにアップロードします。
+        - Upload symbol files that are created to the Web Console.

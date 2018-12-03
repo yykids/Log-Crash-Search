@@ -1,68 +1,68 @@
 ## Analytics > Log & Crash Search > AndroidNDK SDK Guide
 
-Log & Crash AndroidNDK SDKはLog & Crash Search収集サーバーにログを送信する機能を提供します。  
-Log & Crash AndroidNDK SDKの特徴は次の通りです。  
+Log & Crash Android SDK sends logs to a Log & Crash Search collector server.
+Below describe benefits and features of Log & Crash Android SDK.
 
-- ログを収集してサーバーに送信します。
-- アプリで発生したクラッシュログを収集サーバーに送信します。
-- Log & Crash Searchから送られたログの照会/検索ができます。
-- マルチスレッディング環境で動作します。
+- Send logs to a collector server.
+- Send crash logs occurred in an app to a collector server.
+- Retrieve and search logs sent from Log & Crash Search.
+- Operate in a multi-threading environment.
 
-## 動作環境
+## Supporting Environment
 
-- Android 2.3.3、API Level 10以上
-- AndroidNDK最新バージョン推奨
-- サポート ABI: armeabi、armeabi-v7a、x86
+- Android 2.3.3. API Level 10 or higher
+- Most updated AndroidNDK version recommended
+- Supportive ABI : armeabi, armeabi-v7a, x86
 
-## ダウンロード
+## Download
 
-[TOAST Document](http://docs.toast.com/ja/Download/)からAndroid SDKをダウンロードできます。
-
-```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [AndroidNDK SDK]をクリック
-```
-
-## インストール
-
-### 構成
-
-AndroidNDK SDKは、次のように構成されています。
+Go to [TOAST Document](http://docs.toast.com/ja/Download/) to download **AndroidNDK SDK**.
 
 ```
-docs/                       ; AndroidNDK SDKドキュメント
-include/toast/logncrash.h   ; C++ ヘッダファイル
+Click [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [AndroidNDK SDK]
+``` 
+
+## Install
+
+### Configuration
+
+Android SDK is configured as follows:
+
+```
+docs/                       ; AndroidNDK SDK Document
+include/toast/logncrash.h   ; C++ Header File
 androidndk-sdk/
-    obj/                    ; AndroidNDK SDK Staticライブラリ
-    PrebuiltStaticLib.mk    ; Staticライブラリmkファイル
-    libs/                   ; AndroidNDK SDK Sharedライブラリ
-    PrebuiltSharedLib.mk    ; Sharedライブラリmkファイル
-androidndk-sdk-sample/      ; Android JNIサンプル
+    obj/                    ; AndroidNDK SDK Static Library
+    PrebuiltStaticLib.mk    ; Static Library .mk file
+    libs/                   ; AndroidNDK SDK Shared Library
+    PrebuiltSharedLib.mk    ; Shared Library .mk file
+androidndk-sdk-sample/      ; Android JNI Sample
 ```
 
-### SDKサンプル
+### SDK Sample
 
-一緒に提供されるandroidndk-sdk-sample/について説明します。
+Below describe androidndk-sdk-sample/ provided along with SDK.
 
-1. androidndk-sdk-sample/に移動します。
-2. 「<ndk_path >/ndk-build」でNDK部分をビルドします。
-3. EclipseでAndroid projectを開きます。
-4. AndroidNDKSample.javaを開いて発行されたアプリケーションキーに修正します。
-5. 実行します。
+1. Go to androidndk-sdk-sample/.
+2. Build NDK with <ndk_path>/ndk-build.
+3. Import an Android project into Eclipse.
+4. Open AndroidNDKSample.java and update Appkey information.
+5. Execute.
 
-クラッシュログをLog & Crash Searchで表示するにはシンボルファイルを追加する必要があります。
+To view crash logs at Log & Crash Search, symbol files must be uploaded.
 
-1. 「obj/local/<abi >/liblogncrashjni_sample.so」をzipに圧縮します。
-2. Toast Cloud Consoleで「Analytics - Log & Crash Search - Settings - シンボルファイル」に移動して、zipファイルを追加します。この時、androidndk-sdk-sampleと同じプロジェクトのバージョンで追加します。
-3. androidndk-sdk-sampleを実行して、クラッシュログを発生させます。
-	- クラッシュを発生させるために、「Initialize」ボタンを押して、「Test 2」ボタンを押します。
-	- Toast Cloud ConsoleでAnalytics - Log & Crash Search - Log Searchのクラッシュログが到着したことを確認して、「DmpData」フィールドにある「表示」をクリックして確認します。
-4. 「DmpData」フィールドの「表示」が動作しない場合は、次の事項をチェックする必要があります。
-	- クラッシュログとシンボル間でプロジェクトのバージョンが合っているか
-	- シンボルファイルを間違えていないか
+1. Compress obj/local//liblogncrashjni_sample.so into .zip.
+2. Upload the Zip file to **Analytics > Log & Crash Search > Settings > Symbol Files** in the TOAST Cloud console. Note the project version should be same as androidndk-sdk-sample.
+3. Execute androidndk-sdk-sample to create crash logs.
+   - Click **Initialize** and **Test2** to occur crashes.
+   - Check if crash logs have arrived at **Analytics > Log & Crash Search > Log Search** in the TOAST Cloud console and click **View** in the **DmpData** field to confirm.
+4. If **View** of **DmpData** doesn’t open:
+   - Check if the project version is different between a crash log and a symbol.
+   - Check if there is an error in the symbol file.
 
-## 使用例
+## Example
 
-1.jni/Application.mkに次の内容を追加します。
+1.Add below to jni/Application.mk.
 
 ```
  ...
@@ -72,28 +72,28 @@ androidndk-sdk-sample/      ; Android JNIサンプル
  ...
 ```
 
-2.jni/Android.mkに次の内容を追加します。
+2.Add below to jni/Android.mk.
 
 ```
- ...
+...
  LOCAL_STATIC_LIBRARIES := logncrash_androidndk_static
  ...
  include $(LOCAL_PATH)/<androidndk_sdk_path>/androidndk-sdk/PrebuiltStaticLib.mk
 ```
 
-- Sharedライブラリを使用するには次のように宣言します。
+- To use shared library, declare as below.
 
 ```
-  ...
+...
   LOCAL_SHARED_LIBRARIES := logncrash_androidndk
   ...
   include $(LOCAL_PATH)/<androidndk_sdk_path>/androidndk-sdk/PrebuiltSharedLib.mk
 ```
 
-3.toast/logncrash.hをインクルードして、ToastLog classを使用します。
+3.Include toast/logncrash.h to use ToastLog class.
 
 ```
- ...
+...
  #include "toast/logncrash.h"
  ...
 
@@ -112,19 +112,19 @@ androidndk-sdk-sample/      ; Android JNIサンプル
      DestroyToastLog();
 ```
 
-4.「<ndk_path >/ndk-build」でNDK部分をビルドします。
+4.Build NDK with <ndk_path>/ndk-build.
 
-5.AndroidNDK SDKが正常に動作するためにAndroidManifest.xmlに以下のパーミッションを与える必要があります。
+5.To operate AndroidNDK SDK normally, add permissions as below to AndroidManifest.xml.
 
 ```
- ...
+...
  <uses-permission android:name="android.permission.INTERNET"/>
  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
  <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
  ...
 ```
 
-6.JNIライブラリを読み込みます。
+6.Import JNI library.
 
 ```
 static {
@@ -132,7 +132,7 @@ static {
  }
 ```
 
-- Sharedライブラリを使用の際は、あらかじめliblogncrash_androidndk.soをロードする必要があります。
+- To use shared library, liblogncrash_androidndk.so should be imported in advance.
 
 ```
 static {
@@ -141,14 +141,14 @@ static {
   }
 ```
 
-AndroidNDK SDKはJava Exceptionを処理することができません。 AndroidNDK SDKは、C++ Native codeのために作られているためです。  
-androidndk-sdk-sample/jni/Android.mkファイルとAndroidNDKに含まれている文書( 「<ndk_path >/docs/」)を参照してください。
+Java Exception cannot be processed in AndroidNDK SDK because it has been made for C++ Native Code.
+Please refer to documents (/docs/) included to the androidndk-sdk-sample/jni/Android.mk file and AndroidNDK.
 
 ## API List
 
-toast::logncrash::ToastLog classで提供している機能を説明します。
+Below describe functions provided by toast::logncrash::ToastLog class.
 
-### ToastLogインスタンスの割り当て/解除
+### Assign/Destroy ToastLog Instances
 
 ```
 toast::logncrash::ToastLog* GetToastLog();
@@ -156,11 +156,11 @@ toast::logncrash::ToastLog* GetToastLog();
 void DestroyToastLog();
 ```
 
-- ToastLog instanceを割り当てて解除します。
-- シングルトーン方式で1つのインスタンスのみが返されます。
-- 返されたToastLog instanceに対してdeleteをしないでください。削除するには、必ずDestroyToastLog()を呼び出してください。
+- Assign ToastLog instance, then destroy it.
+- With a single-tone method, only one instance is returned.  
+- Do not delete a returned ToastLog instance: it is required to call DestroyToastLog() to delete it.
 
-### 初期化/解除
+### Initialize/Destroy
 
 ```
 #define LOGNCRASH_VERSION         "1.0.0"
@@ -191,37 +191,37 @@ int32_t initialize(
 void destroy();
 ```
 
-- ToastLogを初期化して解除します。
-- ToastLog機能が正常に動作するためには、必ずinitialize()を呼び出す必要があります。
-- パラメータ
-	- appKey：アプリケーションキー
-	- version：アプリバージョン
-	- collectorAddr：収集サーバーのアドレス
-		- Log & Crash収集サーバー：api-logncrash.cloud.toast.com
-	- collectorPort：収集サーバーポート
-	- logSource：ログソース
-	- logType：ログタイプ
-- clientHost：Hostを取得する方式
-		- true：ioctl方式を使用してclientからhostを取得
-		- false：serverから渡された値でhostを取得
-	- asyncStart：SendThreadをLockさせた状態で開始します。Lock状態でログが発生した場合、サーバーに送信せずにキューに格納して待機。Crashが発生したり、StartSendThread関数を実行した場合はLock解除。
-- initialize()の戻り値
-	- LOGNCRASH_LOG_OK：0、初期化に成功
-	- LOGNCRASH_LOG_ERROR：-1、内部エラーコード
-	- LOGNCRASH_LOG_ERROR_APPKEY：-2、アプリケーションキーが間違っている場合
-	- LOGNCRASH_LOG_ERROR_VERSION：-3、バージョンが間違っている場合
-	- LOGNCRASH_LOG_ERROR_ADDRESS：-4、収集サーバーのアドレスが間違っている場合
-	- LOGNCRASH_LOG_ERROR_PORT：-5、収集サーバーのポートが間違っている場合
+- Initialize ToastLog and destroy it.
+- Requires a call of initialize() to operate ToastLog.
+- Parameters
+  - appKey: Appkey
+  - version: App version
+  - collectorAddr: Collector server address
+    - Log & Crash collector server: api-logncrash.cloud.toast.com
+  - collectorPort: Collector server port
+  - logSource: Log source
+  - logType: Log type
+  - clientHost: Get a host
+    - true: getting a host from client by using ioctl function
+    - false: for getting a host with a value delivered from a server.
+  - asyncStart: Start when SendThread is locked. If a log occurs while locked, save in queue and wait, without sending to server. Unlock, if a crash occurs or the StartSendThread function is executed.
+- Return Value of initialize()
+  - LOGNCRASH_LOG_OK: 0, Succeeded to initialize ment
+  - LOGNCRASH_LOG_ERROR: -1, Internal error code
+  - LOGNCRASH_LOG_ERROR_APPKEY: -2, Error in Appkey
+  - LOGNCRASH_LOG_ERROR_VERSION: -3, Error in version
+  - LOGNCRASH_LOG_ERROR_ADDRESS: -4, Error in collector server address
+  - LOGNCRASH_LOG_ERROR_PORT: -5, Error in collector server port
 
-### SendThread Lock状態解除
+### Unlock SendThread
 
 ```
   	void StartSendThread();
 ```
 
- - SendThreadを送信可能な状態に変更
+  - Change the status of SendThread to deliverable.
 
-### ログ送信
+### Send Logs
 
 ```
 bool sendLog(
@@ -231,17 +231,17 @@ bool sendLog(
     const char* location = NULL);
 ```
 
-- 指定されたlogLevelでログを送信します。
-- パラメータ
-	- logLevel：送信logLevel.setLogLevel()で指定されたlogLevelよりも大きいlogLevelは送信ができません。
-	- message：送信するメッセージ
-	- errorCode：エラーコード。 NULLまたは ""を使えば送信されません。
-	- location：エラーの場所。 NULLまたは ""を使えば送信されません。
-- 戻り値
-	- 成功時true。
-	- logLevelが大きかったり、messageが空の場合はfalse。
-- 参照
-	- setLogLevel(), getLogLevel();
+- Send logs to a specified loglevel.
+- Parameters
+  - logLevel: A logLevel to send. A logLevel that is higher than what has been specified as setLogLevel() cannot be sent.
+  - message: Messages to send
+  - errorCode: Error code. Cannot send with NULL or "".
+  - location: Error location. Cannot send with NULL or "".
+- Return Value
+  - true: if successful
+  - false: if a logLevel is high or message is empty
+- Note
+  - setLogLevel(), getLogLevel();
 
 ```
 bool debug(const char* message, const char* errorCode = NULL, const char* location = NULL);
@@ -255,13 +255,13 @@ bool error(const char* message, const char* errorCode = NULL, const char* locati
 bool fatal(const char* message, const char* errorCode = NULL, const char* location = NULL);
 ```
 
-- 決められたDEBUG、INFO、WARN、ERROR、FATALログを送信します。
-- logLevelが固定されているという点以外はsendLog()と同じです。
-- 戻り値
-	- 成功時true。
-	- logLevelが大きかったり、messageが空の場合はfalse。
+- Send specified DEBUG, INFO, WARN, ERROR, or FATAL logs.
+- Same as sendLog(), except that it has a fixed logLevel.
+- Return Value
+  - true: if successful
+  - false: if logLevel is high or message is empty
 
-### ログレベルを指定
+### Specify Log Levels
 
 ```
 typedef enum {
@@ -278,10 +278,10 @@ LogNCrashLogLevel getLogLevel();
 void setLogLevel(const LogNCrashLogLevel logLevel);
 ```
 
-- ToastLog instanceのlogLevelを取得するか、指定します。
-- ToastLogのデフォルトはLOGNCRASH_INFOです。したがってdebug()関数を使用するにはsetLogLevel(LOGNCRASH_DEBUG)に設定する必要があります。
+- Get or newly specify a logLevel of a ToastLog instance.
+- The default of ToastLog is LOGNCRASH_INFO. Therefore, to use debug () function, it should be set as setLogLevel(LOGNCRASH_DEBUG).
 
-### カスタムキーを指定
+### Specify Custom Keys
 
 ```
 bool addCustomKey(const char* key, const char* value);
@@ -291,27 +291,27 @@ void removeCustomKey(const char* key);
 void clearCustomKeys();
 ```
 
-- カスタムキーを追加/削除/全て削除機能を提供します。
-- カスタムキーは、大文字か小文字で始まり、大文字と小文字、数字、「 - 」、「_」のみを使用できます。 ( [A-Za-z][A-Za-z0-9-_]* )
-- カスタムキーは、最大64文字です。
-- カスタムキーは、大文字と小文字に関わらず、次の名前は使用できません。
-	- projectname, projectversion, host, body, logsource, logtype
-	- logType, sendTime, logLevel, userId, platform
-	- dmpdata, dmpreport
-- addCustomKey()の戻り値
-	- 成功時true。
-	- key形式が合わない場合、追加失敗時false。
+- Provide Add, Delete, or Delete All custom keys.
+- The custom key must start with an upper or lower-case alphabet: only alphabets, numbers, and '-', '_' can be used. (A-Z a-z 0-9_-* )
+- The custom key cannot have more than 64 characters.
+- Following names cannot be used, irrespective of upper or lower case:
+  - projectname, projectversion, host, body, logsource, or logtype
+  - logType, sendTime, logLevel, userId, or platform
+  - dmpdata or dmpreport
+- Return Value of addCustomKey()
+  - true: if successful
+  - false: if a wrong key format is adde
 
-### ホストタイプを指定
+### Specify Host Types
 
 ```
 bool setHostMode(int mode);
 ```
 
-- modeが0の場合: Private IPを取得しhostフィールドを入力します。 Private IPを取得するのに失敗した場合、Public IPにhostフィールドを入力します。
-- modeが1の場合: Public IPにhostフィールドに入力します。
+- For Mode 0: Get a private IP to fill up the host field. If it fails, fill the host field with public IP.
+- For Mode 1: Fill the host field with public IP.
 
-### クラッシュ処理
+### Process Crashes
 
 ```
 typedef enum {
@@ -336,27 +336,27 @@ void closeCrashCatcher();
 void setCrashCallback(const LogNCrashCallbackType cb, void* cbData = NULL);
 ```
 
-- クラッシュ処理を開始するか、終了します。
-- openCrashCatcherパラメータ
-	- bBackground: クラッシュレポーター動作方式を設定します。
-	- langType: クラッシュレポーターGUI言語を設定します。
-- openCrashCatcher戻り値
-	- 設定成功時true。
-	- 設定失敗時false。
-	- AndroidNDK SDKは端末の/sdcardディレクトリを使用します。端末に上記ディレクトリが存在しない場合、正しく動作しない場合があります。
+- Start or end processing crashes.
+- openCrashCatcher Parameter
+  - bBackground : Set an operating method of a crash reporter
+  - langType : Set the GUI language of a crash reporter
+- Return Value of openCrashCatcher
+  - True if setting is successful
+  - False if setting fails
+  - AndroidNDK SDK needs /sdcard directory on devices. If the directory is not available on a device, it may not operate properly.
 
-### 重複除去モードの設定
- - 2.4.0以上SDKから一般ログに重複除去ロジックが適用されました
- - 重複ログ機能がオンになっている場合、bodyとlogLevelの内容が同じログが発生した場合、送信しません。
+### Remove Duplicates
+  - Remove Duplicates has been applied to general logs for 2.4.0 or higher SDKs.
+  - When duplicate logging is enabled, do not send logs that have the same content in the body and logLevel.
 
 ```
 public static void setDuplicate(bool enable)
 ```
- - true：(Default値)重複除去ロジックを有効にする。
+  - true: (Default) Remove duplicates is enabled.
 
- - false：重複除去ロジックを無効にする。
+  - false: Remove duplicates is disabled.
 
-### その他の設定
+### Other Settings
 
 ```
 const char* getUserId();
@@ -364,7 +364,7 @@ const char* getUserId();
 void setUserId(const char* userId);
 ```
 
-- ユーザーIDを取得するか、指定します。
+- Get or specify a user ID.
 
 ```
 void enableHostField();
@@ -372,7 +372,7 @@ void enableHostField();
 void disableHostField();
 ```
 
-- Hostフィールドを有効または無効にします。
+- Enable or disable the host field.
 
 ```
 void enablePlatformField();
@@ -380,4 +380,4 @@ void enablePlatformField();
 void disablePlatformField();
 ```
 
-- Platformフィールドを有効または無効にします。
+- Enable or disable the platform field.

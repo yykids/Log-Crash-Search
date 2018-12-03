@@ -1,62 +1,60 @@
 ## Analytics > Log & Crash Search > Unity iOS SDK Guide
 
-> [Deprecated]
-> Log & Crash Unity iOS SDK 버전은 더 이상 지원되지 않습니다.
-> [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)를 이용해 주시기 바랍니다.
+> [Deprecated] 
+> Log & Crash Unity iOS SDK is not supported any more. 
+> Please use [TOAST SDK](http://docs.toast.com/zh/TOAST/zh/toast-sdk/overview/). 
 
-Log & Crash Unity SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.  
-Log & Crash Unity SDK 특·장점은 다음과 같습니다.
+Log & Crash Unity SDK sends logs to a Log & Crash Search collector server.
 
-- 로그를 수집 서버로 보냅니다.
-- 앱에서 발생한 크래시 로그를 수집 서버로 보냅니다.
-- Log & Crash Search 에서 전송된 로그를 조회 및 검색이 가능합니다.
+Below describe benefits and features of Log & Crash Unity SDK.
+- Send logs to a collector server.
+- Send crash logs occurred in an app to a collector server.
+- Retrieve and search logs sent from Log & Crash Search.
 
-## 지원 환경
+## Supporting Environment
 
-- 공통
-	\- Unity3D v4.0 이상
+- Common
+  \- Unity3D v4.0 or higher
 - iOS
-	\- An Intel-based Mac
-	\- Xcode 6.0 or later
+  \- An Intel-based Mac
+  \- Xcode 6.0 or later
 
-## 다운로드
+## Download
 
-[TOAST Document](http://docs.toast.com/zh/Download/)에서 Unity SDK를 받을 수 있습니다.
+Go to [TOAST Document](http://docs.toast.com/zh/Download/) and download **Unity SDK**.
 
 ```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK]
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK] 
 ```
 
-## 설치
+## Install
 
- - 다운받은 toast-logncrash-ios-unity-sdk.unitypackage 을 더블클릭하여 해당 프로젝트에 Import합니다.
+* Double-click downloaded toast-logncrash-ios-unity-sdk.unitypackage and import it to your project.
 
 
-### 샘플 설명
+### Sample Description
 
-샘플의 실행은 Assets > LogNCrash > Sample > SampleScene을 더블클릭하여 실행합니다.  
-샘플에는 초기화, 로그 전송, 에러 발생에 대한 예제가 기술되어 있습니다.
+To execute the sample, double-click **Assets > LogNCrash > Sample > SampleScene**.
+The sample describes examples of initialization, log delivery, and error occurrence.
 
-### 헤더 파일 추가
+### Add Header File
+Add #import <LogNCrashSDK/LogNCrashSDK.h> to make it available in the iOS Unity environment.
 
-iOS Unity 환경에서 사용하기 위해서는 #import <LogNCrashSDK/LogNCrashSDK.h\> 추가 합니다.
+## Example
 
-## 사용 예제
+1. Initialize with LogNCrashSettings
 
-1. LogNCrashSettings를 통한 초기화
+Select **LogNCrash > Edit Settings** in the Unity menu to create LogNCrashSettings. Use AssetDatabase to define user’s Appkey and SDK operations of LogNCrashSettings.
 
-Unity 메뉴바에서 LogNCrash> Edit Settings를 선택하여 LogNCrashSettings를 생성합니다. LogNCrashSettings는 AssetDatabase로 사용자 앱키와 SDK 동작을 정의 합니다.
+- Appkey: User’s Appkey
+- URL: Collector address: use https://api-logncrash.cloud.toast.com.
+- Version: Log version
+- Send Warning: Whether to collect warning logs occurred in Unity
+- Send Error: Whether to collect error logs occurred in Unity
+- Send Debug Warning: Whether to collect warning logs occurred by user’s debug object use in Unity
+- PLCrashreporter Enable: PLCrashrepoter refers to a library added to detect crashes occurred in the native area: to be applied only when you want to detect native crashes.
 
-- Appkey: 사용자 앱키
-- URL: 콜렉터 주소, https://api-logncrash.cloud.toast.com를 사용합니다.
-- Version: 로그 버전
-- Send Warning: Unity에서 발생한 Warning 로그의 수집 여부
-- Send Error: Unity에서 발생한 Error 로그의 수집 여부
-- Send Debug Warning: Unity에서 사용자가 Debug 객체를 이용해 발생시킨 Warning 로그의 수집 여부
-- Send Debug Error: Unity에서 사용자가 Debug 객체를 이용해 발생시킨 Error 로그의 수집 여부
-- PLCrashreporter Enable: PLCrashrepoter는 Native 영역에서 발생한 Crash를 탐지하기 위해 추가된 라이브러리 입니다. Native Crash 탐지를 원하는 경우에만 사용합니다.
-
-LogNCrashSettings에 정보를 입력하고 LogNCrash객체의 파라미터가 없는 Initialize 함수를 호출하면 LogNCrashSettings에서 정보를 읽어와 초기화를 시도 합니다.
+Enter information for LogNCrashSettings and call Initialize function that has no LogNCrash object parameter, in order to initialize by reading such information of LogNCrashSettings.  
 
 ```
 using Toast.LogNCrash;
@@ -72,9 +70,8 @@ namespace Toast.LogNCrash
 }
 ```
 
-2. Script를 통한 초기화
-
-LogNCrash.Initialize에 파라미터를 입력하여 초기화를 시도 합니다. 파라미터는 서버 주소, 앱키, 버전, 포트, PLCrashreporter Enable, Send Thread Lock 실행 여부에 대한 정보를 넘겨줌니다.
+2. Initialize with Script
+Enter parameters to LogNCrash.Initialize to initialize. The parameters provide information on server address, Appkey, version, port, PLCrashreporter Enable, and whether to execute Send Thread Lock.
 
 ```
 using Toast.LogNCrash;
@@ -91,16 +88,17 @@ namespace Toast.LogNCrash
 }
 ```
 
-- Appkey: 사용자 앱키
-- URL: 콜렉터 주소, http, https의 콜렉터 정보를 설정
-- Version: 로그 버전
-- Port: 프로토콜에 따라 80, 443을 설정
-- PLCrashreporter Enable: PLCrashrepoter의 사용 여부를 결정합니다.
-- SendThreadLock: true인 경우 발생한 로그들은 StartSendThread가 호출되기 전까지 서버에 전송하지 않고, 큐에 저장합니다. 단 Native Crash가 발생한 경우 ThreadLock을 해제하고 로그를 전송합니다.
+- Appkey: User’s Appkey
+- URL: Collector address: set collector information of http and https.
+- Version: Log version
+- Port: Set 80, 443 depending on the protocol
+- PLCrashreporter Enable: Determine whether to use PLCrashrepoter.
+- SendThreadLock: Save logs, which occur when it is true, in a queue without sending to server before StartSendThread is called. Nevertheless, if a native crash occurs, unlock ThreadLock and send the logs.
 
-## 상세 API
 
-### 커스텀 필드 지정하기
+## API Details
+
+### Specify Custom Fields
 
 ```
 public static void AddCustomField(string key, string val)
@@ -109,13 +107,12 @@ public static void RemoveAllCustomFields()
 ```
 
 - Parameters
-	- key: string
-		- [in] custom field의 key, custom key는 “A~Z, a~z, 0~9, - \_” 문자를 포함하며 반드시 알파벳이나 숫자로 시작해야 합니다.
-	- value: string
-		- [in] custom field의 값
-- Note
-	- 다음 keyword는 SDK에서 사용 중이므로 사용 할 수 없습니다.
-		- projectName
+  - key: string
+    - [in] key of custom field, custom key must start with an alphabet or a number, and include “A~Z, a~z, 0~9, - \_”.
+  - value: string
+    - [in] value of custom field
+  - Following keywords are occupied by SDK and hence cannot be used:
+    - projectName
         - projectVersion
         - host
         - body
@@ -131,47 +128,49 @@ public static void RemoveAllCustomFields()
         - NeloSDK
         - NetworkType
         - DeviceModel
-		- DeviceID
+    - DeviceID
         - @logType
-	- custom filed의 값이 NULL이나 비어있는 경우, SDKs 는 해당 필드를 server로 전송 하지 않습니다.
+  - When the value of a custom field is NULL or empty, SDKs do not send the field to a server.
 
-### Host 잠금 설정
+  ### Lock Host
 
-```
-		public static SetEnableHost(bool flag)
-```
+  ```
+  		public static SetEnableHost(bool flag)
+  ```
 
-	- true : ip address를 구하여 host 필드에 저장합니다.
-	- false: ip address를 구하지 않습니다.
+  	- true : Get an IP address and save in the host field.
+  	- false: Do not get an IP address.
 
-### 기본 설정 관리
+
+### Manage Default Setting
 
 ```
 public static void SetLogSource(string value)
 public static string GetLogSource()
 ```
 
-- 로그소스를 구하거나 새로 지정합니다.
+- Get or newly specify a log source.
 
 ```
 public static void SetLogType(string value)
 public static string GetLogType()
 ```
 
-- 로그 타입을 구하거나 새로 지정합니다.
+- Get or newly specify a log type.
 
-### LEVEL 필터
+### Filter Levels
+- In Unity SDK, send logs of a FATAL level only by default setting. In ERROR or WARN levels, many logs may occur due to variables (such as time, route, and progress level.).
+  - Send Error: Send ERROR-level logs occurred at a system.
+  - Send Warning: Send WARN-level logs occurred at a system.
+  - Send Debug Error: Send ERROR-level logs induced by a user.
+  - Send Debug Warning: Send WARN-level logs induced by a user.
 
-- Unity SDK에서는 Default 설정으로 FATAL 레벨의 로그만 전송 합니다. Error, Warning 레벨의 로그에는 변수값(시간, 경로, 진행도 등)의 삽입으로 인해 많은 로그들이 발생 할 수 있습니다.
-	- Send Error: 시스템에서 발생한 ERROR 레벨의 로그를 전송 합니다.
-	- Send Warning: 시스템에서 발생한 WARN 레벨의 로그를 전송 합니다.
-	- Send Debug Error: 사용자가 발생시킨 ERROR 레벨의 로그를 전송 합니다.
-	- Send Debug Warning: 사용자가 발생시킨 WARN 레벨의 로그를 전송 합니다.
 
-### API 사용 예제
-	- html > index.html을 참고해 주시기 바랍니다.
+### Example of API Use
 
-### 로그 전송
+- Refer to **html > index.html**.
+
+### Send Logs
 
 ```
 //send info log message
@@ -191,8 +190,8 @@ public static void Error(string strMsg)
 ```
 
 - Parameters
-	- strMsg: string
-		- [in] 전송할 log 메세지
+  - strMsg: string
+    - [in] Log messages to send
 
 ### Handled Exception
 
@@ -221,9 +220,9 @@ try{
 }
 ```
 
-- try&catch에서 발생한 Exception을 전송합니다.
+- Send Exception occurred at try&catch.
 
-### 크래시 콜백
+### Crash Callbacks  
 
 ```
 public void Crash_Send_Complete_Callback(string message) {
@@ -234,68 +233,66 @@ void Start() {
 	LogNCrashCallBack.ExceptionDelegate += Crash_Send_Complete_Callback;
 }
 ```
-- ExceptionDelegate는 Unity CSharp에서 발생한 Crash를 서버로 전송한 이후 호출되는 콜백 입니다.<br>
-네이티브 Crash의 경우 호출되지 않습니다.
 
-### 유저 아이디 설정
+- The ExceptionDelegate callback is called after crashes in Unity CSharp are sent to server: it is not called for native crashes.
+
+### Set User IDs
 
 ```
 public static void SetUserId(string userID)
 public static string GetUserID()
 ```
-- 사용자별 통계 자료를 얻으려면 반드시 설정해주어야 합니다.
-- Parameter
-	- userID: string
-		- [in] 각 사용자를 구분할 user id
+- Must set the value to get statistics per user.
+- Parameters
+  - userID: string
+    - [in] User ID to sort out users
 
-### 중복 제거 모드 설정
+### Remove Duplicates
 
-2.4.0 이상 SDK 부터 일반 로그에 중복 제거 로직이 적용되었습니다. 초기화 시 중복 제거 로직이 활성화됩니다.
+The Remove Duplicates logic has been applied to general logs for 2.4.0 or higher SDKs: the logic is enabled with initialization.
 
-일반 로그의 경우 body와 logLevel이 같은 로그가 발생한 경우 전송하지 않습니다.
+In the case of general logs, do not send logs that have the same content in the body and logLevel.
 
-크래시 로그의 경우 stackTrace와 condition 값이 같은 로그가 발생한 경우 전송하지 않습니다.
+For crash logs, do not send logs that have the same stackTrace and condition values.
 
-원하지 않는 경우 초기화 이후, 아래 함수를 통해 기능을 비활성화시킬 수 있습니다.
+The function may be disabled by using the function below, after initialization.
 
 ```
 public static void SetDeduplicate(bool flag)
 ```
 
-true :(Default 값) 중복 제거 로직 활성화<br>
-false: 중복 제거 로직 비활성화
+true: (Default) Remove duplicates is enabled. <br>
+false: Remove duplicates is disabled.
 
-## iOS build 하기
+## Build
 
-1.File->Build Settings 클릭.
+1. Click **File > Build Settings**.
 
 ![](http://static.toastoven.net/prod_logncrash/image023.png)
 
 ![](http://static.toastoven.net/prod_logncrash/image024.png)
 
-- iOS Platform를 선택 한 뒤 Player Settings 클릭합니다.
+- Select **iOS** and click **Player Settings**.
 
 ![](http://static.toastoven.net/prod_logncrash/image025.png)
 
-- Target iOS Version를 설정하고, Simulator를 사용하는 경우 SDK Version에서 Simulator SDK를, device를 사용하는 경우 Device SDK를 선택하고 Build settings의 Build 버튼을 클릭합니다.
+- Set **Target iOS Version**: select Simulator or **Device SDK**, for **SDK Version**, depending on your usage, and click **Build** in **Build Settings**.
 
-2.Build된 프로젝트가 저장될 경로를 선택 하고 Save를 선택하면 Unity에서 Xcode project를 생성합니다.
+2. Select a route to save build project, and choose **Save**. Then, your Xcode project is created in Unity.
 
 ![](http://static.toastoven.net/prod_logncrash/image026.png)
 
 ![](http://static.toastoven.net/prod_logncrash/image027.png)
 
-3.생성된 Xcode project를 Xcode에서 엽니다.
+3. Open the newly-created Xcode project in Xcode.
 
+## Add App Transport Security (ATS) in iOS
+- ATS is provided to secure safe communication between apps and networks introduced in iOS9 and OSX10.11, by allowing safely encrypted https communications only and blocking unsafe https/http communications. In Log & Crash Search where communication using http protocol is under trial, settings must be added as below to info.plist.
 
-## iOS에서 ATS(App transport Security)추가 하기
-- ATS는 iOS9,OS X 10.11에서 도입된 앱과 네트워크 간의 안전한 통신을 보장하기 위한 기능으로 안전하게 암호화된 https통신만 허용하고 안전하지 않는 수준의 https/http  통신을 차단하는 기능로, Log & Crash Search 에서는 http 프로토콜을 사용하여 통신을 시도중으로 info.plist에 아래와 같은 설정을 추가하셔야 합니다.
+For detailed settings, refer to the link as below:
+- Apple Developer [iOS 9.0](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html)
 
-자세한 설정은 아래 링크를 참고하세요
-- https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html
-
-
-1.전체 http를 허용하는 방법
+1. How to Allow All https
 
 ```
 <key> NSAppTransportSecurity </key>
@@ -305,7 +302,7 @@ false: 중복 제거 로직 비활성화
 </dict>
 ```
 
-2.특정 도메인을 허용하는 방법
+2. How to Allow Specific Domains only
 
 ```
 <key> NSAppTransportSecurity </key>
@@ -328,43 +325,42 @@ false: 중복 제거 로직 비활성화
 </dict>
 ```
 
-3.ATS 자동 설정 기능
+3. Automatic ATS Setting
+- **Assets > Toast > LogNCrash > Editor > post_process.py** has a code to automatically add api-logncrash.cloud.toast.com and setting-logncrash.cloud.toast.com to info.plist for an iOS build.
 
-- Assets > Toast > LogNCrash > Editor > post_process.py 파일에는 iOS 빌드 시 info.plist에 api-logncrash.cloud.toast.com와 setting-logncrash.cloud.toast.com를 자동으로 추가하는 코드가 삽입되어 있습니다.
+## Interpret iOS Native Crashes
 
-## iOS Native Crash 해석 하기
-- Unity iOS의 Crash는 Unity Engine에서 발생하는 Crash와 iOS Naitve에서 발생하는 Crash로 구분됩니다.
-- Unity에서 발생한 Crash의 경우 Crash 정보가 String으로 수집되기 때문에 Symbol 파일이 필요하지 않습니다.
-- iOS에서 발생한 Crash의 경우 Crash 정보가 주소 값으로 수집되기 때문에 이를 해석하기 위한 Symbol 파일이 필요합니다.
-- Xcode를 실행하고 Windows > Organizer를 클릭합니다.
-![](http://static.toastoven.net/prod_logncrash/ios_12.png)
-- 빌드한 결과물을 클릭한 뒤, 오른쪽 버튼을 클릭하여 Show in Finder로 클릭합니다.
-![](http://static.toastoven.net/prod_logncrash/ios_13.png)
-- 결과물을 클릭하고 오른쪽 버튼을 눌러 '패키지 내용보기'를 클릭합니다.
-![](http://static.toastoven.net/prod_logncrash/ios_14.png)
-- .dSYM을 .zip으로 압축하여 웹 콘솔 > Analytic > Log & Crash Search > Settings > 심볼 파일 탭에 등록합니다.
-![](http://static.toastoven.net/prod_logncrash/ios_15.png)
+- Unity iOS has crashes that occur in Unity Engine or iOS Native.   
+- For Unity crashes, symbol files are not required as crash information is collected in string.
+- For iOS crashes, symbol files are required to interpret crash information which is collected as an address value.
+- Open Xcode and click **Windows/Organizer**.
+- Click a build result, right-click open and click **Show in Finder**.
+  ![](http://static.toastoven.net/prod_logncrash/ios_13.png)   
+- Click the result, right-click open, and click **See Package**.  
+  ![](http://static.toastoven.net/prod_logncrash/ios_14.png)
+- Compress .dSYM to .zip and register it to **Web Console > Analytic > Log & Crash Search > Settings > Symbol Files** tab.
+  ![](http://static.toastoven.net/prod_logncrash/ios_15.png)
 
-## iOS Unity Crash 주의 사항
+## Caution for iOS Unity Crash
 
-- 심볼이 없어 해석되지 않은 Crash 로그는 일반 로그로 취급됩니다.
+- Crash logs are considered general logs, when they are not interpreted because symbol files are unavailable.
 
-## 외부 CrashHandler 사용하기
+## Use External CrashHandler
 
-- 기존 SDK에서는 초기화 단계에서 logMessageReceived 등을 사용하여 Unity의 CrashHandler를 LogNCrash 전용 Callback 함수에 등록하여 사용하였습니다.
-- 외부 CrashHandler와 같이 사용하는 경우가 있어, 같이 적용할 수 있도록 구조를 수정하였습니다. ( MultihandlerSample 참고 )
+- Existing SDKs have deployed logMessageReceived during initialization to register CrashHandler of Unity for a LogNCrash callback function.
+- The structure has been modified to allow applications to be made both for CrashHandler and external CrashHandler (refer to MultihandlerSample).
 
-### 적용방법
+### Applications
 
-- LogNCrash.SetCrashHandler 함수에 false를 파라미터로 넘겨 자동으로 CrashHandler가 등록되는 것을 막습니다.
-- 반드시 Initialize 함수 이전에 설정되어야 합니다.
+- Send a false parameter to the LogNCrash.SetCrashHandler function to prevent CrashHandler from being automatically registered.
+- Must set before the Initialize function.
 
 ```
 LogNCrash.SetCrashHanlder (false);
 LogNCrash.Initialize ();
 ```
 
-- 이후 LogNCrash.unity3dHandleException 함수를 사용하여 CrashHandler의 파라미터를 LogNCrash 객체로 넘겨줍니다.
+- Then, use the LogNCrash.unity3dHandleException function to deliver CrashHandler parameters to LogNCrash object.
 
 ```
 void OnEnable()
@@ -380,10 +376,10 @@ void HandleLog(string logString, string stackTrace, LogType type)
 }
 ```
 
-### AssetDataBase를 활용한 빌드 환경 분기
+## Diverge Build Environment with AssetDataBase
 
-- 메뉴바의 LogNCrash > Edit Settings를 클릭하면 간단한 데이터를 저장할 수 있는AssetDataBase가 생성됩니다.
-- BuildPipeline.BuildPlayer를 통한 Build를 진행하는 경우 LogNCrashSettings.Setter_BuildType와 LogNCrashSettings.Getter_BuildType를 활용하여 빌드 환경을 분기 합니다.
+- Click **LogNCrash > Edit Settings** in the menu and create AssetDataBase to save simple data.
+- For a build using BuildPipeline.BuildPlayer, diverge the build environment by using LogNCrashSettings.Setter_BuildType and LogNCrashSettings.Getter_BuildType.
 
 ```
 using UnityEditor;
@@ -422,7 +418,7 @@ public class lncAndroidBuildPipeline: MonoBehaviour
 }
 ```
 
-- 명령에 따라 AssetDataBase에 저장된 값을 통해 LogNCrash 동작을 결정합니다.
+- LogNCrash operations depend on values saved in AssetDataBase by order.
 
 ```
 using Toast.LogNCrash.Implementation;
@@ -438,7 +434,7 @@ void Start () {
 }
 ```
 
-- build type은 총 5개로 구성되어 있습니다.
+- There are five build types.
 
 ```
 public enum BuildType{

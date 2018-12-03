@@ -1,10 +1,10 @@
 ## Analytics > Log & Crash Search > API Guide
 
-HTTP 프로토콜을 사용해서 Log & Crash 수집서버에 로그를 전송할수 있으며, 아래와 같은 JSON형식으로 사용한다.
+Logs can be sent to the Log & Crash Collector server by using HTTP protocol, in the JSON format as below:
 
 ```
 {
-	"projectName": "__앱키__",
+	"projectName": "__Appkey__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
 	"body": "This log message come from HTTP client.",
@@ -14,70 +14,70 @@ HTTP 프로토콜을 사용해서 Log & Crash 수집서버에 로그를 전송�
 }
 ```
 
-[기본 파라미터]
+[Default Parameters]
 
 ```
-Log Search를 위한 파라미터들.
+Parameters for Log Search
 
-projectName: string, 필수
-	[in] 앱키.
+projectName: string, required
+	[in] Appkey
 
-projectVersion: string, 필수
-	[in] 버전. 사용자가 지정할 수 있다. "A~Z, a~z, 0~9,-._" 만을 포함한다.
+projectVersion: string, required
+	[in] Verwion. User can specify: include "A~Z, a~z, 0~9,-._" only.
 
-body: string, 옵션
-	[in] 로그 메시지.
+body: string, optional
+	[in] Log messages.
 
-logVersion: string, 필수
-	[in] 로그 포맷 버전. "v2".
+logVersion: string, required
+	[in] Log format version. "v2".
 
-logSource: string, 옵션
-	[in] 로그 소스. Log Search에서 필터링을 위해 사용된다. 정의되지 않으면 "http".
+logSource: string, optional
+	[in] Log source. Used to filter at Log Search. "http", if not defined.
 
-logType: string, 옵션
-	[in] 로그 타입. Log Search에서 필터링을 위해 사용된다. 정의되지 않으면 "log"
+logType: string, optional
+	[in] Log type. Used to filter at Log Search. "log", if not defined.
 
-host: string, 옵션
-	[in] 로그를 보내는 단말의 주소. 정의되지 않으면 수집서버에서 peer-address를 사용하여 자동으로 채운다.
+host: string, optional
+	[in] Address of the device sending logs: if not defined, fill automatically with peer-address of the collector server.
 ```
 
-[기타 파라미터]
+[Other Parameters]
 
 ```
-sendTime; string, 옵션
-	[in] 단말이 보낸 시간. 입력시 Unix Timestamp로 입력
+sendTime; string, optional
+	[in] Sending time of a device. Enter in Unix Timestamp
 
-logLevel; string, 옵션
-	[in] Syslog event용.
+logLevel; string, optional
+	[in] For Syslog events.
 
-UserBinaryData; string, 옵션
-	[in] 로그 검색 화면에서 [다운로드|보기] 링크 표시, base64 인코딩된 값을 담아 전송.
+UserBinaryData; string, optional
+	[in] Display [Download|Show] link on the log search screen, and send with values encoded with base64.
 
-UserTxtData; string, 옵션
-  [in] 로그 검색 화면에서 [다운로드|보기] 링크 표시, base64 인코딩된 값을 담아 전송.
+UserTxtData; string, optional
+  [in] Display [Download|Show] link on the log search screen, and send with values encoded with base64.
 
-txt*; string, 옵션
-	[in] 필드 이름이 txt로 시작하는 필드(txtMessage, txt_description 등)는 분석(analyzed) 필드로 저장된다. 로그 검색 화면에서 필드 값의 일부 문자열로 검색이 가능하다.
+txt*; string, optional
+	[in] Save fields starting with txt (such as txtMessage and txt description) in analyzed fields. Search is available with a part of character strings of the field value on the log search screen.
 
-long*; long, 옵션
-    [in] 필드 이름이 long으로 시작하는 필드(longElapsedTime, long_elapsed_time 등)는 long 타입 필드로 저장된다. 로그 검색 화면에서 long 타입 Range 검색이 가능하다.
+long*; long, optional
+    [in] Save fields starting with long (such as longElapsedTime and long elapsed time) in the long-type fields. Search of long-type range is available on the log search screen.
 
-double*; double, 옵션
-    [in] 필드 이름이 double으로 시작하는 필드(doubleAvgScore, double_avg_score 등)는 double 타입 필드로 저장된다. 로그 검색 화면에서 double 타입 Range 검색이 가능하다.
+double*; double, optional
+    [in] Save fields starting with double (such as doubleAvgScore and double avg score) in the double-type fields. Search of double-type range is available on the log search screen.
 ```
 
-[커스텀 필드]
+[Custom Fields]
 
 ```
-커스텀 필드 이름은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있다.
+A custom field can be named with "A-Z, a-z, 0-9, -, _", starting with "A-Z, a-z".
 
-위의 기본 파라미터, Crash 파라미터와 이름이 중복되면 안된다.
+Cannot be redundantly named with default parameters of the above or crash parameters.
 
-커스텀 필드의 길이 제한은 2kbyte 로 제한되며, 2kbyte 이상 전송시 txt* prefix 붙여 필드생성 해야된다.
+The length of a custom field is limited to 2kbytes, and if it exceeds 2kbytes, the field must be created with txt* prefix.
 ```
 
-[반환값]
-수집 서버에서 다음과 같은 반환을 한다.
+[Return Value]
+Return as below in the collector server:
 
 ```
 Content-Type: application/json
@@ -91,22 +91,22 @@ Content-Type: application/json
 }
 
 isSuccessful: boolean
-	[out] 성공시 true, 실패시 false
+	[out] true if successful, false if failed
 
 resultCode: int
-	[out] 성공시 0, 실패시 에러 코드
+	[out] 0 if successful, error code if failed
 
 resultMessage: string
-	[out] 성공시 "Success", 실패시 에러 메시지
+	[out] "Success" if successful, error message if failed
 ```
 
-[Bulk 전송]
-Bulk 전송을 위해서는 JSON array 형태로 수집서버로 전송한다.
+[Bulk Delivery]
+For bulk delivery, send in the JSON array format to the collector server.
 
 ```
 [
     {
-        "projectName": "__앱키__",
+        "projectName": "__Appkey__",
         "projectVersion": "1.0.0",
         "logVersion": "v2",
         "body": "This log message come from HTTP client. (1/2)",
@@ -115,7 +115,7 @@ Bulk 전송을 위해서는 JSON array 형태로 수집서버로 전송한다.
         "host": "localhost"
     },
     {
-        "projectName": "__앱키__",
+        "projectName": "__Appkey__",
         "projectVersion": "1.0.0",
         "logVersion": "v2",
         "body": "This log message come from HTTP client. (2/2)",
@@ -127,15 +127,13 @@ Bulk 전송을 위해서는 JSON array 형태로 수집서버로 전송한다.
 ```
 
 * Note
-		* web 에서는 수신 시간 기준으로 로그를 정렬하여 표시하는데, bulk 전송의 경우 동일한 시간에 수신한 것으로 간주되어 사용자가
-		   전송한 순서가 유지 되지 않습니다.
-		* Bulk로 전송하는 로그들의 순서 관계를 유지하기 위해서는 각 로그에 lncBulkIndex 필드를 추가하여 integer 값을 지정 후 전송하면
-		  서버에서는 이 값을 기준으로 내림차순으로 표시 합니다.
+	* In the web, logs are arrayed in the order of receiving time. However, for bulk delivery, the receiving time is considered the same for all logs, and the user’s sending time cannot be maintained.
+	* To maintain the order of sending time of logs for bulk delivery, add the IncBulkIndex field to each log and specify the integer value before delivery. Then, the server shall show them in the descending order based on such value.  
 
 ```
 [
     {
-        "projectName": "__앱키__",
+        "projectName": "__Appkey__",
         "projectVersion": "1.0.0",
         "logVersion": "v2",
         "body": "first message",
@@ -145,7 +143,7 @@ Bulk 전송을 위해서는 JSON array 형태로 수집서버로 전송한다.
         "lncBulkIndex":1
     },
     {
-        "projectName": "__앱키__",
+        "projectName": "__Appkey__",
         "projectVersion": "1.0.0",
         "logVersion": "v2",
         "body": "second message",
@@ -156,9 +154,9 @@ Bulk 전송을 위해서는 JSON array 형태로 수집서버로 전송한다.
     }
 ]
 ```
-	* 위 예시와 같이 전송한 경우 서버에서는 second message -> first message 순서로 표시 합니다.
+	* For deliveries like the above, the server shows in the order of second message -> first message.
 
-수집서버에서는 전송된 순서에 따라 각각의 결과 값을 JSON array 형태로 다시 반환한다.
+In the collector server, each result value is returned in the JSON array format in the order of delivery.
 
 ```
 Content-Type: application/json
@@ -185,36 +183,36 @@ Content-Type: application/json
 }
 
 total: int
-    [out] 전송된 전체 로그 수
+    [out] Total number of delivered logs
 
 errors: int
-    [out] 전송된 로그 중 오류 수
+    [out] Number of errors in delivered logs
 
 resultList: array
-    [out] 전송된 각 로그들의 결과 값
+    [out] Result value of each delivered log
 ```
 
-> 주의
-> 1. JSON/HTTP로 Log & Crash 수집 서버에 로그 전송시 다음 주소를 사용해야 한다.
+> Caution
+> 1. To send logs in JSON/HTTP to the Log & Crash Collector server, use the address as follows:
 > Log & Crash: api-logncrash.cloud.toast.com
 >
-> 전송 방식: POST
+> Method of Delivery: POST
 >
 > URI: /v2/log
 >
 > Content-Type: "application/json"
-> 2. 로그 전송 전에, Log & Crash에 프로젝트를 등록하였는지 확인한다.
-> 3. "logTime"은 Log & Crash 시스템에서 사용한다. 해당 키를 사용시 Log & Crash에서는 무시한다.
-> 4. 키 이름에 공백 문자가 안 들어가도록 주의해야 한다. 예를 들어 "UserID"와 "UserID "은 서로 다른 키로 인식이 된다.
+> 2. Check, before log delivery, if a project has been registered to Log & Crash Search.
+> 3. Field name "logTime" is occupied by Log & Crash Search system. User cannot set "logTime" field.
+> 4. Keep note that a key name has no whitespace character. For example, “UserID” and “UserID ” are considered two different keys.
 
-## 샘플
+## Samples
 
-[curl을 사용하여 정상적으로 로그전송한 경우]
+[Normal log delivery by using curl]
 
 ```
-//POST 메소드을 사용하여 로그 전송
+//Deliver logs by using POST method
 $ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.toast.com/v2/log' -d '{
-	"projectName": "__앱키__",
+	"projectName": "__Appkey__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
 	"body": "this log message come from http client, and it is a simple sample.",
@@ -223,12 +221,12 @@ $ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.to
 }'
 ```
 
-[로그 전송이 실패하는 경우]
+[Failed log delivery]
 
 ```
-//URL이 잘못된 경우(log -> loggg)
+//When URL is incorrect (log -> loggg)
 $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.com/v2/loggg" -d '{
-	"projectName": "__앱키__",
+	"projectName": "__Appkey__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
 	"body": "this log message come from http client, and it is a simple sample.",
@@ -237,9 +235,9 @@ $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.c
 }'
 
 
-//잘못된 필드 키를 사용한 경우(_xxx)
+//When a wrong field key (_xxx) is used
 $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.com/v2/log" -d '{
-	"projectName": "__앱키__",
+	"projectName": "__Appkey__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
 	"body": "this log message come from http client, and it is a simple sample.",
@@ -247,17 +245,17 @@ $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.c
 	"logType": "nelo2-http",
 	"_xxx": "this is a invalid key"
 	}'
-커스텀 키는 "A~Z, a~z, 0~9, -_"를 포함하고 알파벳으로 시작해야 한다.
-커스텀 키는 "A~Z, a~z, 0~9, -_"를 포함하고 알파벳으로 시작해야 한다.
+The custom key must include "A~Z, a~z, 0~9, -_" and start with an alphabet.
+The custom key must include "A~Z, a~z, 0~9, -_" and start with an alphabet.
 ```
 
-[curl을 사용하여 bulk 로그전송한 경우]
+[Bulk log delivery using curl]
 
 ```
-//POST 메소드을 사용하여 로그 전송
+//Deliver logs by using POST method
 $ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.toast.com/v2/log' -d '[
     {
-        "projectName": "__앱키__",
+        "projectName": "__Appkey__",
         "projectVersion": "1.0.0",
         "logVersion": "v2",
         "body": "This log message come from HTTP client, and it is a simple bulk sample. (1/2)",
@@ -265,7 +263,7 @@ $ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.to
         "logType": "nelo2-log"
     },
     {
-        "projectName": "__앱키__",
+        "projectName": "__Appkey__",
         "projectVersion": "1.0.0",
         "logVersion": "v2",
         "body": "This log message come from HTTP client, and it is a simple bulk sample. (2/2)",
