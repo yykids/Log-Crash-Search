@@ -1,50 +1,51 @@
-## Analytics > Log & Crash Search > Unity WebGL SDK Guide
+## Analytics > Log & Crash Search > Unity WebGL SDK User Guide
 
-Log & Crash Unity SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.  
-Log & Crash Unity SDK 특·장점은 다음과 같습니다.
+Log & Crash Unity SDK sends logs to a Log & Crash Search collector server.
 
-- 로그를 수집 서버로 보냅니다.
-- 앱에서 발생한 크래시 로그를 수집 서버로 보냅니다.
-- Log & Crash Search 에서 전송된 로그를 조회 및 검색이 가능합니다.
+Below describe benefits and features of Log & Crash Unity SDK.
+- Send logs to a collector server.
+- Send crash logs occurred in an app to a collector server.
+- Retrieve and search logs sent from Log & Crash Search.
 
-## 지원 환경
+## Supporting Environment
 
-- 공통
-	\- Unity3D v4.0 이상
+- Common
+  \- Unity3D v4.0 or higher
 
-## 다운로드
+## Download
 
-[TOAST Document](http://docs.toast.com/en/Download/)에서 Unity SDK를 받을 수 있습니다.
+Go to [TOAST Document](http://docs.toast.com/en/Download/) and download **Unity SDK**.
 
 ```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK]
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK] 
 ```
 
-## 설치
+## Install
 
- - 다운받은 toast-logncrash-unity-sdk.unitypackage을 더블 클릭하여 Import합니다.
+* Double-click downloaded toast-logncrash-android-unity-sdk.unitypackage and import it to your project.
 
-### 샘플 설명
 
-샘플의 실행은 Assets > LogNCrash > Sample > SampleScene을 더블클릭하여 실행합니다.  
-샘플에는 초기화, 로그 전송, 에러 발생에 대한 예제가 기술되어 있습니다.
+### Sample Description
 
-## 사용 예제
+To execute the sample, double-click **Assets > LogNCrash > Sample > SampleScene**.
+The sample describes examples of initialization, log delivery, and error occurrence.
 
-1. LogNCrashSettings를 통한 초기화
+## Example
 
-Unity 메뉴바에서 LogNCrash> Edit Settings를 선택하여 LogNCrashSettings를 생성합니다. LogNCrashSettings는 AssetDatabase로 사용자 앱키와 SDK 동작을 정의 합니다.
+1. Initialize with LogNCrashSettings
 
-- Appkey: 사용자 앱키
-- URL: 콜렉터 주소, https://api-logncrash.cloud.toast.com를 사용합니다.
-- Version: 로그 버전
-- Send Warning: Unity에서 발생한 Warning 로그의 수집 여부
-- Send Error: Unity에서 발생한 Error 로그의 수집 여부
-- Send Debug Warning: Unity에서 사용자가 Debug 객체를 이용해 발생시킨 Warning 로그의 수집 여부
-- Send Debug Error: Unity에서 사용자가 Debug 객체를 이용해 발생시킨 Error 로그의 수집 여부
-- PLCrashreporter Enable: PLCrashrepoter는 Native 영역에서 발생한 Crash를 탐지하기 위해 추가된 라이브러리 입니다. Native Crash 탐지를 원하는 경우에만 사용합니다.
+Select **LogNCrash > Edit Settings** in the Unity menu to create LogNCrashSettings. Use AssetDatabase to define user’s Appkey and SDK operations of LogNCrashSettings.
 
-LogNCrashSettings에 정보를 입력하고 LogNCrash객체의 파라미터가 없는 Initialize 함수를 호출하면 LogNCrashSettings에서 정보를 읽어와 초기화를 시도 합니다.
+- Appkey: User’s Appkey
+- URL: Collector address: use https://api-logncrash.cloud.toast.com.
+- Version: Log version
+- Send Warning: Whether to collect warning logs occurred in Unity
+- Send Error: Whether to collect error logs occurred in Unity
+- Send Debug Warning: Whether to collect warning logs occurred by user’s debug object use in Unity
+- Send Debug Error: Whether to collect error logs occurred by user’s debug object use in Unity
+- PLCrashreporter Enable: PLCrashrepoter refers to a library added to detect crashes occurred in the native area. To be applied only when you want to detect native crashes.
+
+Enter information for LogNCrashSettings and call Initialize function that has no LogNCrash object parameter, in order to initialize by reading such information of LogNCrashSettings.
 
 ```
 using Toast.LogNCrash;
@@ -60,8 +61,8 @@ namespace Toast.LogNCrash
 }
 ```
 
-2. Script를 통한 초기화
-LogNCrash.Initialize에 파라미터를 입력하여 초기화를 시도 합니다. 파라미터는 서버 주소, 앱키, 버전, 포트, Send Thread Lock 실행 여부에 대한 정보를 넘겨줌니다.
+2. Initialize with Script
+Enter parameters to LogNCrash.Initialize to initialize. The parameters provide information on server address, Appkey, version, port, and whether to execute Send Thread Lock.
 
 ```
 using Toast.LogNCrash;
@@ -78,15 +79,16 @@ namespace Toast.LogNCrash
 }
 ```
 
-- Appkey: 사용자 앱키
-- URL: 콜렉터 주소, http, https의 콜렉터 정보를 설정
-- Version: 로그 버전
-- Port: 프로토콜에 따라 80, 443을 설정
-- SendThreadLock: true인 경우 발생한 로그들은 StartSendThread가 호출되기 전까지 서버에 전송하지 않고, 큐에 저장합니다. 단 Native Crash가 발생한 경우 ThreadLock을 해제하고 로그를 전송합니다.
+- Appkey: User’s Appkey
+- URL: Collector address: set collector information of http and https
+- Version: Log version
+- Port: Set 80, 443, depending on the protocol
+- SendThreadLock: Save logs, which occur when it is true, in a queue without sending to server before StartSendThread is called. Nevertheless, if a native crash occurs, unlock ThreadLock and send the logs.
 
-## 상세 API
 
-### 커스텀 필드 지정하기
+## API Details
+
+### Specify Custom Fields
 
 ```
 public static void AddCustomField(string key, string val)
@@ -95,13 +97,13 @@ public static void RemoveAllCustomFields()
 ```
 
 - Parameters
-	- key: string
-		- [in] custom field의 key, custom key는 “A~Z, a~z, 0~9, - \_” 문자를 포함하며 반드시 알파벳이나 숫자로 시작해야 합니다.
-	- value: string
-		- [in] custom field의 값
+  - key: string
+    - [in] key of custom field, custom key must start with an alphabet or a number, and include “A~Z, a~z, 0~9, - \_”.
+  - value: string
+    - [in] value of custom field
 - Note
-	- 다음 keyword는 SDK에서 사용 중이므로 사용 할 수 없습니다.
-		- projectName
+  - Following keywords are occupied by SDK and hence cannot be used:
+    - projectName
         - projectVersion
         - host
         - body
@@ -118,46 +120,47 @@ public static void RemoveAllCustomFields()
         - NetworkType
         - DeviceModel
         - @logType
-	- custom filed의 값이 NULL이나 비어있는 경우, SDKs 는 해당 필드를 server로 전송 하지 않습니다.
+  - When the value of a custom field is NULL or empty, SDKs do not send the field to a server.
 
-### 기본 설정 관리
+### Manage Default Setting
 
 ```
 public static void SetLogSource(string value)
 public static string GetLogSource()
 ```
 
-- 로그소스를 구하거나 새로 지정합니다.
+- Get or newly specify a log source.
 
 ```
 public static void SetLogType(string value)
 public static string GetLogType()
 ```
 
-- 로그 타입을 구하거나 새로 지정합니다.
+- Get or newly specify a log type.
 
-### LEVEL 필터
+### Filter Levels
+- In Unity SDK, send logs of a FATAL level only by default setting. In ERROR or WARN levels, many logs may occur due to variables (such as time, route, and progress level.).
+  - Send Error: Send ERROR-level logs occurred at a system.
+  - Send Warning: Send WARN-level logs occurred at a system.
+  - Send Debug Error: Send ERROR-level logs induced by a user.
+  - Send Debug Warning: Send WARN-level logs induced by a user.
 
-- Unity SDK에서는 Default 설정으로 FATAL 레벨의 로그만 전송 합니다. Error, Warning 레벨의 로그에는 변수값(시간, 경로, 진행도 등)의 삽입으로 인해 많은 로그들이 발생 할 수 있습니다.
-	- Send Error: 시스템에서 발생한 ERROR 레벨의 로그를 전송 합니다.
-	- Send Warning: 시스템에서 발생한 WARN 레벨의 로그를 전송 합니다.
-	- Send Debug Error: 사용자가 발생시킨 ERROR 레벨의 로그를 전송 합니다.
-	- Send Debug Warning: 사용자가 발생시킨 WARN 레벨의 로그를 전송 합니다.
 
-### API 사용 예제
+### Example of API Use
 
-- html > index.html을 참고해 주시기 바랍니다.
+- Refer to **html > index.html**.
 
-### IP Address 수집 설정
+
+### Collect IP Address
 
 ```
 public static void SetEnableHost:(bool flag)
 ```
 
-- true인 경우 ip address를 구하여 host 필드에 저장합니다.
-- false인 경우 host 필드에 "-" 저장합니다.
+-	true: Get an ip address and save in the host field.
+		false: Save"-" in the host field.
 
-### 로그 전송
+### Send Logs
 
 ```
 //send info log message
@@ -177,10 +180,11 @@ public static void Error(string strMsg)
 ```
 
 - Parameters
-	- strMsg: string
-		- [in] 전송할 log 메세지
+  - strMsg: string
+    - [in] Log messages to send
 
-### 크래시 콜백
+
+### Crash Callbacks  
 
 ```
 public void Crash_Send_Complete_Callback(string message) {
@@ -193,105 +197,105 @@ void Start() {
 
 ```
 
-ExceptionDelegate는 Unity CSharp에서 발생한 Crash를 서버로 전송한 이후 호출되는 콜백 입니다.
-네이티브 Crash의 경우 호출되지 않습니다.
+- The ExceptionDelegate callback is called after crashes in Unity CSharp are sent to server: it is not called for native crashes.
 
-### 유저 아이디 설정
+### Set User IDs
 
 ```
 public static void SetUserId(string userID)
 public static string GetUserID()
 ```
-
-- 사용자별 통계 자료를 얻으려면 반드시 설정해주어야 합니다.
+- Must set the value to get statistics per user.
 - Parameter
-	- userID: string
-		- [in] 각 사용자를 구분할 user id.
+  - userID: string
+    - [in] User ID to sort out users
 
-### 중복 제거 모드 설정
-일반 로그의 경우 body와 logLevel이 같은 로그가 발생한 경우 전송하지 않습니다.
-크래시 로그의 경우 stackTrace와 condition 값이 같은 로그가 발생한 경우 전송하지 않습니다.
-원하지 않는 경우 초기화 이후, 아래 함수를 통해 기능을 비활성화시킬 수 있습니다.
+### Remove Duplicates
+
+In the case of general logs, do not send logs that have the same content in the body and logLevel.
+
+For crash logs, do not send logs that have the same stackTrace and condition values.
+
+The function may be disabled by using the function below, after initialization.
 
 ```
 	public static void SetDeduplicate(bool flag)
 ```
 
- - true: (Default 값) 중복 제거 로직 활성화
- - false: 중복 제거 로직 비활성화
+- true: (Default) Remove duplicates is enabled <br>
+- false: Remove duplicates is disabled
 
 ## WebGL API
 
-### 지원하지 않는 API
+### Unsupported API
 
-- WebGL SDK에서는 asm.js이 try-catch를 지원하지 않기 때문에 Handled Exception을 지원하지 않습니다.
+- WebGL SDK does not support Handled Exception because asm.js doesn’t support try-catch.
 
-### WebGL 전용 API
+### WebGL-only API
 
-- 중복 제거 로그 큐의 최대 사이즈를 지정합니다.
+- Specify a maximum size of remove duplicates log queue.
 
 ```
 LogNCrash.setDuplciateQueueSize (100);
 ```
-
-- BulkMessage 사이즈의 최대 사이즈를 지정합니다.
+- Specify a maximum size of BulkMessage.
 
 ```
 LogNCrash.setMaximumBulkMessageSize (1024 * 512); // 512 KB
 ```
 
-- 로그 전송 실패 시, 저장할 수있는 최대 파일의 수를 지정합니다.
+- Specify a maximum number of files to save, when a log delivery is failed.
 
 ```
 LogNCrash.setMaximumFileCount (100);
 ```
 
-- 전송 로그 큐의 최대 사이즈를 지정합니다.
+- Specify a maximum size of delivery log queue.
 
 ```
 LogNCrash.setMaximumSendCount (100);
 ```
 
-### Crash 수집을 위한 설정
+### Settings to Collect Crashes
 
-- WebGL SDK에서 Crash를 수집하기 위해서는 PlayerSettings > Publishing Settings > Enable Exception 옵션이 Full로 설정되어 있어야 합니다.
+- To collect crashes in WebGL SDK, go to **PlayerSettings > Publishing Settings > Enable Exception** and set the options to the **Full**.
 
-### 주의 사항
+### Caution
 
-- Log & Crash는 메모리를 전송하는 과정에서, 최대 2000개의 SendQueue에 로그를 저장합니다.
-- Log & Crash는 로그의 중복을 제거하기 위해, 최대 500개의 Duplicate 로그를 저장합니다.
-- Log & Crash는 전송에 실패한 로그를 재전송 하기 위해, 500개의 실패 로그를 저장합니다.
-- 따라서 충분한 메모리가 필요합니다.
-- 서버의 응답속도를 측정하는 경우 대상 서버에 Cross-Domain 설정이 되어있어야 합니다.
+- Log&Crash can save up to 200 logs in SendQueue in the memory delivery process.
+- Log&Crash can save up to 500 duplicate logs in order to remove duplicates.
+- Log&Crash can save up to 500 failed logs in order to resend failed deliveries.
+- Therefore, a sufficient memory capacity is required.
+- To measure server’s response speed, Cross-Domain setting is required in the server.
 
-## WebGL Build 하기
+## Build
 
-1.File->Build Settings 클릭.
+1. Click **File > Build Settings**.
 
 ![](http://static.toastoven.net/prod_logncrash/gl_5.png)
 
- - WebGL Platform 선택 한 뒤 Player Settings 클릭합니다.
+- Select **WebGL Platform** and click **Player Settings**.
 
 ![](http://static.toastoven.net/prod_logncrash/gl_11.png)
 
-2.Build settings에서 Build And Run 클릭합니다.
+2. Click **Build And Run** in the **Build settings**.
 
-## 외부 CrashHandler 사용하기
+## Use External CrashHandler
 
-- 기존 SDK에서는 초기화 단계에서 logMessageReceived 등을 사용하여 Unity의 CrashHandler를 LogNCrash 전용 Callback 함수에 등록하여 사용하였습니다.
-- 외부 CrashHandler와 같이 사용하는 경우가 있어, 같이 적용할 수 있도록 구조를 수정하였습니다. ( MultihandlerSample 참고 )
+- Existing SDKs have deployed logMessageReceived during initialization to register CrashHandler of Unity for a LogNCrash callback function.
+- The structure has been modified to allow applications to be made both for CrashHandler and external CrashHandler (refer to MultihandlerSample).
 
-### 적용방법
+### Applications
 
-- LogNCrash.SetCrashHandler 함수에 false를 파라미터로 넘겨 자동으로 CrashHandler가 등록되는 것을 막습니다.
-- 반드시 Initialize 함수 이전에 설정되어야 합니다.
+- Send a false parameter to the LogNCrash.SetCrashHandler function to prevent CrashHandler from being automatically registered.
+- Must set before the initialize function.
 
 ```
 LogNCrash.SetCrashHanlder (false);
 LogNCrash.Initialize ();
 ```
 
-- 이후 LogNCrash.unity3dHandleException 함수를 사용하여 CrashHandler의 파라미터를 LogNCrash 객체로 넘겨줍니다.
+- Then, use the LogNCrash.unity3dHandleException function to deliver CrashHandler parameters to LogNCrash object.
 
 ```
 void OnEnable()

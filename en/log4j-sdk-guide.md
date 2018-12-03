@@ -1,42 +1,42 @@
 ## Analytics > Log & Crash Search > Log4J SDK Guide
 
-Log & Crash Log4J SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.
-Log & Crash Log4J SDK 특·장점은 다음과 같습니다.
+Log & Crash Log4J SDK sends logs to a Log & Crash Search collector server.
+Below describe benefits and features of Log & Crash Log4J SDK.
 
-- 로그를 수집 서버로 보냅니다.
-- Log & Crash Search 에서 전송된 로그를 조회 및 검색이 가능합니다.
-- 멀티 쓰레딩 환경에서 동작합니다.
+- Send logs to a collector server.
+- Retrieve and search logs sent from Log & Crash Search.
+- Operate under a multi-threading environment.
 
-## 지원 환경
+## Supporting Environment
 
 - Log4J 1.2.x (1.2.14, 1.2.16, 1.2.17)
 
-## 다운로드
+## Download
 
-[TOAST Document](http://docs.toast.com/en/Download/)에서 Log4J SDK를 받을 수 있습니다.
-
-```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Log4J SDK] 클릭
-```
-
-## 설치
-
-### 구성
-
-Log4J SDK는 다음과 같이 구성되어 있습니다.
+Go to [TOAST Document](http://docs.toast.com/en/Download/) and download **Log4J SDK**.
 
 ```
-docs/       ; Log4J SDK 문서
-lib/        ; Log4J 라이브러리
-sample/     ; Log4J 샘플
+Click [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Log4J SDK] 
 ```
 
-### SDK 샘플
+## Install
 
-같이 제공되는 sample/log4j/에 대해 설명합니다.
+### Configuration
 
-1.Eclipse를 실행하고 메뉴에서 File - Import - Maven - Existing Maven Projects 를 실행하여 sample/log4j/를 불러옵니다.
-2.src/test/resources/log4j.xml 파일을 열어 발급받은 앱키와 버전을 수정하고, 필요하면 수집 서버 주소를 변경합니다.
+SDK is configured as below.
+
+```
+docs/       ; Log4J SDK Document
+lib/        ; Log4J Library
+sample/     ; Log4J Sample
+```
+
+### SDK Sample
+
+Below describe sample/log4j/ that is provided.
+
+1. Run Eclipse, execute **File > Import > Maven > Existing Maven Projects** in the menu and import sample/log4j/.
+2. Open the src/test/resources/log4j.xml file and update with issued Appkey and version, and collector server address, if necessary.
 
 ```
 <param name="collectorUrl" value="https://api-logncrash.cloud.toast.com" />
@@ -44,15 +44,14 @@ sample/     ; Log4J 샘플
 <param name="version" value="1.0.0" />
 ```
 
-3.Eclipse 메뉴에서 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-log4j-sdk-<version>.jar 를 추가합니다.
-4.Eclipse 메뉴에서 Run - Run As - JUnit Test를 선택하여 실행합니다.
+3. Go to **Project > Properties > Java Build Path > Libraries** in Eclipse and add toast-logncrash-log4j-sdk-jar.
+4. In Eclipse, select **Run > Run As > JUnit Test** and execute.
 
-## 사용 예
+## Example
 
-1.Log4J SDK 라이브러리를 Project에 추가합니다.
-- 예를 들어 Eclipse 메뉴 Project - Properties - Java Build Path - Libraries 를 선택하여 toast-logncrash-log4j-sdk-<version>.jar 를 추가합니다.
-
-2.Maven을 사용하는 경우, pom.xml에 dependency를 추가합니다.
+1. Add Log4J SDK library to your project.
+    For instance, select **Project > Properties > Java Build Path > Libraries** in the Eclipse menu and add toast-logncrash-log4j-sdk-.jar
+2. In the case of Maven, add dependency to pom.xml.
 
 ```
 <dependency>
@@ -87,7 +86,7 @@ sample/     ; Log4J 샘플
 </dependency>
 ```
 
-- SLF4J를 사용하시는 경우 다음 dependency를 추가합니다.
+- For SLF4J, add the following dependency.
 
 ```
 <dependency>
@@ -102,7 +101,7 @@ sample/     ; Log4J 샘플
 </dependency>
 ```
 
-3.Maven을 사용하지 않는 경우 다음 라이브러리들을 별도로 다운로드를 받아 class path에 추가합니다.
+3. For non-Maven users, download libraries as below and add to the class path.
 
 ```
 log4j, 1.2.17
@@ -113,10 +112,10 @@ servlet-api, 2.4
 json, 20090211
 ```
 
-4.Appender 설정과 구성을 위해서 log4j.xml을 작성합니다.
+4. For the setting and configuration of appender, write log4j.xml.
 
- - 전체 구성은 sample/log4j/src/test/resources/log4j.xml 를 참고해 주세요.
- - collectorUrl, appKey에는 반드시 **수집서버 주소**, **발급받은 앱키** 를 사용해야 합니다.
+ - Refer to sample/log4j/src/test/resources/log4j.xml for the entire configuration.
+ - Make sure to use issued Appkey and collector server address, to appKey and collectorUrl, respectively.
 
 ```
 <appender name="logncrash-http" class="com.toast.java.logncrash.log4j.LogNCrashHttpAppender">
@@ -138,7 +137,7 @@ json, 20090211
 </root>
 ```
 
-5.properties로 설정하기 위해서는 log4j.properties을 작성합니다.
+5. To set properties, write log4j.properties.
 
 ```
 log4j.rootLogger=ALL, STDOUT, logncrash-http
@@ -158,7 +157,7 @@ log4j.appender.logncrash-http.enable=true
 log4j.appender.logncrash-http.debug=false
 ```
 
-6.Java에서 다음과 같이 사용합니다.
+6. For Java, use as follows.
 
 ```
 	...
@@ -177,31 +176,32 @@ try {
 
 ## API List
 
-### log4j.xml 설정 항목
+### Setting Items for log4j.xml
 
-- collectorUrl: 수집 서버 주소
-	HTTP: https://api-logncrash.cloud.toast.com
-- appKey: 프로젝트 앱키, 필수
-- version: 프로젝트 버전, 기본값 "1.0.0"
-- logSource: 로그 소스, 기본값 "http-log4j"
-- logType: 로그 타입, 기본값 "log"
-- Threshold: 전송할 로그 레벨 지정, 기본값 "ALL"
-- enable: Appender 사용 여부 설정, 기본값 "true"
-- debug: 디버그 사용 여부 설정, 기본값 "false"
-- errorCodeType: 에러 코드 타입 설정, 기본값 "default"
-	default: Exception 정보를 사용
-	mdc: Log4j MDC의 errorCode 항목값을 설정해서 사용한다.
+- collectorUrl: Collector server address
+  HTTP : https://api-logncrash.cloud.toast.com
 
-## 제약 사항
+- appKey: Project Appkey: required
+- version: Project version. Default is "1.0.0". 
+- logSource: Log source. Default is "http-log4j".
+- logType: Log type. Default is "log". 
+- Threshold: Specify a log level to send. Default is "ALL". 
+- enable: Whether to use Appender or not. Default is "true". 
+- debug: Whether to use Debug or not. Default is "false". 
+- errorCodeType: Set type of error code. Default is "default". 
+  default: Use exception data. 
+  mdc: Set and use errorCode of Log4j MDC.
 
-- 현재 **log4j 2.0** 버전에서는 동작하지 않습니다. log4j 1.3은 alpha8만 작동하지만 log4j 1.2로 마이그레이션을 권장합니다. 권장 버전은 log4j 1.2.14, 1.2.16, 1.2.17입니다.
-- 오류 데이터가 한꺼번에 많이 발생하는 경우 logncrash-async appender의 bufferSize가 작으면 log4j 자체에서 처리시 지연이 발생할 수 있으므로, bufferSize 조절이 필요합니다.
+## Constraints
 
-## FAQ
+- The current **log4j 2.0** version is not supported. log4j 1.3 supports alpha8 only, but it is recommended to migrate to log4j 1.2. Recommended versions are: log4j 1.2.14, 1.2.16, and 1.2.17. 
+- In case too much error data occur all at once, handling of the log4j may be delayed if the bufferSize of logncrash-async appender is small; hence, the bufferSize needs to be adjusted.
 
-### blocking을 false로 사용하려면?
+## FAQs
 
-log4j.xml에서 다음과 같이 logncrash-async의 class명을 변경한다.
+### How can I apply false for blocking?
+
+Modify the class name of logncrash-async in log4j.xml, as below. 
 
 ```
 <!-- define logncrash-async appender -->
@@ -214,9 +214,10 @@ log4j.xml에서 다음과 같이 logncrash-async의 class명을 변경한다.
 </appender>
 ```
 
-### batch program(project)에서 logncrash client를 사용하려면?
+### How can I use logncrash client in a batch program (project)?
 
-Quartz 등을 사용해서 데몬 형태로 구동하는 batch project에는 적용되지 않습니다. batch 프로그램의 마지막에 몇초간 대기하는 코드를 추가합니다.
+It is not applied to a batch project that runs in demonstration-type using quartz. 
+ Add a code that allows you to wait for seconds at the end of a batch program.
 
 ```
 try {
@@ -224,10 +225,11 @@ try {
 } catch (InterruptedException ignore){}
 ```
 
-logncrash-async appender의 경우 org.apache.log4j.AsyncAppender를 사용하고 있습니다.
-AsyncAppender 안에서 로그를 기록하는 별도의 데몬 스레드가 생성되어 비동기로 로그를 전달하게 되어 있습니다. Java batch program에서는 main thread가 바로 종료되기 때문에 AsyncAppender 데몬 스레드가 생성되어 로그를 보내기 전에 batch 애플리케이션이 종료됩니다.
-데몬 스레드와 상관없이 살아 있는 일반 스레드가 없을 경우에 JVM은 바로 종료됩니다.
-다른 방법은 아래처럼 batch용 log4j.xml을 별도로 사용하는 것입니다. logger에서 appender logncrash를 바로 사용하도록 log4j.xml을 수정합니다. 이 경우 logging이 동기모드로 작동되기 때문에 에러 발생시 에러 수집 서버 호출을 위해 delay가 발생됩니다. web project에서는 이 방법을 사용하지 않도록 합니다.
+For logncrash-async appender, org.apache.log4j.AsyncAppender is used. 
+
+AsyncAppender has an additional demonstration thread that records logs internally, and logs can be asynchronously sent. In a Java batch program, the main thread is immediately closed, closing batch application before a demonstration thread of AsyncAppender is created to send logs. When there is no remaining general thread, regardless of demonstration threads, JVM is immediately closed. 
+
+Another method to apply is to separately use log4j.xml for batch-purposes: modify log4j.xml in logger to make appender logncrash readily available. This may cause a delay when an error occurs, for the purpose of calling an error collector server, as logging is synchronously operated. Therefore, this method is not recommended for a web project.
 
 ```
 <!-- // define loggers // -->
@@ -244,26 +246,26 @@ AsyncAppender 안에서 로그를 기록하는 별도의 데몬 스레드가 생
 </root>
 ```
 
-### Java stack trace를 log4j(Log & Crash Search 포함)에 로깅하려면?
+### How can a Java stack trace be logged to a log4j (including Log & Crash Search)?
 
-log4j를 이용하여 stack trace를 출력하려면 log.error(e.getMessage(), e); 형태를 사용합니다. log.error(e);의 경우는 stack trace가 출력되지 않습니다.
+To get an output of stack trace with log4j, use the log.error (e.getMessage()) type: cannot get an output of stack trace for log.error(e);.  
 
 ```
 String[] aa = null;
 try {
     aa[0] = "111";
 } catch (NullPointerException e) {
-    log.error(e); //stacktrace 출력 안됨.
+    log.error(e); //stacktrace 출력 안 됨.
     log.error(e.getMessage(), e); ///stacktrace 출력
 }
 ```
 
-### log4j(Log & Crash Search 포함) logging으로 인한 성능 저하를 최소화 하려면?
+### How can I minimize performance degradation due to log4j (including Log & Crash Search) logging?
 
-log4j.xml의 logger 설정에서 name과 level을 사용하여 filtering을 최대화합니다.
-아래처럼 logger 설정에서 com이나 org를 DEBUG level로 설정하게 되면 logger에서 많은 LoggingEvent(log4j)가 불필요하게 생성됩니다. Appender에서 Threshold가 ERROR로 설정되어 있어 실제 로그 전송은 되지 않지만 일단 logger에서 LoggingEvent가 생성이 되어 appender에 전달이 됩니다.
+Maximize filtering by using name and level in the logger setting of logback.xml.
+Like below, if com or org is set for DEBUG level for logger configuration, many LoggingEvents(log4js) are unnecessarily created in the logger. As threshold is set with ERROR in appender, logs are not actually sent but LoggingEvent is created in logger and sent to appender. 
 
-[성능이 저하되는 설정(개발용으로만 사용)]
+[Setting that allows performance degradation (for development use only)]
 
 ```
 <!-- // define loggers // -->
@@ -288,7 +290,7 @@ log4j.xml의 logger 설정에서 name과 level을 사용하여 filtering을 최�
 </root>
 ```
 
-[성능이 고려된 설정(운영용으로 사용)]
+[Setting that considers performance (for operational use)]
 
 ```
 <!-- // define loggers // -->
@@ -306,9 +308,9 @@ log4j.xml의 logger 설정에서 name과 level을 사용하여 filtering을 최�
 </root>
 ```
 
-### WAS 에서 사용시 안정적인 종료를 하려면?
+### How can I safely close WAS?
 
-에러로그가 전송중인 상황에서 WAS(Tomcat 등)가 종료되는 경우에는, 다음과 같은 Exception이 발생하며 WAS가 정상적으로 종료되지 않을 때가 있습니다.
+When closing WAS (such as Tomcat) while error logs are sent, following exception may occur and WAS may not be closed properly.
 
 ```
 Exception in thread "pool-12-thread-1" java.lang.NullPointerException
@@ -318,9 +320,11 @@ at_java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.jav
 at_java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
 at_java.lang.Thread.run(Thread.java:619)
 ```
-로그가 전송중에 WAS가 종료되는 경우에 해당 Exception이 발생합니다. 이러한 현상을 방지하기 위해서는 WAS 종료시에 LogManager.shutdown() 메소드를 호출하여 logncrash appender를 close하면 안정적으로 종료가 가능합니다.
-org.springframework.web.util.Log4jConfigListener를 사용하는 경우에는 WAS 종료시에 Log4jConfigListener가 LogManager.shutdown() 메소드를 호출해주기 때문에 추가적인 설정없이 안정적으로 종료가 가능합니다.
-Log4jConfigListener를 사용하지 않는 경우를 위해서 logncrash-appender에서는 com.toast.java.logncrash.log4j.Log4jShutdownListener 를 제공하고 있습니다. web.xml에 다음과 같은 설정을 추가하면 WAS 종료시에 에러로그 전송이 일어나도 안정적인 종료가 가능합니다.
+The exception may occur when WAS is closed while a log delivery is under way. To prevent it and safely close WAS, call LogManager.shutdown() method by the time WAS is closed, and close logncrash appender. 
+
+If you use org.springframework.web.util.Log4jConfigListener, no additional setting is required, as Log4jConfigListener makes a call of the LogManager.shutdown() method, to safely close WAS. 
+
+For non-users of Log4jConfigListener, logncrash-appender provides com.toast.java.logncrash.log4j.Log4jShutdownListener. By adding the following setting to web.xml, WAS can be safely closed even while error logs are delivered.
 
 ```
 <listener>
