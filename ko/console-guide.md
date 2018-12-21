@@ -1,5 +1,8 @@
 ## Analytics > Log & Crash Search > 콘솔 사용 가이드
 
+> [공지]
+> arm64e 아키텍쳐를 사용하는 기기(iPhone XS, XR, XS Max, iPad Pros 3rd)는 Crash 분석이 지원되지 않고 있습니다.
+
 Log & Crash Search는 다음과 같은 순서로 사용할 수 있습니다.
 
 - 서비스 활성화
