@@ -5,7 +5,7 @@
 > [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)를 이용해 주시기 바랍니다.
 
 > [공지]
-> arm64e 아키텍쳐를 사용하는 기기(iPhone XS, XR, XS Max, iPad Pros 3rd)는 Crash 분석이 지원되지 않고 있습니다.
+> arm64e 아키텍처를 사용하는 신규기기(iPhone XS, XR, XS Max, iPad Pros 3rd)에서 발생한 Crash 로그는 집계만 가능하며 Crash 내용의 분석은 아직 지원하지 않고 있습니다.
 
 Log & Crash iOS SDK는 Log & Crash Search 수집 서버에 로그를 보내는 기능을 제공합니다.  
 Log & Crash iOS SDK 특·장점은 다음과 같습니다.  
