@@ -1,25 +1,25 @@
-## Analytics > Log & Crash Search > Logback SDK Guide
+﻿## Analytics > Log & Crash Search > Logback SDK使用ガイド
 
-Log & Crash Logback SDK sends logs to a Log & Crash Search collector server. It allows to retrieve or search logs sent from Log & Crash Search and operates under a multi-threading environment. 
+Log & Crash Logback SDKは、Log & Crash Search収集サーバーにログを転送する機能を提供します。Log & Crash Searchで、転送されたログの照会および検索が可能で、マルチスレッド環境で動作します。
 
-## 1. Add Log & Crash Logback SDK
+## 1. Log & Crash Logback SDK追加
 
-Add logncrash-java-sdk3-3.0.3.jar to dependency. 
-Download Log & Crash Logback SDK from  [TOAST Document](http://docs.toast.com/ja/Download/).
+logncrash-java-sdk3-3.0.3.jarを依存性に追加します。
+[TOAST Document](http://docs.toast.com/ko/Download/)でLog & Crash Logback SDKをダウンロードできます。
 
 ```
-Click [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Logback SDK]
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Logback SDK]クリック
 ```
 
 
-- Log & Crash Logback SDK has dependency on the libraries of`logback-classic 1.2.3+, apache httpclient 4.5+, and json 20171018+`.
-- It is recommended to apply the highest version to prevent any potential issues from redundant libraries.
+- Log & Crash Logback SDKは、`logback-classic 1.2.3+, apache httpclient 4.5+, json 20171018+`のライブラリに依存性を持っています。
+- 参照するlibraryが重複する場合、問題が発生することがあるため、上位バージョンの使用を推奨します。 
 
-## 2. Add Dependency for Log & Crash Logback SDK
+## 2. Log & Crash Logback SDKに必要な依存性を追加
 
-### 2.1 Install Maven 
+### 2.1 Mavenインストール
 
-Add dependency to pom.xml.  
+pom.xmlにdependencyを追加します。 
 
 ```xml
 <dependency>
@@ -38,8 +38,7 @@ Add dependency to pom.xml.
     <version>1.2.3</version>
 </dependency>
 ```
-
-### 2.2 Install Gradle 
+### 2.2 Gradleインストール
 
 ```gradle
 dependencies {
@@ -49,16 +48,16 @@ dependencies {
 }
 ```
 
-## 3. Logger Setting and Options  
+## 3. Logger設定およびオプション
 
-Following description is based on logback.xml. 
+logback.xmlを基準に説明します。
 
-- Collect logs asynchronously with AsyncAppender of Logback as default and send them to a log collector server.  
-- Set detail items for sending logs with LogNCrashHttpAppender of Log & Crash Logback SDK. 
+- LogbackのAsyncAppenderをデフォルトで使用し、ログを非同期で収集してログ収集サーバーに転送します。
+- Log & Crash Logback SDKのLogNCrashHttpAppenderで、転送ログの詳細項目を設定できます。
 
 ```xml
 <appender name="user-logger" class="ch.qos.logback.classic.AsyncAppender">
-    <!-- AsyncAppender of Logback Option -->
+    <!-- LogbackのAsyncAppenderオプション -->
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
         <level>INFO</level>
     </filter>
@@ -67,14 +66,14 @@ Following description is based on logback.xml.
     <param name="neverBlock" value="true"/>
     <param name="maxFlushTime" value="60000"/>
 
-    <!-- LogNCrashHttpAppender of Log & Crash Logback SDK Option -->
+    <!-- Log & Crash Logback SDKのLogNCrashHttpAppenderオプション -->
     <appender name="logNCrashHttp" class="com.toast.java.logncrash.logback.LogNCrashHttpAppender">
-        <param name="appKey" value="appkey"/>
-        <param name="logSource" value="operation"/>
+        <param name="appKey" value="アプリケーションキー"/>
+        <param name="logSource" value="運営"/>
         <param name="version" value="1.0.0"/>
-        <param name="logType" value="audit log/>
+        <param name="logType" value="監査ログ"/>
         <param name="debug" value="true"/>
-        <param name="category" value="log service"/>
+        <param name="category" value="ログサービス"/>
         <param name="errorCodeType" value="action"/>
     </appender>
 </appender>
@@ -84,34 +83,35 @@ Following description is based on logback.xml.
 </logger>
 ```
 
-### 3.1 AsyncAppender Option of Logback
+### 3.1 LogbackのAsyncAppenderオプション
 
-- For more details, see [Official Documents](https://logback.qos.ch/manual/appenders.html#AsyncAppender).
+- 設定値の詳細な情報は、[公式文書](https://logback.qos.ch/manual/appenders.html#AsyncAppender)を参照してください。
 
-| Key               | Description                                                  |
-| ----------------- | ------------------------------------------------------------ |
-| includeCallerData | Sender information (e.g class name, or line number) is added, to decide whether to send to collector server. When it is set for True, performance may be degraded. |
-| queueSize         | The highest allowed number allowed at blocking queue, and default is 256. |
-| neverBlock        | If it is set for False, while queues are full, the appender blocks application to prevent loss of messages. For True, messages are dropped in order not to stop application. |
-| maxFlushTime      | When LoggerContext is suspended, the stop method of AsyncAppender queues until an operation thread is timed out. With maxFlushTime, timeout can be set by the millisecond. Any events that fail to be processed within time set shall be deleted. |
+| キー | 説明 |
+|---|---|
+| includeCallerData | 送信者の情報(class名、行番号など)が追加され、収集サーバーに転送するかどうかを決定します。<br>trueに設定すると、性能が低下することがあります。
+| queueSize | blocking queueの最大収容個数で、デフォルト値は256です。 |
+| neverBlock | falseに設定した場合、キューがいっぱいの状況でappenderはメッセージの消失を防ぐためにapplicationをblockします。 <br>trueに設定した場合、applicationを止めないようにメッセージを捨てます。|
+| maxFlushTime | LoggerContextが停止すると、AsyncAppenderのstopメソッドは作業スレッドがtimeoutするまで待機します。<br>maxFlushTimeを使用すると、timeout時間をミリ秒で設定できます。<br>該当時間内に処理できなかったイベントは削除されます。 |
 
-### 3.2 LogNCrashHttpAppender Option of Log & Crash Logback SDK
+### 3.2 Log & Crash Logback SDKのLogNCrashHttpAppenderオプション
 
-For other values, except appKey, default information shall be entered, unless param is written as optional.   
+appKeyを除いた残りの値は、任意項目です。paramを記入しない場合、デフォルト値が入力されます。
 
-| Key           | Description                                                  | Default      |
-| ------------- | ------------------------------------------------------------ | ------------ |
-| appKey        | Refers to a projectkey enabled in the logncrash console.     | `Required`   |
-| logSource     | Information of executed environment setting, such as alpha, beta, and real. If you use Spring Profile, apply ${spring.profiles.active}. | http-logback |
-| version       | Specify sender's project version.                            | 1.0.0        |
-| logType       | Specify the type of collected logs.                          | log          |
-| debug         | Determine by boolean for the output needs of SDK log information in console. | true         |
-| category      | Specify the category of collected logs.                      |              |
-| errorCodeType | Set the type of error information collected when error occurs: default, action, message, or mdc. <br />- default: Use throwable information.<br />- action: Return errors including URL path information.  <br />- message: Return messages set for logger only.  <br />- mdc: Set value of errorCode item of MDC. | default      |
+| キー | 説明 | デフォルト値
+|---|---|---|
+| appKey | logncrahコンソールで有効にしたprojectKeyです。 | `必須値` | 
+| logSource | alpha、beta、realなど、実行される環境設定情報です。<br>Spring Profileを使用する場合、 ${spring.profiles.active}を使用します。 | http-logback |
+| version | 送信者のプロジェクトバージョンを明示します。 | 1.0.0 |
+| logType | 収集するlogのtypeを明示します。 | log |
+| debug | boolean値。consoleにsdkログ情報の出力が必要かどうかを決定します。 | true |
+| category | 収集するlogのcategoryを明示します。 |  |
+| errorCodeType | エラー発生時に収集されるエラー情報のタイプを設定します。default、action、message、mdcタイプが存在します。<br>- default： Throwable情報を使用します。<br>- action： URL pathの情報も含めてエラーを返します。<br>- message： loggerに設定したメッセージのみ返します。<br>- mdc： MDCのerrorCode項目値を設定して使用します。 | default |
 
-### 3.3 User-defined Option 
+### 3.3ユーザー定義オプション
 
-Items not defined in LogNCrashHttpAppender of Log & Crash may be added by using MDC of slf4j. (However,`category` may be changed.) 
+slf4jのMDCを使用して、Log & CrashのLogNCrashHttpAppenderで定義されていない項目を追加できます。
+(ただし`category`は変更できます。)
 
 ```java
 MDC.put("userid", "nhnent-userId");
@@ -120,18 +120,16 @@ MDC.put("userIp", "127.0.0.1");
 MDC.clear();
 ```
 
-#### Reserved words which cannot be changed with MDC (no difference between upper and lower cases)
+#### MDCで変更できない予約語(大文字/小文字を区別しません。)
 
- 
+|projectName|clientIp|projectVersion|url|logSource|headers|
+|---|---|---|---|---|---|
+|form|logType|cookie|body|agent|logLevel|
+|host|referer|sendTime|dmpData|dmpFormat| |
 
-| projectName | clientIp | projectVersion | url     | logSource | headers  |
-| ----------- | -------- | -------------- | ------- | --------- | -------- |
-| form        | logType  | cookie         | body    | agent     | logLevel |
-| host        | referer  | sendTime       | dmpData | dmpFormat |          |
+## 4. LogNCrash SDK使用例
 
-## 4. Example of LogNCrash SDK 
-
-Applied as follows in Java: 
+Javaで次のように使用します。
 
 ```java
 import org.slf4j.Logger;
@@ -142,11 +140,11 @@ public class LogNCrash {
     private static final Logger USER_LOG = LoggerFactory.getLogger("user-logger");
 
     public void logging() {
-        logger.debug("LogNCrash Debug.") ;
+        logger.debug("LogNCrash Debug.") ;
 
-        // Apply MDC to use user-defined items, other than Log & Crash scheduled itmes
+        // Log & Crashで予約された項目以外のユーザー定義項目を使用する時にMDCを活用
         MDC.put("userid", "nhnent-userId");
-        logger.warn("Customize items...") ;
+        logger.warn("Customize items...") ;
         MDC.clear();
 
         try {
@@ -156,20 +154,21 @@ public class LogNCrash {
             }    
         } catch(Exception e) {
             logger.error("LogNCrash Exception.", e)
-        }   
+        }   
     }
 }
 ```
 
-## FAQs
+## 5. FAQ
 
-### Q. Can I send logs only with LogNCrashHttpAppender of Log & Crash Logback SDK?
+### Q. Log & Crash Logback SDKのLogNCrashHttpAppenderだけでログを転送することはできませんか？
 
-It is possible, since LogNCrashHttpAppender of Log & Crash Logback SDK sends logs to a collector server, by using the sync method. Nevertheless, although logs may be lost to the minimum, performance degradation may occur to Application when the Log & Crash Logback system fails, it is recommended to apply Async Appender. 
+Log & Crash Logback SDKのLogNCrashHttpAppenderは、sync方式で収集サーバーにログを転送するので、可能です。
+ログの消失が最小化されますが、Log & Crash Logbackシステム障害の時は、Applicationの性能低下が発生することがあるため、Async Appenderの使用を推奨します。
 
-### Q. How can I use logncrash client in a batch program (project)?
+### Q. batch program(project)でlogncrash clientを使用するには？
 
-Add a code that allows you to wait for seconds at the end of a batch program. 
+batchプログラムの最後に数秒間、待機するコードを追加します。
 
 ```java
 try {
@@ -177,31 +176,30 @@ try {
 } catch (InterruptedException ignore){}
 ```
 
-In a Java batch program, the main thread is immediately closed, closing batch application before a demonstration thread of LogbackAsyncAppender is created to send logs. 
-When there is no remaining general thread, regardless of demonstration threads, JVM is immediately closed. Therefore, a code needs to be added that allows waiting at the end of a program, so that a program can be closed after all logs are delivered. 
+Java batch programでは、main threadがすぐに終了するため、LogbackのAsyncAppenderのデーモンスレッドが作成され、ログを転送する前にbatchアプリケーションが終了します。
+デーモンスレッドに関係なく、生きている一般スレッドがない場合、JVMはすぐに終了します。したがって、上記のようにプログラムの最後に待機するコードを追加し、すべてのログを転送してから終了するようにします。
 
-### Q. How can a Java stack trace be logged to a logback (including Log & Crash Search)?
+### Q. Java stack traceをlogback(Log & Crash Search含む)にロギングするには？
 
-To get an output of stack trace by using logback, use the log.error (e.getMessage(), e); type. SLF4J Logger, as a method parameter, does not support the logging method which receives Throwables only.  
+logback利用してstack traceを出力するには、log.error(e.getMessage(), e);形式を使用します。SLF4J Loggerはメソッドの引数にThrowableのみ受け取るロギングメソッドはサポートしません。
 
 ```java
-String[] aa = null;
 try {
     ...
-} catch (NullPointerException e) {
-    log.error(e.getMessage(), e);
+} catch (Exception e){
+    logger.error(e.getMessage(), e);
 }
 ```
 
-### Q. How can I safely close WAS?
+### Q. WASで使用する時に安定的に終了するには？
 
-When closing WAS (such as Tomcat) while error logs are sent, following exception may occur and WAS may not be closed properly.  
+エラーログを転送中の状況でWAS(Tomcatなど)が終了する場合は、次のようなExceptionが発生し、WASが正常に終了しないことがあります。
 
-To prevent it and safely close WAS, call stop() method for LoggerContext instances by the time WAS is closed, and close LogNCrashHttpAppendet. 
+このような現象を防ぐためには、WAS終了時にLoggerContextインスタンスに対してstop()メソッドを呼び出し、LogNCrashHttpAppendetをcloseすると安定的に終了できます。
 
-For Spring, org.springframework.web.util.Log4jConfigListener is provided for Log4J, but no listener is provided for Logback in support of stable closure. 
+Springでは、Log4Jに対してはorg.springframework.web.util.Log4jConfigListenerを提供しますが、Logbackに対しては安定的な終了をサポートするListenerを提供していません。
 
-Log & Crash Logback SDK provides its own LogbackShutdownListener. By adding the following setting to web.xml, WAS can be safely closed even while error logs are delivered.  
+Log & Crash Logback SDKでは、独自にLogbackShutdownListenerを提供します。web.xmlに次のような設定を追加すると、WAS終了時にエラーログの転送が発生しても安定的に終了できます。
 
 ```xml
 <listener>

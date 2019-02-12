@@ -1,71 +1,72 @@
-## Analytics > Log & Crash Search > Android SDK Guide
+﻿## Analytics > Log & Crash Search > Android SDK使用ガイド
 
-> [Deprecated] 
-> Log & Crash Android SDK is not supported any more. 
-> Please use [TOAST SDK](http://docs.toast.com/ja/TOAST/ja/toast-sdk/overview/). 
+> [Deprecated]
+> Log & Crash Android SDKバージョンは、今後はサポートされません。
+> [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)をご利用ください。
 
-Log & Crash Android SDK sends logs to a Log & Crash Search collector server.
-Below describe benefits and features of Log & Crash Android SDK.
+Log & Crash Android SDKは、Log & Crash Search収集サーバーにログを転送する機能を提供します。
+Log & Crash Android SDKの特徴・利点は次のとおりです。
 
-- Send logs to a collector server.
-- Send crash logs occurred in an app to a collector server.
-- Retrieve and search logs sent from Log & Crash Search.
-- Operate in a multi-threading environment.
+- ログを収集サーバーに転送します。
+- アプリで発生したクラッシュログを収集サーバーに転送します。
+- Log & Crash Searchから送られたログの照会および検索ができます。
+- マルチスレッド環境で動作します。
 
-## Supporting Environment
+## サポート環境
 
-- Android 2.3.3, API Level 10 or higher
+- Android 2.3.3、API Level 10以上
 
-## Download
+## ダウンロード
 
-Go to [TOAST Document](http://docs.toast.com/ja/Download/) and download **Android SDK**.
-
-```
-Click [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Android SDK]
-``` 
-
-## Install
-
-### Configuration
-
-Android SDK is configured as follows:
+[TOAST Document](http://docs.toast.com/ko/Download/)でAndroid SDKをダウンロードできます。
 
 ```
-docs/       ; Android SDK Document
-libs/       ; Android SDK Library
-sample/     ; Android SDK Sample
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Android SDK]をクリック
 ```
 
-### SDK Sample
+## インストール
 
-Below describes sample/ provided along with SDK.
+### 構成
 
-1. Copy libs/ to sample/libs/.
-2. Run Eclipse and open sample/ to File > New > Android > Android Project from Existing Code.
-    In AndroidStudio click File > New > Import Project.
-3. Open ToastLogSample.java to modify Appkey and collector server address in onCreate (). Modifying version, log source, and log type is useful for a better search.
-4. Execute.
-5. Click Initialize.
-6. Click debug, info, warn, error, fatal to send logs.
-7. Click send crash, crash to send crash logs. send crash button sends crash logs only. crash button occurs crash by force, both to close an app and sends crash logs.
-
-## Example
-
-1. Copy libs/ of Android SDK to a project libs/.
-2. Add authority to the AndroidManifest.xml file.
-- Authority is required to bring information on network status, device, and operator.
+Android SDKは、次のように構成されています。
 
 ```
-<!-- Internet access authority to send logs (required) -->
+docs/       ; Android SDKドキュメント
+libs/       ; Android SDKライブラリ
+sample/     ; Android SDKサンプル
+```
+
+### SDKサンプル
+
+一緒に提供されるsample/について説明します。
+
+1. libs/をsample/libs/にコピーします。
+2. Eclipseを開いて、File - New - Android - Android Project from Existing Codeでsample/を開きます。
+     - AndroidStudioでは、File - New - Import Project…を使用します。
+3. ToastLogSample.javaを開いて、onCreate()でアプリケーションキー、収集サーバーアドレスを修正します。バージョン、ログソース、ログタイプなどを修正すると、検索に役立ちます。
+4. 実行します。
+5. Initializeボタンを押して開始します。
+6. debug、info、warn、error、fatalボタンを押してログを転送します。
+7. send crash、crashボタンを押してクラッシュログを転送します。send crashボタンはクラッシュログのみを転送する機能です。crashボタンは、強制的にcrashを発生させ、アプリ終了と同時にクラッシュログを転送します。
+
+### 使用例
+
+1.Android SDKのlibs/を該当プロジェクトlibs/にコピーします。
+2.AndroidManifest.xmlファイルに権限を追加します。
+
+- ネットワーク状態、デバイス情報、通信社などの情報をインポートするには、権限が必要です。
+
+```
+<!-- ログを転送するためのインターネットアクセス権限(必須) -->
 <uses-permission android:name="android.permission.INTERNET" />
 
-<!-- Authority to access device information, such as Platform and Carrier (required) -->
+<!-- Platform、Carrierなど、端末の情報にアクセスするための権限(必須) -->
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-<!-- Authority to access network status (required) -->
+<!-- ネットワーク状態にアクセスするための権限(必須) -->
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-<!-- Authority to save logs in files when network access is unavailable (optional) -->
+<!-- ネットワークに接続できない場合、ファイルにログを保存するための権限(オプション) -->
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -73,11 +74,11 @@ Below describes sample/ provided along with SDK.
       ......
 ```
 
-3. Send logs via ToastLog class which is provided.
+3.提供されるToastLog classを使用して、ログを転送します。
 
-- Execute ToastLog.initialize () to initialize.
-- Deliver logLevel log using debug()/info()/warn()/error()/fatal() function to a collector server.
-- When app crash occurs, crash logs are delivered to a collector server.
+- ToastLog.initialize()を実行して、初期化します。
+- debug()/info()/warn()/error()/fatal()関数を使用して、該当logLevelのログを収集サーバーに転送します。
+- アプリクラッシュが発生すると、クラッシュログが収集サーバーに転送されます。
 
 ```
 .....
@@ -86,11 +87,11 @@ public class MainActivity extends Activity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     .....
-    if (ToastLog.initialize(getApplication(), "__collectorserver_address__", 0, "__appkey__", "__version__") {
-      // initialization succeeds
+    if (ToastLog.initialize(getApplication(), "__収集サーバー_アドレス__", 0, "__アプリケーションキー__", "__バージョン__") {
+      // 初期化成功
       ToastLog.info("Init Success")
     } else {
-      // initialization fails
+      // 初期化失敗
     }
     .....
   }
@@ -100,9 +101,9 @@ public class MainActivity extends Activity {
 
 ## API List
 
-Describes functions provided by com.toast.android.logncrash.ToastLog class.
+com.toast.android.logncrash.ToastLog classで、提供する機能を説明します。
 
-### Initialize
+### 初期化
 
 ```
 public static final String DEFAULT_APP_KEY = "__app_key__";
@@ -119,42 +120,42 @@ public static boolean initialize(Application application, String collectorAddr, 
 public static boolean initialize(Application application, String collectorAddr, int collectorPort, String appKey, String version, boolean syncStart);
 ```
 
-- Initialize ToastLog.
-- Requires a call to operate ToastLog.
-- Parameters
-  - application: Android Application information. Apply return value of getApplication().
-  - collectorAddr: Collector server address
-    - HTTP collector server: https://api-logncrash.cloud.toast.com
-  - collectorPort: Port information of a collector server. When it is set to 0, default port of each protocol is applied.
-    - HTTP: 80
-  - appKey: Appkey
-  - version: App version
-  - userId: User ID
-  - syncStart: Save logs, which occur when it is true, in a queue, without sending them to a server, before startSendThread is called. Nevertheless, if a crash occurs, unlock ThreadLock and send the logs
-- Return Value
-  - true: for successful initialization
-  - false: for failure
+- ToastLogを初期化します。
+- ToastLog機能が正常に動作するには、必ず呼び出される必要があります。
+- パラメータ
+	- application：Android Application情報。getApplication()の戻り値を入れます。
+	- collectorAddr：収集サーバーアドレス
+		- HTTP収集サーバー：https://api-logncrash.cloud.toast.com
+	- collectorPort：収集サーバーのポート情報、0に指定すると、各protocolの基本ポートが使用されます。
+		- HTTP：80
+	- appKey：アプリケーションキー
+	- version：アプリバージョン
+	- userId：ユーザーID
+  - syncStart： trueの場合、発生したログはstartSendThreadが呼び出されるまでサーバーに転送せず、キューに保存します。ただしCrashが発生した場合は、ThreadLockを解除してログを転送します。
+- 戻り値
+	- 初期化成功時はtrue
+	- 失敗時はfalse
 
-### Unlock SendThread
+### SendThreadのロック解除
 ```
   	(void) startSendThread;
 ```
-  - Unlock SendThread.
+  - SendThreadのロック状態を解除します。
 
-### Caution for Initialization
-  - To execute initialization from Application onCreate
-     - Calls may be unintentionally made when a receiver, a service, or an activity is created from Application onCreate.
+### 初期化の注意事項
+  - Application onCreateで初期化を行う場合
+  	- Application onCreateはレシーバー、サービス、アクティビティが作成される時に呼び出されるので、意図しない呼び出しが発生することがあります。
 
 ```
 public static boolean isInitialized()
 ```
 
-- Return result of Initialize ToastLog
-- Return value
-  - true for successful initialization
-  - false for failure
+- ToastLogが初期化されたかを返します。
+- 戻り値
+	- 初期化されていればtrue
+	- 初期化されていなければfalse
 
-### Send Logs
+### ログの転送
 
 ```
 public static void fatal(String message, Throwable t)
@@ -170,23 +171,23 @@ public static void info(String message)
 public static void debug(String message)
 ```
 
-- Send logs to collector server by specified log level.
-- Parameters
-  - message: Log messages. With null or "", default messages are sent.
-  - Throwable t: Send collected errors altogether. Can use null.
-    - Classified as handled logs, when errors are sent altogether
+- 指定されたログレベルで、収集サーバーにログを転送します。
+- パラメータ
+	- message：ログメッセージ。 Nullや""を使うと、基本メッセージが転送されます。
+	- Throwable t：収集されたエラーを一緒に転送します。 nullを使用できます。
+		- エラーを一緒に転送すると、ハンドルドログに分類されます。
 
 ```
 public static void crash(String message, Throwable t)
 ```
 
-- Send exception logs to a collector server during execution.
-- Parameters
-  - message: Log messages. With null or "", default messages are sent.
-  - Throwable t: Sends collected errors altogether.
-    - Classified as crash log, when errors are sent altogether.
+- 実行すると、発生したExceptionを収集サーバーに転送します。
+- パラメータ
+	- message：ログメッセージ。 Nullや""を使うと、基本メッセージが転送されます。
+	- Throwable t：収集されたエラーを一緒に転送します。
+		- エラーを一緒に転送すると、クラッシュログに分類されます。
 
-With enhanced functions to investigate information such as errorCode and location in Throwable, following methods **have been deprecated**.
+errorCode、locationなどの情報をThrowableで調査するように向上させつつ、次のメソッドが**Deprecated**されました。
 
 ```
 public static void fatal(String errorCode, String message, String location)
@@ -205,7 +206,7 @@ public static void crash(Throwable throwable, String errorCode, String message, 
 public static void crash(Throwable throwable, String errorCode, String message)
 ```
 
-### Specify Custom Keys
+### カスタムキーを指定する
 
 ```
 public static void addCustomField(String key, String value)
@@ -214,16 +215,18 @@ public static void removeCustomField(String key)
 
 public static void clearCustomFields()
 ```
-- Provides Add, Delete, or Delete All custom keys.
-- The custom key must start with an upper or lower-case alphabet: only alphabets, numbers, and '-', '_' can be used. ( [A-Za-z][A-Za-z0-9*-]* )
-- Following names cannot be used, irrespective of upper or lower case:
-  - "projectName", "projectVersion", "body"
-  - "logSource", "logType", "host", "sendTime", "logLevel"
-  - "DmpData", "Platform", "NeloSDK", "Exception", "Location", "Cause"
-  - "SessionID", "UserID"
-  - "Carrier", "CountyCode", "DeviceModel", "Locale", "NetworkType", "Rooted"
 
-### Manage Default Setting
+- カスタムキーを追加、削除、全部削除機能を提供します。
+- カスタムキーは、大文字/小文字で始まり、大文字/小文字、数字、'-'、'_'のみ使用できます。( [A-Za-z][A-Za-z0-9_-]* )
+- カスタムキーは、大文字/小文字に関わらず、次の名前は使用できません。
+	- "projectName", "projectVersion", "body"
+	- "logSource", "logType", "host", "sendTime", "logLevel"
+	- "DmpData", "Platform", "NeloSDK", "Exception", "Location", "Cause"
+	- "SessionID", "UserID"
+	- "Carrier", "CountyCode", "DeviceModel", "Locale", "NetworkType", "Rooted"
+
+
+### 基本設定管理
 
 ```
 public static String getAppKey()
@@ -232,77 +235,80 @@ public static String getCollectorAddr()
 public static int getCollectorPort()
 ```
 
-- Get Appkey, version, collector server address, and collector server port, which are used for initialization
+- 初期化に使用されたアプリケーションキー、バージョン、収集サーバーアドレス、収集サーバーポートを取得します。
 
 ```
 public static String getLogSource()
 public static void setLogSource(String logSource)
 ```
 
-- Get or newly specify a log source.
+- ログソースの取得や新たな指定を行います。
 
 ```
 public static String getLogType()
 public static void setLogType(String logType)
 ```
 
-- Get or newly specify a log type.
+- ログタイプの取得や新たな指定を行います。
 
-### Remove Duplicates
+### 重複除去モードの設定
 
-The Remove Duplicates logic has been applied to general logs for 2.4.0 or higher SDKs.
+2.4.0以上のSDKから、一般ログに重複除去ロジックが適用されました。
 
-When duplicate logging is enabled, do not send logs that have the same content in the body and logLevel.
+重複ログ機能が有効になっている場合、bodyとlogLevelの内容が同じログが発生した時に転送しません。
 
 ```
 public static void setDuplicate(bool enable)
 ```
 
-true: (Default) Remove duplicates is enabled <br>
-false: Remove duplicates is disabled
+true：(Default値)重複除去ロジックを有効にする<br>
+false：重複除去ロジックを無効にする
 
-## Test Proguard Using SDK Samples
+## SDKサンプルを利用したProguardテスト
 
-Describes how to test code obfuscation using Proguard which Android provides.
-To apply Proguard, a project needs to be created by Release. Sample/ has required keystore and Proguard configuration.
-
-### Test Proguard with Eclipse
-
-1. Copy libs/ to sample/libs/.
-2. Run Eclipse to select a project, and select File - Export... .
-3. In Export select Android - Export Android Application.
-4. Check the project name, click Next and select mykey.keystore of Keystore: password of Keystore is set 'abcdefg', Alias ID is 'mykey' and Alias password is 'abcdefg'. For details, refer to [Link](http://developer.android.com/tools/publishing/app-signing.html).
-5. Specify a path to save.
-6. Install the saved .apk file on the device as 'adb install <file name>'.
-7. Execute, click Initialize, click crash to occur crash logs. This my not properly work in sample because ToastLogSample.clickCrash() is obfuscated.
-
-Under normal operations of Proguard, you will find proguard/mapping.txt created.
-
-1. In the left navigation menu click **Analytics > Log & Crash > Settings** then click **Select File** on the **Symbol File** tab to upload mapping.txt. Note that the project version should be consistent.
-2. Send crash logs from app. You can check logs unleashed with Proguard in View of the DmpData field.
-3. See if ToastLogSample.clickCrash() is named correctly.
+Androidで提供するProguardで、コードの難読化をテストする方法を説明します。
+Proguardを適用するには、Releaseでプロジェクトを作成する必要があります。これに必要なキーストア、Proguard設定などがsample/に含まれています。
 
 
-### Test Proguard with Ant Build
-1. Copy libs/ to sample/libs/.
-2. In case build.xml is not available, create one with android update project -p . -n AndroidSDKSample.
-3. Build by ant clean release. The result will be saved as AndroidSDKSampe-release.apk in bin/.
+### Eclipseを使用してProguardテスト
 
-In case of Release builds using Ant, unlike Eclipse Release builds, mapping.txt is located in bin/proguard/mapping.txt.  
+1. libs/をsample/libs/にコピーします。
+2. Eclipseを起動して該当プロジェクトを選択し、メニューからFile - Export…を選択します。
+3. Exportウィンドウが表示されたら、Android - Export Android Applicationを選択します。
+4. プロジェクト名を確認してNextをクリックし、Keystore選択でmykey.keystoreを選します。Keystore暗号'abcdefg'、Alias名'mykey'、Alias暗号'abcdefg'に指定されています。詳細は[こちら](http://developer.android.com/tools/publishing/app-signing.html)を参照してください。
+5. 保存するパスを指定します。
+6. 保存された.apkファイルを'adb install <ファイル名>'で端末にインストールします。
+7. 実行してInitializeボタンを押した後、 crashボタンを押してクラッシュログを発生させます。Sampleでは、ToastLogSample.clickCrash()のメンバーファンクションが難読化されているため、正常に発生しません。
 
-### Test Proguard with AndroidStudio
+正常にProguardが起動している状態では、proguard/mapping.txtが作成されます。
 
-1. Copy libs/ to sample/libs/.
-2. Run AndroidStudio and execute File - New - Import Project..., so that an AndroidStudio project can be created at a new location.
-3. Copy mykey.keystore from an existing source to a new project.
-4. Execute **Build > Generate Signed APK**. On page 1, check the module and click **Next**. On Page 2, specify mykey.keystore for the keystore path; set ‘abcdefg’ as the **Keystore password**, ‘mykey’ as **Alias ID**, and ‘abcdefg’ as **Alias password**, and click **Next**. On page 3, check **APK Destination Folder** and click **Finish**.
-5. Install .apk which has been created.  
+1. Console - Analytics - Log & Crash - Settings - シンボルファイルでmapping.txtをアップロードします。この時、同じプロジェクトバージョンを入力する必要があります。
+2. アプリからクラッシュログを転送します。Proguardが解除されたログは"DmpData"フィールドの"参照"をクリックすると確認できます。
+3. ToastLogSample.clickCrash()の名前が正常に表示されるか確認します。
 
-With Release build using AndroidStudio, the mapping.txt shall be located in app/build/outputs/mapping/release/mapping.txt.
+### Antビルドを使用してProguardをテスト
 
-## Guide for JNI Application
+1. libs/をsample/libs/にコピーします。
+2. build.xmlがない場合、android update project -p . -n AndroidSDKSampleコマンドで作成します。
+3. ant clean releaseでビルドします。結果物はbin/内のAndroidSDKSampe-release.apkに保存されます。
 
-Here is how to use Android SDK by using [JNI](http://en.wikipedia.org/wiki/Java_Native_Interface) of [Android NDK](http://developer.android.com/tools/sdk/ndk/index.html). Log & Crash Android SDK can normally operate only when catch-exception is available in Java. To that end, a class is required in Native Code to deliver errors when they occur. For instance, if an error occurs in the process of executing getString function, catch an error by using the try/catch phrase, create an exception with Java code, and throw it. Then, Java will catch and send the error to log.
+Antを利用してReleaseビルドをする場合、Eclipse Releaseビルドとは異なり、mapping.txtの位置がbin/proguard/mapping.txtです。
+
+### AndroidStudioを使用してProguardテスト
+
+1. libs/をsample/libs/にコピーします。
+2. AndroidStudioを起動し、メニューからFile - New - Import Project…を実行して、新しい位置にAndroidStudioプロジェクトを作成します。
+3. 既存ソースで、mykey.keystoreを新たに作成されたプロジェクトにコピーします。
+4. Build - Generate Signed APK…を実行します。最初のページでModuleを確認した後、Nextをクリックします。2ページ目でKey store pathをmykey.keystoreに指定し、Keystore暗号'abcdefg'、Alias名'mykey'、Alias暗号'abcdefg'に指定して、Nextをクリックします。3ページ目でAPK Destination Folderを確認して、Finishをクリックします。
+5. 作成された.apkをインストールします。
+
+AndroidStudioを利用してReleaseビルドをすると、mapping.txtの位置がapp/build/outputs/mapping/release/mapping.txtです。
+
+## JNI適用ガイド
+
+[Android NDK](http://developer.android.com/tools/sdk/ndk/index.html)を利用して、[JNI](http://en.wikipedia.org/wiki/Java_Native_Interface)を使用する時に、Android SDKを活用する方法について説明します。
+Log & Crash Android SDKでは、Java上でExceptionをCatchできる状況でのみ正常に動作します。そのために作成したNative Codeでエラーが発生した時に、エラーを渡すクラスを作成する必要があります。
+例えば、下記のようにgetString関数が実行される過程でエラーが発生した場合、try/catch構文を利用してErrorをCatchした後、Javaコードで例外を作成してThrowすると、Javaから該当のErrorをCatchしてログに転送します。
 
 **JNI code**
 
@@ -341,8 +347,8 @@ try{
 .....
 ```
 
-In order to catch a system crash, like Segment Fault, add a phrase to catch signal in the Native Code.
-Refer to [Link](http://stackoverflow.com/questions/1083154/how-can-i-catch-sigsegv-segmentation-fault-and-get-a-stack-trace-under-jni-on) to create an example as below.
+Segment falutなどのSystem Crashをキャッチするには、Native CodeでSignalをキャッチする構文を追加してください。
+下記の例は[こちら](http://stackoverflow.com/questions/1083154/how-can-i-catch-sigsegv-segmentation-fault-and-get-a-stack-trace-under-jni-on)を参照してください。
 
 **Native Code**
 

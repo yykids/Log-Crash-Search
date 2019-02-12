@@ -1,60 +1,62 @@
-## Analytics > Log & Crash Search > Unity iOS SDK Guide
+﻿## Analytics > Log & Crash Search > Unity iOS SDK使用ガイド
 
-> [Deprecated] 
-> Log & Crash Unity iOS SDK is not supported any more. 
-> Please use [TOAST SDK](http://docs.toast.com/ja/TOAST/ja/toast-sdk/overview/). 
+> [Deprecated]
+> Log & Crash Unity iOS SDKバージョンは、今後サポートされません。
+> [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)をご利用ください。
 
-Log & Crash Unity SDK sends logs to a Log & Crash Search collector server.
+Log & Crash Unity SDKは、Log & Crash Search収集サーバーにログを転送する機能を提供します。  
+Log & Crash Unity SDKの特徴・利点は次のとおりです。
 
-Below describe benefits and features of Log & Crash Unity SDK.
-- Send logs to a collector server.
-- Send crash logs occurred in an app to a collector server.
-- Retrieve and search logs sent from Log & Crash Search.
+- ログを収集サーバーに転送します。
+- アプリで発生したクラッシュログを収集サーバーに転送します。
+- Log & Crash Searchで、転送されたログの照会および検索が可能です。
 
-## Supporting Environment
+## サポート環境
 
-- Common
-  \- Unity3D v4.0 or higher
+- 共通
+	\- Unity3D v4.0以上
 - iOS
-  \- An Intel-based Mac
-  \- Xcode 6.0 or later
+	\- An Intel-based Mac
+	\- Xcode 6.0 or later
 
-## Download
+## ダウンロード
 
-Go to [TOAST Document](http://docs.toast.com/ja/Download/) and download **Unity SDK**.
+[TOAST Document](http://docs.toast.com/ko/Download/)でUnity SDKをダウンロードできます。
 
 ```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK] 
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK]
 ```
 
-## Install
+## インストール
 
-* Double-click downloaded toast-logncrash-ios-unity-sdk.unitypackage and import it to your project.
+ - ダウンロードしたtoast-logncrash-ios-unity-sdk.unitypackageをダブルクリックして、該当プロジェクトにImportします。
 
 
-### Sample Description
+### サンプル説明
 
-To execute the sample, double-click **Assets > LogNCrash > Sample > SampleScene**.
-The sample describes examples of initialization, log delivery, and error occurrence.
+サンプルを実行するには、Assets > LogNCrash > Sample > SampleSceneをダブルクリックします。
+サンプルには初期化、ログ転送、エラー発生についての例が記述されています。
 
-### Add Header File
-Add #import <LogNCrashSDK/LogNCrashSDK.h> to make it available in the iOS Unity environment.
+### ヘッダファイル追加
 
-## Example
+iOS Unity環境で使用するには、#import <LogNCrashSDK/LogNCrashSDK.h\>を追加します。
 
-1. Initialize with LogNCrashSettings
+## 使用例
 
-Select **LogNCrash > Edit Settings** in the Unity menu to create LogNCrashSettings. Use AssetDatabase to define user’s Appkey and SDK operations of LogNCrashSettings.
+1. LogNCrashSettingsによる初期化
 
-- Appkey: User’s Appkey
-- URL: Collector address: use https://api-logncrash.cloud.toast.com.
-- Version: Log version
-- Send Warning: Whether to collect warning logs occurred in Unity
-- Send Error: Whether to collect error logs occurred in Unity
-- Send Debug Warning: Whether to collect warning logs occurred by user’s debug object use in Unity
-- PLCrashreporter Enable: PLCrashrepoter refers to a library added to detect crashes occurred in the native area: to be applied only when you want to detect native crashes.
+UnityメニューバーからLogNCrash> Edit Settingsを選択して、LogNCrashSettingsを作成します。 LogNCrashSettingsはAssetDatabaseで、ユーザーアプリケーションキーとSDKの動作を定義します。
 
-Enter information for LogNCrashSettings and call Initialize function that has no LogNCrash object parameter, in order to initialize by reading such information of LogNCrashSettings.  
+- Appkey：ユーザーアプリケーションキー
+- URL：コレクターアドレス、https://api-logncrash.cloud.toast.comを使用します。
+- Version：ログバージョン
+- Send Warning：Unityで発生したWarningログを収集するかどうか
+- Send Error：Unityで発生したErrorログを収集するかどうか
+- Send Debug Warning：UnityでユーザーがDebugオブジェクトを利用して発生させたWarningログを収集するかどうか
+- Send Debug Error：UnityでユーザーがDebugオブジェクトを利用して発生させたErrorログを収集するかどうか
+- PLCrashreporter Enable：PLCrashrepoterは、Native領域で発生したCrashを探知するために追加されたライブラリです。Native Crash探知を行いたい場合にのみ使用します。
+
+LogNCrashSettingsに情報を入力してLogNCrashオブジェクトのパラメータがないInitialize関数を呼び出した場合、LogNCrashSettingsで情報を取得して初期化を試みます。
 
 ```
 using Toast.LogNCrash;
@@ -70,8 +72,9 @@ namespace Toast.LogNCrash
 }
 ```
 
-2. Initialize with Script
-Enter parameters to LogNCrash.Initialize to initialize. The parameters provide information on server address, Appkey, version, port, PLCrashreporter Enable, and whether to execute Send Thread Lock.
+2. Scriptによる初期化
+
+LogNCrash.Initializeにパラメータを入力して初期化を試行します。パラメータはサーバーアドレス、アプリケーションキー、バージョン、ポート、 PLCrashreporter Enable、Send Thread Lockを実行するかどうかについての情報を渡します。
 
 ```
 using Toast.LogNCrash;
@@ -88,17 +91,16 @@ namespace Toast.LogNCrash
 }
 ```
 
-- Appkey: User’s Appkey
-- URL: Collector address: set collector information of http and https.
-- Version: Log version
-- Port: Set 80, 443 depending on the protocol
-- PLCrashreporter Enable: Determine whether to use PLCrashrepoter.
-- SendThreadLock: Save logs, which occur when it is true, in a queue without sending to server before StartSendThread is called. Nevertheless, if a native crash occurs, unlock ThreadLock and send the logs.
+- Appkey：ユーザーアプリケーションキー
+- URL：コレクターアドレス、http、httpsのコクレクター情報を設定
+- Version：ログバージョン
+- Port：プロトコルに応じて80、443を設定
+- PLCrashreporter Enable：PLCrashrepoterを使用するかどうかを決定します。
+- SendThreadLock：trueの場合、発生したログはStartSendThreadが呼び出されるまでサーバーに転送せず、キューに保存します。ただしNative Crashが発生した場合、ThreadLockを解除してログを転送します。
 
+## 詳細API
 
-## API Details
-
-### Specify Custom Fields
+### カスタムフィールドの指定
 
 ```
 public static void AddCustomField(string key, string val)
@@ -107,12 +109,13 @@ public static void RemoveAllCustomFields()
 ```
 
 - Parameters
-  - key: string
-    - [in] key of custom field, custom key must start with an alphabet or a number, and include “A~Z, a~z, 0~9, - \_”.
-  - value: string
-    - [in] value of custom field
-  - Following keywords are occupied by SDK and hence cannot be used:
-    - projectName
+	- key: string
+		- [in] custom fieldのkey、custom keyは“A～Z、a～z、0～9、- \_”の文字を含み、アルファベットまたは数字で始まる必要があります。
+	- value:string
+		- [in] custom fieldの値
+- Note
+	- 次のkeywordは、SDKで使用中のため使用できません。
+		- projectName
         - projectVersion
         - host
         - body
@@ -128,49 +131,47 @@ public static void RemoveAllCustomFields()
         - NeloSDK
         - NetworkType
         - DeviceModel
-    - DeviceID
+		- DeviceID
         - @logType
-  - When the value of a custom field is NULL or empty, SDKs do not send the field to a server.
+	- custom filedの値がNULLまたは空の場合、SDKsは該当フィールドをserverに転送しません。
 
-  ### Lock Host
+### Hostロック設定
 
-  ```
-  		public static SetEnableHost(bool flag)
-  ```
+```
+		public static SetEnableHost(bool flag)
+```
 
-  	- true : Get an IP address and save in the host field.
-  	- false: Do not get an IP address.
+	- true：ip addressを取得し、hostフィールドに保存します。
+	- false：ip addressを取得しません。
 
-
-### Manage Default Setting
+### 基本設定管理
 
 ```
 public static void SetLogSource(string value)
 public static string GetLogSource()
 ```
 
-- Get or newly specify a log source.
+- ログソースの取得や新規指定を行います。
 
 ```
 public static void SetLogType(string value)
 public static string GetLogType()
 ```
 
-- Get or newly specify a log type.
+- ログタイプの取得や新規指定を行います。
 
-### Filter Levels
-- In Unity SDK, send logs of a FATAL level only by default setting. In ERROR or WARN levels, many logs may occur due to variables (such as time, route, and progress level.).
-  - Send Error: Send ERROR-level logs occurred at a system.
-  - Send Warning: Send WARN-level logs occurred at a system.
-  - Send Debug Error: Send ERROR-level logs induced by a user.
-  - Send Debug Warning: Send WARN-level logs induced by a user.
+### LEVELフィルタ
 
+- Unity SDKでは、Default設定でFATALレベルのログのみを転送します。 Error、Warningレベルのログには、変数値(時間、パス、進行度など)の挿入により多くのログが発生することがあります。
+	- Send Error：システムで発生したERRORレベルのログを転送します。
+	- Send Warning：システムで発生したWARNレベルのログを転送します。
+	- Send Debug Error：ユーザーが発生させたERRORレベルのログを転送します。
+	- Send Debug Warning：ユーザーが発生させたWARNレベルのログを転送します。
 
-### Example of API Use
+### API使用例
+	- html > index.htmlを参照してください。
 
-- Refer to **html > index.html**.
-
-### Send Logs
+### ログ転送
 
 ```
 //send info log message
@@ -190,8 +191,8 @@ public static void Error(string strMsg)
 ```
 
 - Parameters
-  - strMsg: string
-    - [in] Log messages to send
+	- strMsg: string
+		- [in]転送するlogメッセージ
 
 ### Handled Exception
 
@@ -220,9 +221,9 @@ try{
 }
 ```
 
-- Send Exception occurred at try&catch.
+- try&catchで発生したExceptionを転送します。
 
-### Crash Callbacks  
+### クラッシュコールバック
 
 ```
 public void Crash_Send_Complete_Callback(string message) {
@@ -233,66 +234,68 @@ void Start() {
 	LogNCrashCallBack.ExceptionDelegate += Crash_Send_Complete_Callback;
 }
 ```
+- ExceptionDelegateは、Unity Csharpで発生したCrashをサーバーに転送した後に呼び出されるコールバックです。<br>
+ネイティブCrashの場合は呼び出されません。
 
-- The ExceptionDelegate callback is called after crashes in Unity CSharp are sent to server: it is not called for native crashes.
-
-### Set User IDs
+### ユーザーID設定
 
 ```
 public static void SetUserId(string userID)
 public static string GetUserID()
 ```
-- Must set the value to get statistics per user.
-- Parameters
-  - userID: string
-    - [in] User ID to sort out users
+- ユーザーごとの統計資料を取得するには、設定する必要があります。
+- Parameter
+	- userID: string
+		- [in]各ユーザーを区分するuser id
 
-### Remove Duplicates
+### 重複除去モード設定
 
-The Remove Duplicates logic has been applied to general logs for 2.4.0 or higher SDKs: the logic is enabled with initialization.
+2.4.0以上のSDKから、一般ログに重複除去ロジックが適用されました。初期化時に重複除去ロジックが有効になります。
 
-In the case of general logs, do not send logs that have the same content in the body and logLevel.
+一般ログの場合、bodyとlogLevelが同じログが発生した場合、転送しません。
 
-For crash logs, do not send logs that have the same stackTrace and condition values.
+クラッシュログの場合、stackTraceとconditionの値が同じログが発生した場合、転送しません。
 
-The function may be disabled by using the function below, after initialization.
+不要な場合は、初期化後に下記の関数を使って機能を無効化できます。
 
 ```
 public static void SetDeduplicate(bool flag)
 ```
 
-true: (Default) Remove duplicates is enabled. <br>
-false: Remove duplicates is disabled.
+true：(Default値)重複除去ロジックを有効にする<br>
+false：重複除去ロジックを無効にする
 
-## Build
+## iOS buildする
 
-1. Click **File > Build Settings**.
+1.File->Build Settingsをクリック。
 
 ![](http://static.toastoven.net/prod_logncrash/image023.png)
 
 ![](http://static.toastoven.net/prod_logncrash/image024.png)
 
-- Select **iOS** and click **Player Settings**.
+- iOS Platformを選択し、Player Settingsをクリックします。
 
 ![](http://static.toastoven.net/prod_logncrash/image025.png)
 
-- Set **Target iOS Version**: select Simulator or **Device SDK**, for **SDK Version**, depending on your usage, and click **Build** in **Build Settings**.
+- Target iOS Versionを設定し、Simulatorを使用する場合はSDK VersionでSimulator SDKを、 deviceを使用する場合はDevice SDKを選択してBuild settingsのBuildボタンをクリックします。
 
-2. Select a route to save build project, and choose **Save**. Then, your Xcode project is created in Unity.
+2.Buildされたプロジェクトが保存されるパスを選択し、Saveを選択したら、UnityでXcode projectを作成します。
 
 ![](http://static.toastoven.net/prod_logncrash/image026.png)
 
 ![](http://static.toastoven.net/prod_logncrash/image027.png)
 
-3. Open the newly-created Xcode project in Xcode.
+3.作成されたXcode projectをXcodeで開きます。
 
-## Add App Transport Security (ATS) in iOS
-- ATS is provided to secure safe communication between apps and networks introduced in iOS9 and OSX10.11, by allowing safely encrypted https communications only and blocking unsafe https/http communications. In Log & Crash Search where communication using http protocol is under trial, settings must be added as below to info.plist.
 
-For detailed settings, refer to the link as below:
-- Apple Developer [iOS 9.0](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html)
+## iOSでATS(App transport Security)を追加する
+- ATSは、iOS9、OS X 10.11で導入されたアプリとネットワーク間の安全な通信を保障するための機能で、安全に暗号化されたhttps通信のみを許可し、安全ではない水準のhttps/http通信を遮断する機能です。Log & Crash Searchではhttpプロトコルを使用して通信を試行する際、info.plistに下記のような設定を追加する必要があります。
 
-1. How to Allow All https
+詳細な設定は、下記のリンクを参照してください。
+- https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html
+
+
+1.全てのhttpを許可する方法
 
 ```
 <key> NSAppTransportSecurity </key>
@@ -302,7 +305,7 @@ For detailed settings, refer to the link as below:
 </dict>
 ```
 
-2. How to Allow Specific Domains only
+2.特定ドメインを許可する方法
 
 ```
 <key> NSAppTransportSecurity </key>
@@ -325,42 +328,43 @@ For detailed settings, refer to the link as below:
 </dict>
 ```
 
-3. Automatic ATS Setting
-- **Assets > Toast > LogNCrash > Editor > post_process.py** has a code to automatically add api-logncrash.cloud.toast.com and setting-logncrash.cloud.toast.com to info.plist for an iOS build.
+3.ATS自動設定機能
 
-## Interpret iOS Native Crashes
+- Assets > Toast > LogNCrash > Editor > post_process.pyファイルには、iOSビルド時、info.plistにapi-logncrash.cloud.toast.comとsetting-logncrash.cloud.toast.comを自動的に追加するコードが挿入されています。
 
-- Unity iOS has crashes that occur in Unity Engine or iOS Native.   
-- For Unity crashes, symbol files are not required as crash information is collected in string.
-- For iOS crashes, symbol files are required to interpret crash information which is collected as an address value.
-- Open Xcode and click **Windows/Organizer**.
-- Click a build result, right-click open and click **Show in Finder**.
-  ![](http://static.toastoven.net/prod_logncrash/ios_13.png)   
-- Click the result, right-click open, and click **See Package**.  
-  ![](http://static.toastoven.net/prod_logncrash/ios_14.png)
-- Compress .dSYM to .zip and register it to **Web Console > Analytic > Log & Crash Search > Settings > Symbol Files** tab.
-  ![](http://static.toastoven.net/prod_logncrash/ios_15.png)
+## iOS Native Crashを解析する
+- Unity iOSのCrashは、Unity Engineで発生するCrashと、iOS Naitveで発生するCrashに区分されます。
+- Unityで発生したCrashの場合、Crash情報がStringで収集されるため、Symbolファイルが必要ありません。
+- iOSで発生したCrashの場合、Crash情報がアドレス値で収集されるため、これを解析するためのSymbolファイルが必要です。
+- Xcodeを実行し、Windows > Organizerをクリックします。
+![](http://static.toastoven.net/prod_logncrash/ios_12.png)
+- ビルドした結果物をクリックした後、右クリックしてShow in Finderをクリックします。
+![](http://static.toastoven.net/prod_logncrash/ios_13.png)
+- 結果物をクリックし、右クリックして'パッケージ内容参照'をクリックします。
+![](http://static.toastoven.net/prod_logncrash/ios_14.png)
+- .dSYMを.zipに圧縮して、Webコンソール > Analytic > Log & Crash Search > Settings > シンボルファイルタブに登録します。
+![](http://static.toastoven.net/prod_logncrash/ios_15.png)
 
-## Caution for iOS Unity Crash
+## iOS Unity Crash注意事項
 
-- Crash logs are considered general logs, when they are not interpreted because symbol files are unavailable.
+- シンボルがなく、解析されていないCrashログは一般ログとして扱われます。
 
-## Use External CrashHandler
+## 外部CrashHandlerを使用する
 
-- Existing SDKs have deployed logMessageReceived during initialization to register CrashHandler of Unity for a LogNCrash callback function.
-- The structure has been modified to allow applications to be made both for CrashHandler and external CrashHandler (refer to MultihandlerSample).
+- 既存SDKでは初期化段階でlogMessageReceivedなどを使用してUnityのCrashHandlerをLogNCrash専用Callback関数に登録して使用しました。
+- 外部CrashHandlerのように使用する場合があり、一緒に適用できるように構造を修正しました。(MultihandlerSample参照)
 
-### Applications
+### 適用方法
 
-- Send a false parameter to the LogNCrash.SetCrashHandler function to prevent CrashHandler from being automatically registered.
-- Must set before the Initialize function.
+- LogNCrash.SetCrashHandler関数にfalseをパラメータとして渡し、自動的にCrashHandlerが登録されることを防ぎます。
+- Initialize関数の前に設定されている必要があります。
 
 ```
 LogNCrash.SetCrashHanlder (false);
 LogNCrash.Initialize ();
 ```
 
-- Then, use the LogNCrash.unity3dHandleException function to deliver CrashHandler parameters to LogNCrash object.
+- 以降、LogNCrash.unity3dHandleException関数を使用して、CrashHandlerのパラメータをLogNCrashオブジェクトに渡します。
 
 ```
 void OnEnable()
@@ -376,10 +380,10 @@ void HandleLog(string logString, string stackTrace, LogType type)
 }
 ```
 
-## Diverge Build Environment with AssetDataBase
+### AssetDataBaseを活用したビルド環境分岐
 
-- Click **LogNCrash > Edit Settings** in the menu and create AssetDataBase to save simple data.
-- For a build using BuildPipeline.BuildPlayer, diverge the build environment by using LogNCrashSettings.Setter_BuildType and LogNCrashSettings.Getter_BuildType.
+- メニューバーのLogNCrash > Edit Settingsをクリックすると、簡単なデータを保存できるAssetDataBaseが作成されます。
+- BuildPipeline.BuildPlayerでBuildを行う場合、LogNCrashSettings.Setter_BuildTypeとLogNCrashSettings.Getter_BuildTypeを活用してビルド環境を分岐します。
 
 ```
 using UnityEditor;
@@ -418,7 +422,7 @@ public class lncAndroidBuildPipeline: MonoBehaviour
 }
 ```
 
-- LogNCrash operations depend on values saved in AssetDataBase by order.
+- コマンドに応じて、AssetDataBaseに保存された値でLogNCrashの動作を決定します。
 
 ```
 using Toast.LogNCrash.Implementation;
@@ -434,7 +438,7 @@ void Start () {
 }
 ```
 
-- There are five build types.
+- build typeは全部で5個で構成されています。
 
 ```
 public enum BuildType{

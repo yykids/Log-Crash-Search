@@ -1,40 +1,39 @@
-## Analytics > Log & Crash Search > iOS SDK Guide
+﻿## Analytics > Log & Crash Search > iOS SDK使用ガイド
 
-> [Deprecated] 
-> Log & Crash iOS SDK is not supported any more. 
-> Please use [TOAST SDK](http://docs.toast.com/ja/TOAST/ja/toast-sdk/overview/). 
+> [Deprecated]
+> Log & Crash iOS SDKバージョンは、今後サポートされません。
+> [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)を利用してください。
 
-> [Notice]
-> Crash logs from new devices using the arm64e architecture (iPhone XS, XR, XS Max, and iPad Pros 3rd) can only count the number of occurrences, and analysis of crash content is not yet supported.
-> We will provide analysis capabilities for new devices in the near future.
+> [告知]
+> arm64eアーキテクチャを使用する新規端末(iPhone XS、XR、XS Max、iPad Pros 3rd)で発生したクラッシュログは、発生件数の集計のみ可能で、クラッシュ内容の分析はまだサポートされていません。
+> 近日中に新規端末向けの分析機能を提供したいと思います。
 
-Log & Crash iOS SDK sends logs to a Log & Crash Search collector server.
+Log & Crash iOS SDKは、Log & Crash Search収集サーバーにログを転送する機能を提供します。  
+Log & Crash iOS SDKの特徴・利点は次のとおりです。  
 
-Below describe benefits and features of Log & Crash iOS SDK.
+- ログを収集サーバーに転送します。
+- アプリで発生したクラッシュログを収集サーバーに転送します。
+- Log & Crash Searchで、転送されたログを照会および検索ができます。
+- マルチスレッド環境で動作します。
 
-- Send logs to a collector server.
-- Send crash logs occurred in an app to a collector server.
-- Retrieve and search logs sent from Log & Crash Search.
-- Operate in a multi-threading environment.
+## サポート環境
+- iOS 8.0以上
 
-## Supporting Environment
-- iOS 8.0 or higher
+## ダウンロード
 
-## Download
-
-Go to [TOAST Document](http://docs.toast.com/ja/Download/) to download **iOS SDK(native)**.
+[TOAST Document](http://docs.toast.com/ko/Download/)でiOS SDK(native)をダウンロードできます。
 
 ```
-Click [DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS SDK] 
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [iOS SDK]をクリック
 ```
 
-## How to Use SDKs
+## SDKの使用方法
 
-### Add Header Files
+### ヘッダファイルの追加
 
-Add #import <LogNCrashSDK/LogNCrashSDK.h>.
+\#import <LogNCrashSDK/LogNCrashSDK.h\> 追加します。
 
-### Initialize
+### 初期化
 
 ```
 (bool) init:(NSString *)server ofAppKey:(NSString*)appName withVersion:(NSString*)appVersion;
@@ -42,37 +41,37 @@ Add #import <LogNCrashSDK/LogNCrashSDK.h>.
 (bool) init:(NSString *)server ofAppKey:(NSString*)appName withVersion:(NSString*)appVersion forUserId:(NSString*)userId enableSyncStart:(bool)flag;
 ```
 
-- Initialize TLCLog.
-- Call is required to operate TLCLog properly.
-- Must enter userID to obtain statistics of each user.
-- Parameters
-  - server: Collector server address
-  - appKey: Appkey
-  - version: App version
-  - userId: User ID
-  - enableSyncStart: Save logs, which occur when it is true, in queue without sending to server before startSendThread is called. Nevertheless, if a crash occurs, unlock ThreadLock and send the logs.
-- Return value
-  - userId: User ID
-  - False for failure
+- TLCLogを初期化します。
+- TLCLog機能が正常に動作するには、必ず呼び出す必要があります。
+- ユーザー別統計を希望する場合、userIdを入力する必要があります。
+- パラメータ
+	- server：収集サーバーアドレス
+	- appKey：アプリケーションキー
+	- version：アプリバージョン
+	- userId：ユーザーID
+	- enableSyncStart： trueの場合、発生したログはstartSendThreadが呼び出されるまでサーバーに転送せず、キューに保存します。ただしCrashが発生した場合は、ThreadLockを解除してログを転送します。
+- 戻り値
+	- userId：ユーザーID
+	- 失敗時はfalse
 
-### Unlock SendThread
+### SendThreadのロック解除
 
 ```
 	(void) startSendThread;
 ```
 
-- Unlock SendThread.
+- SendThreadのロック状態を解除します。
 
-### Lock Host
+### Hostのロック設定
 
 ```
 	(void) enableHost;
 ```
 
-- true: Get an ip address and save it in the host field.
-- false: Do not get an ip address.
+- true ： ip addressを取得して、hostフィールドに保存します。
+- false： ip addressを取得しません。
 
-### Send Logs
+### ログを転送
 
 ```
 (void) debug:(NSString*)errorCode withMessage:(NSString*)message;
@@ -90,13 +89,13 @@ Add #import <LogNCrashSDK/LogNCrashSDK.h>.
 (void) warn:(NSString*)errorCode withMessage:(NSString*)message atLocation:(NSString*)location;
 ```
 
-- Send logs to a collector server at the specified log level.
-- Parameters
-  - errorCode: Error code
-  - message: Log messages
-  - location: Error location
+- 指定されたログレベルで収集サーバーにログを転送します。
+- パラメータ
+	- errorCode：エラーコード
+	- message：ログメッセージ
+	- location：エラー位置
 
-### Specify Custom Keys
+### カスタムキーを指定する
 
 ```
 (void) setCustomField:(NSString*)value forKey:(NSString*)key;
@@ -104,72 +103,70 @@ Add #import <LogNCrashSDK/LogNCrashSDK.h>.
 (void) removeCustomFieldForKey:(NSString*)key;
 ```
 
-- Add, delete, and delete all custom keys.
-- When "nil" is set as custom key, ignore the set value; if "nil" is set as the value, set as "-".
-- The custom key must start with an upper or lower-case alphabet; only alphabets, numbers, and \'-\', \'\' can be used. (\^\[a-zA-Z\]\[a-zA-Z0-9-\_\]\*\$)
-- Following names cannot be used, irrespective of upper or lower case:
-  - projectName, projectVersion, host, logType, logSource, sendTime, logTime, logLevel, UserID
-  - Platform, DeviceModel, NetworkType, Carrier, CountryCode, DmpData, errorCode, Location, body, SessionID.
+- カスタムキーを追加、削除、全部削除機能を提供します。
+- カスタムキーに"nil"を設定すると設定値を無視し、値に"nil"を設定すると"-"に設定します。
+- カスタムキーは大文字/小文字で始まり、大文字/小文字、数字、'-'、'\_'のみ使用できます。(^[a-zA-Z][a-zA-Z0-9-_]\*$)
+- カスタムキーは大文字/小文字に関わらず、次の名前は使用できません。
+	- projectName, projectVersion, host, logType, logSource, sendTime, logTime, logLevel, UserID
+	- Platform, DeviceModel, NetworkType, Carrier, CountryCode, DmpData, errorCode, Location, body, SessionID
 
-### Remove Duplicates
+### 重複除去モード設定
 
-The Remove Duplicates logic has been applied to general logs from 2.4.0
-or higher SDKs.
+2.4.0以上のSDKから一般ログに重複除去ロジックが適用されました。
 
-When duplicate logging is enabled, do not send logs that have the same
-content in the body and logLevel.
+重複ログ機能が有効になっている場合、bodyとlogLevelの内容が同じログが発生した時は転送しません。
 
 ```
 public static void setLogDeduplicate(bool enable)
 ```
 
-true: (Default) Remove duplicates is enabled<br>
-false: Remove duplicates is disabled
+true：(Default値)重複除去ロジック有効化<br>
+false：重複除去ロジックを無効にする
 
-### Manage Default Setting
+### 基本設定管理
 
 ```
 (void) setUserId:(NSString*)userId;
 ```
 
-- Set user ID.
+- ユーザーIDを設定します。
 
 ```
 (void) setLogType:(NSString*)logType;
 ```
 
-- Set a log type.
+- ログタイプを設定します。
 
 ```
 (void) setLogSource:(NSString*) logSource;
 ```
 
-- Set a log source.
+- ログソースを設定します。
 
-## Automatically Collected Information
+## 自動収集される情報
 
-Below information is automatically collected by Log & Crash SDK and can be found in Log & Crash Search. In case data collection is not available at the time of log delivery, values may not be found.  
+下記の情報は、Log & Crash SDKにより自動的に収集され、Log & Crash Searchで確認できます。ログ転送時点で情報収集ができない場合や、値を表示できない場合に発生することがあります。
 
 - iOS
-  \- Platform: iOS version information
-  \- DeviceModel: iPhone model
-  \- Carrier: User's telecommunication service provider
-  \- CountryCode: User's country code of user's telecommunication service provider
-  \- NetworkType: Wi-Fi or Cellular("No Connection\" if network use is unavailable when log delivery event occurs)
+	\- Platform：iOSバージョン情報
+	\- DeviceModel：iPhoneモデル情報
+	\- Carrier：ユーザーのサービスプロバイダー
+	\- CountryCode：ユーザーのサービスプロバイダーのISO国コード
+	\- NetworkType： Wi-FiまたはCellular (ログ転送イベント発生時点でネットワーク使用ができない場合は"No Connection")
 
-## Interpret iOS Crashed
-- For iOS crashes, symbol files are required to interpret crash information which is collected as an address value.
+## iOS Crashを解析する
+- iOSで発生したCrashの場合、Crash情報がアドレス値に収集されるため、これを解析するためのSymbolファイルが必要です。
 
-- Open Xcode and click **Windows \> Organizer**.
+- Xcodeを実行してWindows > Organizerをクリックします。
 
-- Click a build result, right-click open, and click **Show in Finder**.
-  ![](http://static.toastoven.net/prod_logncrash/13.png)
+- ビルドした結果をクリックして、右クリックしてShow in Finderをクリックします。
+![](http://static.toastoven.net/prod_logncrash/13.png)
 
-- Click the result and right click open **See Package**.
-  ![](http://static.toastoven.net/prod_logncrash/14.png)
+- 結果物をクリックし、右クリックして'パッケージ内容表示'をクリックします。
+![](http://static.toastoven.net/prod_logncrash/14.png)
 
-- Compress .dSYM to .zip and register it to Web Console> Analytic > Log & Crash Search > Settings > Symbol Files tab.
+- .dSYMを .zipに圧縮し、Webコンソール > Analytic > Log & Crash Search > Settings > シンボルファイルタブに登録します。
 
-## Note for iOS Unity Crash
+## iOS Unity Crash注意事項
 
-- Crash logs without registered symbol files are classified as general logs.
+- シンボルがなくて解析されなかったCrashログは、一般ログとして扱われます。

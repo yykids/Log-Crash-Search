@@ -1,10 +1,10 @@
-## Analytics > Log & Crash Search > API Guide
+﻿## Analytics > Log & Crash Search > APIガイド
 
-Logs can be sent to the Log & Crash Collector server by using HTTP protocol, in the JSON format as below:
+HTTPプロトコルを使用して、Log & Crash収集サーバーにログを転送でき、下記のようなJSON形式で使用します。
 
 ```
 {
-	"projectName": "__Appkey__",
+	"projectName": "__アプリケーションキー__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
 	"body": "This log message come from HTTP client.",
@@ -14,70 +14,70 @@ Logs can be sent to the Log & Crash Collector server by using HTTP protocol, in 
 }
 ```
 
-[Default Parameters]
+[基本パラメータ]
 
 ```
-Parameters for Log Search
+Log Searchのためのパラメータ。
 
-projectName: string, required
-	[in] Appkey
+projectName: string、必須
+	[in]アプリケーションキー。
 
-projectVersion: string, required
-	[in] Verwion. User can specify: include "A~Z, a~z, 0~9,-._" only.
+projectVersion：string、必須
+	[in]バージョン。ユーザーが指定できる。"A～Z、a～z、0～9、-、_"のみ使用できる。
 
-body: string, optional
-	[in] Log messages.
+body：string、オプション
+	[in]ログメッセージ。
 
-logVersion: string, required
-	[in] Log format version. "v2".
+logVersion：string、必須
+	[in]ログフォーマットバージョン。 "v2"。
 
-logSource: string, optional
-	[in] Log source. Used to filter at Log Search. "http", if not defined.
+logSource：string、オプション
+	[in]ログソース。Log Searchでフィルタリングのために使用される。定義されていない場合は"http"。
 
-logType: string, optional
-	[in] Log type. Used to filter at Log Search. "log", if not defined.
+logType：string、オプション
+	[in]ログタイプ。 Log Searchでフィルタリングのために使用される。定義されていない場合は"log"
 
-host: string, optional
-	[in] Address of the device sending logs: if not defined, fill automatically with peer-address of the collector server.
+host：string、オプション
+	[in]ログを送る端末のアドレス。定義されていない場合は、収集サーバーでpeer-addressを使用して自動的に埋める。
 ```
 
-[Other Parameters]
+[その他のパラメータ]
 
 ```
-sendTime; string, optional
-	[in] Sending time of a device. Enter in Unix Timestamp
+sendTime;string、オプション
+	[in]端末が転送した時間。入力時、Unix Timestampで入力
 
-logLevel; string, optional
-	[in] For Syslog events.
+logLevel; string、オプション
+	[in] Syslog event用。
 
-UserBinaryData; string, optional
-	[in] Display [Download|Show] link on the log search screen, and send with values encoded with base64.
+UserBinaryData; string、オプション
+	[in]ログ検索画面で[ダウンロード|参照]リンク表示、base64エンコードされた値を入れて転送。
 
-UserTxtData; string, optional
-  [in] Display [Download|Show] link on the log search screen, and send with values encoded with base64.
+UserTxtData; string、オプション
+  [in]ログ検索画面で[ダウンロード|参照]リンク表示、base64エンコードされた値を入れて転送。
 
-txt*; string, optional
-	[in] Save fields starting with txt (such as txtMessage and txt description) in analyzed fields. Search is available with a part of character strings of the field value on the log search screen.
+txt*; string、オプション
+	[in]フィールド名がtxtで始まるフィールド(txtMessage、txt_descriptionなど)は、分析(analyzed)フィールドに保存されます。ログ検索画面でフィールド値の一部の文字列で検索ができます。
 
-long*; long, optional
-    [in] Save fields starting with long (such as longElapsedTime and long elapsed time) in the long-type fields. Search of long-type range is available on the log search screen.
+long*; long、オプション
+    [in]フィールド名がlongで始まるフィールド(longElapsedTime、long_elapsed_timeなど)は、longタイプフィールドに保存されます。ログ検索画面でlongタイプのRange検索ができます。
 
-double*; double, optional
-    [in] Save fields starting with double (such as doubleAvgScore and double avg score) in the double-type fields. Search of double-type range is available on the log search screen.
+double*; double、オプション
+    [in]フィールド名がdoubleで始まるフィールド(doubleAvgScore、double_avg_scoreなど)は、doubleタイプのフィールドに保存されます。ログ検索画面でdoubleタイプのRange検索ができます。
 ```
 
-[Custom Fields]
+[カスタムフィールド]
 
 ```
-A custom field can be named with "A-Z, a-z, 0-9, -, _", starting with "A-Z, a-z".
+カスタムフィールド名は、"A-Z、a-z"で始まり、"A-Z、a-z、0-9、-、_"を使用できます。
 
-Cannot be redundantly named with default parameters of the above or crash parameters.
+上の基本パラメータ、 Crashパラメータと名前が重複してはいけません。
 
-The length of a custom field is limited to 2kbytes, and if it exceeds 2kbytes, the field must be created with txt* prefix.
+カスタムフィールドの長さは2kbyteに制限され、2kbyte以上を転送すると、txt* prefixを付けてフィールドを作成する必要があります。
 ```
 
-[Return Value]
-Return as below in the collector server:
+[戻り値]  
+収集サーバーから次のように返されます。
 
 ```
 Content-Type: application/json
@@ -91,22 +91,22 @@ Content-Type: application/json
 }
 
 isSuccessful: boolean
-	[out] true if successful, false if failed
+	[out]成功時はtrue、失敗時はfalse
 
 resultCode: int
-	[out] 0 if successful, error code if failed
+	[out]成功時は0、失敗時はエラーコード
 
 resultMessage: string
-	[out] "Success" if successful, error message if failed
+	[out]成功すると"Success"、失敗するとエラーメッセージ
 ```
 
-[Bulk Delivery]
-For bulk delivery, send in the JSON array format to the collector server.
+[Bulk転送]
+Bulk転送のためには、JSON array形式で収集サーバーに転送します。
 
 ```
 [
     {
-        "projectName": "__Appkey__",
+        "projectName": "__アプリケーションキー__",
         "projectVersion": "1.0.0",
         "logVersion": "v2",
         "body": "This log message come from HTTP client. (1/2)",
@@ -115,7 +115,7 @@ For bulk delivery, send in the JSON array format to the collector server.
         "host": "localhost"
     },
     {
-        "projectName": "__Appkey__",
+        "projectName": "__アプリケーションキー__",
         "projectVersion": "1.0.0",
         "logVersion": "v2",
         "body": "This log message come from HTTP client. (2/2)",
@@ -127,13 +127,15 @@ For bulk delivery, send in the JSON array format to the collector server.
 ```
 
 * Note
-	* In the web, logs are arrayed in the order of receiving time. However, for bulk delivery, the receiving time is considered the same for all logs, and the user’s sending time cannot be maintained.
-	* To maintain the order of sending time of logs for bulk delivery, add the IncBulkIndex field to each log and specify the integer value before delivery. Then, the server shall show them in the descending order based on such value.  
+		* webでは受信時間基準でログをソートして表示しますが、bulk転送の場合、同じ時間に受信したとみなされてユーザーが
+		  転送した順序が維持されません。
+		* Bulkで転送するログの順序関係を維持するためには、ログにlncBulkIndexフィールドを追加して、integer値を指定して転送すると
+		サーバーではこの値を基準に、降順で表示します。
 
 ```
 [
     {
-        "projectName": "__Appkey__",
+        "projectName": "__アプリケーションキー__",
         "projectVersion": "1.0.0",
         "logVersion": "v2",
         "body": "first message",
@@ -143,7 +145,7 @@ For bulk delivery, send in the JSON array format to the collector server.
         "lncBulkIndex":1
     },
     {
-        "projectName": "__Appkey__",
+        "projectName": "__アプリケーションキー__",
         "projectVersion": "1.0.0",
         "logVersion": "v2",
         "body": "second message",
@@ -154,9 +156,9 @@ For bulk delivery, send in the JSON array format to the collector server.
     }
 ]
 ```
-	* For deliveries like the above, the server shows in the order of second message -> first message.
+	* 上の例のように転送した場合、サーバーではsecond message -> first messageの順序で表示します。
 
-In the collector server, each result value is returned in the JSON array format in the order of delivery.
+収集サーバーでは転送された順序にしたがって、それぞれの結果値をJSON array形式で再び返します。
 
 ```
 Content-Type: application/json
@@ -183,36 +185,36 @@ Content-Type: application/json
 }
 
 total: int
-    [out] Total number of delivered logs
+    [out]転送された全体のログ数
 
 errors: int
-    [out] Number of errors in delivered logs
+    [out]転送されたログ中のエラー数
 
 resultList: array
-    [out] Result value of each delivered log
+    [out]転送された各ログの結果値
 ```
 
-> Caution
-> 1. To send logs in JSON/HTTP to the Log & Crash Collector server, use the address as follows:
-> Log & Crash: api-logncrash.cloud.toast.com
+> 注意 
+> 1. JSON/HTTPでLog & Crash収集サーバーにログを転送する時、次のアドレスを使用する必要があります。
+> Log & Crash: api-logncrash.cloud.toast.com  
 >
-> Method of Delivery: POST
+> 転送方式：POST  
 >
-> URI: /v2/log
+> URI: /v2/log  
 >
-> Content-Type: "application/json"
-> 2. Check, before log delivery, if a project has been registered to Log & Crash Search.
-> 3. Field name "logTime" is occupied by Log & Crash Search system. User cannot set "logTime" field.
-> 4. Keep note that a key name has no whitespace character. For example, “UserID” and “UserID ” are considered two different keys.
+> Content-Type: "application/json"  
+> 2. ログを転送する前に、Log & Crashにプロジェクトを登録したか確認する。
+> 3. "logTime"は、Log & Crashシステムで使用する。該当キーを使用した時、Log & Crashでは無視する。
+> 4. キー名にスペースが入らないように注意する必要がある。例えば"UserID"と"UserID "は別々のキーとして認識される。
 
-## Samples
+## サンプル
 
-[Normal log delivery by using curl]
+[curlを使用して正常にログを転送した場合]
 
 ```
-//Deliver logs by using POST method
+//POSTメソッドを使用してログを転送
 $ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.toast.com/v2/log' -d '{
-	"projectName": "__Appkey__",
+	"projectName": "__アプリケーションキー__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
 	"body": "this log message come from http client, and it is a simple sample.",
@@ -221,12 +223,12 @@ $ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.to
 }'
 ```
 
-[Failed log delivery]
+[ログの転送に失敗する場合]
 
 ```
-//When URL is incorrect (log -> loggg)
+//URLが無効な場合(log -> loggg)
 $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.com/v2/loggg" -d '{
-	"projectName": "__Appkey__",
+	"projectName": "__アプリケーションキー__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
 	"body": "this log message come from http client, and it is a simple sample.",
@@ -235,9 +237,9 @@ $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.c
 }'
 
 
-//When a wrong field key (_xxx) is used
+//無効なフィールドキーを使用した場合(_xxx)
 $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.com/v2/log" -d '{
-	"projectName": "__Appkey__",
+	"projectName": "__アプリケーションキー__",
 	"projectVersion": "1.0.0",
 	"logVersion": "v2",
 	"body": "this log message come from http client, and it is a simple sample.",
@@ -245,17 +247,17 @@ $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.c
 	"logType": "nelo2-http",
 	"_xxx": "this is a invalid key"
 	}'
-The custom key must include "A~Z, a~z, 0~9, -_" and start with an alphabet.
-The custom key must include "A~Z, a~z, 0~9, -_" and start with an alphabet.
+カスタムキーは"A～Z、a～z、0～9、-_"を含め、アルファベットで始まる必要があります。
+カスタムキーは"A～Z、a～z、0～9、-_"を含め、アルファベットで始まる必要があります。
 ```
 
-[Bulk log delivery using curl]
+[curlを使用してbulkログを転送した場合]
 
 ```
-//Deliver logs by using POST method
+//POSTメソッドを使用してログを転送
 $ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.toast.com/v2/log' -d '[
     {
-        "projectName": "__Appkey__",
+        "projectName": "__アプリケーションキー__",
         "projectVersion": "1.0.0",
         "logVersion": "v2",
         "body": "This log message come from HTTP client, and it is a simple bulk sample. (1/2)",
@@ -263,7 +265,7 @@ $ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.to
         "logType": "nelo2-log"
     },
     {
-        "projectName": "__Appkey__",
+        "projectName": "__アプリケーションキー__",
         "projectVersion": "1.0.0",
         "logVersion": "v2",
         "body": "This log message come from HTTP client, and it is a simple bulk sample. (2/2)",

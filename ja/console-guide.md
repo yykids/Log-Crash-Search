@@ -1,381 +1,392 @@
-## Analytics > Log & Crash Search > Console User Guide
+﻿## Analytics > Log & Crash Search > コンソール使用ガイド
 
-> [Notice]
-> Crash logs from new devices using the arm64e architecture (iPhone XS, XR, XS Max, and iPad Pros 3rd) can only count the number of occurrences, and analysis of crash content is not yet supported.
-> We will provide analysis capabilities for new devices in the near future.
+> [告知]
+> arm64eアーキテクチャを使用する新規端末(iPhone XS、XR、XS Max、iPad Pros 3rd)で発生したクラッシュログは、発生件数の集計のみ可能で、クラッシュ内容の分析はまだサポートされていません。
+> 近日中に新規端末向けの分析機能を提供したいと思います。
 
-Log & Crash Search can be applied in the following order:
+Log & Crash Searchは、次のような順序で使用できます。
 
-- Enable Service
-Create a project on the console and enable Log & Crash Search.
-- Send Logs
-Start sending logs via Log & Crash Search SDK.
-- Check Logs
-  Go to **Log Search** or **App Crash Search** to find logs in many ways, like a chart or search function.
+- サービス有効化
+プロジェクトを作成し、プロジェクトを選択した後、 Log & Crash Searchを有効化します。
+- ログ転送
+Log & Crash Search SDKを通して、ログの転送を開始します。
+- ログ確認 
+ログを転送した後は、**ログ検索**または**アプリクラッシュ検索**画面でチャートや検索など、多様な方式でログを確認できます。
 
-## Select Projects
+## プロジェクト選択
 
-Access console and select an organization and project from menu on the left. When there is no organization or project available, create one.
-- Select **ORGANIZATION > PROJECT** from the menu on the left.
+コンソールに接続し、左側メニューを利用して組織(Organization)とプロジェクト(Project)を選択します。組織やプロジェクトがない場合は、作成する必要があります。
+- 左側メニューから**ORGANIZATION > PROJECT**をクリックします。
 
-See the [TOAST Console Guide](https://docs.toast.com/ja/TOAST/ja/console-guide/) for how to create an organization and a project
+組織とプロジェクトの作成方法は[TOASTコンソール使用ガイド](https://docs.toast.com/ko/TOAST/ko/console-guide/)を参照してください。
 
-## Enable Services
+## サービス有効化
 
-While a project is selected, click **Service** on top of the screen and go to **Log & Crash Search** under **Analytics** and enable it. When a service is enabled, (v) is displayed by the service name.
+プロジェクト(Project)を選択した状態で、画面上部にある**サービス選択**ボタンをクリックして、**Analytics**の下**Log & Crash Search**をクリックします。サービスが有効になると、サービス名の横に選択(v)表示が現れます。
 
-> [Note]
-> Delivery becomes available in about five minutes after service is enabled.
+> [参考]  
+> サービスを有効にした後は、約5分後から転送できます。
 
-When Log & Crash Search is enabled, **Analytics > Log & Crash Search** shows on the menu, with the Appkey created.
+Log & Crash Searchが有効になると、左側メニューに**Analytics > Log & Crash Search**メニューが現れ、Appkeyが作成されます。
 
-## Check Appkey
+## Appkey確認
 
-To send logs, it is required to check Appkey.
+ログを転送するには、Appkeyを確認する必要があります。
 
-1. Click **Analytics > Log & Crash Search > Log Search** on the left navigation menu.
-2. Click **URL & Appkey** on top of the screen and check Appkey.
+1. 左側のメニューから、**Analytics > Log & Crash Search > ログ検索**をクリックします。
+2. コンソール画面上部の**URL & Appkey**ボタンをクリックすると、Log & Crash Search用Appkeyを確認できます。
 
-## Send Logs
+## ログ転送
 
-To send a log, Log & Crash Search SDK is required.
-You can download an SDK from **Analytics > Log & Crash Search** of [TOAST Downloads](https://docs.toast.com/ja/Download/)
+ログを転送するには、Log & Crash Search SDKが必要です。
+SDKは[TOAST Downloads](https://docs.toast.com/ko/Download/)ページの**Analytics > Log & Crash Search**でダウンロードできます。
 
-> [Note]  
-> When the log volume is small, the result can be applied in about five minutes.  
+> [参考]  
+> ログの量が少ない場合は、約5分後にログ転送の結果が反映されます。
 
-## Search Logs
+## ログ検索
 
-Logs can be searched by using Log Search.
+転送したログをLog Search機能を利用して検索してみましょう。
 
-1. Click **Analytics > Log & Crash Search > Log Search**.
-2. **Log Search** provides around-the-clock log-volume graphs with details.
+1. コンソール画面の左側にあるメニューから**Analytics > Log & Crash Search > ログ検索**をクリックします。
+2. **ログ検索**タブには、基本的に24時間のログ量のグラフと詳細内容が表示されます。
 
-![lcs_01_201812_en](https://static.toastoven.net/prod_logncrash/lcs_01_201812_en.png)
+![lcs_01_201812](https://static.toastoven.net/prod_logncrash/lcs_01_201812.png)
 
-Details of the **Log Search** screen are as below.
-![lcs_02_201812_en](https://static.toastoven.net/prod_logncrash/lcs_02_201812_en.png)
+**ログ検索**画面は、次のように構成されています。
 
-| Item | Description |
+![lcs_02_201812](https://static.toastoven.net/prod_logncrash/lcs_02_201812.png)
+
+| 項目 | 説明 |
 |---|---|
-| Search Query Input | Can apply Lucene grammar for the search of query field. <br/> (note: http://lucene.apache.org/core/2_9_4/queryparsersyntax.html)|
-| Time Conditions for Search Query | Configure time conditions for search queries. |
-| Log Search Result > Chart View | Print log search results in a bar graph; with a click, it shows the period to fit the unit on the right (e.g. 1Bar=1hour). |
-| Field Search Conditions | - host: Apply query to select one or more hosts when selecting a host which belongs to a project. <br/> - logLevel: Classified by log level (FATAL / ERROR / WARN / INFO / DEBUG) <br/> - logSource: Classified by user-defined log source. <br/> - logType: Classified by user-defined project name. <br/> - projectVersion: Classified by user-defined project version. <br/> - Click Show All Fields to apply other fields as search conditions |
-| Log Search Result > Log Records | Show details of a searched log. Click each item of a log output to change search queries. |
+| 検索クエリー入力 | クエリーフィールド検索はLucene文法を使用できます。 <br/> (参照：http://lucene.apache.org/core/2_9_4/queryparsersyntax.html)|
+| 検索対象期間 | 検索クエリーの期間条件を設定できます。 |
+| ログ検索結果 > チャート | ログ検索結果を棒グラフで表示し、クリックすると右側の単位(ex：1Bar=1hour)に合った期間を基準に表示します。 |
+| フィールド検索条件 | - Platform：ユーザーデバイスのOSおよびバージョンで区分<br/>- host：ホスト名やIPアドレスで区分<br/> - logLevel：ログレベルで区分(FATAL / ERROR / WARN / INFO / DEBUG)<br/> - logSource：ユーザーが設定したログソースで区分<br/> - logType：ユーザーが設定したプロジェクト名で区分<br/> - projectVersion：ユーザーが設定したプロジェクトバージョンで区分<br/><br/> - **Show all fields**をクリックして、別のフィールドを検索条件に追加できます。 |
+| ログ検索結果 > ログレコード | 検索したログの詳細内容が表示される部分です。表示されたログの各項目は、クリックして検索クエリーを変更できます。 |
 
-Search conditions of user configuration are reflected on the search query window, and you may save this query ([Save Queries]), or search by saved queries ([Select Saved Queries]).
+ユーザーが設定した検索条件は、検索クエリー入力ウィンドウに反映されますが、このクエリーを保存することもでき([クエリー保存])、保存されているクエリーを利用して検索することも([保存クエリー選択])できます。
 
-## Retrieve App Crash
+## アプリクラッシュ照会
 
-Crash information of Android and iOS devices can be retrieved through **Analytics > Log & Crash Search > App Crash Search**.
+Android、iOS端末のクラッシュ情報は、**Analytics > Log & Crash Search > アプリクラッシュ検索**で確認できます。
 
-### Retrieve Issues
 
-Select **Crashes** on **Error Type** of **Query Issues**, to check issues.
+### イシュー照会
+**イシュー照会**タブの**エラータイプ**で**Crashes**を選択すると、イシューを確認できます。
 
-![lcs_03_201812_en](https://static.toastoven.net/prod_logncrash/lcs_03_201812_en.png)
+![lcs_03_201812](https://static.toastoven.net/prod_logncrash/lcs_03_201812.png)
 
-Select **Handled** on **Error Type** of **Query Issues**, to check handled issues.
+**イシュー照会**タブの**エラータイプ**で**Handled**を選択すると、handledイシューを確認できます。
 
-![lcs_04_201812_en](https://static.toastoven.net/prod_logncrash/lcs_04_201812_en.png)
+![lcs_04_201812](https://static.toastoven.net/prod_logncrash/lcs_04_201812.png)
 
-|Item |	Description|
+|項目|	説明|
 |---|---|
-|Error Type| Classified into Crash occurred at a system and user-induced Handled at an exception block.|
-| Filter Conditions|	Status –Processing status of crash issues <br/> Recent – Retrieving filter of crash logs collected for the recent N days <br/> App Version – App version <br/> Tag – Tags <br/> Minimum Number of Occurrences – Retrieving filter of crashes with at least more than N times of occurrences <br/> Exception Type – Recent filter for each exception type <br/> Location – Retrieving filter for each location of crash occurrence |
-|Chart| Display the number of crash occurrences on a timeline chart.|
-|List of Issues| Print the list of issues. The order can be changed by using the list box in the upper right; the status can be changed by clicking the checkbox on the left.|
+|チャート| イシュー要約とクラッシュ発生件数をタイムラインチャートに表示します。|
+|エラータイプ| システムで発生するCrashと、Exceptionブロックでユーザーが発生させるHandledに分類されます。|
+|検索条件|	状態–クラッシュイシュー処理状態 <br/> 最近–直近のN日間に収集されたクラッシュログ照会フィルタ <br/>アプリバージョン - アプリのバージョン<br/> OSバージョン–OSのバージョン <br/> ログレベル：FATAL / ERROR / WARN / INFO / DEBUGタイプ照会フィルタ<br/> タグ–タグ <br/> 最小発生数–クラッシュ発生最小N件以上のクラッシュ照会フィルタ <br/> 例外の種類–例外の種類別最近フィルタ <br/> 位置–クラッシュ発生地点別照会フィルタ |
+|イシューリスト|イシューリストを表示します。右上のリストボックスを利用してソート順序を変更でき、リスト左側の選択ボックスからイシュー状態を変更できます。|
 
-Click an issue on the list to find its details.
+リストでイシューをクリックすると、該当イシューの詳細情報を確認できます。
 
-![lcs_05_201812_en](https://static.toastoven.net/prod_logncrash/lcs_05_201812_en.png)
+![lcs_05_201812](https://static.toastoven.net/prod_logncrash/lcs_05_201812.png)
 
-|Item|	Description|
+|項目|	説明|
 |---|---|
-|Status|	Set issue status as unresolved, resolved, re-open, or completed.|
-|Issue Tracker Setup|	Register issues by setting up external issue trackers, such as GitHub or GitLab.|
-|Tag|	Add tags, or modify/delete them afterwards.|
-|ETC - Show Search Page|	A click can move to a log search page.|
-|Stack Trace|	Show the type and cause of exception for crash occurrence as well as the stack trace.|
-|Error Instance|	Show the list of error instances.|
-|User| Show the list of users who have occurred issues.|
-|Comment|	Write comments of an issue and show the list of comments written by project members.|
-|History|	Show management history of an issue (status change, tags added, comments written, and etc.) on a timeline schedule.|
-|History Graph| Trace the number of issue occurrences on a timeline chart and a world map.|
-|Matrix Data| Display information such as network, OS version, device, operator, and nation.|
+|状態|	イシュー状態を未解決、解決、再登録、完了などの状態に設定できます|
+|課題トラッカー設定|	GitHub、GitLabなど、外部の課題トラッカーを設定して、該当イシューを外部課題トラッカーに登録できます。|
+|タグ|	タグを追加したり、追加されたタグを変更、削除できます。|
+|ETC - 検索ページで参照|	クリックするとログ検索ページに移動します。|
+|スタック追跡|	クラッシュが発生した例外の種類、例外の原因およびスタックトレース情報を表示します。|
+|エラーインスタンス|	エラーインスタンスリストを表示します。|
+|ユーザー| イシューを発生させたユーザーリストを表示します。|
+|意見| 該当イシューに対してコメントを作成でき、プロジェクト構成メンバーが作成したコメントリストを表示します。|
+|ヒストリー|	該当イシューに対する管理履歴(状態変更、タグ追加、コメント作成など)をタイムラインで表示します。|
+|ヒストリーグラフ| イシュー発生件数をタイムラインチャートとワールドマップで表示します。|
+|マトリックス情報| ネットワーク、OSバージョン、デバイス、サービスプロバイダー、国情報を表示します。|
 
-### Real-time Monitoring
+### リアルタイムモニタリング
 
-![lcs_06_201812_en](https://static.toastoven.net/prod_logncrash/lcs_06_201812_en.png)
+![lcs_06_201812](https://static.toastoven.net/prod_logncrash/lcs_06_201812.png)
 
-Monitors real-time occurrences of app crashes for about five minutes.
+約5分間のリアルタイムアプリクラッシュ発生をモニタリングします。
 
-### Trend
+### トレンド
 
-![lcs_07_201812_en](https://static.toastoven.net/prod_logncrash/lcs_07_201812_en.png)
+![lcs_07_201812](https://static.toastoven.net/prod_logncrash/lcs_07_201812.png)
 
-|Item|	Description|
+|項目|	説明|
 |---|---|
-|Time Condition| Set time conditions for statistics. (e.g. 7 days, 2 weeks, or 30 days)|
-|Trend Graph| Show various trend graphs. <br/> - Crash Counts <br/> - Device Experiencing Crash <br/> - Statistics of All Errors <br/> - Statistics of Unresolved Errors <br/> - Issue Statistics by App Version <br/> - Issue Statistics by OS version <br/> - Issue Statistics by Device <br/> - Issue Statistics by Country <br/> |
+|時間条件| 統計時間条件を設定できます。 <br/> (7日、 2週、 30日)|
+|トレンドグラフ| 多様なトレンドグラフを確認できます。<br/> - クラッシュ数<br/> - クラッシュが発生した端末<br/> - すべてのエラー統計 <br/> - 未解決エラー統計 <br/> - アプリバージョン別イシュー統計 <br/> - OSバージョン別イシュー統計 <br/> - 端末別イシュー統計 <br/> - 国別イシュー統計|
 
-### App Crash Indicator
+### アプリクラッシュ指標
 
-![lcs_08_201812_en](https://static.toastoven.net/prod_logncrash/lcs_08_201812_en.png)
+![lcs_08_201812](https://static.toastoven.net/prod_logncrash/lcs_08_201812.png)
 
-App Crash Indicator provides session/crash files/occurrence rate (%)/crashes of previous period/increase rate (%)
-1.	Click the link for app crash indicator to switch into an app crash trend screen.
-2.	Choose a platform (iOS, Android or Windows) to search filtering.
-3.	Adjust the period and number of search.
-4.	Check results of each version by table.
+アプリクラッシュ指標は、セッション/クラッシュファイル/発生率(%)/以前の期間のクラッシュ/増加率(%)情報を提供します。
 
-![lcs_09_201812_en](https://static.toastoven.net/prod_logncrash/lcs_09_201812_en.png)
+1. アプリクラッシュ指標リンクをクリックして、別の指標画面に切り替えられます。
+2. プラットフォーム(iOS、Android、 Windows)を選択して検索できます。
+3. 検索期間と検索件数を調整できます。
+4. バージョン別の結果を表で確認できます。
 
-App Crash Trend provides the number of occurrences during user-defined period
+![lcs_09_201812](https://static.toastoven.net/prod_logncrash/lcs_09_201812.png)
 
-![lcs_10_201812_en](https://static.toastoven.net/prod_logncrash/lcs_10_201812_en.png)
+アプリクラッシュ推移は、ユーザーが指定した期間内の発生数情報を提供します。
 
-Crash Map displays crash counts during user-defined period on a map
+![lcs_10_201812](https://static.toastoven.net/prod_logncrash/lcs_10_201812.png)
 
-
-### Crash User
-
-Provide crash occurrence information per user.
-1.	Available when user_id is defined in an SDK: if not saved, all users are viewed as ‘-‘.
-2.	A user is identified by the combination of a user ID and a device name: users of a same user ID but on different devices are considered different users.
-
-![lcs_11_201812_en](https://static.toastoven.net/prod_logncrash/lcs_11_201812_en.png)
+クラッシュマップは、ユーザーが指定した期間内の発生クラッシュ数をマップ上に表示します。
 
 
-|Item|	Description|
+### クラッシュユーザー
+
+ユーザー別クラッシュ発生情報を提供します。
+
+1. SDKでuser_idを設定する場合に使用可能で、保存しない場合、すべてのユーザーは'-'と表示されます。
+2. ユーザーは、ユーザーIDとデバイス名を組み合わせて区別します。すなわち、ユーザーIDが同じでもデバイスが異なれば、違うユーザーとして集計されます。
+
+![lcs_11_201812](https://static.toastoven.net/prod_logncrash/lcs_11_201812.png)
+
+
+|項目|	説明|
 |---|---|
-|Error Type|Classified into Crash statistics occurred at a system and user-induced Handled at an exception block.|
-|User|Set user ID, specified as user_id in an SDK, as a search condition.  |
-|Device|Set a device name as a search condition. |
-|Time Condition|Set time conditions for user-specific crash retrieval.|
-|App Version|Filtered by app version|
+|エラータイプ|	システムで発生させるCrash統計とExceptionブロックでユーザーが発生させるHandledに分類されます。
+|ユーザー|	SDKにおいて、user_idで指定したユーザーIDを検索条件に設定できます。|
+|端末| デバイス名を検索条件に設定できます。|
+|時間条件| ユーザー別クラッシュ照会時間条件を設定できます。|
+|アプリバージョン| アプリバージョン別に検索します。|
 
-### Issue Statistics
+### イシュー統計
 
-![lcs_12_201812_en](https://static.toastoven.net/prod_logncrash/lcs_12_201812_en.png)
+![lcs_12_201812](https://static.toastoven.net/prod_logncrash/lcs_12_201812.png)
 
-|Item|Description|
+|項目|説明|
 |---|---|
-|Error Type|Classified into crash statistics occurred at a system and user-induced Handled at an exception block.|
-|Time Condition|Set time conditions for statistics. |
-|App Version|Filtered by app version.|
-|Pie Chart for Frequency of Crash Occurrence|Show frequency of each crash occurrence.|
-|Ranking Table for Frequency of Crash Occurrence |Show the ranks of frequency of crash occurrence.|
+|エラータイプ|	システムで発生したCrash統計と、Exceptionブロックでユーザーが発生させるHandled統計に分類されます。
+|時間条件|	統計時間条件を設定できます。|
+|アプリバージョン|	アプリバージョン別に検索します。|
+|国| 発生したイシューを国別に検索します。|
+|OSバージョン| クラッシュが発生した端末のOS別に検索します。|
+|クラッシュ別発生頻度円グラフ|	クラッシュ別の発生頻度を表示します。|
+|クラッシュ別発生頻度順位テーブル|	クラッシュ別の発生頻度順位を表示します。|
 
-## Alarm
+## アラーム
 
-Set alarms of log and crash, and check history of alarm delivery.
-Click **Analytics > Log & Crash Search > Alarms**.
+ログおよびクラッシュに対するアラーム設定およびアラーム送信履歴を確認できます。
+**Analytics > Log & Crash Search > アラーム**をクリックします。
 
-### Set Log Alarms
+### ログアラーム設定
 
-![lcs_13_201812_en](https://static.toastoven.net/prod_logncrash/lcs_13_201812_en.png)
+![lcs_13_201812](https://static.toastoven.net/prod_logncrash/lcs_13_201812.png)
 
-Provide all log alarm functions:  
+ログアラームに対するすべての機能を実行できるページです。
 
-- Alarms are classified by the number of occurrences and by the rate of increase/decrease.
-- Register a log type (Lucene query) to receive alarms and send alarms depending on the conditions when a log occurs.
-- Alarms exist in two types: **Number of Occurrences**, and **Rate of Increase/Decrease**.
-- Click **Add Alarms** to register an alarm.
+- アラームは発生数に応じたアラームと、ログの増減率に応じたアラームに区分されます。
+- アラームを受信したいログタイプ(Luceneクエリー)を登録し、該当ログが発生したら条件に応じてアラームを送信します。
+- [発生数]、[増減率]の2つのタイプのアラームがあります。
+- **アラーム追加**ボタンを押すと、アラームを登録できます。
 
-### Alarm by Number of Occurrences
+#### 発生数アラーム
 
-![lcs_14_201812_en](https://static.toastoven.net/prod_logncrash/lcs_14_201812_en.png)
+![lcs_14_201812](https://static.toastoven.net/prod_logncrash/lcs_14_201812.png)
 
-- Here is how to set an alarm:
-	- Alarm Title: Enter name to show on the list of alarm setting.
-	- Alarm Query: Enter a log type to receive alarms for in Lucene Query.
-	- Description: Enter a description of the alarm.
-	- Alarm Type: Set it as Number of Occurrences type.
-	- Alarm Rule: Select a sign of inequality to be applied for **threshold**
-	- Threshold: Send an alarm when logs of ‘search conditions’ occur as much as ‘threshold value’, according to the ‘alarm rule’ inequality sign.
-	- Occurrence Cycle: Enter by the minute, and send alarms when a log occurs as much as ‘threshold’ within time input.
-	- Snooze: Enter by the minute, between 1 and 1,440 (24 hours); off for 0.  
-	- Recipient: Enter recipients to send an alarm to; choose email or SMS for each recipient.
-	- SMS Alarm Messages: Enter SMS messages to send alarms with.
-	- Callback URL: Enter URL to call when an alarm is sent. http(s)://, Email, and Dooray hook are supported.
+- 発生数アラーム設定方法は次のとおりです。
+    - アラームタイトル：アラーム設定リストに表示される名前を入力します。
+    - アラームクエリー：アラームを受信したいログタイプをLuceneクエリーで入力します。
+    - 説明：アラームの説明を入力します。
+    - アラームタイプ：発生数アラームタイプに設定します。
+    - アラームルール：**しきい値**に適用される不等号を選択します。
+    - しきい値： '検索条件'に該当するログが'アラームルール'の不等号に応じて'しきい値'の数発生すると、アラームを送信します。
+    - 発生周期：分単位で入力し、入力した時間値内にログが'しきい値'の数発生するとアラームを送信します。
+    - スヌーズ：分単位で入力し、最小1分～最大1,440分(24時間)の間の値を設定します。(0は消える)
+    - 受信者：アラームを受信する受信者を入力します。受信者ごとにメールとSMSを選択できます。
+    - SMSアラーム文言：アラーム送信時にSMSで送信する文言を入力します。
+    - コールバックURL：アラーム送信時に呼び出されるURLを入力します。 http(s)://とメール、Doorayフックをサポートします。
 
-### Alarm by Rate of Increase/Decrease
+#### 増減率アラーム
 
-![lcs_15_201812_en](https://static.toastoven.net/prod_logncrash/lcs_15_201812_en.png)
+![lcs_15_201812](https://static.toastoven.net/prod_logncrash/lcs_15_201812.png)
 
-Send alarms by the increase/decrease rate of occurrences of a log type you choose (Lucene Query).  
-- Here is how to set an alarm:
-	- Alarm Title: Enter a name to show on the list of alarm setting.
-	- Alarm Query: Enter a log type to receive alarms for in Lucene Query.
-	- Description: Enter a description of the alarm.
-	- Alarm Type: Set is as Rate of Increase/Decrease type.
-	- Threshold: Increase/decrease rate of logs of ‘search conditions’: positive number means an increase; 0 is for no log changes; negative number means a decrease.
-	- Comparison Time: Enter by the minute; compare the log volume between time input and previous interval with threshold. If the increase/decrease rate during ‘comparison time’ satisfies ‘threshold’, an alarm is sent.  
-	- Snooze: Enter by the minute between 1 and 1,440 (off for o).
-	- Recipient: Enter recipients to send alarms to; choose email or SMS for each recipient.
-	- Alarm messages: Enter SMS messages to send alarms with  
-	- Callback URL: Enter URL to call when an alarm is sent. http(s)://, Email, and Dooray hook are supported.
+希望するログタイプ(Luceneクエリー)の発生増減率に応じて、アラームを送信します。
 
-### Retrieve Log Alarm History
+- 増減率アラーム設定方法は次のとおりです。
+    - アラームタイトル：アラーム設定リストに表示される名前を入力します。
+    - アラームクエリー：アラームを受信したいログタイプをLuceneクエリーで入力します。
+    - 説明：アラームの説明を入力します。
+    - アラームタイプ：増減率アラームタイプに設定します。
+    - しきい値：'検索条件'に該当するログの増減率です。正の値のログが、以前の間隔に比べて増加した比率、0は以前の間隔とログ量が同じ。負の値は、以前の間隔に比べてログ量が減少した比率です。
+    - 比較時間：時間単位で入力し、入力した時間間隔とそれ以前の間隔の間のログ量を'しきい値'に合わせて比較します。 '比較時間'の間に発生したログの増減率が'しきい値'を満たすと、アラームを送信します。
+    - スヌーズ：分単位で入力し、最小1分～最大1,440分(24時間)の間の値を設定します。(0は消える)
+    - 受信者：アラームを受信する受信者を入力します。受信者ごとにメールとSMSを選択できます。
+    - SMSアラーム文言：アラーム送信時にSMSで送信する文言を入力します。
+    - コールバックURL：アラーム送信時に呼び出されるURLを入力します。 http(s)://とメール、Doorayフックをサポートします。
+### ログアラーム履歴
 
-![lcs_16_201812_en](https://static.toastoven.net/prod_logncrash/lcs_16_201812_en.png)
+![lcs_16_201812](https://static.toastoven.net/prod_logncrash/lcs_16_201812.png)
 
-- Retrieve logs (Lucene Query) for an alarm.  
-- Check history of alarm occurrences.
+- 設定したアラームリストが表示されます。
+- リストをクリックすると、該当アラーム発生内容を確認できます。
 
-### Set Crash Alarms
+### クラッシュアラーム設定
 
-![lcs_17_201812_en](https://static.toastoven.net/prod_logncrash/lcs_17_201812_en.png)
+![lcs_17_201812](https://static.toastoven.net/prod_logncrash/lcs_17_201812.png)
 
-Set alarm for each crash log: one for each platform (iOS, Android, Windows, and WebGL).
+クラッシュログに対するアラームを別途設定する機能です。プラットフォーム(iOS、Android、Windows、WebGL)別にそれぞれ1つずつ登録できます。
 
-To set an alarm:
+アラーム設定方法は次のとおりです。
 
-- Platform: Specify a platform to send alarms among iOS, Android, Windows, or WebGL.
-- New Crash Alarm Setting: Set On/Off for alarm occurrences.
-- Threshold-based Crash Alarm Setting: Select frequency of crash occurrence or average frequency to enter threshold. The detection cycle is 10 minutes.
-	- Alarm Type: There are two types: Number of Crash Occurrences and Rate of Increase/Decrease.
-	- Threshold: Set number of logs for 'Number of Crash Occurrences' type and percentage for 'Rate of Increase/Decrease'.
-- Use Alternative SMS Message: When enabled, custom alarm messages will be delivered via SMS, in place of default error messages,
-- Alarm Recipients: Select email or SMS of users who decide to receive alarms from the list of project members.
+- プラットフォーム：アラーム発生対象プラットフォームをiOS、Android、Windows、WebGLのうち1つを指定します。
+- 新規クラッシュアラーム設定：アラーム発生をOn/Off処理できます。
+- しきい値ベースのクラッシュアラーム設定：設定しきい値を超えると、アラームが作動するように設定します。探知周期は10分です。
+    - アラームタイプ：クラッシュ発生数とクラッシュ発生率タイプがあります。
+    - しきい値：クラッシュ発生数タイプはログ発生数(回数)を、クラッシュ発生率はログ発生確率(パーセント)を設定します。
+- SMS通知文言使用：有効にすると、障害内容の代わりにSMSアラーム文言に入力した内容がSMSで送信されます。
+- アラーム受信者：プロジェクトメンバーリストから、アラームを受信するユーザーのメール、 SMSを選択します。
+
+### クラッシュアラーム履歴
+
+![lcs_18_201812](https://static.toastoven.net/prod_logncrash/lcs_18_201812.png)
+
+クラッシュログアラームが発生した履歴を照会します。
+
+- プラットフォーム別に照会できます。
+- 時間条件を設定して照会期間を調整できます。
+- アラーム時間、プラットフォーム、クラッシュタイプ、しきい値、イベント数、配信方法および送信状態を提供します。
+
+### ユーザーべースのアラーム設定
+
+![lcs_19_201812](https://static.toastoven.net/prod_logncrash/lcs_19_201812.png)
+
+クラッシュが発生したユーザー比率がしきい値(%)以上の場合、指定されたユーザーの携帯電話またはメールにアラームを送信する機能を提供します。
+
+アラーム設定方法は次のとおりです。
+
+- プラットフォーム：アラーム発生対象プラットフォームをiOS、Android、Windows、WebGLの中から1つを指定します。
+- ユーザー基盤アラーム設定：アラーム発生をON/OFF処理できます。
+- しきい値：クラッシュしたユーザー比率がしきい値(%)以上の場合、指定されたユーザーの端末またはメールにアラームを送信します。
+- SMSアラーム文言：有効にすると、障害内容の代わりにSMSアラーム文言に入力された内容がSMSで送信されます。
+- アラーム受信者：プロジェクトメンバーリストから、アラームを受信するユーザーのメール、SMSを選択します。
+
+### ユーザー基盤アラーム履歴
+
+![lcs_20_201812](https://static.toastoven.net/prod_logncrash/lcs_20_201812.png)
+
+ユーザー基盤アラームが発生した履歴を照会します。
+
+- プラットフォーム別に照会できます。
+- 時間条件を設定して、照会期間を調節できます。
+- アラーム時間、プラットフォーム、しきい値、クラッシュ発生ユーザー比率、配信方法および転送状態を提供します。
+
+## 設定
+
+検索フィールド管理、課題トラッカー設定、シンボルファイル管理などのサービスに必要な設定を管理します。
+
+**Analytics > Log & Crash Search > 設定**をクリックします。
 
 
-### Retrieve Crash Alarm History
+### 検索フィールド
 
-![lcs_18_201812_en](https://static.toastoven.net/prod_logncrash/lcs_18_201812_en.png)
+ログ検索時に使用される検索フィールドを照会する機能です。システムフィールドである基本フィールドリストの他に、ユーザー転送フィールドであるユーザー指定フィールド(カスタムフィールド)を確認できます。
 
-Retrieves the history of crash alarm occurrences.
+![lcs_21_201812](https://static.toastoven.net/prod_logncrash/lcs_21_201812.png)
 
-- View by platform
-- Set time condition to control viewing range
-- Information on alarm time, platform, crash type, threshold, event count, and delivery method/status is provided.
+1. ログ転送時、フィールド名がtxtで始まる場合、分析するかどうかがtrueに設定され、それ以外のフィールドは分析するかどうかがfalseに設定されます。分析するかどうかがfalseの場合、ログ検索の検索フィールドに登録して使用できます。
+2. ログファイルやバイナリファイルを転送して、**ログ検索**画面で**ダウンロード > 参照**リンクを利用したい場合、 UserBinaryDataまたはUserTxtDataという名前のフィールドにbase64エンコードされた値を入れて転送してください。
 
-### Set User-defined Alarms
+### イシュートラッキング
 
-![lcs_19_201812_en](https://static.toastoven.net/prod_logncrash/lcs_19_201812_en.png)
+課題トラッカーを設定すると、**アプリクラッシュ検索 > イシュー照会**タブでイシューリストをクリックした時に表示されるError Detailページで、該当エラーを課題トラッカーに登録して管理できます。
 
-When the rate of users experiencing crash exceeds threshold (%), alarm is sent to specified phone or email of the users.
+![lcs_22_201812](https://static.toastoven.net/prod_logncrash/lcs_22_201812.png)
 
-To set an alarm:
+- プラットフォーム： iOS、Android、Unityのうち1つのプラットフォームを選択します。課題トラッカーはプラットフォーム別にそれぞれ設定可能です。
+- 課題トラッカー： GitHub、GitLabのうち1つを選択します。
+- GitHubプロジェクトURL：課題トラッカーをGitHubに選択する場合、https://github.com/{user}/{project}形式のURLを入力します。
+- Access token：課題トラッカーをGitHubに選択する場合、GitHubで作成したAccess tokenを入力します。(参照： https://help.github.com/articles/creating-an-access-token-for-command-line-use)
+- GitLabプロジェクトURL：課題トラッカーをGitLabに選択する場合、http://{baseUrl}/{namespace}/{project}形式のURLを入力します。
+- Private token：課題トラッカーをGitLabに選択する場合、GitLabサイトのMy profile - Accountで作成したtoken値を入力します。
+- Issue Title Format：イシュータイトルにバージョンおよび位置情報を含めるかどうかを選択します。
+- テスト：設定が正常かどうかを確認します。
 
-- Platform: Specify a platform to send alarms among iOS, Android, Windows, or WebGL.
-- Affected User based Alarm SettingAlarm Setting: Set On/Off for alarm occurrences.
-- Threshold(Rate of Users Experienced Crash): Set the rate of users who experienced crash..
-- Use Alternative SMS Message: When enabled, custom alarm messages will be delivered via SMS, in place of default error messages,
-- Alarm Recipients: Select email or SMS of users who decide to receive alarms from the list of project members.
+### シンボルファイル
 
-### Retrieve Crash Alarm History
+Symbolication fileが登録されていると、クラッシュログを確認できます。このメニューではSymbolication fileをアップロード、ダウンロードして削除できます。
 
-![lcs_20_201812_en](https://static.toastoven.net/prod_logncrash/lcs_20_201812_en.png)
+![lcs_23_201812](https://static.toastoven.net/prod_logncrash/lcs_23_201812.png)
 
-Retrieves the history of user-defined alarm occurrences.
+**[ファイル選択]**をクリックして、シンボルファイルをアップロードします。
 
-- View by platform
-- Set time condition to control viewing range
-- Information on alarm time, platform, crash type, threshold, event count, and delivery method/status is provided.
+- iOS： iOSシンボリケーションファイルをアップロードする時は、ZIP形式でBundleName.app.dSYMファイルを圧縮してください。
+- Android： Androidシンボリケーションをアップロードする時は、mapping.txtファイルをアップロードする必要があります。
+- Android-NDK： Android NDKファイルをアップロードする時は、ZIP形式でlib.soファイルを圧縮してください。
+- Windows： Windowsシンボリケーションファイルをアップロードする時は、ZIP形式でBundleName.symファイルを圧縮してください。
+- シンボルファイルの最大サイズは200MBです。
+- Android NDKシンボリケーションファイルが許可する最大ファイルサイズを超える場合、原本‘lib.so’バイナリファイルのテキスト形式シンボルを含んでいる1つの‘lib.so.sym’を含むZIPファイル形式でアップロードできます。
+- Android Unityの場合、シンボルファイルの登録が必要ありません。ただし、ProGuard適用時にmapping.txt.のアップロードが必要です。
 
-## Setting Up
+### ログ保管期間
 
-Manage required service setting, such as search field, issue tracker, and symbol file.
+ログ保管期間を設定します。
 
-Click **Analytics > Log & Crash Search > Setting**.
+![lcs_24_201812](https://static.toastoven.net/prod_logncrash/lcs_24_201812.png)
 
-### Search Field
-Can retrieve search fields for log search: customized fields can be added, to default system fields.
+- ログ保管期間は1ヶ月、2ヶ月、3ヶ月、6ヶ月、1年の中から選択でき、ひと月に1回のみ変更できます。
+- ログ保管期間ではないデータは、翌日に削除されます。
 
-![lcs_21_201812_en](https://static.toastoven.net/prod_logncrash/lcs_21_201812_en.png)
+### ログ転送設定
 
-1. If a field name starts with txt for log delivery, it is set true for whether to analyze or not, while other cases are set false. If it is false, it can be registered as a search field of log search.
-2. In case you want to deliver a log or binary file and use the **Download > View** link on the log search page, include base 64-encoded values to UserBinaryData or UserTxtData fields.
+サービスごとに、ログを転送するかを設定します。
 
-### Issue Tracking
+![lcs_25_201812](https://static.toastoven.net/prod_logncrash/lcs_25_201812.png)
 
-By setting up an issue tracker, errors can be registered and managed on the **Error Detail** page with the click of issue list of **App Crash Search > Retrieve Issues**.
+- 一般ログ、クラッシュログ、 Network Insightsログ、それぞれに対して転送するかを設定できます。
+- TOASK SDKに対して転送するかどうかを設定できます。
+    - 重複ログ、ログレベル、ログタイプでフィルタリングできます。
+- 設定を保存した後、アプリを再起動すると適用されます。
 
-![lcs_22_201812_en](https://static.toastoven.net/prod_logncrash/lcs_22_201812_en.png)
+## ネットワークインサイト
 
-- Platform: Choose a platform among iOS, Android, and Unity. Can set an issue tracker for each platform.
-- Issue Tracker: Choose GitHub or GitLab.
-- GitHub Project URL: If GitHub is selected as an issue tracker, enter the URL in the form of https://github.com/{user}/{project}.
-- Access Token: If GitHub is selected as an issue tracker, enter an access token created by GitHub (refer to: https://help.github.com/articles/creating-an-access-token-for-command-line-use).
-- GitLab Project URL: If GitLb is selected, enter the URL in the form of http://{baseUrl}/{namespace}/{project}.
-- Private Token: If GitLab is selected, enter token created at My profile-Account of the GitLab site.
-- Issue Title Format: Decide whether to include version and location information to the issue title.
-- Test: Check if the setting works fine.
+Log & Crash Search SDKから転送した遅延時間とエラー率をタイムラインチャートとURLリスト、マップに表示します。
 
-### Symbol File
+**Analytics > Log & Crash Search > ネットワークインサイト**をクリックします。
 
-It is required to register a symbol file to check a crash log. This menu helps upload/download/delete symbol files.
+- SDKでは、クライアントからURL設定画面で設定したURLまで、リクエストの遅延時間(Latency)と状態値(Status)をLog & Crash Searchに転送します。
+- モニタリング、指標画面で現在のプラットフォームとフィルタを設定し、遅延時間とエラー率を確認できます。
 
-![lcs_23_201812_en](https://static.toastoven.net/prod_logncrash/lcs_23_201812_en.png)
+### モニタリング
 
-Click **[Select Files]** to upload a symbol file.
+- 遅延時間とエラー率を、タイムラインチャートとURLリストに表示します。
 
-- iOS: When uploading an iOS symbol file, it is necessary to compress your BundleName.app.dSYM file using ZIP compression method.
-- Android: When uploading an Android symbol file, it is necessary to upload your mapping.txt.file.    
-- Android-NDK: When uploading an Android NDK symbol file, it is necessary to compress your lib.so file using ZIP compression method.
-- Windows: When uploading a Windows symbol file, it is necessary to compress your BundleName.sym file using - ZIP compression method.
-A symbol file must be at most 200MB in size.
-- In case of Android NDK, when a symbol file size exceeds the maximum size permitted, it is possible to upload a ZIP file which contains a single ‘lib.so.sym’ file that contains the text-format symbols of the original ‘lib.so’ binary file.
+![lcs_26_201812](https://static.toastoven.net/prod_logncrash/lcs_26_201812.png)
 
-### Log Retention Period
-
-![lcs_24_201812_en](https://static.toastoven.net/prod_logncrash/lcs_24_201812_en.png)
-
-Set the period of log retention.  
-- Select the period among 1month, 2months, 3months, 6months, or 1year, which can be modified once every month.
-- Expired data are to be deleted early next morning.  
-
-### Set Log Delivery
-Set whether to send logs per service.
-
-![lcs_25_201812_en](https://static.toastoven.net/prod_logncrash/lcs_25_201812_en.png)
-
-- Set delivery for each of the general logs, session logs, and crash logs.
-- Save and restart app, so as to apply the setting.
-
-## Network Insights
-
-Show latency and error rate delivered by Log & Crash Search SDK, on a timeline chart, URL list, or map.
-
-Click **Analytics > Log & Crash Search > Network Insights**.
-
-- SDK delivers latency and status of a client request from screen of URL setting to URL, to Log & Crash Search
-- Set current platform and filter on the screen of monitoring and index, and check latency and error rate.
-
-### Monitoring
-
-- Display latency and error rate on a timeline chart and URL list.
-
-![lcs_26_201812_en](https://static.toastoven.net/prod_logncrash/lcs_26_201812_en.png)
-
-|Item|	Description|
+|項目| 説明|
 |---|---|
-|Filter Conditions | - Recent: Retrieving filter of each time, such as recent 15 minutes, 60 minutes, 24 hours, or 48 hours. For user-defined conditions, retrieve by selecting start/end dates (up to 48 hours). <br/>- App Version: Retrieving filter per app version <br/>- OS Version: Retrieving filter per OS version <br/>- Device: Enter device name <br/> - Telecom: Enter telecom name <br/>- Country: Filter by countries <br/>- URL: Filter by URLs|
-| Chart| Latency and error rate is shown on timeline graph. <br/> You can select iOS, Android, Windows, or WebGL from **Current Platform** dropdown menu.|
-|URL| Latency and error rate per URL is shown in the table.|
+|フィルタ条件 | - 最近：直近15分、 60分、24時間、48時間の時間別照会フィルタ、ユーザー指定は開始/終了日時を選択して照会(最大48時間) <br/> - アプリバージョン：アプリバージョン別照会フィルタ <br/> - OSバージョン：OSバージョン別照会フィルタ <br/> - 端末：デバイス名入力<br/> - サービスプロバイダー：サービスプロバイダーの名前を入力<br/> - 国：国別照会フィルタ <br/> - URL： URL別照会フィルタ|
+|チャート| 遅延時間とエラー率がタイムラインチャートに表示されます。<br/>**現在のプラットフォーム**ドロップダウンメニューでiOS、Android、WindowsおよびWebGL別に設定できます。 |
+|URL| URL設定で追加したURLごとに、遅延時間とエラー率を表示します。|
 
-### Map
+### マップ
 
-- Display latency and error rate on a map.
+- 遅延時間とエラー率をマップ上に表示します。
 
-![lcs_27_201812_en](https://static.toastoven.net/prod_logncrash/lcs_27_201812_en.png)
+![lcs_27_201812](https://static.toastoven.net/prod_logncrash/lcs_27_201812.png)
 
-|Item|	Description|
+|項目| 説明|
 |---|---|
-|Map Types | There are two types of map: latency and error rate types.|
-|Filter Conditions | - Recent: Retrieving filter of each time, such as recent 15 minutes, 60 minutes, 24 hours, or 48 hours. For user-defined conditions, retrieve by selecting start/end dates (up to 48 hours). <br/>- App Version: Retrieving filter per app version <br/>- OS Version: Retrieving filter per OS version <br/>- Device: Enter device name <br/>|
-| Map | Latency and error rate is shown on the map. <br/>You can select iOS, Android, Windows, or WebGL from **Current Platform** dropdown menu. |
+|マップタイプ| マップタイプ：遅延時間およびエラー率タイプを選択できます。<br/>|
+|フィルタ条件 | - 最近：直近15分、 60分、24時間、48時間の時間別照会フィルタ、ユーザー指定は開始/終了日時を選択して照会(最大48時間) <br/> - アプリバージョン：アプリバージョン別照会フィルタ <br/> - OSバージョン：OSバージョン別照会フィルタ <br/> - 端末：デバイス名を入力<br/> - サービスプロバイダー：サービスプロバイダーの名前を入力<br/> - 国：国別照会フィルタ <br/> - URL： URL別照会フィルタ|
+|マップ| 遅延時間とエラー率をマップ上に表示します。 <br/>**現在のプラットフォーム**ドロップダウンメニューでiOS、Android、WindowsおよびWebGL別に設定できます。|
 
-### URL Setting
+### URL設定
 
-- Add or remove URLs for latency and error rate monitoring. 
+- 遅延時間とエラー率を測定するWebサイトのURLを設定できます。
 
-![lcs_28_201812_en](https://static.toastoven.net/prod_logncrash/lcs_28_201812_en.png)
+![lcs_28_201812](https://static.toastoven.net/prod_logncrash/lcs_28_201812.png)
 
-| Item|Description|
+|項目|説明|
 |---|---|
-| Date Modified | Date of most recent URL list modification.|
-| URL Table| Shows the list of URLs for latency and error rate monitoring.<br/>You can add an URL from the top-right corner. <br/>To remove from the list, check the checkbox and click **[Delete Selected Items]**. |
+|最後の変更日| URLを最後に追加または削除した日付です。|
+|URL表| 遅延時間とエラー率を測定するWebサイトURLリストを表示します。<br/>右上の入力欄にURLを入力して追加できます。 <br/>削除する時は、リストをチェックして、**[選択項目削除]**をクリックすると選択項目を削除できます。 |

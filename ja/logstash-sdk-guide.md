@@ -1,30 +1,30 @@
-## Analytics > Log & Crash Search > User Guide for Logstash SDK
+﻿## Analytics > Log & Crash Search > Logstash SDK使用ガイド
 
-This document describes how to process different types of inputs and outputs by using Logstash. 
+Logstashを利用して多様なInputとOutputを処理する方法を説明します。
 
-## Download
+## ダウンロード
 
-- Download Logstash.
-- $ wget      http://download.elastic.co/logstash/logstash/logstash-1.5.6.tar.gz
-- Unzip the files.
-- $ tar zxvf      logstash-1.5.6.tar.gz
+- Logstashをダウンロードします。
+- $ wget http://download.elastic.co/logstash/logstash/logstash-1.5.6.tar.gz
+- 圧縮を解凍します。
+- $ tar zxvf logstash-1.5.6.tar.gz
 
-## Install and Execute 
+## インストールおよび実行
 
-Refer to Configuring Logstash. 
+Configuring Logstashを参照してください。
 
-- Create configuration files for Logstash. 
-- Execute with bin/logstash -f <Configuration Files>
+- Logstash設定ファイルを作成します。
+- bin/logstash -f <設定ファイル>で実行します。
 
-## Configure Logstash 
+## Logstash設定
 
-Collecting and delivering logs by using Logstash are described as below: 
+Logstashを使用してLogを収集、転送する方法を説明します。
 
-### **Collect Log & Crash Collector Logs** 
+### Log & Crash Collector Logの収集
 
-Below shows how Log & Crash Collector Logs are collected with Logstash. 
+Logstashを利用して、Log & Crash Collector Logを収集する方法を説明します。
 
-#### \- Define path for the input, file: an absolute route is required for the path.  
+#### - input, fileもpathを定義します。 Pathには絶対パスを使用する必要があります。
 
 ```
 input {
@@ -35,7 +35,7 @@ input {
 }
 ```
 
-#### - Use filter and multiline to combine logs in many lines.
+#### - filter, multilineを使用して、複数行に出力されるLogをマージする処理をします。
 
 ```
 filter {
@@ -56,11 +56,11 @@ filter {
 ...
 ```
 
-### **Deliver Logs to Log & Crash Collector**
+### Log & Crash Collectorに転送
 
-Below shows how logs are sent to Log & Crash Collector with Logstash. 
+Logstashを使用して、Log & Crash CollectorにLogを転送する方法を説明します。
 
-#### \- Convert Logstash logs to the Log & Crash HTTP REST API format, by using filter and mutate. 
+#### - filter、mutateを使用してLogstash LogをLog & Crash HTTP REST API形式に変換します。
 
 ```
 filter {
@@ -83,18 +83,18 @@ filter {
 	}
   }
 }
-- Remove unnecessary fields by using remove_field: also available to reduce the size of delivered logs.
-- Change the field name to fit for Log & Crash HTTP REST API by using rename.
-- Add fields required for Log & Crash HTTP REST API by using add field.
-    - "projectName": Required, Project name/Appkey
-    - "projectVersion": Required, Project version
-    - "logVersion": Required, Log format version
-    - "logType": Optional, Log type
-    - "logSource": Optional, Log source
-    - "logLevel": Optional, Log level
+- remove_fieldを使用して、必要ないfieldを除去します。転送されるログサイズを減らすために使用できます。
+- renameを使用して、Log & Crash HTTP REST APIに合わせてfield名を変更します。
+- add_fieldを使用して、Log & Crash HTTP REST APIに必要なfieldを追加します。
+    - "projectName"：必須。プロジェクト名/アプリケーションキー
+    - "projectVersion"：必須。プロジェクトバージョン
+    - "logVersion"：必須。ログフォーマットバージョン
+    - "logType"：オプション。ログタイプ
+    - "logSource"：オプション。ログソース
+    - "logLevel"：オプション。ログレベル
 ```
 
-#### - Send to Log & Crash Collector by using output and http.
+#### - output、httpを使用してLog & Crash Collectorに転送します。
 
 ```
 output {
@@ -106,16 +106,16 @@ output {
 	verify_ssl => false
   }
 }
-- Modify URL to the address of Log & Crash Collector to send 
-- Address of Toast Cloud Log & Crash Collector: https://api-logncrash.cloud.toast.com/v2/log
-- The URI must be /v2/log.
+- urlに転送するLog & Crash Collectorアドレスに修正する必要があります。
+- Toast Cloud Log & Crash Collectorアドレス：https://api-logncrash.cloud.toast.com/v2/log
+- URIは/v2/logである必要があります。
 ```
 
-### **Collect Apache Access/Error Logs** 
+### Apache Access/Error Log収集
 
-Below shows how Apache Access/Error Logs are collected with Logstash. 
+Logstashを利用して、Apache Access/Error Logを収集する方法を説明します。
 
-#### \- Define path for input and file. Define type to tell the difference between access and error.  
+#### - input、fileにpathを定義します。 typeを定義してaccess/errorを区分します。
 
 ```
 input {
@@ -130,10 +130,10 @@ input {
   }
  ...
 }
-- The above path is used in the CAB DEV Web server. Correction is required if the log location is not correct.
+-上のpathは、CAB DEV Webサーバーで使用される値です。Logの位置が合っていなければ修正する必要があります。
 ```
 
-#### - Analyze logs by using filter, grok.
+#### - filter, grokを使用してlogを分析します。
 
 ```
 filter {
@@ -150,8 +150,8 @@ filter {
 	}
   }
 }
-- The "apache-access" type adopts "%{COMBINEDAPACHELG}", provided as default by grok.
-- The "apache-error" type adopts "%{APACHEERRORLOG}", defined by "./my-pat.grok". 
+- typeが"apache-access"の場合、grokでデフォルトで提供される"%{COMBINEDAPACHELG}"を使用します。
+- typeが"apache-error"の場合、"./my-pat.grok"に定義されている"%{APACHEERRORLOG}"を使用します。
 - my-pat.grok
 ```
 
@@ -160,24 +160,23 @@ filter {
 #APACHEERRORLOG \[%{HTTPERRORDATE:timestamp}\] \[%{WORD:severity}\] \[client %{IPORHOST:clientip}\] %{GREEDYDATA:message_remainder}
 APACHEERRORLOG \[%{HTTPERRORDATE:timestamp}\] \[%{WORD:severity}\] %{GREEDYDATA:message_remainder}
 
-- The grok pattern adopted by a bit of logstash cooking has been modified.
+- A bit of logstash cookingで使用されたgrok patternを修正しました。
 ```
 
-### **Collect Other Logs** 
+### 他のLogを収集
 
-Collect other logs in reference of the following URL:
+他のログを収集するには、次のURLを参照してください。
 
 - [A bit of logstash cooking](https://home.regit.org/2014/01/a-bit-of-logstash-cooking/)
 
-### **Environment Variables**
+### 環境変数
+logstashは、次の環境変数をサポートします。logstashが使用するメモリ量は、LS_HEAP_SIZE環境変数を通して設定できます。
 
-Logstash supports the following environment variables. The memory volume of Logstash can be configured via LS_HEAP_SIZE. 
+ - LS_HEAP_SIZE="xxx" size for the -Xmx${LS_HEAP_SIZE} maximum Java heap size option, default is "500m"
+ - LS_JAVA_OPTS="xxx" to append extra options to the defaults JAVA_OPTS provided by logstash
+ - JAVA_OPTS="xxx" to completely override the defauls set of JAVA_OPTS provided by logstash
 
-- LS_HEAP_SIZE="xxx" size for the -Xmx${LS_HEAP_SIZE} maximum Java heap size option, default is      "500m"
-- LS_JAVA_OPTS="xxx" to append extra options to the defaults JAVA_OPTS provided by logstash
-- JAVA_OPTS="xxx" to completely override the defauls set of JAVA_OPTS provided by logstash    
-
-> Note  
-> Logstash Website 
+> 参考
+> Logstash Webサイト
 > Logstash Reference
 > A bit of logstash cooking

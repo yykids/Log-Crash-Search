@@ -1,57 +1,56 @@
-## Analytics > Log & Crash Search > Unity Android SDK Guide
+﻿## Analytics > Log & Crash Search > Unity Android SDK使用ガイド
 
-> [Deprecated] 
-> Log & Crash Unity Android SDK is not supported any more.
-> Please use [TOAST SDK](http://docs.toast.com/ja/TOAST/ja/toast-sdk/overview/). 
+> [Deprecated]
+> Log & Crash Unity Android SDKバージョンは、今後サポートされません。
+> [TOAST SDK](http://docs.toast.com/ko/TOAST/ko/toast-sdk/overview/)を利用してください。
 
-Log & Crash Unity SDK sends logs to a Log & Crash Search collector server.
+Log & Crash Unity SDKは、Log & Crash Search収集サーバーにログを転送する機能を提供します。
+Log & Crash Unity SDKの特徴・利点は次のとおりです。
 
-Below describe benefits and features of Log & Crash Unity SDK.
-- Send logs to a collector server.
-- Send crash logs occurred in an app to a collector server.
-- Retrieve and search logs sent from Log & Crash Search.
+- ログを収集サーバーに転送します。
+- アプリで発生したクラッシュログを収集サーバーに転送します。
+- Log & Crash Searchで、転送されたログの照会および検索が可能です。
 
-## Supporting Environment
+## サポート環境
 
-- Common
-  \- Unity3D v4.0 or higher
+- 共通
+	\- Unity3D v4.0以上
 - Android
-  \- Andorid SDK 2.3.3 API or higher
+	\- Andorid SDK 2.3.3 API以上
 
-## Download
+## ダウンロード
 
-Go to [TOAST Document](http://docs.toast.com/ja/Download/) and download **Unity SDK**.
+[TOAST Document](http://docs.toast.com/ko/Download/)でUnity SDKをダウンロードできます。
 
 ```
-[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK] 
+[DOCUMENTS] > [Download] > [Analytics > Log & Crash Search] > [Unity SDK]
 ```
 
-## Install
+## インストール
 
-* Double-click downloaded toast-logncrash-android-unity-sdk.unitypackage and import it to your project.
+* ダウンロードしたtoast-logncrash-android-unity-sdk.unitypackageをダブルクリックしてImportします。
 
 
-### Sample Description
+### サンプル説明
 
-To execute the sample, double-click **Assets > LogNCrash > Sample > SampleScene**.
-The sample describes examples of initialization, log delivery, and error occurrence.
+サンプルを実行するには、Assets > LogNCrash > Sample > SampleSceneをダブルクリックします。
+サンプルには初期化、ログ転送、エラー発生についての例が記述されています。
 
-## Example
+## 使用例
 
-1. Initialize with LogNCrashSettings
+1. LogNCrashSettingsによる初期化
 
-Select **LogNCrash > Edit Settings** in the Unity menu to create LogNCrashSettings. Use AssetDatabase to define user’s Appkey and SDK operations of LogNCrashSettings.
+UnityメニューバーからLogNCrash> Edit Settingsを選択して、LogNCrashSettingsを作成します。 LogNCrashSettingsはAssetDatabaseで、ユーザーアプリケーションキーとSDKの動作を定義します。
 
-- Appkey: User’s Appkey
-- URL: Collector address: use https://api-logncrash.cloud.toast.com.
-- Version: Log version
-- Send Warning: Whether to collect warning logs occurred in Unity
-- Send Error: Whether to collect error logs occurred in Unity
-- Send Debug Warning: Whether to collect warning logs occurred by user’s debug object use in Unity
-- Send Debug Error: Whether to collect error logs occurred by user’s debug object use in Unity
+- Appkey：ユーザーアプリケーションキー
+- URL：コレクターアドレス、https://api-logncrash.cloud.toast.comを使用します。
+- Version：ログバージョン
+- Send Warning：Unityで発生したWarningログを収集するかどうか
+- Send Error：Unityで発生したErrorログを収集するかどうか
+- Send Debug Warning：UnityでユーザーがDebugオブジェクトを利用して発生させたWarningログを収集するかどうか
+- Send Debug Error：UnityでユーザーがDebugオブジェクトを利用して発生させたErrorログを収集するかどうか
 
-When the Initialize function does not have defined LogNCrash object parameter, initialize in reference of the value of LogNCrashSettings.  
-
+LogNCrashSettingsに情報を入力してLogNCrashオブジェクトのパラメータがないInitialize関数を呼び出した場合、LogNCrashSettingsで情報を取得して初期化を試みます。
 
 ```
 using Toast.LogNCrash;
@@ -67,8 +66,8 @@ namespace Toast.LogNCrash
 }
 ```
 
-2. Initialize with Script
-Enter parameters to LogNCrash.Initialize to initialize. The parameters provide information on server address, Appkey, version, port, and whether to execute Send Thread Lock.
+2. Scriptによる初期化
+LogNCrash.Initializeにパラメータを入力して初期化を試みます。パラメータはサーバーアドレス、アプリケーションキー、バージョン、ポート、Send Thread Lockを実行するかどうかについての情報を渡します。
 
 ```
 using Toast.LogNCrash;
@@ -85,16 +84,15 @@ namespace Toast.LogNCrash
 }
 ```
 
-- Appkey: User’s Appkey
-- URL: Collector address: set collector information of http and https
-- Version: Log version
-- Port: Set 80, 443, depending on the protocol
-- SendThreadLock: Save logs, which occur when it is true, in a queue without sending to server before StartSendThread is called. Nevertheless, if a native crash occurs, unlock ThreadLock and send the logs.
+- Appkey：ユーザーアプリケーションキー
+- URL：コレクターアドレス、http、httpsのコクレクター情報を設定
+- Version：ログバージョン
+- Port：プロトコルに応じて80、443を設定
+- SendThreadLock：trueの場合、発生したログはStartSendThreadが呼び出されるまでサーバーに転送せず、キューに保存します。ただしNative Crashが発生した場合、ThreadLockを解除してログを転送します。
 
+## 詳細API
 
-## API Details
-
-### Specify Custom Fields
+### カスタムフィールドの指定
 
 ```
 public static void AddCustomField(string key, string val)
@@ -103,13 +101,13 @@ public static void RemoveAllCustomFields()
 ```
 
 - Parameters
-  - key: string
-    - [in] key of custom field, custom key must start with an alphabet or a number, and include “A~Z, a~z, 0~9, - \_”.
-  - value: string
-    - [in] value of custom field
+	- key: string
+		- [in] custom fieldのkey、custom keyは“A～Z、a～z、0～9、-\_”の文字を含み、アルファベットか数字で始まる必要があります。
+	- value: string
+		- [in] custom fieldの値
 - Note
-  - Following keywords are occupied by SDK and hence cannot be used:
-    - projectName
+	- 次のkeywordは、SDKで使用中のため使用できません。
+		- projectName
         - projectVersion
         - host
         - body
@@ -125,49 +123,47 @@ public static void RemoveAllCustomFields()
         - NeloSDK
         - NetworkType
         - DeviceModel
-    - DeviceID
+		- DeviceID
         - @logType
-  - When the value of a custom field is NULL or empty, SDKs do not send the field to a server.
+	- custom filedの値がNULLまたは空の場合、SDKは該当フィールドをserverに転送しません。
 
-### Manage Default Setting
+### 基本設定管理
 
 ```
 public static void SetLogSource(string value)
 public static string GetLogSource()
 ```
 
-- Get or newly specify a log source.
+- ログソースの取得や新規指定を行います。
 
 ```
 public static void SetLogType(string value)
 public static string GetLogType()
 ```
 
-- Get or newly specify a log type.
+- ログタイプの取得や新規指定を行います。
 
-### Filter Levels
-- In Unity SDK, send logs of a FATAL level only by default setting. In ERROR or WARN levels, many logs may occur due to variables (such as time, route, and progress level.).
-  - Send Error: Send ERROR-level logs occurred at a system.
-  - Send Warning: Send WARN-level logs occurred at a system.
-  - Send Debug Error: Send ERROR-level logs induced by a user.
-  - Send Debug Warning: Send WARN-level logs induced by a user.
+### LEVELフィルタ
+- Unity SDKでは、Default設定でFATALレベルのログのみを転送します。Error、Warningレベルのログには、変数値(時間、パス、進行度など)の挿入により多くのログが発生することがあります。
+	- Send Error：システムで発生したERRORレベルのログを転送します。
+	- Send Warning：システムで発生したWARNレベルのログを転送します。
+	- Send Debug Error：ユーザーが発生させたERRORレベルのログを転送します。
+	- Send Debug Warning：ユーザーが発生させたWARNレベルのログを転送します。
 
+### API使用例
 
-### Example of API Use
+	- html > index.htmlを参照してください。
 
-- Refer to **html > index.html**.
-
-
-### Collect IP Address
+### IP Address収集設定
 
 ```
 public static void SetEnableHost:(bool flag)
 ```
 
--	true: Get an ip address and save in the host field.
-		false: Save"-" in the host field.
+- trueの場合、ip addressを取得し、hostフィールドに保存します。
+- falseの場合、hostフィールドに"-"を保存します。
 
-### Send Logs
+### ログ転送
 
 ```
 //send info log message
@@ -187,8 +183,8 @@ public static void Error(string strMsg)
 ```
 
 - Parameters
-  - strMsg: string
-    - [in] Log messages to send
+	- strMsg: string
+		- [in]転送するlogメッセージ
 
 ### Handled Exception
 
@@ -217,9 +213,9 @@ try{
 }
 ```
 
-- Send Exception occurred at try&catch.
+- try&catchで発生したExceptionを転送します。
 
-### Crash Callbacks  
+### クラッシュコールバック
 
 ```
 public void Crash_Send_Complete_Callback(string message) {
@@ -232,76 +228,85 @@ void Start() {
 
 ```
 
-- The ExceptionDelegate callback is called after crashes in Unity CSharp are sent to server: it is not called for native crashes.
+- ExceptionDelegateは、Unity Csharpで発生したCrashをサーバーに転送した後に呼び出されるコールバックです。<br>
+ネイティブCrashの場合は呼び出されません。
 
-### Set User IDs
+### ユーザーID設定
 
 ```
 public static void SetUserId(string userID)
 public static string GetUserID()
 ```
-- Must set the value to get statistics per user.
+- ユーザーごとの統計資料を取得するには、設定する必要があります。
 - Parameter
-  - userID: string
-    - [in] User ID to sort out users
+	- userID: string
+		- [in]各ユーザーを区分するuser id
 
-### Remove Duplicates
+### 重複除去モード設定
 
-The Remove Duplicates logic has been applied to general logs for 2.4.0 or higher SDKs: the logic is enabled with initialization.
+2.4.0以上のSDKから、一般ログに重複除去ロジックが適用されました。初期化時に重複除去ロジックが有効になります。
 
-In the case of general logs, do not send logs that have the same content in the body and logLevel.
+一般ログの場合、bodyとlogLevelが同じログが発生した場合、転送しません。
 
-For crash logs, do not send logs that have the same stackTrace and condition values.
+クラッシュログの場合、stackTraceとconditionの値が同じログが発生した場合、転送しません。
 
-The function may be disabled by using the function below, after initialization.
+不要な場合は、初期化後に下記の関数を使って機能を無効化できます。
 
 ```
 public static void SetDeduplicate(bool flag)
 ```
 
-true: (Default) Remove duplicates is enabled<br>
-false: Remove duplicates is disabled
+true：(Default値)重複除去ロジックを有効にする<br>
+false：重複除去ロジックを無効にする
 
-## Android Build
+## Android Buildする
 
-1. Click **File > Build Settings**.
+1.File->Build Settingsをクリックします。
+
 ![](http://static.toastoven.net/prod_logncrash/image023.png)
-- Select **Android Platform** and click **Player Settings**.
-  ![](http://static.toastoven.net/prod_logncrash/image028.png)
-- **Internet Access**는 **Require**, **Write Access**는 **External(SDCard)**로 설정합니다.
-  ![](http://static.toastoven.net/prod_logncrash/image029.png)
 
-2. Click **Build And Run** in the **Build settings**.
+![](http://static.toastoven.net/prod_logncrash/image028.png)
 
-## Interpret Android Unity Crashes
+- Android Platformを選択した後、Player Settingsをクリックします。
 
-- Unity has crashes that occur in Unity Engine or Android Native.
-- If Proguard is not applied, no additional symbol registration is required.
-- To interpret native-level crashes with Proguard, mapping.txt file should be registered in the **Console > Analytic > Log & Crash Search > Settings > Symbol File** Tab.
-- The mapping.txt file is to be created below the proguard folder.
-  <br><br>
-  ![](http://static.toastoven.net/prod_logncrash/12.png)
+![](http://static.toastoven.net/prod_logncrash/image029.png)
 
-## Caution for Android Unity Crash
+- Internet AccessはRequire、Write AccessはExternal(SDCard)に設定します。
 
-- Crash logs are considered general logs, when they are not interpreted because symbol files are unavailable.
+2.Build settingsでBuild And Runをクリックします。
 
-## Use External CrashHandler
+## Android Unity Crashを解析する
 
-- Existing SDKs have deployed logMessageReceived during initialization to register CrashHandler of Unity for a LogNCrash callback function.
-- The structure has been modified to allow applications to be made both for CrashHandler and external CrashHandler (refer to MultihandlerSample).
+- UnityのCrashは、Unity Engineで発生するCrashとAndroid Naitveで発生するCrashに分けられます。
 
-### Applications
+- Proguardが適用されていない場合、別途Symbol登録プロセスが必要ありません。
 
-- Send a false parameter to the LogNCrash.SetCrashHandler function to prevent CrashHandler from being automatically registered.
-- Must set before the Initialize function.
+- Proguardが適用されている場合、NativeレベルのCrash解析のためにはmapping.txtファイルをWebコンソール > Analytic > Log & Crash Search > Settings > シンボルファイルタブに登録する必要があります。
+
+- mapping.txtファイルはproguardフォルダの下に作成されます。
+<br><br>
+![](http://static.toastoven.net/prod_logncrash/12.png)
+
+## Android Unity Crashの注意事項
+
+- シンボルがなく、解析されていないCrashログは一般ログとして扱われます。
+
+## 外部CrashHandlerを使用する
+
+- 既存SDKでは初期化段階でlogMessageReceivedなどを使用して、UnityのCrashHandlerをLogNCrash専用Callback関数に登録して使用しました。
+- 外部CrashHandlerのように使用する場合があり、一緒に適用できるように構造を修正しました。(MultihandlerSample参照)
+
+### 適用方法
+
+- LogNCrash.SetCrashHandler関数にfalseをパラメータとして渡し、自動的にCrashHandlerが登録されることを防ぎます。
+- Initialize関数の前に設定されている必要があります。
 
 ```
 LogNCrash.SetCrashHanlder (false);
 LogNCrash.Initialize ();
 ```
 
-- Then, use the LogNCrash.unity3dHandleException function to deliver CrashHandler parameters to LogNCrash object.
+- 以降、LogNCrash.unity3dHandleException関数を使用して、CrashHandlerのパラメータをLogNCrashオブジェクトに渡します。
 
 ```
 void OnEnable()
@@ -317,10 +322,10 @@ void HandleLog(string logString, string stackTrace, LogType type)
 }
 ```
 
-## Diverge Build Environment with AssetDataBase
+### AssetDataBaseを活用したビルド環境分岐
 
-- Click **LogNCrash > Edit Settings** in the menu and create AssetDataBase to save simple data.
-- For a build using BuildPipeline.BuildPlayer, diverge the build environment by using LogNCrashSettings.Setter_BuildType and LogNCrashSettings.Getter_BuildType.
+- メニューバーのLogNCrash > Edit Settingsをクリックすると、簡単なデータを保存できるAssetDataBaseが作成されます。
+- BuildPipeline.BuildPlayerでBuildを行う場合、LogNCrashSettings.Setter_BuildTypeとLogNCrashSettings.Getter_BuildTypeを活用してビルド環境を分岐します。
 
 ```
 using UnityEditor;
@@ -359,7 +364,7 @@ public class lncAndroidBuildPipeline: MonoBehaviour
 }
 ```
 
-- LogNCrash operations depend on values saved in AssetDataBase by order.
+- コマンドに応じて、AssetDataBaseに保存された値でLogNCrashの動作を決定します。
 
 ```
 using Toast.LogNCrash.Implementation;
@@ -375,7 +380,7 @@ void Start () {
 }
 ```
 
-- There are five build types.
+- build typeは全部で5個で構成されています。
 
 ```
 public enum BuildType{

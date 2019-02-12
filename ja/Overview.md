@@ -1,34 +1,33 @@
-## Analytics > Log & Crash Search > Overview
+﻿## Analytics > Log & Crash Search > 概要
 
-Log & Crash Search collects and searches logs from client and server. 
+Log & Crash Searchは、クライアントとサーバーのログを収集して、ログの検索と照会ができるシステムです。   
+モバイルアプリで発生するクラッシュを分析し、統計作業を実行してクラッシュ発生原因に対する様々な情報も提供します。  
+Log & Crash Searchの特徴・利点は次のとおりです。  
 
-By analyzing and carrying out statistics of crash in mobile apps, data of different causes could be provided.
+## 特徴・利点
 
-Below describe benefits and features of Log & Crash Search. 
+* ゲームサーバーとログサーバーを分離することにより、大量のログによる問題点を除去できます。
+* 配布したすべてのクライアントで発生するエラーを一か所に集め、照会と分析ができます。
+* 大量のログから、ログを迅速に検索でき、ログパターン別の照会ができます。
+* ログとクラッシュを5分単位でリアルタイムモニタリングできます。
+* 使用量増加に伴ってログ量が増加しても、サービスを停止することなく利用できます。
+* エラー、クラッシュダンプ、Webアプリケーションログ、カスタムメッセージ形式などをサポートし、Windows、LinuxとJava環境で使用可能です。
 
-## Benefits
+## 主な機能
+Log & Crash Searchの主な機能は[表1]のとおりです。
 
-- Separate the game server from the log server in order to prevent potential problems caused by the large volume of logs. 
-- Collect errors occurred in all deployed clients at one point to retrieve and analyze them. 
-- Allow fast and patterned search of any logs you want among a large volume. 
-- Support real-time monitoring of log/crash in every five minutes.  
-- Enable the use without stop even with increasing log volume. 
-- Support for errors, crash dumps, web application logs, and user-defined (customized) message types, which are available on Windows, Linux and Java.
+[表1] Log & Crash Search主な機能
 
-## Main Features
-
-[Table 1] describes the main features of Log & Crash Search.
-
-| Feature | Description |
+|機能|	説明|
 |---|---|
-| Log Summary                           | Show log counts for each search field, including error code, log type,   and log level. |
-| Log Search Chart                      | Display log search with trends of every time period.         |
-| Real-time Log Search                  | Update the search screen for every 30 seconds, 1 minute, 5 minutes, 30   minutes, or 1 hour. |
-| Log Search by Field                   | Easily restrict search conditions so that search page shows log counts   of main fields, and only relevant logs are retrieved from a selected field. |
-| Highlighting                          | Highlight   matching query words easily to see if logs are   appropriate for search conditions. |
-| Search Query Saving                   | Save searched conditions and apply for further searches or create   a dashboard. |
-| Crash Log Search                      | Search app crash logs by filtering status, period, version, or operating   system, for each platform (iOS, Android, or Unity) |
-| Search of Crash Log Trends            | Provide crash trends, such as crash counts, number of users, and error   statistics, in various chart types. |
-| Forecasting Crash Indicator and Trend | Check rate and trend of crash occurrence for each session, version, and   platform. |
-| Crash Statistics                      | Provide statistical data of each crash   type.               |
-| Network Insight                       | With URL specified, check network   delay time of each nation and statistics of error rate. |
+|ログ要約機能|	エラーコード、ログタイプ、ログレベルなど、検索フィールド別のログ数を確認できます。|
+|ログ検索チャート|	ログを検索すると、時間帯別の推移をチャートで確認できます。|
+|リアルタイムログ検索|	リアルタイムログ検索機能を使用すると、30秒、1分、5分、 30分、1時間単位で検索画面を更新します。|
+|フィールド別ログ検索|	検索ページで主なフィールドのログ数値を表示し、フィールドを選択すると、関連ログのみ表示するので、簡単に条件を制限できます。|
+|ハイライト機能|	ログ本文でクエリーに一致する単語をハイライトするため、現在の検索条件にマッチするログかどうかを簡単に確認できます。|
+|検索クエリー保存機能|	検索した条件を保存して再び検索に活用したり、ダッシュボードの作成に活用できます。|
+|クラッシュログ検索|	アプリクラッシュログは、プラットフォーム(iOS、Android、Unity)ごとに状態、期間、バージョン、OSでフィルタリングして検索できます。|
+|クラッシュログトレンド検索|	クラッシュカウント、ユーザー数、エラー統計など、各種クラッシュトレンドを多様なチャートで提供します。|
+|クラッシュ指標および推移機能|	セッション別、バージョン別、プラットフォーム別、クラッシュ発生比率および推移を確認できます。|
+|クラッシュ統計機能|	クラッシュタイプ別の統計を提供します。|
+|ネットワークインサイト機能|	指定したURLで国別にネットワーク遅延時間、エラー率の統計を確認できます。| 
