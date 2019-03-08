@@ -1,5 +1,11 @@
 ## Analytics > Log & Crash Search > 릴리스 노트
 
+### 2019.03.27
+#### 기능 개선 / 변경
+* [Console] iOS arm64e 기기에서 발생한 크래시 분석 지원 (호환이 되는 SDK가 필요합니다.)
+* [Console] Android NDK 에서 발생한 크래시 분석 지원 (호환이 되는 SDK가 필요합니다.)
+* [Console] 국제화 적용 (일본어)
+
 ### 2019.01.15
 #### 기능 개선 / 변경
 * [Console] User console 적용
