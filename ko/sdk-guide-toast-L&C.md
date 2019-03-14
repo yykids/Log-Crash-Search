@@ -9,16 +9,16 @@ TOAST Log & Crash Search SDK를 적용하면 모바일 애플리케이션에서 
 ## 개발 가이드
 
 #### iOS
-* [TOAST Push iOS 가이드](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-ios/)를 참고하십시오.
+* [TOAST Log & Crash Search iOS 가이드](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-ios/)를 참고하십시오.
 
 #### Android
-* [TOAST Push Android 가이드](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-android/)를 참고하십시오.
+* [TOAST Log & Crash Search Android 가이드](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-android/)를 참고하십시오.
 
 #### Unity
-* [TOAST Push Unity 가이드](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-unity/)를 참고하십시오.
+* [TOAST Log & Crash Search Unity 가이드](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-unity/)를 참고하십시오.
 
 #### Windows C++
-* [TOAST Push Windows C++ 가이드](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-windows/)를 참고하십시오.
+* [TOAST Log & Crash Search Windows C++ 가이드](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-windows/)를 참고하십시오.
 
 #### 기타
 * 기타 플랫폼에 대한 문의는 [TOAST 고객센터](https://toast.com/support/inquiry?alias=tab3_06)로 문의해 주세요.
