@@ -1,4 +1,4 @@
-﻿## Analytics > Log & Crash Search > コンソール使用ガイド
+## Analytics > Log & Crash Search > コンソール使用ガイド
 
 > [告知]
 > arm64eアーキテクチャを使用する新規端末(iPhone XS、XR、XS Max、iPad Pros 3rd)で発生したクラッシュログは、発生件数の集計のみ可能で、クラッシュ内容の分析はまだサポートされていません。
