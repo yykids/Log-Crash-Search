@@ -1,4 +1,4 @@
-﻿## Analytics > Log & Crash Search > APIガイド
+## Analytics > Log & Crash Search > APIガイド
 
 HTTPプロトコルを使用して、Log & Crash収集サーバーにログを転送でき、下記のようなJSON形式で使用します。
 
