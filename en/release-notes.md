@@ -1,5 +1,12 @@
 ## Analytics > Log & Crash Search > Release Notes
 
+### 2019.05.28.
+#### 버그 수정
+* [Console] Windows 10, Internet Explorer 11 환경에서 일부 페이지가 정상적으로 동작하지 않는 현상 수정
+* [Console] 심벌 파일 업로드 시 일부 ZIP 파일을 해석하지 못하는 이슈 수정
+* [Console] 웹 콘솔에서 언어를 변경할 때, 특정 부분이 즉시 반영되지 않는 현상 수정
+* [Console] 알람을 설정할 때 http/https 콜백 중 https 콜백을 설정할 수 없는 현상 수정
+
 ### 2019.03.27
 #### 기능 개선 / 변경
 * [Console] iOS arm64e 기기에서 발생한 크래시 분석 지원 (호환이 되는 SDK가 필요합니다.)
