@@ -1,4 +1,11 @@
-## Analytics > Log & Crash Search > Release Notes
+## Analytics > Log & Crash Search > リリースノート
+
+### 2019.05.28.
+#### バグ修正
+* [Console] Windows 10、Internet Explorer 11環境で一部のページが正常に動作しない現象を修正
+* [Console]シンボルファイルをアップロードした時、一部のZIPファイルを解析できないイシューを修正
+* [Console] Webコンソールで言語を変更した時、特定部分が即時に反映されない現象を修正
+* [Console]アラームを設定した時、http/httpsコールバックのうち、httpsコールバックを設定できない現象を修正
 
 ### 2019.03.27
 #### 기능 개선 / 변경

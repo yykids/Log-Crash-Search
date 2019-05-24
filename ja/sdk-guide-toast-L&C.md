@@ -1,24 +1,24 @@
-## Analytics > Log & Crash Search > SDK Guide
-TOAST Log & Crash Search SDK를 적용하면 모바일 애플리케이션에서 쉽고 강력한 원격 로그 및 크래시 분석 기능을 사용할 수 있습니다.
+## Analytics > Log & Crash Search > SDKガイド
+TOAST Log & Crash Search SDKを適用すると、モバイルアプリケーションで簡単かつ強力な遠隔ログおよびクラッシュ分析機能を使用できます。
 
-## 주요 기능
+## 主な機能
 
-* 불안정정한 네트워크 환경에서도 안정적인 로그 전송 기능을 제공합니다.
-* 다양한 환경에서 발생하는 애플리케이션의 크래시 분석 기능을 제공합니다.
+* 不安定なネットワーク環境でも、安定的なログ転送機能を提供します。
+* 多様な環境で発生するアプリケーションのクラッシュ分析機能を提供します。
 
-## 개발 가이드
+## 開発ガイド
 
 #### iOS
-* [TOAST Log & Crash Search iOS 가이드](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-ios/)를 참고하십시오.
+* [TOAST Log & Crash Search iOSガイド](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-ios/)を参照してください。
 
 #### Android
-* [TOAST Log & Crash Search Android 가이드](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-android/)를 참고하십시오.
+* [TOAST Log & Crash Search Androidガイド](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-android/)を参照してください。
 
 #### Unity
-* [TOAST Log & Crash Search Unity 가이드](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-unity/)를 참고하십시오.
+* [TOAST Log & Crash Search Unityガイド](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-unity/)を参照してください。
 
 #### Windows C++
-* [TOAST Log & Crash Search Windows C++ 가이드](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-windows/)를 참고하십시오.
+* [TOAST Log & Crash Search Windows C++ ガイド](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-windows/)を参照してください。
 
-#### 기타
-* 기타 플랫폼에 대한 문의는 [TOAST 고객센터](https://toast.com/support/inquiry?alias=tab3_06)로 문의해 주세요.
+#### その他
+* その他プラットフォームについてのお問い合わせは[TOASTサポート](https://toast.com/support/inquiry?alias=tab3_06)へお願いします。
