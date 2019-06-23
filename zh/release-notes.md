@@ -1,15 +1,13 @@
 ## Analytics > Log & Crash Search > Release Notes
 
 ### June 25, 2019
-### Updates/Changes 
+#### Updates/Changes 
 * Fixed the (null) ((null)) symbolication result of some iOS crash logs   
 * Increased the capacity limit of a single log case (general and crash) from 1MB to 2MB
 * Modified to display actual phone numbers on the list of alarm recipients
 
-### Bug Fixes
+#### Bug Fixes
 * Allowed to query modified alarms from the list, when the last modifier has been excluded from project members   
-
-## Analytics > Log & Crash Search > Release Notes
 
 ### May 28, 2019
 #### Bug Fixes
