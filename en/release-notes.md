@@ -1,11 +1,22 @@
 ## Analytics > Log & Crash Search > Release Notes
 
-### 2019.05.28.
-#### 버그 수정
-* [Console] Windows 10, Internet Explorer 11 환경에서 일부 페이지가 정상적으로 동작하지 않는 현상 수정
-* [Console] 심벌 파일 업로드 시 일부 ZIP 파일을 해석하지 못하는 이슈 수정
-* [Console] 웹 콘솔에서 언어를 변경할 때, 특정 부분이 즉시 반영되지 않는 현상 수정
-* [Console] 알람을 설정할 때 http/https 콜백 중 https 콜백을 설정할 수 없는 현상 수정
+### June 25, 2019
+### Updates/Changes 
+* Fixed the (null) ((null)) symbolication result of some iOS crash logs   
+* Increased the capacity limit of a single log case (general and crash) from 1MB to 2MB
+* Modified to display actual phone numbers on the list of alarm recipients
+
+### Bug Fixes
+* Allowed to query modified alarms from the list, when the last modifier has been excluded from project members   
+
+## Analytics > Log & Crash Search > Release Notes
+
+### May 28, 2019
+#### Bug Fixes
+* [Console] Fixed abnormal operations in some pages for Windows 10 and Internet Explorer 11 
+* [Console] Fixed the unavailability of interpreting some zip files when symbolized files were uploaded 
+* [Console] Allowed to immediately apply particular parts when language was changed on a web console 
+* [Console] Fixed the alarm setting by which https callback setting was unavailable 
 
 ### 2019.03.27
 #### 기능 개선 / 변경
