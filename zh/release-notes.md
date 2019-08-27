@@ -1,5 +1,9 @@
 ## Analytics > Log & Crash Search > Release Notes
 
+### August 27, 2019
+#### Bug Fixes 
+- [Console] Fixed an event in which search of a particular query is unavailable from the list. 
+
 ### June 25, 2019
 #### Updates/Changes 
 * Fixed the (null) ((null)) symbolication result of some iOS crash logs   
