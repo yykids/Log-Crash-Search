@@ -5,16 +5,16 @@
 ダブルクォーテーション(")とチルダ(~)の位置や有無によって、演算子として使用するかどうかが決定されます。
 * 例)近似検索と類似項目検索
 また、基本的に検索語がダブルクォーテーション(")で囲まれている場合、囲まれている部分全体を1つの構文として検索します。
-* 例) body:normal AND performace
-* → bodyフィールドの値に"normal"と"performace"があるログを検索
+* 例) body:normal AND performance
+* → bodyフィールドの値に"normal"と"performance"があるログを検索
 
 ![lcs_lucene_guide_01](https://static.toastoven.net/prod_logncrash/lcs_lucene_guide_01.png)
 
-* 例) body:"normal AND performace"
-* → bodyフィールドの値に"normal AND performaceがあるログを検索
+* 例) body:"normal AND performance"
+* → bodyフィールドの値に"normal AND performanceがあるログを検索
 
 ![lcs_lucene_guide_02](https://static.toastoven.net/prod_logncrash/lcs_lucene_guide_02.png)
-* "normal AND performace"に該当するテキストがないため、ログ結果が0
+* "normal AND performance"に該当するテキストがないため、ログ結果が0
 
 検索時、特殊文字を使用する時に文字の前にバックスラッシュまたは、\を入力してエスケープ処理します。
 * 対象特殊文字: ```+ - && || ! ( ) { } [ ] ^ " ~ * ? : \ /```
