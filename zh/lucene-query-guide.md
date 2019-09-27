@@ -5,16 +5,16 @@
 큰따옴표(")와 물결표(~)의 위치 또는 유무에 따라 연산자로 사용될지, 아닐지가 결정됩니다.
 * ex) 근접 검색과 유사항목 검색
 또한 기본적으로 검색어가 큰따옴표(")로 감싸지면 감싸진 부분 전체를 하나의 구문으로 검색합니다.
-* ex) body:normal AND performace
-* -> body 필드의 값에 "normal"와 "performace" 단어가 있는 로그를 검색
+* ex) body:normal AND performance
+* -> body 필드의 값에 "normal"와 "performance" 단어가 있는 로그를 검색
 
 ![lcs_lucene_guide_01](https://static.toastoven.net/prod_logncrash/lcs_lucene_guide_01.png)
 
-* ex) body:"normal AND performace"
-* -> body 필드의 값에 "normal AND performace" 단어가 있는 로그를 검색
+* ex) body:"normal AND performance"
+* -> body 필드의 값에 "normal AND performance" 단어가 있는 로그를 검색
 
 ![lcs_lucene_guide_02](https://static.toastoven.net/prod_logncrash/lcs_lucene_guide_02.png)
-* "normal AND performace" 에 해당하는 텍스트가 없어서 로그 결과가 0
+* "normal AND performance" 에 해당하는 텍스트가 없어서 로그 결과가 0
 
 검색 시 특수문자를 사용할 때는 문자 앞에 백슬래시 또는 \를 입력하여 이스케이프 처리합니다.
 * 대상 특수문자 : ```+ - && || ! ( ) { } [ ] ^ " ~ * ? : \ /```
