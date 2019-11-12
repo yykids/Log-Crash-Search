@@ -1,5 +1,10 @@
 ## Analytics > Log & Crash Search > Release Notes
 
+### Oct. 29, 2010
+#### Feature Updates
+* [Console] Added the feature of S3 uploading 
+* [Console] Changed the error message for alarms activated due to invalid query of alarm 
+
 ### August 27, 2019
 #### Bug Fixes 
 - [Console] Fixed an event in which search of a particular query is unavailable from the list. 
