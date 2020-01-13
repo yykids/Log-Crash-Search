@@ -1,6 +1,11 @@
 ## Analytics > Log & Crash Search > Release Notes
 
-### Oct. 29, 2010
+### Jan. 21, 2020
+#### Feature Updates
+* [Console] iOS Crash 발생 위치를 찾는 방법 변경
+* [Console] iOS Crash 추가 정보 표기 추가 (Toast SDK iOS 0.21.0 이상 버전이 필요합니다.)
+
+### Oct. 29, 2019
 #### Feature Updates
 * [Console] Added the feature of S3 uploading 
 * [Console] Changed the error message for alarms activated due to invalid query of alarm 
