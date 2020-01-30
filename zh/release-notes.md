@@ -2,8 +2,8 @@
 
 ### Jan. 21, 2020
 #### Feature Updates
-* [Console] iOS Crash 발생 위치를 찾는 방법 변경
-* [Console] iOS Crash 추가 정보 표기 추가 (Toast SDK iOS 0.21.0 이상 버전이 필요합니다.)
+* [Console] Changed how to locate the occurrence of iOS crashes 
+* [Console] Allows additional display of information on iOS crashes  (on TOAST SDK iOS 0.21.0 or higher versions)
 
 ### Oct. 29, 2019
 #### Feature Updates
