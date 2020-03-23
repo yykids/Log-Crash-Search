@@ -2,12 +2,13 @@
 
 ### Feb. 25, 2020
 #### Feature Updates
-* [Console] SDK 로그 전송 설정 화면의 툴팁 문구 수정
-* [Console] 쿼리 저장 기능에서 Lucene 쿼리의 유효성 검증 과정 추가
+* [Console] Modified tooltip messages on the setting page of SDK log delivery. 
+* [Console] Added, in query saving, the validity authetication process for Lucene query.
 #### Bug Fixes 
-* [Console] 심벌 파일 업로드 기능에서 특정 Windows 심벌 파일을 처리하지 못하는 버그 수정
-    * 여러 번 빌드로 인해 Windows PDB의 age 값이 11을 초과 한 경우, 이후 추출된 심벌 파일은 guid가 34글자 이상이 될 수 있습니다. guid 필드의 33글자 제한 해제하였습니다.
-* [Console] 30일이 지난 로그를 검색할 때 저장된 필드가 제대로 노출되지 않는 버그 수정
+* [Console] Fixed bugs in which particular Windows symbol files cannot be processed in uploading symbol files 
+    * Due to many builds, if the age of Windows PDB exceeds 11, symbol files that are extracted afterwards may contain a guid which has more than 34 characters. The limit of 33 characters for a guid field has been lifted. 
+* [Console] Fixed bugs, in which fields that are saved with the search of logs older than 30 days are not properoly exposed.
+
 
 ### Jan. 21, 2020
 #### Feature Updates
