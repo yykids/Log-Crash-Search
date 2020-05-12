@@ -320,9 +320,13 @@ Symbolication file이 등록 되어 있어야 크래시 로그를 확인할 수 
 **[파일 선택]** 을 클릭하여 심벌 파일을 업로드 합니다.
 
 - iOS: iOS 심벌리케이션 파일을 업로드할 때는 ZIP 압축 방법으로 BundleName.app.dSYM 파일을 압축하십시오.
+    - [iOS 심벌 추출 및 경로](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-ios)
 - Android: 안드로이드 심벌리케이션을 업로드할 때는 mapping.txt 파일을 업로드해야 합니다.
-- Android-NDK: 안드로이드 NDK 파일을 업로드할 때는 ZIP 압축 방법으로 lib.so 파일을 압축하십시오.
+    - [Android 심벌 추출 및 경로](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-android)
+- Android NDK: 안드로이드 NDK 파일을 업로드할 때는 ZIP 압축 방법으로 lib.so 파일을 압축하십시오.
+    - [Android NDK 심벌 추출 및 경로](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-ndk)
 - Windows: Windows 심벌리케이션 파일을 업로드할 때는, ZIP 압축 방법으로 BundleName.sym 파일을 압축하십시오.
+    - [Window 심벌 추출 및 경로](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-windows)
 - 심벌 파일의 최대 크기는 200MB입니다.
 - Android NDK 심벌리케이션 파일이 허용하는 최대 파일 크기를 초과할 경우, 원본 ‘lib.so’ 바이너리 파일의 텍스트 형태 심벌을 포함하고 있는 하나의 ‘lib.so.sym’을 포함하는 ZIP 파일의 형태로 업로드할 수 있습니다.
 - Android Unity의 경우 심벌 파일의 등록이 필요하지 않습니다. 단, ProGuard 적용시 mapping.txt. 업로드가 필요합니다.
