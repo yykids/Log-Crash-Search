@@ -58,7 +58,7 @@
 #### Feature Updates 
 * [Console] 안드로이드 크래시 중 크래시가 발생한 부분이 unity 이며, 크래시 유형이 'java.lang.Error' 로 기록된 경우 예외 종류 정상적으로 판단하지 못하는 이슈 수정 Fixed an issue in which exception type is not properly judged when an Android crash occurs for Unity and the crash type is recorded as 'java.lang.Error'
     * Fixed an issue in which access is unavailable to detail page from Web console웹콘솔 > Crash크래시 > Query Issues이슈 조회에서 상세화면으로 진입이 되지 않는 이슈 수정
-    * 웹콘솔 > 크래시 > 이슈통계 버전별 이슈 개수 노출되지 않는 이슈 수정
+    * Fixed failed exposure of issue count per version from Web Console웹콘솔 > Crash래시 > Issue Statistics 이슈통계 버전별 이슈 개수 노출되지 않는 이슈 수정
 * [Console] 알람 관련 기능 UX/UI 개선 Update UX/UI related with Notification 
     * 알람 등록 Register alarms 
     * 알람 히스토리 History of alarms
@@ -66,8 +66,8 @@
     * 크래시 알람 히스토리 History of crash alarms 
     * 사용자 기반 알람 등록 Register user-based alarms
     * 사용자 기반 알람 히스토리 History of user-based alarms 
-* [Console] 웹콘솔 > 설정 > 심볼파일 업로드 화면에서 Android unity 심볼 파일 가이드 추가
-* [Console] Network insight URL 유효성 검증 변경
+* [Console] 웹콘솔 > 설정 > 심볼파일 업로드 화면에서 Android unity 심볼 파일 가이드 추가 On the Web Console > Setting > Uploading Symbol Files, add guides of symbol files for Android Unity 
+* [Console] Network insight URL 유효성 검증 변경 Changed validation for Network Insight URL 
 
 ### October 23, 2018 
 #### Feature Updates
@@ -142,11 +142,11 @@
 #### Bug Fixes
 
 * [SDK][[AOS-2.6.6](/Download/#analytics-log-crash-search)] 
-    * 중복 제거 필터 오류 수정 Fixed error
+    * 중복 제거 필터 오류 수정 Fixed filter error in removing duplicates 
 
 * [SDK][[iOS-2.6.10](/Download/#analytics-log-crash-search)]
-    * 초기화 과정에서 UserID 의 값이 nil 일 때 Crash가 발생하던 문제 수정
-    * 초기화 과정에서 enableSyncStart 의 값이 YES 일 경우 CPU 이용률이 100%까지 올라가는 문제 수정
+    * 초기화 과정에서 UserID 의 값이 nil 일 때 Crash가 발생하던 문제 수정 Fixed the occurrence of crash during initialiation, when userID was nil
+    * 초기화 과정에서 enableSyncStart 의 값이 YES 일 경우 CPU 이용률이 100%까지 올라가는 문제 수정 Fixed the CPU usage rate raised up to 100% when enableSyncStart was YES
 
 ### April 24, 2018
 
@@ -192,16 +192,16 @@
     * Updated Version: [toast-logncrash-android-2.6.4](/Download/#analytics-log-crash-search) / [toast-logncrash-unity-2.8.3](/Download/#analytics-log-crash-search)
 * [SDK] PLCrashReporter가 Crash File을 생성하지 못하는 경우, 'EMPTY CRASH FILE'을 DmpData에 넣어 전송하도록 수정
     * Updated Version: [toast-logncrash-ios-mac-sdk-2.6.7](/Download/#analytics-log-crash-search) [toast-logncrash-unity-2.8.3](/Download/#analytics-log-crash-search)
-* [SDK] iOS SDK에서 Native Crash 발생 시, CrashStyle, SymMethod가 잘못 표기되는 문제 수정
-* [SDK] WebGL에서UserID가 설정되지 않던 문제 수정
-* [SDK] unity ios wrapper class에서 https 프로토콜이 지정되지 않던 문제 수정
+* [SDK] iOS SDK에서 Native Crash 발생 시, CrashStyle, SymMethod가 잘못 표기되는 문제 수정 Fixed wrong display of CrashStyle and SymMethod, when navitve crash occurs on iOS SDK 
+* [SDK] WebGL에서UserID가 설정되지 않던 문제 수정 Fixed failed settings of userID on WeGL
+* [SDK] unity ios wrapper class에서 https 프로토콜이 지정되지 않던 문제 수정 Fixed an issue in which https protocol was not specified by the Unity ios wrapper class
     * Updated Version: [toast-logncrash-unity-2.8.3](/Download/#analytics-log-crash-search)
 
 ### July 20, 2017
 #### Feature Updates
 * [SDK] Support WebGL Platform 
     * Updated Version: [toast-logncrash-unity-2.7.4](/Download/#analytics-log-crash-search)
-* [Console] 크래시 목록 화면 softing option에서 사용자수 제거
+* [Console] 크래시 목록 화면 softing option에서 사용자수 제거 Removed user count from the softing option on the page of crash list
 
 #### Bug Fixes
 * [Console] 크래시 사용자 레이아웃 버그 수정 Fixed bugs in crash user layout 
@@ -392,11 +392,11 @@
 
 ### 2016.08.04 August 04, 2016
 #### 기능 개선/변경 Feature Updates
-* [SDK][Unity] 2.2.6 업데이트
-    * SaveToFile 저장 포맷 변경
-    * Regular Expression, JSON 라이브러리를 사용하여 변환하도록 수정
-    * 파일 최대 저장 개수 100개 제한
-    * 중복 제거 큐 100개 제한
+* [SDK][Unity] Updated to 2.2.6 업데이트
+    * SaveToFile 저장 포맷 변경 Changed the format of saving SaveToFile
+    * Regular Expression, JSON 라이브러리를 사용하여 변환하도록 수정 Modified to convert by using regular expression, JSON library
+    * 파일 최대 저장 개수 100개 제한 Limit the maximum file count to be saved up to 100
+    * 중복 제거 큐 100개 제한 Limit the maximum queue count to remove duplicates up to 100  
 
 #### 버그 수정 Bug Fixes
-* [API] 특정 필드에 json array나 object를 전송한 경우 string으로 변환 되는 현상 수정
+* [API] 특정 필드에 json array나 object를 전송한 경우 string으로 변환 되는 현상 수정 Fixed an issue in which json array or object sent to a specific field to be converted to string 
