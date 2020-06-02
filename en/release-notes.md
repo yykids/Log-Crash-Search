@@ -60,18 +60,18 @@
     * Fixed an issue in which access is unavailable to detail page from Web console웹콘솔 > Crash크래시 > Query Issues이슈 조회에서 상세화면으로 진입이 되지 않는 이슈 수정
     * 웹콘솔 > 크래시 > 이슈통계 버전별 이슈 개수 노출되지 않는 이슈 수정
 * [Console] 알람 관련 기능 UX/UI 개선 Update UX/UI related with Notification 
-    * 알람 등록 Register notification 
-    * 알람 히스토리 Notification history 
-    * 크래시 알람 등록 Register crash 
-    * 크래시 알람 히스토리
-    * 사용자 기반 알람 등록
-    * 사용자 기반 알람 히스토리
+    * 알람 등록 Register alarms 
+    * 알람 히스토리 History of alarms
+    * 크래시 알람 등록 Register crash alarms 
+    * 크래시 알람 히스토리 History of crash alarms 
+    * 사용자 기반 알람 등록 Register user-based alarms
+    * 사용자 기반 알람 히스토리 History of user-based alarms 
 * [Console] 웹콘솔 > 설정 > 심볼파일 업로드 화면에서 Android unity 심볼 파일 가이드 추가
 * [Console] Network insight URL 유효성 검증 변경
 
 ### October 23, 2018 
 #### Feature Updates
-* [Console] (구) 로그 알람 종료
+* [Console] (구) 로그 알람 종료 Closed log alarms (old)
     * [Relevant Notice](https://toast.com/support/notice/detail/1453435858K00594)
 
 ### September 18, 2018 
@@ -81,7 +81,7 @@
 ### September 04, 2018 
 #### Feature Updates
 * [SDK][[logback-3.0.2](/Download/#analytics-log-crash-search)]
-    * Logncrash Appender의 예약어 중 기본값이 없는 항목이 empty, null일 경우, 예약어 항목이 추가되지 않도록 개선
+    * Logncrash Appender의 예약어 중 기본값이 없는 항목이 empty, null일 경우, 예약어 항목이 추가되지 않도록 개선 Updated not to add reservation items, when Logncrash Appender has empty or null for non-default items of reservation  
     * Logncrash REST API 타임아웃 설정 Set timeout for Longrash REST API
     * Logback의 AsyncAppender 사용 Enable AsynAppender for Logback 
 
