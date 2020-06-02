@@ -56,7 +56,7 @@
 
 ### Novermber 27, 2018.11.27
 #### Feature Updates 
-* [Console] 안드로이드 크래시 중 크래시가 발생한 부분이 unity 이며, 크래시 유형이 'java.lang.Error' 로 기록된 경우 예외 종류 정상적으로 판단하지 못하는 이슈 수정 Fixed an issue in which exception type is not normally 
+* [Console] 안드로이드 크래시 중 크래시가 발생한 부분이 unity 이며, 크래시 유형이 'java.lang.Error' 로 기록된 경우 예외 종류 정상적으로 판단하지 못하는 이슈 수정 Fixed an issue in which exception type is not properly judged when an Android crash occurs for Unity and the crash type is recorded as 'java.lang.Error'
     * Fixed an issue in which access is unavailable to detail page from Web console웹콘솔 > Crash크래시 > Query Issues이슈 조회에서 상세화면으로 진입이 되지 않는 이슈 수정
     * 웹콘솔 > 크래시 > 이슈통계 버전별 이슈 개수 노출되지 않는 이슈 수정
 * [Console] 알람 관련 기능 UX/UI 개선 Update UX/UI related with Notification 
