@@ -56,22 +56,22 @@
 
 ### Novermber 27, 2018.11.27
 #### Feature Updates 
-* [Console] 안드로이드 크래시 중 크래시가 발생한 부분이 unity 이며, 크래시 유형이 'java.lang.Error' 로 기록된 경우 예외 종류 정상적으로 판단하지 못하는 이슈 수정 Fixed an issue in which exception type is not properly judged when an Android crash occurs for Unity and the crash type is recorded as 'java.lang.Error'
-    * Fixed an issue in which access is unavailable to detail page from Web Console > Crash > Query Issues이슈 조회에서 상세화면으로 진입이 되지 않는 이슈 수정
-    * Fixed failed exposure of issue count per version from Web Console > Crash > Issue Statistics 이슈통계 버전별 이슈 개수 노출되지 않는 이슈 수정
-* [Console] 알람 관련 기능 UX/UI 개선 Update Alarm-related UX/UI  
-    * 알람 등록 Register alarms 
-    * 알람 히스토리 History of alarms
-    * 크래시 알람 등록 Register crash alarms 
-    * 크래시 알람 히스토리 History of crash alarms 
-    * 사용자 기반 알람 등록 Register user-based alarms
-    * 사용자 기반 알람 히스토리 History of user-based alarms 
-* [Console] 웹콘솔 > 설정 > 심볼파일 업로드 화면에서 Android unity 심볼 파일 가이드 추가 On the Web Console > Setting > Uploading Symbol Files, add guides of symbol files for Android Unity 
-* [Console] Network insight URL 유효성 검증 변경 Changed validation for Network Insight URL 
+* [Console] Fixed an issue in which exception type is not properly judged when an Android crash occurs for Unity and the crash type is recorded as 'java.lang.Error'
+    * Fixed an issue in which access is unavailable to detail page from Web Console > Crash > Query Issues
+    * Fixed failed exposure of issue count per version from Web Console > Crash > Issue Statistics 
+* [Console] Updates for Alarm-related UX/UI  
+    * Alarm registration 
+    * History of alarms
+    * Crash alarm registration 
+    * History of crash alarms 
+    * User-based alarm registration
+    * History of user-based alarms 
+* [Console] Added guides of symbol files for Android Unity on the Web Console > Setting > Uploading Symbol Files 
+* [Console] Changed validation for Network Insight URL 
 
 ### October 23, 2018 
 #### Feature Updates
-* [Console] (구) 로그 알람 종료 Closed log alarms (old)
+* [Console] Closed log alarms (old)
     * [Relevant Notice](https://toast.com/support/notice/detail/1453435858K00594)
 
 ### September 18, 2018 
@@ -81,68 +81,68 @@
 ### September 04, 2018 
 #### Feature Updates
 * [SDK][[logback-3.0.2](/Download/#analytics-log-crash-search)]
-    * Logncrash Appender의 예약어 중 기본값이 없는 항목이 empty, null일 경우, 예약어 항목이 추가되지 않도록 개선 Updated not to add reservation items, when Logncrash Appender has empty or null for non-default items of reservation words
-    * Logncrash REST API 타임아웃 설정 Set timeout for Longrash REST API
-    * Logback의 AsyncAppender 사용 Enable AsynAppender for Logback 
+    * Updated not to add reservation items, when Logncrash Appender has empty or null for non-default items of reservation words
+    * Set timeout for Longrash REST API
+    * Enable AsynAppender for Logback 
 
 #### Bug Fixes
 * [SDK][[logback-3.0.2](/Download/#analytics-log-crash-search)]
-    * Fixed bugs in which reservation words, such as empty or null, were added 일부 empty, null의 예약어 항목이 추가된 버그 수정
+    * Fixed bugs in which reservation words, such as empty or null, were added 
 
 ### July 24, 2018 
 
 #### Feature Updates
-* [Console] 설정 페이지 UI 변경 Changed UI for the setting page 
+* [Console] Changed UI for the setting page 
 
 ### June 26, 2018
 
 #### Bug Fixes
 * [SDK][[iOS-2.7.1](/Download/#analytics-log-crash-search)]
-    * 중복하여 초기화 수행시 크래시 발생하던 버그 수정 Fixed bugs in which crash occurred during initialization in duplicates 
+    * Fixed bugs in which crash occurred during initialization in duplicates 
 
 ### June 05, 2018
 
 #### Feature Updates
 * [SDK][[Android-2.6.7](/Download/#analytics-log-crash-search)]
-    * 저장된 로그의 경우, 필터를 거치지 않고 전송하도록 동작 변경 Changed operations for saved logs, to be sent without filtering
+    * Changed operations for saved logs, to be sent without filtering
 
 #### Bug Fixes
 * [SDK][[iOS-2.7.0](/Download/#analytics-log-crash-search)]
-    * Changed internal logic of SDK 내부 로직 개선
+    * Changed internal logic of SDK 
     
 * [SDK][[Android-2.6.7](/Download/#analytics-log-crash-search)]
-    * Fixed bugs in which logs were not sent in Android 4.1.2 or lower versions 이하 버전에서 로그가 전송되지 않던 버그 수정 (bugs on Android-2.6.6 SDK)
+    * Fixed bugs in which logs were not sent in Android 4.1.2 or lower versions (bugs on Android-2.6.6 SDK)
 
 * [SDK][[Unity-2.8.6](/Download/#analytics-log-crash-search)]
-    * Fixed an issue in which the loglevel was set as fatal when Unity crash logs occurred on iOS 에서 Unity Crash Log 발생시 LogLevel 이 전부 FATAL로 설정되던 문제 수정
+    * Fixed an issue in which the loglevel was set as fatal when Unity crash logs occurred on iOS 
 
 ### May 29, 2018 
 
-* [Console] iOS 크래시 심볼리케이션 중 중복된 이름의 Bundle(ex. Framework.UIKit, Accessibility.UIKit)이 존재 할 경우 심볼리케이션이 정상적으로 되지 않는 문제 수정 Fixed an issue in which symbolication didn't work when bundles of duplicate names (e.g. Framework.UIKit, Accessibility.UIKit) exist among iOS crash symbolication  
+* [Console] Fixed an issue in which symbolication didn't work when bundles of duplicate names (e.g. Framework.UIKit, Accessibility.UIKit) exist among iOS crash symbolication  
 
 ### May 09, 2018
 
 #### Bug Fixes
 
 * [SDK][[Unity-2.8.5](/Download/#analytics-log-crash-search)]
-    * Rolled back crash logtype occurred at Unity Script에서 발생한 Crash logType 롤백
-        * Unity Script에서 발생한 Crash를 HANDLED로 처리하는 로직이 적용되어 롤백합니다. Rolled back with crash occurred at Unity Script processed as Handled. 
+    * Roll back crash logtype occurred at Unity Script
+        * Rolls back with crash occurred at Unity Script processed as Handled. 
 
 ### May 02, 2018 
 
 #### Feature Updates
 
 * [SDK][[AOS-2.6.6](/Download/#analytics-log-crash-search)]
-    * IP Address 수집 필드 제거 Removed IP Address collection field 
-        * 콘솔에 표시되는 "host" 값은 서버에서 수집한 정보를 사용합니다. Apply information collected from the server for "host" on console 
+    * Removed IP Address collection field 
+        * Apply information collected from the server for "host" on console 
 
 * [SDK][[Unity-2.8.4](/Download/#analytics-log-crash-search)]
-    * Android Native SDK 호출 API 개선 Updated Call Android Native SDK API 
+    * Updated Call Android Native SDK API 
 
 #### Bug Fixes
 
 * [SDK][[AOS-2.6.6](/Download/#analytics-log-crash-search)] 
-    * 중복 제거 필터 오류 수정 Fixed filter error in removing duplicates 
+    * Fixed filter error in removing duplicates 
 
 * [SDK][[iOS-2.6.10](/Download/#analytics-log-crash-search)]
     * 초기화 과정에서 UserID 의 값이 nil 일 때 Crash가 발생하던 문제 수정 Fixed the occurrence of crash during initialiation, when userID was nil
@@ -158,18 +158,18 @@
 
 ### January 22, 2018 
 #### Feature Updates
-* [Console] Released Network Insights 신규 기능 출시
+* [Console] Released Network Insights 
 
 ### December 21, 2017 
 #### Feature Updates 
-* [Console] Added query-based alarms쿼리 기반 신규 알람 기능 추가
+* [Console] Added query-based alarms
 
 ### October 26, 2017
 #### Feature Updates
-* [Console] Added the feature of alarm setting when a new crash occurs 새로운 크래시 발생 시 알람 설정 기능 추가
+* [Console] Added the feature of alarm setting when a new crash occurs 
 
 #### Bug Fixes
-* [console] 세션 만료 시 에러 메시지를 노출하도록 수정 Modified to show error message when a session is expired 
+* [console] Modified to show error message when a session is expired 
 
 ### September 21, 2017 
 #### Feature Updates
@@ -184,7 +184,7 @@
 * [Console] Changed the mail format for crash alarms (deleted dmpData and formatted DmpReport) 크래시 알람 메일 포맷 변경(dmpData 삭제 및 DmpReport formatting)
 * [Console] Unity 크래시 분류 기준 변경 Changed criteria of classifying Unity crashes 
     * Unity 발생되는 ERROR 레벨의 로그들에 대해서 크래시로 분류 하지 않도록 수정됨 Modified not to classify error-level logs of Unity as crashes
-        * Log Search 화면에서 검색 및 조회 가능 Search and query available on the log search page 
+        * Search and query is available on the log search page 
 
 #### Bug Fixes
 * [SDK] Fixed an issue in which sessionID is updated when initialize is called many times 를 여러번 호출하는 경우 SessionID가 갱신 되는 문제 수정 
@@ -204,7 +204,7 @@
 * [Console] 크래시 목록 화면 softing option에서 사용자수 제거 Removed user count from the softing option on the page of crash list
 
 #### Bug Fixes
-* [Console] 크래시 사용자 레이아웃 버그 수정 Fixed bugs in crash user layout 
+* [Console] Fixed bugs in crash user layout 
 
 ### June 22, 2017 
 #### Bug Fixes
@@ -222,7 +222,7 @@
 
 ### June 19, 2017
 #### Bug Fixes
-* [SDK] SendThread에 Sleep이 없어 CPU 사용률이 99%가 되는 현상 수정
+* [SDK] SendThread에 Sleep이 없어 CPU 사용률이 99%가 되는 현상 수정 
 * [SDK] 초당 100건의 로그를 보내는 경우, 메모리 해제가 정상적으로 되지 않는 현상 수정
     * Udated Version: [toast-logncrash-ios-unity-mac-sdk-2.6.6.1](/Download/#analytics-log-crash-search)
 
@@ -274,7 +274,7 @@
     * Show guide message on the stack trace page when stack trace is unavailable (when the error type is UNKNOWN) since symbol files are not registered 심볼파일을 등록하지 않아서 스택 트레이스를 표시할 수 없을 때 (에러타입이 UNKNOWN일 때), 스택 트레이스 화면에 안내문구 표시
 
 #### Bug Fixes
-* [Console] 영문 크래시 서치 화면에서 Real Time Monitoring 탭 깨지는 현상 
+* [Console] 영문 크래시 서치 화면에서 Real Time Monitoring 탭 깨지는 현상 Fixed the broken display of the Real Time Monitoring tab on the English page of crash search 
 
 ### February 23, 2017
 #### Feature Updates
@@ -300,40 +300,40 @@
 
 ### January 19, 2017
 #### Feature Updates
-* 앱 크래시 지표 버전 표시 기준 변경
-    * 앱 크래시 지표 > 크래시가 발생하지 않았지만 실행수가 존재하는 버전도 표시 되도록 수정
+* 앱 크래시 지표 버전 표시 기준 변경 Changed criteria for version display of app crash indicators
+    * 앱 크래시 지표 > 크래시가 발생하지 않았지만 실행수가 존재하는 버전도 표시 되도록 수정 Modified to show the version in which crash exists under execution, even if not occurred, from App Crash Indicators > Crash 
 #### Bug Fixes
-* Log Search 화면에 로그 모두 보이기/숨기기 기능 수정
+* Log Search 화면에 로그 모두 보이기/숨기기 기능 수정 Modified Show/Hide All Logs feature on the Log Search page 
 
 ### Decembr 22, 2016
 #### Feature Updates
-* Web 화면에서 로그 파일 다운로드시 최대 10만개로 제한
-    * 10만개 이상 시도시 팝업 알람
-* [SDK] iOS/Android 의 네이티브 레벨 예외를 수집할수 있도록 기능 추가
-    * 수정버전: unity-android-sdk-2.5.1, unity-ios-sdk-2.5.1
-* [SDK] Log Duplicate Queue Size가 최대 1,000개로 제한
-    * 수정버전: Android-2.4.3, Android-NDK-2.4.5, iOS-2.4.1, unity-android-2.5.1, unity-ios-2.5.1
+* Restrict downloading of log files to be no more than 100 thousand on the Web page 화면에서 로그 파일 다운로드시 최대 10만개로 제한
+    * 10만개 이상 시도시 팝업 알람 Send alarms on popup with over 100 thousand trials     
+* [SDK] iOS/Android 의 네이티브 레벨 예외를 수집할수 있도록 기능 추가 Added a feature to collect exceptions to the iOS/Android native level 
+    * Updated Version: unity-android-sdk-2.5.1, unity-ios-sdk-2.5.1
+* [SDK] Restrict the size of log duplicate queue to be no more than 1,000
+    * Updated Version: Android-2.4.3, Android-NDK-2.4.5, iOS-2.4.1, unity-android-2.5.1, unity-ios-2.5.1
 
 ### December 08, 2016
 #### Feature Updates
-* 이슈 조회 > 이슈 상세 > 코멘트, 히스토리 탭에서 내용을 등록한 사용자가 프로젝트 멤버에서 삭제 된 경우
-  이메일 노출 부분에 "[삭제된 멤버]"로 표시
+* 이슈 조회 > 이슈 상세 > 코멘트, 히스토리 탭에서 내용을 등록한 사용자가 프로젝트 멤버에서 삭제 된 경우 When the user who registered content for Query Issue > Issue Details > Comment, History has been deleted from project members
+  Show 이메일 노출 부분에 "[Deleted Member]" on email 로 표시 Shows
 
 #### Bug Fixes
-* 로그 알람 설정 시 필터링 규칙의 (비)포함 문자열에 "\"가 포함될 경우 로그 알람 목록이 조회되지 않는 버그 수정
-* 크래시 알람 신규 저장 시 멤버 리스트가 없을 경우 실패 알람이 뜨도록 수정
+* 로그 알람 설정 시 필터링 규칙의 (비)포함 문자열에 "\"가 포함될 경우 로그 알람 목록이 조회되지 않는 버그 수정 Fixed bugs in the log alarm setting, where log alarm list is not properly queried when "\" is included to the character strings included (excluded) to the filtering rule 
+* 크래시 알람 신규 저장 시 멤버 리스트가 없을 경우 실패 알람이 뜨도록 수정 Modified to show failure alarms when there's not a member list to newly save crash alarms 
 
 ### November 24, 2016
 * [SDK] 일부 기기에서 host필드를 구하는데 사용되는 getaddrinfo 함수가 hang현상을 유발하여, host값은 내부 thread에서 구하도록 변경
-  * 수정버전: Android-NDK 2.4.4
+  * Updated Version: Android-NDK 2.4.4
 
 ### November 04, 2016
 #### Bug Fixes
 * [SDK] Android 2.4.1 버전에서 AsyncTask가 Cancel 되지 못하는 버그가 있어, 해당 로직을 Thread로 변경
-  * 수정버전: Android 2.4.2
+  * Updated Version: Android 2.4.2
 
-### 2016.10.20 October 20, 2016
-#### 기능 개선/변경 Feature Updates
+### October 20, 2016
+#### Feature Updates
 * 기기의 고유 ID 값인 DeviceID 수집
     * 신규 SDK을 통한 Crash Log 전송시 DeviceID가 수집되어 Console > Log & Crash Search > Crashes > 앱 크래시 지표 화면에서
       DeviceID 기준으로 지표 확인이 가능합니다.
@@ -341,12 +341,12 @@
 * [SDK] 모든 로그에 대해 중복 로그 처리 루틴 적용
     * 중복 로그 기능이 켜져 있는 경우 Body 와 logLevel 의 내용이 같은 로그가 발생하면 전송하지 않습니다.
     * 필요한 경우 사용자가 별도의 API로 제어 가능하도록 기능 제공됨.
-    * 상세내용은 Developer's Guide 참고.
-* [Console] 앱 크래시 지표 화면 > '세션','사용자수' 타이틀 '실행 수' '크래시를 겪은 사용자'로 변경됨.
+    * For more details, see Developer's Guide.
+* [Console] Changed 'Session', 'User Count' from App Crash Indicators , to 'Execution Count', and 'User experiencing crash'. 앱 크래시 지표 화면 > '세션','사용자수' 타이틀 '실행 수' '크래시를 겪은 사용자'로 변경됨.
 
 ### September 29, 2016
 #### Feature Updates
-* 알람 임계치 설정 및 http Callback 기능 추가
+* 알람 임계치 설정 및 http Callback 기능 추가 Set alarm threshold and add http callback 
     * 알람 임계 값 비교 연산자 지원(>,>=,=,<=,<)
     * n 시간전 비교 이상/이하 기능 추가
     * Snooze 기능 추가
@@ -355,17 +355,17 @@
 
 #### Bug Fixes
 * [SDK] Exception이 발생한 경우 , 로그 전송 객체를 초기화 하지 못하여 반복적으로 초기화를 재시도 하던 버그 수정
-    * 수정된 SDK: logback , log4j, log4j2
+    * Updated SDK: logback , log4j, log4j2
 * [SDK] init 함수에 UserID를 세팅하면 로그에 값이 정상적으로 추가되지 않던 버그 수정
-    * 수정된 SDK: iOS
+    * Updated SDK: iOS
 
 ### September 12, 2016
-#### 버그 수정 Bug Fixes
+#### Bug Fixes
 * [SDK] Carrier와 Carrier 값이 null이 return되는 케이스에 대한 예외처리 코드 추가
-    * 수정된 SDK: Unity(v.2.3.4)
+    * Updated SDK: Unity(v.2.3.4)
 
 ### August 22, 2016
-#### 기능 개선/변경 Feature Updates
+#### Feature Updates
 * Custom Field Default 옵션 및 길이 제한 변경
     * Custom 필드 생성시 analyzed(분석여부) false 로 변경
     * 전송 가능한 로그 길이 128byte -> 2Kbyte 변경
@@ -375,7 +375,7 @@
 
 
 ### August 18, 2016
-#### 기능 개선/변경 Feature Updates
+#### Feature Updates
 * Log 전송 ON / OFF 기능 추가
     * Log & Crash Search 로 전송되는 로그(일반로그/크래시로그/세션로그)에 대해 사용자가 콘솔에서
       On/Off 설정, 수집여부를 결정할수 있습니다.
@@ -386,17 +386,17 @@
 * [API] Added UserBinaryData field필드 추가 
     * 로그 파일이나 바이너리 파일을 위 필드로 전송시 로그 검색 화면에 다운로드 가능 Download is available on the log search page when log file or binary file is sent to the field 
 
-#### 버그 수정 Bug Fixes
-* [Console] Crash 상세 페이지 로딩 속도 문제 수정 
+#### Bug Fixes
+* [Console] Fixed the speed issue of loading crash details  
 
 
-### 2016.08.04 August 04, 2016
-#### 기능 개선/변경 Feature Updates
+### August 04, 2016
+#### Feature Updates
 * [SDK][Unity] Updated to 2.2.6 업데이트
     * SaveToFile 저장 포맷 변경 Changed the format of saving SaveToFile
     * Regular Expression, JSON 라이브러리를 사용하여 변환하도록 수정 Modified to convert by using regular expression, JSON library
     * 파일 최대 저장 개수 100개 제한 Limit the maximum file count to be saved up to 100
     * 중복 제거 큐 100개 제한 Limit the maximum queue count to remove duplicates up to 100  
 
-#### 버그 수정 Bug Fixes
+#### Bug Fixes
 * [API] 특정 필드에 json array나 object를 전송한 경우 string으로 변환 되는 현상 수정 Fixed an issue in which json array or object sent to a specific field to be converted to string 
