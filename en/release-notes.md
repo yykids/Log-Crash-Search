@@ -43,7 +43,7 @@
 ### March 27, 2019
 #### Feature Updates
 * [Console] Support analysis of crashes occured on iOS arm64e (requires compatible SDK.)
-* [Console] Support analysis of crash occurred on Android NDK 에서 발생한 크래시 분석 지원 (requires compatible SDK호환이 되는 SDK가 필요합니다.)
+* [Console] Support analysis of crash occurred on Android NDK (requires compatible SDK.)
 * [Console] Apply globalization (for Japanese) 국제화 적용 (일본어)
 
 ### January 15, 2019
@@ -57,9 +57,9 @@
 ### Novermber 27, 2018.11.27
 #### Feature Updates 
 * [Console] 안드로이드 크래시 중 크래시가 발생한 부분이 unity 이며, 크래시 유형이 'java.lang.Error' 로 기록된 경우 예외 종류 정상적으로 판단하지 못하는 이슈 수정 Fixed an issue in which exception type is not properly judged when an Android crash occurs for Unity and the crash type is recorded as 'java.lang.Error'
-    * Fixed an issue in which access is unavailable to detail page from Web console웹콘솔 > Crash크래시 > Query Issues이슈 조회에서 상세화면으로 진입이 되지 않는 이슈 수정
-    * Fixed failed exposure of issue count per version from Web Console웹콘솔 > Crash래시 > Issue Statistics 이슈통계 버전별 이슈 개수 노출되지 않는 이슈 수정
-* [Console] 알람 관련 기능 UX/UI 개선 Update UX/UI related with Notification 
+    * Fixed an issue in which access is unavailable to detail page from Web Console > Crash > Query Issues이슈 조회에서 상세화면으로 진입이 되지 않는 이슈 수정
+    * Fixed failed exposure of issue count per version from Web Console > Crash > Issue Statistics 이슈통계 버전별 이슈 개수 노출되지 않는 이슈 수정
+* [Console] 알람 관련 기능 UX/UI 개선 Update Alarm-related UX/UI  
     * 알람 등록 Register alarms 
     * 알람 히스토리 History of alarms
     * 크래시 알람 등록 Register crash alarms 
@@ -81,7 +81,7 @@
 ### September 04, 2018 
 #### Feature Updates
 * [SDK][[logback-3.0.2](/Download/#analytics-log-crash-search)]
-    * Logncrash Appender의 예약어 중 기본값이 없는 항목이 empty, null일 경우, 예약어 항목이 추가되지 않도록 개선 Updated not to add reservation items, when Logncrash Appender has empty or null for non-default items of reservation  
+    * Logncrash Appender의 예약어 중 기본값이 없는 항목이 empty, null일 경우, 예약어 항목이 추가되지 않도록 개선 Updated not to add reservation items, when Logncrash Appender has empty or null for non-default items of reservation words
     * Logncrash REST API 타임아웃 설정 Set timeout for Longrash REST API
     * Logback의 AsyncAppender 사용 Enable AsynAppender for Logback 
 
@@ -111,7 +111,7 @@
     * Changed internal logic of SDK 내부 로직 개선
     
 * [SDK][[Android-2.6.7](/Download/#analytics-log-crash-search)]
-    * Fixed bugs in which logs were not sent in Android 4.1.2 or lower versions 이하 버전에서 로그가 전송되지 않던 버그 수정 ( Android-2.6.6 SDK 버그 )
+    * Fixed bugs in which logs were not sent in Android 4.1.2 or lower versions 이하 버전에서 로그가 전송되지 않던 버그 수정 (bugs on Android-2.6.6 SDK)
 
 * [SDK][[Unity-2.8.6](/Download/#analytics-log-crash-search)]
     * Fixed an issue in which the loglevel was set as fatal when Unity crash logs occurred on iOS 에서 Unity Crash Log 발생시 LogLevel 이 전부 FATAL로 설정되던 문제 수정
@@ -126,7 +126,7 @@
 
 * [SDK][[Unity-2.8.5](/Download/#analytics-log-crash-search)]
     * Rolled back crash logtype occurred at Unity Script에서 발생한 Crash logType 롤백
-        * Unity Script에서 발생한 Crash를 HANDLED로 처리하는 로직이 적용되어 롤백합니다.
+        * Unity Script에서 발생한 Crash를 HANDLED로 처리하는 로직이 적용되어 롤백합니다. Rolled back with crash occurred at Unity Script processed as Handled. 
 
 ### May 02, 2018 
 
@@ -151,8 +151,8 @@
 ### April 24, 2018
 
 #### Bug Fixes
-* [Console] 앱 크래시 Gitlab 이슈 연동 시, 이슈 번호가 잘못 채번되는 문제 수정
-* [Console] 앱 크래시 용도의 심볼파일을 삭제 후 같은 버전으로 심볼파일 업로드 시, 정상적으로 심볼리케이션 되지 않는 문제 수정
+* [Console] 앱 크래시 Gitlab 이슈 연동 시, 이슈 번호가 잘못 채번되는 문제 수정 Fixed invalid numbering of an issue, when integrated with app crash Gitlab 
+* [Console] 앱 크래시 용도의 심볼파일을 삭제 후 같은 버전으로 심볼파일 업로드 시, 정상적으로 심볼리케이션 되지 않는 문제 수정 
 * [Console] SMS 알람에서 특정 문자가 알람 내용에 포함되어 있을 때 알람이 전송되지 않는 문제 수정
 * [Console] 앱 크래시에서 알람 수신자에 특정 국가코드가 포함되어 앱 크래시 SMS 알람이 전송되지 않는 문제 수정
 
