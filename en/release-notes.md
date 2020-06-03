@@ -104,7 +104,7 @@
 
 #### Feature Updates
 * [SDK][[Android-2.6.7](/Download/#analytics-log-crash-search)]
-    * 저장된 로그의 경우, 필터를 거치지 않고 전송하도록 동작 변경 Changed operations for saved logs, not to be sent without filtering
+    * 저장된 로그의 경우, 필터를 거치지 않고 전송하도록 동작 변경 Changed operations for saved logs, to be sent without filtering
 
 #### Bug Fixes
 * [SDK][[iOS-2.7.0](/Download/#analytics-log-crash-search)]
@@ -152,9 +152,9 @@
 
 #### Bug Fixes
 * [Console] 앱 크래시 Gitlab 이슈 연동 시, 이슈 번호가 잘못 채번되는 문제 수정 Fixed invalid numbering of an issue, when integrated with app crash Gitlab 
-* [Console] 앱 크래시 용도의 심볼파일을 삭제 후 같은 버전으로 심볼파일 업로드 시, 정상적으로 심볼리케이션 되지 않는 문제 수정 
-* [Console] SMS 알람에서 특정 문자가 알람 내용에 포함되어 있을 때 알람이 전송되지 않는 문제 수정
-* [Console] 앱 크래시에서 알람 수신자에 특정 국가코드가 포함되어 앱 크래시 SMS 알람이 전송되지 않는 문제 수정
+* [Console] 앱 크래시 용도의 심볼파일을 삭제 후 같은 버전으로 심볼파일 업로드 시, 정상적으로 심볼리케이션 되지 않는 문제 수정 Fixed failed symbolication when symbol files for app crash are deleted and uploaded still in the same version 
+* [Console] SMS 알람에서 특정 문자가 알람 내용에 포함되어 있을 때 알람이 전송되지 않는 문제 수정 Fixed failure in SMS alarm transfer when particular characters are included to an alarm
+* [Console] 앱 크래시에서 알람 수신자에 특정 국가코드가 포함되어 앱 크래시 SMS 알람이 전송되지 않는 문제 수정 Fixed failed SMS alarm transfer for app crash when a particular country code is included to an alarm recipient
 
 ### January 22, 2018 
 #### Feature Updates
@@ -208,16 +208,16 @@
 
 ### June 22, 2017 
 #### Bug Fixes
-* [SDK] Fixed an issue in which crash occurs due to the delete bug of LFU when 중복제어 큐가 최대 사이즈가 넘은 경우, LFU 동작의 Delete 버그로 인해 Crash가 발생하는 현상 수정
+* [SDK] Fixed an issue in which crash occurs due to the Delete bug of LFU when the duplicate control queue exceeds the maximum size  중복제어 큐가 최대 사이즈가 넘은 경우, LFU 동작의 Delete 버그로 인해 Crash가 발생하는 현상 수정
     * Updated Version: [toast-logncrash-cpp-windows-sdk-2.5.4](/Download/#analytics-log-crash-search) / [toast-logncrash-csharp-windows-sdk-2.5.4](/Download/#analytics-log-crash-search)/ [toast-logncrash-androidndk-sdk-2.6.2](/Download/#analytics-log-crash-search)
-* [SDK] ReSend 로그 저장 시 2MB씩 총 20MB저장하는 방식에서 2MB만 저장하도록 변경
-* [SDK] Send Queue 사이즈를 500개에서 2000개로 변경
-* [SDK] 인터넷이 연결되어 있지 않은 경우, 전송 동작을 하지 않는 방식에서 파일로 저장하도록 변경
-* [SDK]인터넷 연결이 끊겼다가 다시 연결된 경우, 파일에 저장했던 로그를 재전송 하도록 변경
+* [SDK] ReSend 로그 저장 시 2MB씩 총 20MB저장하는 방식에서 2MB만 저장하도록 변경 Changed the method of saving Resend logs from 20MB by 2MB, to 2MB only  
+* [SDK] Send Queue 사이즈를 500개에서 2000개로 변경 Changed the size of Send Queue from 500 to 200 
+* [SDK] 인터넷이 연결되어 있지 않은 경우, 전송 동작을 하지 않는 방식에서 파일로 저장하도록 변경 Modified the transfer being disabled, when it is disconnected to the internet, to the file saving mode.  
+* [SDK]인터넷 연결이 끊겼다가 다시 연결된 경우, 파일에 저장했던 로그를 재전송 하도록 변경 When it is re-connected to the internet, logs saved in files are to be re-sent 
     * Updated Version: [toast-logncrash-cpp-windows-sdk-2.5.4](/Download/#analytics-log-crash-search) / [toast-logncrash-csharp-windows-sdk-2.5.4](/Download/#analytics-log-crash-search)
-* [SDK] 일부 필드(국가 코드, 플랫폼정보 등) 누락 현상 수정
+* [SDK] 일부 필드(국가 코드, 플랫폼정보 등) 누락 현상 수정 Fixed missing of some fields (country code, platform information, and etc.)
     * Updated Version: [toast-logncrash-android-2.6.2](/Download/#analytics-log-crash-search)
-* [SDK] 에러 내용을 errorCode와 txterrorCode 필드에 담아 전송하도록 변경
+* [SDK] 에러 내용을 errorCode와 txterrorCode 필드에 담아 전송하도록 변경 Errors are contained in errorCode and txterrorCode filds to be transrferred 
     * Updated Version: [toast-logncrash-logback-sdk-2.2.7](/Download/#analytics-log-crash-search) / [toast-logncrash-log4j-sdk-2.2.7](/Download/#analytics-log-crash-search)
 
 ### June 19, 2017
@@ -231,13 +231,13 @@
 * [Console] 로그서치 필드명 자동완성 기능 추가
 * [Console] Crashes > 앱 크래시 지표 페이지 하단 테이블 UserID Column 표시 순서 변경 및 Gray 처리
 * [Console] 세션로그 화면 노출 여부를 사용자가 on/off 할 수 있도록 기능 추가
-* [SDK] Unity Android / Android 통합
-    * 수정버전: [toast-logncrash-android-2.6.1](/Download/#analytics-log-crash-search)
+* [SDK] Integrate Unity Android and Android 통합
+    * Updated Version: [toast-logncrash-android-2.6.1](/Download/#analytics-log-crash-search)
 * [SDK] hotfield Enable/ Disable추가
-    * 수정버전: [toast-logncrash-android-2.6.1](/Download/#analytics-log-crash-search) / [toast-logncrash-androidndk-sdk-2.6.1](/Download/#analytics-log-crash-search)
+    * Updated Version: [toast-logncrash-android-2.6.1](/Download/#analytics-log-crash-search) / [toast-logncrash-androidndk-sdk-2.6.1](/Download/#analytics-log-crash-search)
 
 #### Bug Fixes
-* [SDK] Unity Crash 재전송 시, Seesion 로그가 한 번 더 전송되는 동작 수정
+* [SDK] Unity Crash 재전송 시, Seesion 로그가 한 번 더 전송되는 동작 수정 Fixed redundant transfer of session logs when unity crash is resent
 * [SDK] DevicID 필드가 누락되는 버그 수정 Fixed bugs in which the DeviceID field is missing 
     * Updated Version: [toast-logncrash-ios-unity-mac-sdk-2.6.5.1](/Download/#analytics-log-crash-search)
 
