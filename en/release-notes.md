@@ -152,7 +152,7 @@
 
 #### Bug Fixes
 * [Console] 앱 크래시 Gitlab 이슈 연동 시, 이슈 번호가 잘못 채번되는 문제 수정 Fixed invalid numbering of an issue, when integrated with app crash Gitlab 
-* [Console] 앱 크래시 용도의 심볼파일을 삭제 후 같은 버전으로 심볼파일 업로드 시, 정상적으로 심볼리케이션 되지 않는 문제 수정 Fixed failed symbolication when symbol files for app crash are deleted and uploaded still in the same version 
+* [Console] 앱 크래시 용도의 심볼파일을 삭제 후 같은 버전으로 심볼파일 업로드 시, 정상적으로 심볼리케이션 되지 않는 문제 수정 Fixed failed symbolication when symbol files for app crash are deleted and uploaded, still in the same version 
 * [Console] SMS 알람에서 특정 문자가 알람 내용에 포함되어 있을 때 알람이 전송되지 않는 문제 수정 Fixed failure in SMS alarm transfer when particular characters are included to an alarm
 * [Console] 앱 크래시에서 알람 수신자에 특정 국가코드가 포함되어 앱 크래시 SMS 알람이 전송되지 않는 문제 수정 Fixed failed SMS alarm transfer for app crash when a particular country code is included to an alarm recipient
 
@@ -173,11 +173,11 @@
 
 ### September 21, 2017 
 #### Feature Updates
-* [SDK] Added a function that does not automatically register CrashHandler during initialization 초기화 과정에서 CrashHandler를 자동으로 등록하지 않는 함수 추가 (see MultihandlerSample 참고)
-* [SDK] Changed to allow transferring Unity Crash via CrashHandler externally registered 외부에서 등록한 CrashHandler를 통해 Unity Crash를 전송할 수 있도록 변경 (see MultihandlerSample 참고)
-* [SDK] Removed unnecessary SDKs through the optimization script 스크립트를 통한 필요없는 SDK 제거 ( Doc 문서 참고 )
+* [SDK] Added a function that does not automatically register CrashHandler during initialization (see MultihandlerSample 참고)
+* [SDK] Changed to allow transferring Unity Crash via CrashHandler registered externally 외부에서 등록한 CrashHandler를 통해 Unity Crash를 전송할 수 있도록 변경 (see MultihandlerSample 참고)
+* [SDK] Removed unnecessary SDKs through the optimization script 스크립트를 통한 필요없는 SDK 제거 (see Doc 문서 참고 )
 * [SDK] Allows the user to save settings at a time in need  사용자가 Settings 객체를 원하는 시점에 저장할 수 있도록 변경
-    * Updated Version수정버전: [toast-logncrash-unity-2.8.3](/Download/#analytics-log-crash-search)
+    * Updated Version: [toast-logncrash-unity-2.8.3](/Download/#analytics-log-crash-search)
 * [Console] Changed the input method of log search time (to remove ms and specify timezone)로그 서치 시간 출력 방식 변경 (ms 단위 제거 및 timezone 명시)
 * [Console] Show total count as output when the distinct count is over 100 for a specific field 특정 필드의 distinct count가 100을 넘으면 TOTAL count를 출력 
 * [Console] Deleted UIs of users experiencing crash on the trend page 트렌드 페이지에서 crash를 겪은 사용자 UI 삭제
@@ -188,9 +188,9 @@
 
 #### Bug Fixes
 * [SDK] Fixed an issue in which sessionID is updated when initialize is called many times 를 여러번 호출하는 경우 SessionID가 갱신 되는 문제 수정 
-* [SDK] BackKey로 Activity를 종료한 경우, SDK에서 마지막 Activity 상태를 저장하고 있어 Activity가 메모리에서 해제 되지 않는 문제 수정
+* [SDK] Fixed the failed release of activity from the memory, if closed with BackKey, since SDK has saved its last status 로 Activity를 종료한 경우, SDK에서 마지막 Activity 상태를 저장하고 있어 Activity가 메모리에서 해제 되지 않는 문제 수정
     * Updated Version: [toast-logncrash-android-2.6.4](/Download/#analytics-log-crash-search) / [toast-logncrash-unity-2.8.3](/Download/#analytics-log-crash-search)
-* [SDK] PLCrashReporter가 Crash File을 생성하지 못하는 경우, 'EMPTY CRASH FILE'을 DmpData에 넣어 전송하도록 수정
+* [SDK] Modified to include 'EMPTY CRASH FILE' to DmpData for transfer, if PLCrashReporter fails to create crash files. 가 Crash File을 생성하지 못하는 경우, 'EMPTY CRASH FILE'을 DmpData에 넣어 전송하도록 수정
     * Updated Version: [toast-logncrash-ios-mac-sdk-2.6.7](/Download/#analytics-log-crash-search) [toast-logncrash-unity-2.8.3](/Download/#analytics-log-crash-search)
 * [SDK] iOS SDK에서 Native Crash 발생 시, CrashStyle, SymMethod가 잘못 표기되는 문제 수정 Fixed wrong display of CrashStyle and SymMethod, when navitve crash occurs on iOS SDK 
 * [SDK] WebGL에서UserID가 설정되지 않던 문제 수정 Fixed failed settings of userID on WeGL
@@ -217,23 +217,23 @@
     * Updated Version: [toast-logncrash-cpp-windows-sdk-2.5.4](/Download/#analytics-log-crash-search) / [toast-logncrash-csharp-windows-sdk-2.5.4](/Download/#analytics-log-crash-search)
 * [SDK] 일부 필드(국가 코드, 플랫폼정보 등) 누락 현상 수정 Fixed missing of some fields (country code, platform information, and etc.)
     * Updated Version: [toast-logncrash-android-2.6.2](/Download/#analytics-log-crash-search)
-* [SDK] 에러 내용을 errorCode와 txterrorCode 필드에 담아 전송하도록 변경 Errors are contained in errorCode and txterrorCode filds to be transrferred 
+* [SDK] 에러 내용을 errorCode와 txterrorCode 필드에 담아 전송하도록 변경 Errors are contained in errorCode and txterrorCode filds to be transferred 
     * Updated Version: [toast-logncrash-logback-sdk-2.2.7](/Download/#analytics-log-crash-search) / [toast-logncrash-log4j-sdk-2.2.7](/Download/#analytics-log-crash-search)
 
 ### June 19, 2017
 #### Bug Fixes
-* [SDK] SendThread에 Sleep이 없어 CPU 사용률이 99%가 되는 현상 수정 
-* [SDK] 초당 100건의 로그를 보내는 경우, 메모리 해제가 정상적으로 되지 않는 현상 수정
+* [SDK] SendThread에 Sleep이 없어 CPU 사용률이 99%가 되는 현상 수정 Fixed an issue in which CPU usage rate reaches 99% since sleep is not available for SendThread 
+* [SDK] 초당 100건의 로그를 보내는 경우, 메모리 해제가 정상적으로 되지 않는 현상 수정 Fixed failed memory release when 100 logs are sent per second  
     * Udated Version: [toast-logncrash-ios-unity-mac-sdk-2.6.6.1](/Download/#analytics-log-crash-search)
 
 ### May 25, 2017
 #### Feature Updates
-* [Console] 로그서치 필드명 자동완성 기능 추가
-* [Console] Crashes > 앱 크래시 지표 페이지 하단 테이블 UserID Column 표시 순서 변경 및 Gray 처리
-* [Console] 세션로그 화면 노출 여부를 사용자가 on/off 할 수 있도록 기능 추가
-* [SDK] Integrate Unity Android and Android 통합
+* [Console] 로그서치 필드명 자동완성 기능 추가 Added autocomplete for the log search field name 
+* [Console] Crashes > 앱 크래시 지표 페이지 하단 테이블 UserID Column 표시 순서 변경 및 Gray 처리 Changed the display order and processed grey for UserID Colum on the table at the bottom of the app crash indicators page 
+* [Console] 세션로그 화면 노출 여부를 사용자가 on/off 할 수 있도록 기능 추가 Allows the user to turn on/off for the exposure of session log page
+* [SDK] Integrated Unity Android and Android 통합 
     * Updated Version: [toast-logncrash-android-2.6.1](/Download/#analytics-log-crash-search)
-* [SDK] hotfield Enable/ Disable추가
+* [SDK] Added Enable/ Disable Hotfield
     * Updated Version: [toast-logncrash-android-2.6.1](/Download/#analytics-log-crash-search) / [toast-logncrash-androidndk-sdk-2.6.1](/Download/#analytics-log-crash-search)
 
 #### Bug Fixes
@@ -244,13 +244,13 @@
 ### April 20, 2017
 #### Feature Updates
 * [Console] 앱크래시지표 화면 레이아웃 변경 Changed the page layout for app crash indicators 
-    * 앱크래시지표 화면에 SDK버전 표시 Show SDK version on the screen 
-    * 사용자 / 디바이스 정보 테이블에 같이 표시 Show both User/Device information on table 
+    * 앱크래시지표 화면에 SDK버전 표시 Shows SDK version on the screen 
+    * 사용자 / 디바이스 정보 테이블에 같이 표시 Shows both User/Device information on table 
     * 테이블 헤더 변경 "버전" -> "앱버전 (SDK버전)" Changed table header, "Version" -> "App Version (SDK version)"
 * [Console] 크래시맵 화면 레이아웃 변경 및 멥에 디바이스 수 추가 Changed page layout for crash map and added the number of devices on the map
 * [Console] 새창 열기 기능 활성화 Activated opening new windows 
 * [Console] 알람 발송 포맷 변경(프로젝트 이름 대신 알람 이름 노출 Changed alarm delivery format (show alarm name, instead of project name)
-* [SDK] 기능 추가 Added features 
+* [SDK] 기능 추가 Added more features 
     * To ensure AddCustomField between the Init function and log delivery, added SendThread Lock 함수와 Log 전송 사이의 AddCustomField를 보장하기 위하며, SendThread Lock 기능 추가
         * Updated Version: [toast-logncrash-ios-unity-mac-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-unity-sdk-2.6.0](/Download/#analytics-log-crash-search) / [toast-logncrash-android-2.6.0](/Download/#analytics-log-crash-search)
 * [SDK] 기능변경 Changed features 
@@ -266,7 +266,7 @@
     *  Deleted Toast-logncrash-unity-ios-sdk / toast-logncrash-ios-mac-sdk 삭제
 
 #### Bug Fixes
-* Fixed failed operations when the alarm cycle is not one minute 알람 주기가 1분이 아닌 경우 snooze 가 동작 하지 않는 무제 수정
+* Fixed failed snooze operations when the alarm cycle is not one minute 알람 주기가 1분이 아닌 경우 snooze 가 동작 하지 않는 무제 수정
 ### March 23, 2017
 #### Feature Updates
 * [Console] Updated crashes with failed dump analysis to provide statistics in the format of UNKNOWN crash 덤프 분석에 실패한 크래시도 UNKNOWN 크래시 형태로 통계 정보를 제공 하도록 기능 개선
@@ -278,24 +278,24 @@
 
 ### February 23, 2017
 #### Feature Updates
-* [API] [log Bulk upload](/Analytics/Log%20&%20Crash%20Search/ko/api-guide/) 기능 추가
-    * REST API 로그 전송시 JSON array 형태로 로그 전송이 가능합니다.
-* [API] long,double 옵션 추가
-    * REST API 로그 전송시 long, double 로 시작하는 필드 사용시 long,double 타입으로 저장
-    * 로그 검색 화면에서 long, double 타입 Range 검색이 가능합니다.
-* [SDK] CrashCallback 기능 추가
+* [API] [log Bulk upload](/Analytics/Log%20&%20Crash%20Search/ko/api-guide/) Available 기능 추가
+    * REST API 로그 전송시 JSON array 형태로 로그 전송이 가능합니다. Sending REST API logs is available in the JSON array format. 
+* [API] Added Long/ Double Options  옵션 추가
+    * In sending REST API logs, fields starting with long or double can be saved in long or double type. 로그 전송시 long, double 로 시작하는 필드 사용시 long,double 타입으로 저장
+    * 로그 검색 화면에서 long, double 타입 Range 검색이 가능합니다. Range search is available for long or double type on the log search page. 
+* [SDK] Added CrashCallback 기능 추가
     * [Windwos csharp SDK 2.5.2.1](/Download/#analytics-log-crash-search) / [Windows cpp SDK 2.5.2.1](/Download/#analytics-log-crash-search)
 
 #### 버그 수정 Bug Fixes
-* [WEB] 저장된 쿼리 보기 페이지에서 쿼리 삭제 불가능한 문제 수정
-* [WEB] 이슈 상세에서 뒤로가기 클릭하면 이슈 목록 1페이지로 이동하지 않도록 pagination 개선
-* [SDK] Thread간의 충돌 현상 수정
+* [WEB] 저장된 쿼리 보기 페이지에서 쿼리 삭제 불가능한 문제 수정 Fixed unavailability of deleting query on View Saved Queries 
+* [WEB] 이슈 상세에서 뒤로가기 클릭하면 이슈 목록 1페이지로 이동하지 않도록 pagination 개선 Updated pagination so that a back button on issue details does not return to page 1 on the list
+* [SDK] Thread간의 충돌 현상 수정 Fixed conflicts between threads 
     * [unity-android-sdk 2.5.6.0](/Download/#analytics-log-crash-search)
-* [SDK] 외부 라이브러리와 logncrash를 함께 빌드 시 binaryimagesort duplicate symbol 오류 수정
+* [SDK] 외부 라이브러리와 logncrash를 함께 빌드 시 binaryimagesort duplicate symbol 오류 수정 Fixed error in the binaryimagesort duplicate symbol, occurred when building external libray along with logncrash   
     * [unity-ios-sdk-2.5.2.6](/Download/#analytics-log-crash-search)
-* [SDK] 일부 기기에서 breakpad 의 작업이 완료되기 전 어플리케이션이 강제로 종료 되는 현상 수정
+* [SDK] 일부 기기에서 breakpad 의 작업이 완료되기 전 어플리케이션이 강제로 종료 되는 현상 수정 Fixed forced closure, on some device, of an application before breakpad is completed
     * [androidndk-sdk 2.4.7.0](/Download/#analytics-log-crash-search)
-* [SDK] Async 모드에서 customField 가 추가되지 않는 현상 수정
+* [SDK] Async 모드에서 customField 가 추가되지 않는 현상 수정 Modified failed adding of customField under the Async mode 
     * [Log4j-sdk-2.2.5](/Download/#analytics-log-crash-search)/ [Logback-sdk-2.2.5](/Download/#analytics-log-crash-search)
 
 ### January 19, 2017
@@ -303,7 +303,7 @@
 * 앱 크래시 지표 버전 표시 기준 변경 Changed criteria for version display of app crash indicators
     * 앱 크래시 지표 > 크래시가 발생하지 않았지만 실행수가 존재하는 버전도 표시 되도록 수정 Modified to show the version in which crash exists under execution, even if not occurred, from App Crash Indicators > Crash 
 #### Bug Fixes
-* Log Search 화면에 로그 모두 보이기/숨기기 기능 수정 Modified Show/Hide All Logs feature on the Log Search page 
+* Log Search 화면에 로그 모두 보이기/숨기기 기능 수정 Modified the Show/Hide All Logs feature on the Log Search page 
 
 ### Decembr 22, 2016
 #### Feature Updates
