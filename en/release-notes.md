@@ -5,20 +5,20 @@
 * [Console] Modified tooltip messages on the setting page of SDK log delivery. 
 * [Console] Added, in query saving, the validity authetication process for Lucene query.
 #### Bug Fixes 
-* [Console] Fixed bugs in which particular Windows symbol files cannot be processed in uploading symbol files 
+* [Console] Fixed bugs in which particular Windows symbol files cannot be processed in uploading symbol files. 
     * Due to many builds, if the age of Windows PDB exceeds 11, symbol files that are extracted afterwards may contain a guid which has more than 34 characters. The limit of 33 characters for a guid field has been lifted. 
 * [Console] Fixed bugs, in which fields that are saved with the search of logs older than 30 days are not properoly exposed.
 
 
 ### Jan. 21, 2020
 #### Feature Updates
-* [Console] Changed how to locate the occurrence of iOS crashes 
-* [Console] Allows additional display of information on iOS crashes  (on TOAST SDK iOS 0.21.0 or higher versions)
+* [Console] Changed how to locate the occurrence of iOS crashes. 
+* [Console] Allows additional display of information on iOS crashes (on TOAST SDK iOS 0.21.0 or higher versions).
 
 ### Oct. 29, 2010
 #### Feature Updates
-* [Console] Added the feature of S3 uploading 
-* [Console] Changed the error message for alarms activated due to invalid query of alarm 
+* [Console] Added the feature of S3 uploading. 
+* [Console] Changed the error message for alarms activated due to invalid query of alarm. 
 
 ### August 27, 2019
 #### Bug Fixes 
@@ -26,39 +26,39 @@
 
 ### June 25, 2019
 #### Updates/Changes 
-* Fixed the (null) ((null)) symbolication result of some iOS crash logs   
-* Increased the capacity limit of a single log case (general and crash) from 1MB to 2MB
-* Modified to display actual phone numbers on the list of alarm recipients
+* Fixed the (null) ((null)) symbolication result of some iOS crash logs.   
+* Increased the capacity limit of a single log case (general and crash) from 1MB to 2MB.
+* Modified to display actual phone numbers on the list of alarm recipients.
 
 #### Bug Fixes
-* Allowed to query modified alarms from the list, when the last modifier has been excluded from project members   
+* Allowed to query modified alarms from the list, when the last modifier has been excluded from project members.   
 
 ### May 28, 2019
 #### Bug Fixes
-* [Console] Fixed abnormal operations in some pages for Windows 10 and Internet Explorer 11 
-* [Console] Fixed the unavailability of interpreting some zip files when symbolized files were uploaded 
-* [Console] Allows to immediately apply particular parts when language was changed on a web console 
-* [Console] Fixed the alarm setting by which https callback setting was unavailable 
+* [Console] Fixed abnormal operations in some pages for Windows 10 and Internet Explorer 11. 
+* [Console] Fixed the unavailability of interpreting some zip files when symbolized files were uploaded. 
+* [Console] Allows to immediately apply particular parts when language was changed on a web console. 
+* [Console] Fixed the alarm setting by which https callback setting was unavailable. 
 
 ### March 27, 2019
 #### Feature Updates
-* [Console] Support analysis of crashes occured on iOS arm64e (requires compatible SDK.)
-* [Console] Support analysis of crash occurred on Android NDK (requires compatible SDK.)
+* [Console] Support analysis of crashes occured on iOS arm64e (requires compatible SDK).
+* [Console] Support analysis of crash occurred on Android NDK (requires compatible SDK).
 * [Console] Apply globalization (in Japanese) 
 
 ### January 15, 2019
 #### Feature Updates
 * [Console] Applied on User console 
-* [Console] Exclude crash occurred at Unity from the indicator
-    * Not collected from Search App Crash > App Crash Indicators 
-* [Console] Added the feature of reverting status before registration, after issue tracker is registered 
-* [Console] Emphasize actual symbol names applied for symbolication on the symbolic file management page 
+* [Console] Exclude crash occurred at Unity from the indicator.
+    * Not collected from Search App Crash > App Crash Indicators. 
+* [Console] Added the feature of reverting status before registration, after issue tracker is registered. 
+* [Console] Emphasize actual symbol names applied for symbolication on the symbolic file management page. 
 
 ### Novermber 27, 2018.11.27
 #### Feature Updates 
-* [Console] Fixed an issue in which exception type is not properly judged when an Android crash occurs for Unity and the crash type is recorded as 'java.lang.Error'
-    * Fixed an issue in which access is unavailable to detail page from Web Console > Crash > Query Issues
-    * Fixed failed exposure of issue count per version from Web Console > Crash > Issue Statistics 
+* [Console] Fixed an issue in which exception type is not properly judged when an Android crash occurs for Unity and the crash type is recorded as 'java.lang.Error'.
+    * Fixed an issue in which access is unavailable to detail page from Web Console > Crash > Query Issues.
+    * Fixed failed exposure of issue count per version from Web Console > Crash > Issue Statistics. 
 * [Console] Updates for Alarm-related UX/UI  
     * Alarm registration 
     * History of alarms
@@ -66,8 +66,8 @@
     * History of crash alarms 
     * User-based alarm registration
     * History of user-based alarms 
-* [Console] Added guides of symbol files for Android Unity on the Web Console > Setting > Uploading Symbol Files 
-* [Console] Changed validation for Network Insight URL 
+* [Console] Added guides of symbol files for Android Unity on the Web Console > Setting > Uploading Symbol Files. 
+* [Console] Changed validation for Network Insight URL. 
 
 ### October 23, 2018 
 #### Feature Updates
@@ -81,44 +81,44 @@
 ### September 04, 2018 
 #### Feature Updates
 * [SDK][[logback-3.0.2](/Download/#analytics-log-crash-search)]
-    * Updated not to add reservation items, when Logncrash Appender has empty or null for non-default items of reservation words
-    * Set timeout for Longrash REST API
-    * Enable AsynAppender for Logback 
+    * Updated not to add reservation items, when Logncrash Appender has empty or null for non-default items of reservation words.
+    * Set timeout for Longrash REST API.
+    * Enable AsynAppender for Logback.
 
 #### Bug Fixes
 * [SDK][[logback-3.0.2](/Download/#analytics-log-crash-search)]
-    * Fixed bugs in which reservation words, such as empty or null, were added 
+    * Fixed bugs in which reservation words, such as empty or null, were added. 
 
 ### July 24, 2018 
 
 #### Feature Updates
-* [Console] Changed UI for the setting page 
+* [Console] Changed UI for the setting page.
 
 ### June 26, 2018
 
 #### Bug Fixes
 * [SDK][[iOS-2.7.1](/Download/#analytics-log-crash-search)]
-    * Fixed bugs in which crash occurred during initialization in duplicates 
+    * Fixed bugs in which crash occurred during initialization in duplicates. 
 
 ### June 05, 2018
 
 #### Feature Updates
 * [SDK][[Android-2.6.7](/Download/#analytics-log-crash-search)]
-    * Changed operations for saved logs, to be sent without filtering
+    * Changed operations for saved logs, to be sent without filtering.
 
 #### Bug Fixes
 * [SDK][[iOS-2.7.0](/Download/#analytics-log-crash-search)]
-    * Changed internal logic of SDK 
+    * Changed internal logic of SDK. 
     
 * [SDK][[Android-2.6.7](/Download/#analytics-log-crash-search)]
-    * Fixed bugs in which logs were not sent in Android 4.1.2 or lower versions (bugs on Android-2.6.6 SDK)
+    * Fixed bugs in which logs were not sent in Android 4.1.2 or lower versions (bugs on Android-2.6.6 SDK).
 
 * [SDK][[Unity-2.8.6](/Download/#analytics-log-crash-search)]
-    * Fixed an issue in which the loglevel was set as fatal when Unity crash logs occurred on iOS 
+    * Fixed an issue in which the loglevel was set as fatal when Unity crash logs occurred on iOS. 
 
 ### May 29, 2018 
 
-* [Console] Fixed an issue in which symbolication didn't work when bundles of duplicate names (e.g. Framework.UIKit, Accessibility.UIKit) exist among iOS crash symbolication  
+* [Console] Fixed an issue in which symbolication didn't work when bundles of duplicate names (e.g. Framework.UIKit, Accessibility.UIKit) exist among iOS crash symbolication.  
 
 ### May 09, 2018
 
@@ -345,41 +345,40 @@
 ### September 29, 2016
 #### Feature Updates
 * Set alarm thresholds and added http callback 
-    * 알람 임계 값 비교 연산자 지원(>,>=,=,<=,<)
-    * n 시간전 비교 이상/이하 기능 추가
-    * Snooze 기능 추가
-* Log Search 화면에서 다운로드 가능한 UserTxtData 필드 추가 Added UserTxtData downloadable from the log search page 
-    * "UserTxtData" 필드는 Log Search 화면에서 [다운로드|보기] 표시 하여 필드 내용을 바로 확인이 가능
+    * Support operators (>,>=,=,<=,<) for comparing alarm thresholds 
+    * Added the feature of More/Less as compared to n time ago  
+    * Added snoozing 
+* Added the UserTxtData field downloadable from the log search page 
+    * Check "UserTxtData" on the Log Search page from [Download|View] 
 
 #### Bug Fixes
-* [SDK] Exception이 발생한 경우 , 로그 전송 객체를 초기화 하지 못하여 반복적으로 초기화를 재시도 하던 버그 수정
+* [SDK] Fixed repetitive attempts of initialization, for exceptional cases, due to failure in initializing log transfer objects 
     * Updated SDK: logback , log4j, log4j2
-* [SDK] init 함수에 UserID를 세팅하면 로그에 값이 정상적으로 추가되지 않던 버그 수정
+* [SDK] Fixed a bug in which value was not properly added to the log when UserID was set for the fixed init function 
     * Updated SDK: iOS
 
 ### September 12, 2016
 #### Bug Fixes
-* [SDK] Carrier와 Carrier 값이 null이 return되는 케이스에 대한 예외처리 코드 추가
+* [SDK] Added exception processing codes for carrier and for cases in which the carrier value is returned to null 
     * Updated SDK: Unity(v.2.3.4)
 
 ### August 22, 2016
 #### Feature Updates
-* Custom Field Default 옵션 및 길이 제한 변경
-    * Custom 필드 생성시 analyzed(분석여부) false 로 변경
-    * 전송 가능한 로그 길이 128byte -> 2Kbyte 변경
-    * 2Kbyte 이상의 로그 전송이 필요한 경우 Field 명에 txt prefix 지정하여 Custom field 생성
-    * txt*; string, 옵션 [in] 필드 이름이 txt로 시작하는 필드(txt_description 등)는 분석(analyzed) 필드로 저장<br>
-      로그 검색 화면에서 필드 값의 일부 문자열로 검색이 가능
+* Changed the option and length restrictions of Custom Field Default 
+    * Set false for 'Analyzed' when the custom field is created  
+    * Changed the available log length for a transfer from 128byte to 2Kbyte
+    * When a log transfer with 2Kbyte or more is required, specify txt prefix for the field name to create a custom field 
+    * Field names (txt_description) starting with txt, such as txt*; string, or option [in], are saved as analyzed fields <br>
+      Search by some character strings of a field value is available on the log search page 
 
 
 ### August 18, 2016
 #### Feature Updates
-* Log 전송 ON / OFF 기능 추가
-    * Log & Crash Search 로 전송되는 로그(일반로그/크래시로그/세션로그)에 대해 사용자가 콘솔에서
-      On/Off 설정, 수집여부를 결정할수 있습니다.
-    * 수집되지 않은 로그는 화면에 노출되지 않고, API 및 Storage 요금에 포함되지 않습니다.
-    * Log on/off 기능 추가로 SDK 업데이트 되었습니다.
-        * 대상 SDK(v.2.3.0): Unity, Android , Windows, iOS
+* Allows ON/OFF for Log Transfers 
+    * User can set On/Off for logs transferred via Log & Crash Search (General/Crash/Session Logs) and decide whether to collect on console.
+    * Non-collected logs are not displayed on the screen and excluded from API or Storage charges. 
+    * Updated SDK by adding the Log On/Off feature. 
+        * Updated SDK(v.2.3.0): Unity, Android , Windows, and iOS
 
 * [API] Added UserBinaryData field
     * Download is available on the log search page when log file or binary file is sent to the field 
