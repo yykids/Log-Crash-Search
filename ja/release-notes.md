@@ -1,5 +1,11 @@
 ## Analytics > Log & Crash Search > リリースノート
 
+### 2020. 06. 23.
+#### 機能改善/変更
+* [Console] Object、Arrayタイプのクエリー方式を変更
+    * 文字列検索と同じ方法でクエリーを伝達する必要があります。
+    * [Luceneクエリーガイド参考](/Analytics/Log%20&%20Crash%20Search/ko/lucene-query-guide/)
+    
 ### 2020. 05. 26.
 #### 機能改善/変更
 * [Console] Bitcodeを適用したiOSアプリクラッシュ分析をサポート
