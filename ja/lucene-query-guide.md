@@ -110,7 +110,7 @@ fieldname:検索語~n
 次のサンプルログでは、ObjectとArrayフィールドで検索するためにワイルドカード検索機能を使用します。
 
 ```json
-// 例ログ
+// サンプルログ
 {
   "arrayTypedField": ["elem1", "elem2"],
   "objectTypedField": {
