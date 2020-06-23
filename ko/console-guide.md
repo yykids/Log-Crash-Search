@@ -347,6 +347,23 @@ Symbolication file이 등록 되어 있어야 크래시 로그를 확인할 수 
     - 중복 로그, 로그 레벨, 로그 유형 별로 필터링 할 수 있습니다.
 - 설정을 저장한 뒤 앱을 재시작하면 적용됩니다.
 
+### 로그 외부 보관 설정
+
+로그 외부 보관 정보를 설정합니다.
+
+![lcs_29_20200612](https://static.toastoven.net/prod_logncrash/lcs_29_20200612.png)
+
+- 외부 OBS에 로그를 보관할 수 있습니다.
+
+1. [AMZ S3 API](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#_1)를 이용해 자격 증명 등록 및 조회로 액세스 키(accessKey)와 비밀 키(secretKey)를 가져옵니다.
+2. **로그 외부 보관** 설정에서 **추가** 버튼 클릭
+3. 액세스 키와 비밀 키를 비롯한 데이터들 입력합니다.
+4. 다른 OBS에 추가로 저장한다면 **추가** 버튼을 눌러 정보를 입력합니다.
+5. 모든 OBS 정보를 입력했다면 저장 버튼을 눌러 저장합니다.
+
+- 설정한 OBS로 로그가 저장됩니다.
+- [TOAST OBS API 안내 가이드](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/)
+
 ## 네트워크 인사이트
 
 Log & Crash Search SDK에서 전송한 지연 시간과 오류율을 타임라인 차트와 URL 목록, 지도로 표시합니다.
