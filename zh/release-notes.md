@@ -1,5 +1,16 @@
 ## Analytics > Log & Crash Search > Release Notes
 
+### April 28, 2020
+#### Feature Updates
+* [Console] Restricted the maximum available period for a log search up to 3 months 
+* [API] Changed the identification method for Android NDK crash  
+#### Bug Fixes
+* [Console] Fixed bugs in which modified queries are not properly saved under particular conditions
+
+### March 24, 2020	
+#### Feature Updates 
+* [Console] Edited the error message for failure in deleting saved queries 
+
 ### Feb. 25, 2020
 #### Feature Updates
 * [Console] Modified tooltip messages on the setting page of SDK log delivery. 
