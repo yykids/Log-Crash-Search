@@ -1,4 +1,4 @@
-## Analytics > Log & Crash Search > 루씬 쿼리 가이드
+## Analytics > Log & Crash Search > Lucene 쿼리 가이드
 
 ## 기본 주의 사항
 
@@ -102,3 +102,20 @@ fieldname:검색어~n
 * ex) logSource:logncrash-logS**ur**rce~2
 
 ![lcs_lucene_guide_04](https://static.toastoven.net/prod_logncrash/lcs_lucene_guide_04.png)
+
+## Object/Array 검색
+
+각 필드의 타입이 Object와 Array일 경우 모두 문자열로 치환하여 저장합니다.
+다음의 예제 로그 중 Object와 Array 필드로 검색하기 위해 와일드카드 검색 기능을 사용합니다.
+
+```json
+// 예제 로그
+{
+  "arrayTypedField": ["elem1", "elem2"],
+  "objectTypedField": {
+    "key": "value"
+  }
+}
+```
+* Object 검색: `objectTypedField:*\"key\"\:\"value\"*`
+* Array 검색: `arrayTypedField:*\"elem1\"*`

@@ -103,3 +103,20 @@ fieldname:検索語~n
 * 例) logSource:logncrash-logS**ur**rce~2
 
 ![lcs_lucene_guide_04](https://static.toastoven.net/prod_logncrash/lcs_lucene_guide_04.png)
+
+## Object/Array検索
+
+各フィールドのタイプがObjectとArrayの場合、全て文字列に置換して保存します。
+次のサンプルログでは、ObjectとArrayフィールドで検索するためにワイルドカード検索機能を使用します。
+
+```json
+// サンプルログ
+{
+  "arrayTypedField": ["elem1", "elem2"],
+  "objectTypedField": {
+    "key": "value"
+  }
+}
+```
+* Object検索：`objectTypedField:*\"key\"\:\"value\"*`
+* Array検索：`arrayTypedField:*\"elem1\"*`
