@@ -57,7 +57,7 @@ UserTxtData; string, 옵션
 	[in] 로그 검색 화면에서 [다운로드|보기] 링크 표시, base64 인코딩된 값을 담아 전송.
 
 txt*; string, 옵션
-	[in] 필드 이름이 txt로 시작하는 필드(txtMessage, txt_description 등)는 text 필드로 저장된다. 로그 검색 화면에서 필드 값의 일부 문자열로 검색(full text search)이 가능하다. 필드의 크기는 1mbyte 로 제한된다.
+	[in] 필드 이름이 txt로 시작하는 필드(txtMessage, txt_description 등)는 text 필드로 저장된다. 로그 검색 화면에서 필드 값의 일부 문자열로 검색(full text search)이 가능하다. 필드의 크기는 1 MB 로 제한된다.
 
 long*; long, 옵션
     [in] 필드 이름이 long으로 시작하는 필드(longElapsedTime, long_elapsed_time 등)는 long 타입 필드로 저장된다. 로그 검색 화면에서 long 타입 Range 검색이 가능하다.
@@ -75,7 +75,7 @@ double*; double, 옵션
 
 커스텀 필드의 경우 필드 전체 문자열과 일치하는 검색만 가능하다. (exact match)
 
-커스텀 필드의 길이 제한은 1kbyte 로 제한된다. 1kbyte 이상 전송하거나, 필드 값 일부 문자열 검색이 필요한 경우 txt* prefix 붙여 필드생성 해야된다.
+커스텀 필드의 길이 제한은 1 kB 로 제한된다. 1 kB 이상 전송하거나, 필드 값 일부 문자열 검색이 필요한 경우 txt* prefix 붙여 필드생성 해야 된다.
 ```
 
 [반환값]  
@@ -208,8 +208,8 @@ resultList: array
 > 2. 로그 전송 전에, Log & Crash에 프로젝트를 등록하였는지 확인한다.  
 > 3. "logTime"은 Log & Crash 시스템에서 사용한다. 해당 키를 사용시 Log & Crash에서는 무시한다.  
 > 4. 키 이름에 공백 문자가 안 들어가도록 주의해야 한다. 예를 들어 "UserID"와 "UserID "은 서로 다른 키로 인식이 된다.  
-> 5. 하나의 HTTP 요청의 최대 크기는 52mb 이다.
-> 6. 하나의 로그(json)에 최대 크기는 2mb(2097152 byte) 이다.
+> 5. 하나의 HTTP 요청의 최대 크기는 52 MB 이다.
+> 6. 하나의 로그(json)에 최대 크기는 2 MB(2097152 B) 이다.
 
 ## 샘플
 
