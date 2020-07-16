@@ -1,9 +1,9 @@
 ## Analytics > Log & Crash Search > リリースノート
 
 ### 2020. 07. 28.
-#### 기능 개선/변경
-* [Console] 외부 보관 로그에 대한 무결성 검증 기능 추가
-    * [Console 사용 가이드 참고](/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_27)
+#### 機能改善/変更
+* [Console]外部保管ログのデータ完全性検証機能を追加
+    * [Console使用ガイド参考](/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_27)
 
 ### 2020. 06. 23.
 #### 機能改善/変更
