@@ -364,6 +364,32 @@ Symbolication file이 등록 되어 있어야 크래시 로그를 확인할 수 
 - 설정한 OBS로 로그가 저장됩니다.
 - [TOAST OBS API 안내 가이드](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/)
 
+### 로그 무결성 검사 설정 방법
+
+로그 무결성 검사를 설정합니다.
+
+* 해당 설정은 **반드시 로그 외부 보관 설정이 선행**되어야 동작합니다.
+* OBS에 저장된 로그가 변조(삭제 또는 수정)되었을 경우, **로그 외부 보관 설정**에서 지정한 이메일 주소로 알림이 갑니다.
+1. **로그 외부 보관 설정**에서 외부 로그 변조 알림을 체크합니다.
+![lcs_3-_20200727](https://static.toastoven.net/prod_logncrash/lcs_30_20200727.png)
+
+2. OBS 인증토큰을 받습니다. ([TOAST OBS API 안내 가이드](https://docs.toast.com/ko/Storage/Object%20Storage/ko/api-guide/#_2) 참고)
+인증토큰을 사용하여 OBS에 변조 체크를 위한 webhook url 설정을 합니다.
+```
+curl -X POST {Object-Store Endpoint}/{container} -H "X-Auth-Token: {token}" -H 'X-Webhook: {webhook-url}'
+```
+| 항목 | 설명 | 값 |
+| --- | --- | --- |
+| Object-Store Endpoint | OBS를 관리하기 위한 endpoint | [TOAST OBS API 안내 가이드](https://docs.toast.com/ko/Storage/Object%20Storage/ko/api-guide/#_2) 참고 |
+| container | OBS 컨테이너 명 | [TOAST OBS API 안내 가이드](https://docs.toast.com/ko/Storage/Object%20Storage/ko/api-guide/#_2) 참고 |
+| token | OBS 인증토큰 값 |  |
+| webhook-url | OBS upload/delete 시 받을 webhook url | http://api-gw.cloud.toast.com/tclcs-integrity-validator/integrity/${appkey} |
+| appkey | 저장 대상 Log&Crash Search Appkey |  |
+
+* 변조 체크 및 알림은 30분 단위로 수행합니다.
+* 변조된 로그가 있다고 판단하였을 경우 아래와 같은 메일을 발송합니다.
+![lcs_31_20200727](https://static.toastoven.net/prod_logncrash/lcs_31_20200727.png)
+
 ## 네트워크 인사이트
 
 Log & Crash Search SDK에서 전송한 지연 시간과 오류율을 타임라인 차트와 URL 목록, 지도로 표시합니다.
