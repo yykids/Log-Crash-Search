@@ -22,7 +22,7 @@ Log Search를 위한 파라미터
 projectName: string, required
 	[in] Appkey
 
-projectVersion：string、必須
+projectVersion: string, required
 	[in] 버전. 사용자 지정 가능. "A~Z, a~z, 0~9,-._"만 포함.
 
 body: string, optional
@@ -31,38 +31,38 @@ body: string, optional
 logVersion: string, required
 	[in] Log format version. "v2".
 
-logSource：string、オプション
+logSource: string, optional
 	[in] 로그 소스. Log Search에서 필터링을 위해 사용. 정의되지 않으면 "http".
 
-logType：string、オプション
+logType: string, optional
 	[in] 로그 타입. Log Search에서 필터링을 위해 사용. 정의되지 않으면 "log".
 
-host：string、オプション
+host: string, optional
 	[in] 로그를 보내는 단말의 주소. 정의되지 않으면 수집 서버에서 peer-address를 사용해 자동으로 채움.
 ```
 
 [Other Parameters]
 
 ```
-sendTime;string、オプション
+sendTime; string, optional
 	[in] 단말이 보낸 시간. 입력 시 Unix timestamp로 입력.
 
-logLevel; string、オプション
+logLevel; string, optional
 	[in] Syslog 이벤트용.
 
 UserBinaryData; string, optional
 	[in] Display [Download|Show] link on the log search screen, and send with values encoded with base64.
 
-UserTxtData; string、オプション
-    [in] 로그 검색 화면에서 [다운로드|보기] 링크 표시, base64 인코딩된 값을 담아 전송.
+UserTxtData; string, optional
+	[in] 로그 검색 화면에서 [다운로드|보기] 링크 표시, base64 인코딩된 값을 담아 전송.
 
-txt*; string、オプション
+txt*; string, optional
 	[in] 필드 이름이 txt로 시작하는 필드(txtMessage, txt_description 등)는 text 필드로 저장. 로그 검색 화면에서 필드값의 일부 문자열로 검색(full text search) 가능. 필드의 크기는 1MB로 제한됨.
 
-long*; long、オプション
+long*; long, optional
     [in] 필드 이름이 long으로 시작하는 필드(longElapsedTime, long_elapsed_time 등)는 long 타입 필드로 저장됨. 로그 검색 화면에서 long 타입 range 검색 가능.
 
-double*; double、オプション
+double*; double, optional
     [in] 필드 이름이 double로 시작하는 필드(doubleAvgScore, double_avg_score 등)는 double 타입 필드로 저장됨. 로그 검색 화면에서 double 타입 range 검색 가능.
 ```
 
@@ -129,8 +129,8 @@ Bulk로 전송하려면 JSON array 형태로 전송합니다.
 ```
 
 * 참고
-    * web 에서는 수신 시간 기준으로 로그를 정렬하여 표시하는데, bulk 전송의 경우 동일한 시간에 수신한 것으로 간주되어 사용자가			* 웹에서는 수신 시간 기준으로 로그를 정렬해 표시하는데, Bulk 전송의 경우 동일한 시간에 수신한 것으로 간주되어 사용자가 전송한 순서가 유지되지 않습니다.
-    * Bulk로 전송하는 로그들의 순서를 유지하려면 각 로그에 lncBulkIndex 필드를 추가해 Integer값을 지정한 후 전송하면 서버에서는 이 값을 기준으로 내림차순으로 표시합니다.
+    * 웹에서는 수신 시간 기준으로 로그를 정렬해 표시하는데, Bulk 전송의 경우 동일한 시간에 수신한 것으로 간주되어 사용자가 전송한 순서가 유지되지 않습니다.
+        * Bulk로 전송하는 로그들의 순서를 유지하려면 각 로그에 lncBulkIndex 필드를 추가해 Integer값을 지정한 후 전송하면 서버에서는 이 값을 기준으로 내림차순으로 표시합니다.
 
 ```
 [
