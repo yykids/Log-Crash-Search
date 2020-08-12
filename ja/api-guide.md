@@ -1,6 +1,6 @@
 ## Analytics > Log & Crash Search > APIガイド
 
-HTTP 프로토콜을 사용해서 Log & Crash 수집 서버에 로그를 전송할수 있습니다. 아래와 같은 JSON 형식을 사용합니다.
+HTTPプロトコルを使用してLog & Crash収集サーバーにログを転送できます。下記のようなJSON形式を使用します。
 
 ```
 {
@@ -17,13 +17,13 @@ HTTP 프로토콜을 사용해서 Log & Crash 수집 서버에 로그를 전송�
 [基本パラメータ]
 
 ```
-Log Search를 위한 파라미터
+Log Searchのためのパラメータ
 
 projectName: string、必須
 	[in]アプリケーションキー。
 
 projectVersion：string、必須
-	[in] 버전. 사용자 지정 가능. "A~Z, a~z, 0~9,-._"만 포함.
+	[in]バージョン。ユーザー指定可能。"A~Z, a~z, 0~9,-._"のみ使用できる。
 
 body：string、オプション
 	[in]ログメッセージ。
@@ -32,54 +32,54 @@ logVersion：string、必須
 	[in]ログフォーマットバージョン。 "v2"。
 
 logSource：string、オプション
-	[in] 로그 소스. Log Search에서 필터링을 위해 사용. 정의되지 않으면 "http".
+	[in]ログソース。Log Searchでフィルタリングのために使用。定義されていなければ"http"。
 
 logType：string、オプション
-	[in] 로그 타입. Log Search에서 필터링을 위해 사용. 정의되지 않으면 "log".
+	[in]ログタイプ。Log Searchでフィルタリングのために使用。定義されていなければ"log"。
 
 host：string、オプション
-	[in] 로그를 보내는 단말의 주소. 정의되지 않으면 수집 서버에서 peer-address를 사용해 자동으로 채움.
+	[in]ログを送る端末のアドレス。定義されていなければ収集サーバーでpeer-addressを使用して自動的に埋める。
 ```
 
 [その他のパラメータ]
 
 ```
 sendTime;string、オプション
-	[in] 단말이 보낸 시간. 입력 시 Unix timestamp로 입력.
+	[in]端末が送った時間。Unix timestampで入力。
 
 logLevel; string、オプション
-	[in] Syslog 이벤트용.
+	[in] Syslogイベント用。
 
 UserBinaryData; string、オプション
 	[in]ログ検索画面で[ダウンロード|参照]リンク表示、base64エンコードされた値を入れて転送。
 
 UserTxtData; string、オプション
-    [in] 로그 검색 화면에서 [다운로드|보기] 링크 표시, base64 인코딩된 값을 담아 전송.
+    [in]ログ検索画面で[ダウンロード|表示]リンク表示、 base64エンコードされた値を入れて転送。
 
 txt*; string、オプション
-	[in] 필드 이름이 txt로 시작하는 필드(txtMessage, txt_description 등)는 text 필드로 저장. 로그 검색 화면에서 필드값의 일부 문자열로 검색(full text search) 가능. 필드의 크기는 1MB로 제한됨.
+	[in]フィールド名がtxtで始まるフィールド(txtMessage, txt_descriptionなど)はtextフィールドに保存。ログ検索画面でフィールド値の一部の文字列で検索(full text search)可能。フィールドのサイズは1MBに制限される。
 
 long*; long、オプション
-    [in] 필드 이름이 long으로 시작하는 필드(longElapsedTime, long_elapsed_time 등)는 long 타입 필드로 저장됨. 로그 검색 화면에서 long 타입 range 검색 가능.
+    [in]フィールド名がlongで始まるフィールド(longElapsedTime、long_elapsed_timeなど)はlongタイプフィールドに保存される。ログ検索画面でlongタイプrange検索可能。
 
 double*; double、オプション
-    [in] 필드 이름이 double로 시작하는 필드(doubleAvgScore, double_avg_score 등)는 double 타입 필드로 저장됨. 로그 검색 화면에서 double 타입 range 검색 가능.
+    [in]フィールド名がdoubleで始まるフィールド(doubleAvgScore, double_avg_scoreなど)はdoubleタイプフィールドに保存される。ログ検索画面でdoubleタイプrange検索可能。
 ```
 
 [カスタムフィールド]
 
 ```
-커스텀 필드 이름은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
+カスタムフィールド名は"A-Z, a-z"で始まり、"A-Z, a-z, 0-9, -, _"を使用できます。
 
-위의 기본 파라미터, Crash 파라미터와 이름이 중복되면 안 됩니다.
+上の基本パラメータ、 Crashパラメータと名前が重複してはいけません。
 
-커스텀 필드는 필드 전체 문자열과 일치하는 검색만 가능합니다(exact match).
+カスタムフィールドはフィールド文字列と完全に一致する検索のみ可能です(exact match)。
 
-커스텀 필드의 길이는 1KB로 제한됩니다. 1KB 이상 전송하거나, 필드값의 일부 문자열을 검색해야 할 때는 txt* prefix를 붙여 필드를 생성해야 합니다.
+カスタムフィールドの長さは1KBに制限されます。1KB以上転送したり、フィールド値の一部の文字列を検索する必要がある時はtxt* prefixをつけてフィールドを作成する必要があります。
 ```
 
 [戻り値]  
-수집 서버에서 다음과 같이 반환합니다.
+収集サーバーから次のように返します。
 
 ```
 Content-Type: application/json
@@ -93,17 +93,17 @@ Content-Type: application/json
 }
 
 isSuccessful: boolean
-	[out] 성공 시 true, 실패 시 false
+	[out]成功時はtrue、失敗時はfalse
 
 resultCode: int
-	[out] 성공 시 0, 실패 시 오류 코드
+	[out]成功時は0、失敗時はエラーコード
 
 resultMessage: string
-	[out] 성공 시 "Success", 실패 시 오류 메시지
+	[out]成功時は"Success"、失敗時はエラーメッセージ
 ```
 
 [Bulk転送]
-Bulk로 전송하려면 JSON array 형태로 전송합니다.
+Bulkで転送するにはJSON array形式で転送します。
 
 ```
 [
@@ -128,9 +128,9 @@ Bulk로 전송하려면 JSON array 형태로 전송합니다.
 ]
 ```
 
-* 참고
-    * web 에서는 수신 시간 기준으로 로그를 정렬하여 표시하는데, bulk 전송의 경우 동일한 시간에 수신한 것으로 간주되어 사용자가			* 웹에서는 수신 시간 기준으로 로그를 정렬해 표시하는데, Bulk 전송의 경우 동일한 시간에 수신한 것으로 간주되어 사용자가 전송한 순서가 유지되지 않습니다.
-    * Bulk로 전송하는 로그들의 순서를 유지하려면 각 로그에 lncBulkIndex 필드를 추가해 Integer값을 지정한 후 전송하면 서버에서는 이 값을 기준으로 내림차순으로 표시합니다.
+* 参考
+    * webでは受信時間基準でログをソートして表示しますが、bulk転送の場合、同じ時間に受信したとみなされてユーザーが転送した順序が維持されません。
+    * Bulkで転送するログの順序を維持するには、各ログにlncBulkIndexフィールドを追加してInteger値を指定した後に転送します。サーバーではこの値を基準に降順で表示します。
 
 ```
 [
@@ -156,9 +156,9 @@ Bulk로 전송하려면 JSON array 형태로 전송합니다.
     }
 ]
 ```
-	* 위 예시와 같이 전송한 경우 서버에서는 second message -> first message 순서로 표시합니다.
+	* 上の例のように転送した場合、サーバーではsecond message -> first messageの順序で表示します。
 
-수집 서버에서는 전송된 순서에 따라 각각의 결괏값을 JSON array 형태로 다시 반환합니다.
+収集サーバーでは転送された順序にしたがって、それぞれの結果値をJSON array形式で再び返します。
 
 ```
 Content-Type: application/json
@@ -191,11 +191,11 @@ errors: int
     [out]転送されたログ中のエラー数
 
 resultList: array
-    [out] 전송된 각 로그들의 결괏값
+    [out]転送された各ログの結果値
 ```
 
 > 注意 
-> 1. JSON/HTTP로 Log & Crash 수집 서버에 로그를 전송할 때는 다음 주소를 사용해야 합니다.  
+> 1. JSON/HTTPでLog & Crash収集サーバーにログを転送する時は、次のアドレスを使用する必要があります。  
 > Log & Crash: api-logncrash.cloud.toast.com  
 >
 > 転送方式：POST
@@ -203,18 +203,18 @@ resultList: array
 > URI: /v2/log
 >
 > Content-Type: "application/json"
-> 2. 로그를 전송하기 전에 Log & Crash에 프로젝트를 등록했는지 확인합니다.  
-> 3. "logTime"은 Log & Crash 시스템에서 사용합니다. 해당 키를 사용하면 Log & Crash에서는 무시합니다.  
-> 4. 키 이름에 공백 문자가 들어가지 않게 주의합니다. 예를 들어 "UserID"와 "UserID "는 서로 다른 키로 인식됩니다. 
-> 5. HTTP 요청 하나의 최대 크기는 52MB입니다.
-> 6. 로그(JSON) 하나의 최대 크기는 2MB(2097152바이트)입니다.
+> 2. ログを転送する前に、Log & Crashにプロジェクトを登録したか確認します。  
+> 3. "logTime"は、Log & Crashシステムで使用します。該当キーを使用した時、Log & Crashでは無視します。
+> 4. キー名にスペースが入らないように注意します。例えば"UserID"と"UserID "は別々のキーとして認識されます。
+> 5. HTTPリクエスト1つの最大サイズは52MBです。
+> 6. ログ(JSON)1つの最大サイズは2MB(2097152バイト)です。
 
 ## サンプル
 
-[curl을 사용해 정상적으로 로그를 전송한 경우]
+[curlを使用して正常にログを転送した場合]
 
 ```
-//POST 메서드을 사용해 로그 전송
+//POSTメソッドを使用してログ転送
 $ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.toast.com/v2/log' -d '{
 	"projectName": "__アプリケーションキー__",
 	"projectVersion": "1.0.0",
@@ -225,7 +225,7 @@ $ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.to
 }'
 ```
 
-[로그 전송에 실패하는 경우]
+[ログの転送に失敗する場合]
 
 ```
 //URLが無効な場合(log -> loggg)
@@ -249,14 +249,14 @@ $ curl -v -H 'content-type:application/json' -XPOST "api-logncrash.cloud.toast.c
 	"logType": "nelo2-http",
 	"_xxx": "this is a invalid key"
 	}'
-커스텀 키는 "A~Z, a~z, 0~9, -_"를 포함하고 알파벳으로 시작해야 합니다.
-커스텀 키는 "A~Z, a~z, 0~9, -_"를 포함하고 알파벳으로 시작해야 합니다.
+カスタムキーは"A～Z、a～z、0～9、-_"を含め、アルファベットで始まる必要があります。
+カスタムキーは"A～Z、a～z、0～9、-_"を含め、アルファベットで始まる必要があります。
 ```
 
-[curl을 사용해  로그를 Bulk 전송한 경우]
+[curlを使用してログをBulk転送した場合]
 
 ```
-//POST 메서드을 사용해 로그 전송
+//POSTメソッドを使用してログ転送
 $ curl -H "content-type:application/json" -XPOST 'https://api-logncrash.cloud.toast.com/v2/log' -d '[
     {
         "projectName": "__アプリケーションキー__",
