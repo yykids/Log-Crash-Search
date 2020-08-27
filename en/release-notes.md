@@ -1,5 +1,9 @@
 ## Analytics > Log & Crash Search > Release Notes
 
+### September 22, 2020 
+#### Feature Changes
+* [Console] 이메일, 두레이 알람에서 첨부 된 Toast Log & Crash Search 접근 링크에서 IAM 콘솔 지원
+
 ### August 25, 2020 
 #### Feature Changes
 * [Console] Updated to enter and execute multiple objects for alarm callback/webhook
@@ -40,13 +44,12 @@
     * Due to many builds, if the age of Windows PDB exceeds 11, symbol files that are extracted afterwards may contain a guid which has more than 34 characters. The limit of 33 characters for a guid field has been lifted. 
 * [Console] Fixed bugs, in which fields that are saved with the search of logs older than 30 days are not properoly exposed.
 
-
 ### Jan. 21, 2020
 #### Feature Updates
 * [Console] Changed how to locate the occurrence of iOS crashes. 
 * [Console] Allows additional display of information on iOS crashes (on TOAST SDK iOS 0.21.0 or higher versions).
 
-### Oct. 29, 2010
+### Oct. 29, 2019
 #### Feature Updates
 * [Console] Added the feature of S3 uploading. 
 * [Console] Changed the error message for alarms activated due to invalid query of alarm. 
