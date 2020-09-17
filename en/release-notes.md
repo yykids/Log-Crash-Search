@@ -2,7 +2,7 @@
 
 ### September 22, 2020 
 #### Feature Changes
-* [Console] 메일, Dooray! 알람에 첨부된 TOAST Log & Crash Search 접근 링크에서 IAM 콘솔 지원
+* [Console] Supports IAM console from access link for TOAST Log & Search, attached to notifications of email, or Dooray!  
 
 ### August 25, 2020 
 #### Feature Changes
