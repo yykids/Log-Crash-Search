@@ -1,6 +1,6 @@
 ## Analytics > Log & Crash Search > APIガイド
 
-HTTPプロトコルを使用してLog & Crash収集サーバーにログを転送できます。下記のようなJSON形式を使用します。
+HTTPプロトコルを使用してLog & Crash収集サーバーにログを転送できます。
 
 > - JSON/HTTPでLog & Crash収集サーバーにログを転送する時は、次のアドレスを使用する必要があります。
 >     - Log & Crash: api-logncrash.cloud.toast.com
@@ -12,6 +12,8 @@ HTTPプロトコルを使用してLog & Crash収集サーバーにログを転�
 > - キー名にスペースが入らないように注意します。例えば"UserID"と"UserID "は別々のキーとして認識されます。
 > - HTTPリクエスト1つの最大サイズは52MBです。
 > - ログ(JSON)1つの最大サイズは8MB(8388608バイト)です。
+
+下記のようなJSON形式を使用します。
 
 ```
 {
