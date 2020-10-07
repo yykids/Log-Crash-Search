@@ -2,19 +2,16 @@
 
 HTTPプロトコルを使用してLog & Crash収集サーバーにログを転送できます。下記のようなJSON形式を使用します。
 
-> 1. JSON/HTTPでLog & Crash収集サーバーにログを転送する時は、次のアドレスを使用する必要があります。  
-> Log & Crash: api-logncrash.cloud.toast.com  
->
-> 転送方式：POST
->
-> URI: /v2/log
->
-> Content-Type: "application/json"
-> 2. ログを転送する前に、Log & Crashにプロジェクトを登録したか確認します。  
-> 3. "logTime"は、Log & Crashシステムで使用します。該当キーを使用した時、Log & Crashでは無視します。
-> 4. キー名にスペースが入らないように注意します。例えば"UserID"と"UserID "は別々のキーとして認識されます。
-> 5. HTTPリクエスト1つの最大サイズは52MBです。
-> 6. ログ(JSON)1つの最大サイズは8MB(8388608バイト)です。
+> - JSON/HTTPでLog & Crash収集サーバーにログを転送する時は、次のアドレスを使用する必要があります。
+>     - Log & Crash: api-logncrash.cloud.toast.com
+>     - 転送方式：POST
+>     - URI: /v2/log
+>     - Content-Type: "application/json"
+> - ログを転送する前に、Log & Crashにプロジェクトを登録したか確認します。
+> - "logTime"は、Log & Crashシステムで使用します。該当キーを使用した時、Log & Crashでは無視します。
+> - キー名にスペースが入らないように注意します。例えば"UserID"と"UserID "は別々のキーとして認識されます。
+> - HTTPリクエスト1つの最大サイズは52MBです。
+> - ログ(JSON)1つの最大サイズは8MB(8388608バイト)です。
 
 ```
 {
