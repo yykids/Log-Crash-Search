@@ -1,10 +1,10 @@
 ## Analytics > Log & Crash Search > Release Notes
 
 ### December 15, 2020
-#### Feature Updates
-* [Console] 알람 설정 중 제목과 설명에 대한 최대 입력 글자 수 표시 및 제한
-* [Console] 크래시 알람 중 임계치를 0으로 수정하는 경우 저장되지 않는 버그 수정
-* [Console] 로그 보관 기간 6개월, 1년 항목 삭제, 4개월 추가
+#### Updates/Changes
+* [Console] Displays and limits the maximum number of letters allowed for title and description when setting alarms
+* [Console] Fixed the bug where the change is not saved when the threshold for crash alarm is modified to 0
+* [Console] Deleted log retention period of 6 months and 1 year while adding that of 4 months
 
 ### October 13, 2020
 #### Feature Updates
